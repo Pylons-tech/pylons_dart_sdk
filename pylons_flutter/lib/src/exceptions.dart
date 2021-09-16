@@ -1,4 +1,4 @@
-library pylons_flutter;
+library pylons_flutter_exceptions;
 
 /// Exception thrown when getProfile is unable to retrieve a profile
 class ProfileDoesNotExistException implements Exception {

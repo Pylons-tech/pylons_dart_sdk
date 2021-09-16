@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:pylons_flutter/wallet.dart';
+import 'package:pylons_flutter/pylons_flutter.dart';
 
 void main() {
   test('stub', () {

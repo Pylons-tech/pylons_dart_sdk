@@ -1,9 +1,6 @@
-library pylons_flutter;
+library pylons_flutter_wallet;
 
-import 'package:pylons_flutter/profile.dart';
-import 'package:pylons_flutter/trade.dart';
-import 'cookbook.dart';
-import 'recipe.dart';
+import 'package:pylons_flutter/pylons_flutter.dart';
 
 /// Object representing a Pylons wallet.
 class Wallet {
@@ -56,6 +53,14 @@ class Wallet {
   /// this operation to fail, an exception will only be passed in the result of
   /// faulty behavior on the part of this library.
   void getTrades(Function(Exception? exception, List<Trade>? trades) callback) {
+
+  }
+
+  /// TODO: Write dartdoc for this
+  void txExecuteRecipe (String cookbookId, String recipeId,
+      Function(Exception? exception,
+          List<Transaction>? txs,
+          Profile? profile) callback) {
 
   }
 
