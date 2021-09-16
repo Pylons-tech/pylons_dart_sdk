@@ -1,2 +1,2 @@
 # pylons-flutter
-Pylons cross-platform mobile wallet
+Pylons client SDK implemented as a Flutter package.
