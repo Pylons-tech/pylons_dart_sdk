@@ -3,15 +3,15 @@ library pylons_flutter_wallet;
 import 'package:pylons_flutter/pylons_flutter.dart';
 
 /// Object representing a Pylons wallet.
-class Wallet {
+abstract class Wallet {
 
-  Wallet._privateConstructor();
+  /// Retrieves the AndroidWallet instance.
+  static void android() => AndroidWallet();
 
-  static final Wallet _instance = Wallet._privateConstructor();
-
-  factory Wallet() {
-    return _instance;
-  }
+  /// Calls callback with true if an IPC target exists; false otherwise.
+  void exists (Function(
+      bool ipcTargetExists
+      ) callback);
 
   /// Retrieves all cookbooks belonging to the current profile on the Pylons chain.
   /// Calls callback with the retrieved cookbooks as an argument, if the operation
@@ -22,7 +22,7 @@ class Wallet {
   void getCookbooks(Function(
       Exception? exception,
       List<Cookbook>? cookbooks) callback) {
-
+    throw UnimplementedError();
   }
 
   /// Retrieves current state of profile with given address if provided,
@@ -34,7 +34,7 @@ class Wallet {
   void getProfile(String? address, Function(
       Exception? exception,
       Profile? profile) callback) {
-
+    throw UnimplementedError();
   }
 
   /// Retrieves a list of recipes on the Pylons chain. If address is provided,
@@ -49,7 +49,7 @@ class Wallet {
   void getRecipes(String? address, Function(
       Exception? exception,
       List<Recipe>? recipes) callback) {
-
+    throw UnimplementedError();
   }
 
   /// Retrieves all current trades that exist on the Pylons chain.
@@ -61,7 +61,71 @@ class Wallet {
   void getTrades(Function(
       Exception? exception,
       List<Trade>? trades) callback) {
+    throw UnimplementedError();
+  }
 
+  /// Creates a transaction to buy an item using either Pylons or a third-
+  /// party payment processor.
+  ///
+  /// TODO: Comprehensive list of processors and what they use paymentId for.
+  ///
+  /// TODO: This has been ported as it is in the Kotlin implementation, but
+  /// it's worth noting that placeForSale doesn't expose a way to list an item
+  /// for purchase using Stripe or anything like that. So is paymentId ever
+  /// actually used here, or is it just an artifact of the fulfill-trade TX
+  /// having that field? If the latter, we should eliminate paymentId from this
+  /// call.
+  ///
+  /// Upon successful resolution of the transaction, calls callback with the
+  /// created transaction and the state of the profile after buying the item as
+  /// arguments. May, instead, return one of several exceptions in the event
+  /// that the transaction is not successfully executed:
+  ///
+  /// PaymentNotValidException: The paymentId does not exist, or is not for the
+  /// item being purchased.
+  ///
+  /// ProfileStateException: The active profile has insufficient Pylons for an
+  /// item being purchased using Pylons.
+  ///
+  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// on the chain.
+  ///
+  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// internal error. This shouldn't be seen in production.
+  void txBuyItem(String tradeId, String paymentId, Function(
+      Exception? exception,
+      Transaction? tx,
+      Profile? profile
+      ) callback) {
+    throw UnimplementedError();
+  }
+
+  /// Creates a transaction to buy the provided number of Pylons using a third-
+  /// party payment processor.
+  ///
+  /// TODO: Comprehensive list of processors and what they use paymentId for.
+  /// (I know we have Stripe integration; dunno if Google Play pylons purchase
+  /// is still a thing.)
+  ///
+  /// Upon successful resolution of the transaction, calls callback with the
+  /// created transaction and the state of the profile after buying Pylons as
+  /// arguments. May, instead, return one of several exceptions in the event
+  /// that the transaction is not successfully executed:
+  ///
+  /// PaymentNotValidException: The paymentId does not exist, or is not for the
+  /// number of pylons we're attempting to purchase.
+  ///
+  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// on the chain.
+  ///
+  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// internal error. This shouldn't be seen in production.
+  void txBuyPylons(int pylons, String paymentId, Function(
+      Exception? exception,
+      Transaction? tx,
+      Profile? profile
+      ) callback) {
+    throw UnimplementedError();
   }
 
   /// Creates a transaction to create the provided cookbook on the Pylons chain
@@ -93,7 +157,7 @@ class Wallet {
       Profile? profile,
       Cookbook? cookbook
       ) callback) {
-
+    throw UnimplementedError();
   }
 
   /// Creates a transaction to create the provided recipe on the Pylons chain
@@ -132,8 +196,8 @@ class Wallet {
       Transaction? tx,
       Profile? profile,
       Recipe? recipe
-  ) callback) {
-
+      ) callback) {
+    throw UnimplementedError();
   }
 
   /// Creates a transaction to disable the recipe with the provided real,
@@ -159,8 +223,9 @@ class Wallet {
   /// exception will be passed directly.
   void txDisableRecipe (String recipeId, Function(
       Exception? exception,
-      Transaction? tx) callback) {
-
+      Transaction? tx
+      ) callback) {
+    throw UnimplementedError();
   }
 
   /// Creates a transaction to enable the recipe with the provided real,
@@ -186,8 +251,9 @@ class Wallet {
   /// exception will be passed directly.
   void txEnableRecipe (String recipeId, Function(
       Exception? exception,
-      Transaction? tx) callback) {
-
+      Transaction? tx
+      ) callback) {
+    throw UnimplementedError();
   }
 
   /// Creates a transaction to execute the recipe with coordinates
@@ -215,8 +281,38 @@ class Wallet {
   void txExecuteRecipe (String cookbookId, String recipeName,
       Function(Exception? exception,
           Transaction? tx,
-          Profile? profile) callback) {
+          Profile? profile
+          ) callback) {
+    throw UnimplementedError();
+  }
 
+  /// Creates a transaction to post a trade of the provided item for a price
+  /// in pylons against the current profile.
+  /// The active profile must own the item.
+  /// Upon successful resolution of the transaction, calls callback with the
+  /// created transaction, the state of the profile after creation of the
+  /// trade, and the trade as it newly exists on chain as arguments. May,
+  /// instead, return one of several exceptions in the event that the
+  /// transaction is not successfully executed:
+  ///
+  /// ItemNotOwnedException: TX rejected because the active profile is not
+  /// the owner of the item to be placed for sale.
+  ///
+  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// on the chain.
+  ///
+  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// internal error. This shouldn't be seen in production.
+  ///
+  /// If the operation fails due to an exception thrown by this library, that
+  /// exception will be passed directly.
+  void txPlaceForSale (Item item, int price, Function(
+      Exception? exception,
+      Transaction? tx,
+      Profile? profile,
+      Trade? trade
+      ) callback) {
+    throw UnimplementedError();
   }
 
   /// Creates a transaction to updates the provided cookbook on the Pylons chain
@@ -252,7 +348,7 @@ class Wallet {
       Profile? profile,
       Cookbook? cookbook
       ) callback) {
-
+    throw UnimplementedError();
   }
 
   /// Creates a transaction to update an extant recipe on the Pylons chain
@@ -289,6 +385,22 @@ class Wallet {
       Profile? profile,
       Recipe? recipe
       ) callback) {
+    throw UnimplementedError();
+  }
+}
 
+/// The Android implementation of the Pylons wallet.
+class AndroidWallet extends Wallet {
+  AndroidWallet._privateConstructor();
+
+  static final AndroidWallet _instance = AndroidWallet._privateConstructor();
+
+  factory AndroidWallet() {
+    return _instance;
+  }
+
+  @override
+  void exists(Function(bool ipcTargetExists) callback) {
+    // TODO: implement exists
   }
 }

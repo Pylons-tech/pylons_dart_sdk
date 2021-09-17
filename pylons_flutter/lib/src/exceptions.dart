@@ -38,6 +38,31 @@ class CookbookNotOwnedException implements Exception {
         errMsg = e;
 }
 
+/// Exception thrown by TX-emitting API calls when an item to be used in
+/// executing a recipe or creating a trade is not owned by the active profile.
+class ItemNotOwnedException implements Exception {
+  final String item;
+  final String itemOwner;
+  final String errMsg;
+
+  ItemNotOwnedException(i, o, e) :
+        item = i,
+        itemOwner = o,
+        errMsg = e;
+}
+
+/// Exception thrown by TX-emitting API calls when a provided payment ID does
+/// not exist or is not correct for the purchase being made.
+class PaymentNotValidException implements Exception {
+  final String paymentId;
+  final String errMsg;
+
+  PaymentNotValidException(p, e) :
+      paymentId = p,
+      errMsg = e;
+}
+
+
 /// Exception thrown by API calls when a profile does not exist on the chain.
 class ProfileDoesNotExistException implements Exception {
   final String address;
