@@ -64,6 +64,38 @@ class Wallet {
 
   }
 
+  /// Creates a transaction to create the provided cookbook on the Pylons chain
+  /// against the current profile.
+  /// A cookbook with the same name as the provided one must not already exist.
+  /// Upon successful resolution of the transaction, calls callback with the
+  /// created transaction, the state of the profile after creation of the
+  /// cookbook, and the cookbook as it newly exists on chain as arguments. May,
+  /// instead, return one of several exceptions in the event that the
+  /// transaction is not successfully executed:
+  ///
+  /// CookbookAlreadyExistsException: TX rejected because a cookbook with the
+  /// provided name already exists.
+  ///
+  /// ProfileStateException: The active profile was not able to create the
+  /// cookbook on account of insufficient funds.
+  ///
+  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// on the chain.
+  ///
+  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// internal error. This shouldn't be seen in production.
+  ///
+  /// If the operation fails due to an exception thrown by this library, that
+  /// exception will be passed directly.
+  void txCreateCookbook(Cookbook cookbook, Function(
+      Exception? exception,
+      Transaction? tx,
+      Profile? profile,
+      Cookbook? cookbook
+      ) callback) {
+
+  }
+
   /// Creates a transaction to create the provided recipe on the Pylons chain
   /// against the current profile.
   /// A recipe must not already exist at the coordinates of the provided recipe.
@@ -184,6 +216,42 @@ class Wallet {
       Function(Exception? exception,
           Transaction? tx,
           Profile? profile) callback) {
+
+  }
+
+  /// Creates a transaction to updates the provided cookbook on the Pylons chain
+  /// to match that provided against the current profile.
+  /// A cookbook with the same name as the provided one must already exist and
+  /// be owned by the active profile.
+  /// Upon successful resolution of the transaction, calls callback with the
+  /// created transaction, the state of the profile after the cookbook is
+  /// updated, and the cookbook as it now exists on chain as arguments. May,
+  /// instead, return one of several exceptions in the event that the
+  /// transaction is not successfully executed:
+  ///
+  /// CookbookNotOwnedException: TX rejected because the active profile is not
+  /// the owner of the cookbook to be updated.
+  ///
+  /// CookbookDoesNotExistException: TX rejected because a cookbook with the
+  /// provided name already exists.
+  ///
+  /// ProfileStateException: The active profile was not able to create the
+  /// cookbook on account of insufficient funds.
+  ///
+  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// on the chain.
+  ///
+  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// internal error. This shouldn't be seen in production.
+  ///
+  /// If the operation fails due to an exception thrown by this library, that
+  /// exception will be passed directly.
+  void txUpdateCookbook(Cookbook cookbook, Function(
+      Exception? exception,
+      Transaction? tx,
+      Profile? profile,
+      Cookbook? cookbook
+      ) callback) {
 
   }
 

@@ -1,5 +1,18 @@
 library pylons_flutter_exceptions;
 
+/// Exception thrown by TX-emitting API calls when a cookbook already exists
+/// on chain while we're trying to create it.
+class CookbookAlreadyExistsException implements Exception {
+  final String cookbook;
+  final String cookbookSender;
+  final String errMsg;
+
+  CookbookAlreadyExistsException(c, s, e) :
+        cookbook = c,
+        cookbookSender = s,
+        errMsg = e;
+}
+
 /// Exception thrown by TX-emitting API calls when a cookbook does not exist on
 /// the chain.
 class CookbookDoesNotExistException implements Exception {
