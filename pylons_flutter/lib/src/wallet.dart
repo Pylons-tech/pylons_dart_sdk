@@ -56,12 +56,35 @@ class Wallet {
 
   }
 
-  /// TODO: Write dartdoc for this
+  /// Creates a transaction to execute the recipe with coordinates
+  /// cookbookId:recipeId against the current profile. Upon successful
+  /// resolution of the transaction, calls callback with the created transaction
+  /// and the state of the active profile after execution of the recipe as
+  /// arguments. May, instead, return one of several exceptions in the event
+  /// that the transaction is not successfully executed:
+  ///
+  /// RecipeDoesNotExistException: TX rejected because recipe does not exist.
+  ///
+  /// CookbookDoesNotExistException: TX rejected because cookbook does not exist.
+  ///
+  /// ProfileStateException: TX rejected because profile doesn't have all
+  /// necessary recipe inputs.
+  ///
+  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// on the chain.
+  ///
+  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// internal error. This shouldn't be seen in production.
+  ///
+  /// If the operation fails due to an exception thrown by this library, that
+  /// exception will be passed directly.
   void txExecuteRecipe (String cookbookId, String recipeId,
       Function(Exception? exception,
-          List<Transaction>? txs,
+          Transaction? tx,
           Profile? profile) callback) {
 
   }
+
+
 
 }
