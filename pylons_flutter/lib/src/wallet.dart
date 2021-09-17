@@ -1,6 +1,7 @@
 library pylons_flutter_wallet;
 
 import 'package:pylons_flutter/pylons_flutter.dart';
+import 'package:dartz/dartz.dart';
 
 /// Object representing a Pylons wallet.
 abstract class Wallet {
@@ -9,9 +10,7 @@ abstract class Wallet {
   static void android() => AndroidWallet();
 
   /// Calls callback with true if an IPC target exists; false otherwise.
-  void exists (Function(
-      bool ipcTargetExists
-      ) callback);
+  Future<bool> exists ();
 
   /// Retrieves all cookbooks belonging to the current profile on the Pylons chain.
   /// Calls callback with the retrieved cookbooks as an argument, if the operation
@@ -19,9 +18,7 @@ abstract class Wallet {
   /// is provided) or else with an exception. Since there's no normal way for
   /// this operation to fail, an exception will only be passed in the result of
   /// faulty behavior on the part of this library.
-  void getCookbooks(Function(
-      Exception? exception,
-      List<Cookbook>? cookbooks) callback) {
+  Future<List<Cookbook>> getCookbooks() {
     throw UnimplementedError();
   }
 
@@ -31,9 +28,7 @@ abstract class Wallet {
   /// was successfully retrieved, or else with an exception.
   /// If the profile simply doesn't exist, exception will be a
   /// ProfileNotFoundException; otherwise, it's whatever was thrown.
-  void getProfile(String? address, Function(
-      Exception? exception,
-      Profile? profile) callback) {
+  Future<Profile> getProfile(String? address) {
     throw UnimplementedError();
   }
 
@@ -46,9 +41,7 @@ abstract class Wallet {
   /// is provided) or else with an exception. Since there's no normal way for
   /// this operation to fail, an exception will only be passed in the result of
   /// faulty behavior on the part of this library.
-  void getRecipes(String? address, Function(
-      Exception? exception,
-      List<Recipe>? recipes) callback) {
+  Future<List<Recipe>> getRecipes(String? address) {
     throw UnimplementedError();
   }
 
@@ -58,9 +51,7 @@ abstract class Wallet {
   /// is provided) or else with an exception. Since there's no normal way for
   /// this operation to fail, an exception will only be passed in the result of
   /// faulty behavior on the part of this library.
-  void getTrades(Function(
-      Exception? exception,
-      List<Trade>? trades) callback) {
+  Future<List<Trade>> getTrades() {
     throw UnimplementedError();
   }
 
@@ -92,11 +83,7 @@ abstract class Wallet {
   ///
   /// NodeInternalErrorException: TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
-  void txBuyItem(String tradeId, String paymentId, Function(
-      Exception? exception,
-      Transaction? tx,
-      Profile? profile
-      ) callback) {
+  Future<Tuple2<Transaction, Profile>> txBuyItem(String tradeId, String paymentId) {
     throw UnimplementedError();
   }
 
@@ -120,11 +107,7 @@ abstract class Wallet {
   ///
   /// NodeInternalErrorException: TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
-  void txBuyPylons(int pylons, String paymentId, Function(
-      Exception? exception,
-      Transaction? tx,
-      Profile? profile
-      ) callback) {
+  Future<Tuple2<Transaction, Profile>> txBuyPylons(int pylons, String paymentId) {
     throw UnimplementedError();
   }
 
@@ -151,12 +134,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  void txCreateCookbook(Cookbook cookbook, Function(
-      Exception? exception,
-      Transaction? tx,
-      Profile? profile,
-      Cookbook? cookbook
-      ) callback) {
+  Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(Cookbook cookbook) {
     throw UnimplementedError();
   }
 
@@ -191,12 +169,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  void txCreateRecipe(Recipe recipe, Function(
-      Exception? exception,
-      Transaction? tx,
-      Profile? profile,
-      Recipe? recipe
-      ) callback) {
+  Future<Tuple3<Transaction, Profile, Recipe>> txCreateRecipe(Recipe recipe) {
     throw UnimplementedError();
   }
 
@@ -221,10 +194,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  void txDisableRecipe (String recipeId, Function(
-      Exception? exception,
-      Transaction? tx
-      ) callback) {
+  Future<Transaction> txDisableRecipe (String recipeId) {
     throw UnimplementedError();
   }
 
@@ -249,10 +219,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  void txEnableRecipe (String recipeId, Function(
-      Exception? exception,
-      Transaction? tx
-      ) callback) {
+  Future<Transaction> txEnableRecipe (String recipeId) {
     throw UnimplementedError();
   }
 
@@ -278,11 +245,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  void txExecuteRecipe (String cookbookId, String recipeName,
-      Function(Exception? exception,
-          Transaction? tx,
-          Profile? profile
-          ) callback) {
+  Future<Tuple2<Transaction, Profile>> txExecuteRecipe (String cookbookId, String recipeName) {
     throw UnimplementedError();
   }
 
@@ -306,12 +269,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  void txPlaceForSale (Item item, int price, Function(
-      Exception? exception,
-      Transaction? tx,
-      Profile? profile,
-      Trade? trade
-      ) callback) {
+  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale (Item item, int price) {
     throw UnimplementedError();
   }
 
@@ -342,12 +300,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  void txUpdateCookbook(Cookbook cookbook, Function(
-      Exception? exception,
-      Transaction? tx,
-      Profile? profile,
-      Cookbook? cookbook
-      ) callback) {
+  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(Cookbook cookbook) {
     throw UnimplementedError();
   }
 
@@ -379,12 +332,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  void txUpdateRecipe(Recipe recipe, Function(
-      Exception? exception,
-      Transaction? tx,
-      Profile? profile,
-      Recipe? recipe
-      ) callback) {
+  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(Recipe recipe) {
     throw UnimplementedError();
   }
 }
@@ -400,7 +348,8 @@ class AndroidWallet extends Wallet {
   }
 
   @override
-  void exists(Function(bool ipcTargetExists) callback) {
+  Future<bool> exists() {
     // TODO: implement exists
+    throw UnimplementedError();
   }
 }
