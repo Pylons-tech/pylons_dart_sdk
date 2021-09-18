@@ -6,57 +6,69 @@ import 'package:dartz/dartz.dart';
 /// Object representing a Pylons wallet.
 abstract class Wallet {
 
-  /// Retrieves the AndroidWallet instance.
+  /// Retrieves the [AndroidWallet] instance. Since [AndroidWallet] is a
+  /// singleton, this method will always return a reference to the same object.
   static void android() => AndroidWallet();
 
-  /// Calls callback with true if an IPC target exists; false otherwise.
+  /// Async: Returns true if an IPC target exists. False otherwise.
   Future<bool> exists ();
 
-  /// Retrieves all cookbooks belonging to the current profile on the Pylons chain.
-  /// Calls callback with the retrieved cookbooks as an argument, if the operation
-  /// was successful (even if there are no cookbooks, in which case an empty list
-  /// is provided) or else with an exception. Since there's no normal way for
-  /// this operation to fail, an exception will only be passed in the result of
-  /// faulty behavior on the part of this library.
+  /// Async: Retrieves all cookbooks belonging to the current profile on the
+  /// Pylons chain.
+  ///
+  /// Returns a [List]<[Cookbook]> containing the retrieved cookbooks. This will
+  /// ordinarily be "successful" even if there are no cookbooks to be retrieved,
+  /// in which case it'll just give you an empty list.
+  ///
+  /// Since there's no normal way for this operation to fail, an exception will
+  /// only be passed in the result of faulty behavior on the part of
+  /// this library.
   Future<List<Cookbook>> getCookbooks() {
     throw UnimplementedError();
   }
 
-  /// Retrieves current state of profile with given address if provided,
+  /// Async: Retrieves current state of profile with given address if provided,
   /// or current state of attached wallet's own profile if null.
-  /// Calls callback with the retrieved profile as an argument, if the profile
-  /// was successfully retrieved, or else with an exception.
-  /// If the profile simply doesn't exist, exception will be a
-  /// ProfileNotFoundException; otherwise, it's whatever was thrown.
+  /// Returns the retrieved [Profile] as an argument.
+  ///
+  /// If the profile doesn't exist, throws a [ProfileNotFoundException];
+  /// otherwise, this will not throw an exception unless something's wrong
+  /// with the implementation.
   Future<Profile> getProfile(String? address) {
     throw UnimplementedError();
   }
 
-  /// Retrieves a list of recipes on the Pylons chain. If address is provided,
-  /// retrieves only recipes belonging to that address; if an empty string is
-  /// provided as address, retrieves only recipes belonging to current profile;
-  /// otherwise, retrieves all recipes that exist on chain.
-  /// Calls callback with the retrieved recipes as an argument, if the operation
-  /// was successful (even if there are no recipes, in which case an empty list
-  /// is provided) or else with an exception. Since there's no normal way for
-  /// this operation to fail, an exception will only be passed in the result of
-  /// faulty behavior on the part of this library.
+  /// Async: Retrieves a list of recipes on the Pylons chain. If address is
+  /// provided, retrieves only recipes belonging to that address; if an empty
+  /// string is provided as address, retrieves only recipes belonging to current
+  /// profile; otherwise, retrieves all recipes that exist on chain.
+  ///
+  /// Returns a [List]<[Recipe]> containing the retrieved recipes. This will
+  /// ordinarily be "successful" even if there are no recipes to be retrieved,
+  /// in which case it'll just give you an empty list.
+  ///
+  /// Since there's no normal way for this operation to fail, an exception will
+  /// only be passed in the result of faulty behavior on the part of
+  /// this library.
   Future<List<Recipe>> getRecipes(String? address) {
     throw UnimplementedError();
   }
 
-  /// Retrieves all current trades that exist on the Pylons chain.
-  /// Calls callback with the retrieved trades as an argument, if the operation
-  /// was successful (even if there are no trades, in which case an empty list
-  /// is provided) or else with an exception. Since there's no normal way for
-  /// this operation to fail, an exception will only be passed in the result of
-  /// faulty behavior on the part of this library.
+  /// Async: Retrieves all current trades that exist on the Pylons chain.
+  ///
+  /// Returns a [List]<[Trade]> containing the retrieved trades. This will
+  /// ordinarily be "successful" even if there are no trades to be retrieved,
+  /// in which case it'll just give you an empty list.
+  ///
+  /// Since there's no normal way for this operation to fail, an exception will
+  /// only be passed in the result of faulty behavior on the part of
+  /// this library.
   Future<List<Trade>> getTrades() {
     throw UnimplementedError();
   }
 
-  /// Creates a transaction to buy an item using either Pylons or a third-
-  /// party payment processor.
+  /// Async: Creates a transaction to buy an item using either Pylons or a
+  /// third-party payment processor.
   ///
   /// TODO: Comprehensive list of processors and what they use paymentId for.
   ///
@@ -67,69 +79,82 @@ abstract class Wallet {
   /// having that field? If the latter, we should eliminate paymentId from this
   /// call.
   ///
-  /// Upon successful resolution of the transaction, calls callback with the
-  /// created transaction and the state of the profile after buying the item as
-  /// arguments. May, instead, return one of several exceptions in the event
-  /// that the transaction is not successfully executed:
+  /// Upon successful resolution of the transaction, returns a [Tuple2] of the
+  /// created [Transaction] and the state of the [Profile] after buying the
+  /// item.
   ///
-  /// PaymentNotValidException: The paymentId does not exist, or is not for the
-  /// item being purchased.
+  /// Can throw one of the following exceptions in the event that the
+  /// transaction is not resolved successfully:
   ///
-  /// ProfileStateException: The active profile has insufficient Pylons for an
-  /// item being purchased using Pylons.
+  /// [PaymentNotValidException] : The paymentId does not exist, or is not for
+  /// the item being purchased.
   ///
-  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// [ProfileStateException] : The active profile has insufficient Pylons for
+  /// an item being purchased using Pylons.
+  ///
+  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
   /// on the chain.
   ///
-  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
+  ///
+  /// If the operation fails due to an exception thrown by this library, that
+  /// exception will be passed directly.
   Future<Tuple2<Transaction, Profile>> txBuyItem(String tradeId, String paymentId) {
     throw UnimplementedError();
   }
 
-  /// Creates a transaction to buy the provided number of Pylons using a third-
-  /// party payment processor.
+  /// Async: Creates a transaction to buy the provided number of Pylons using a
+  /// third-party payment processor.
   ///
   /// TODO: Comprehensive list of processors and what they use paymentId for.
   /// (I know we have Stripe integration; dunno if Google Play pylons purchase
   /// is still a thing.)
   ///
-  /// Upon successful resolution of the transaction, calls callback with the
-  /// created transaction and the state of the profile after buying Pylons as
-  /// arguments. May, instead, return one of several exceptions in the event
-  /// that the transaction is not successfully executed:
+  /// Upon successful resolution of the transaction, returns a [Tuple2] of the
+  /// created [Transaction] and the state of the [Profile] after buying the
+  /// Pylons.
   ///
-  /// PaymentNotValidException: The paymentId does not exist, or is not for the
-  /// number of pylons we're attempting to purchase.
+  /// Can throw one of the following exceptions in the event that the
+  /// transaction is not resolved successfully:
   ///
-  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// [PaymentNotValidException] : The paymentId does not exist, or is not for
+  /// the number of Pylons we're attempting to purchase.
+  ///
+  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
   /// on the chain.
   ///
-  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
+  ///
+  /// If the operation fails due to an exception thrown by this library, that
+  /// exception will be passed directly.
   Future<Tuple2<Transaction, Profile>> txBuyPylons(int pylons, String paymentId) {
     throw UnimplementedError();
   }
 
-  /// Creates a transaction to create the provided cookbook on the Pylons chain
-  /// against the current profile.
-  /// A cookbook with the same name as the provided one must not already exist.
-  /// Upon successful resolution of the transaction, calls callback with the
-  /// created transaction, the state of the profile after creation of the
-  /// cookbook, and the cookbook as it newly exists on chain as arguments. May,
-  /// instead, return one of several exceptions in the event that the
-  /// transaction is not successfully executed:
+  /// Async: Creates a transaction to create the provided [Cookbook] on the
+  /// Pylons chain against the current profile.
   ///
-  /// CookbookAlreadyExistsException: TX rejected because a cookbook with the
+  /// A cookbook with the same name as the provided one must not already exist.
+  ///
+  /// Upon successful resolution of the transaction, returns a [Tuple3] of the
+  /// created [Transaction],the state of the [Profile] after creating the
+  /// cookbook, and the [Cookbook] as it newly exists on chain.
+  ///
+  /// Can throw one of the following exceptions in the event that the
+  /// transaction is not resolved successfully:
+  ///
+  /// [CookbookAlreadyExistsException] : TX rejected because a cookbook with the
   /// provided name already exists.
   ///
-  /// ProfileStateException: The active profile was not able to create the
+  /// [ProfileStateException] : The active profile was not able to create the
   /// cookbook on account of insufficient funds.
   ///
-  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
   /// on the chain.
   ///
-  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
   /// If the operation fails due to an exception thrown by this library, that
@@ -138,33 +163,36 @@ abstract class Wallet {
     throw UnimplementedError();
   }
 
-  /// Creates a transaction to create the provided recipe on the Pylons chain
-  /// against the current profile.
-  /// A recipe must not already exist at the coordinates of the provided recipe.
-  /// Upon successful resolution of the transaction, calls callback with the
-  /// created transaction, the state of the profile after creation of the
-  /// recipe, and the recipe as it newly exists on chain as arguments. May,
-  /// instead, return one of several exceptions in the event that the
-  /// transaction is not successfully executed:
+  /// Async: Creates a transaction to create the provided [Recipe] on the Pylons
+  /// chain against the current profile.
   ///
-  /// RecipeValidationException: No TX was created because the recipe failed
+  /// A recipe must not already exist at the coordinates of the provided recipe.
+  ///
+  /// Upon successful resolution of the transaction, returns a [Tuple3] of the
+  /// created [Transaction],the state of the [Profile] after creating the
+  /// recipe, and the [Recipe] as it newly exists on chain.
+  ///
+  /// Can throw one of the following exceptions in the event that the
+  /// transaction is not resolved successfully:
+  ///
+  /// [RecipeValidationException] : No TX was created because the recipe failed
   /// basic clientside sanity-checking before one could be built. This could
   /// be because of impossible outputs, etc. The error message provides more
   /// info on why the sanity check failed.
   ///
-  /// CookbookNotOwnedException: TX rejected because the active profile is not
+  /// [CookbookNotOwnedException] : TX rejected because the active profile is not
   /// the owner of the cookbook in which the recipe was to be created.
   ///
-  /// RecipeAlreadyExistsException: TX rejected because recipe already exists
+  /// [RecipeAlreadyExistsException] : TX rejected because recipe already exists
   /// at the provided coordinates.
   ///
-  /// ProfileStateException: The active profile was not able to create the
+  /// [ProfileStateException] : The active profile was not able to create the
   /// recipe on account of insufficient funds.
   ///
-  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
   /// on the chain.
   ///
-  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
   /// If the operation fails due to an exception thrown by this library, that
@@ -173,23 +201,24 @@ abstract class Wallet {
     throw UnimplementedError();
   }
 
-  /// Creates a transaction to disable the recipe with the provided real,
+  /// Async: Creates a transaction to disable the recipe with the provided real,
   /// on-chain recipe ID against the current profile. Upon successful
-  /// resolution of the transaction, calls callback with the created transaction
-  /// as an argument. May, instead, return one of several exceptions in the event
-  /// that the transaction is not successfully executed:
+  /// resolution of the transaction, returns the created [Transaction].
   ///
-  /// RecipeDoesNotExistException: TX rejected because recipe does not exist.
+  /// Can throw one of the following exceptions in the event that the
+  /// transaction is not resolved successfully:
   ///
-  /// RecipeNotOwnedException: TX rejected because the active profile is not
+  /// [RecipeDoesNotExistException] : TX rejected because recipe does not exist.
+  ///
+  /// [RecipeNotOwnedException] : TX rejected because the active profile is not
   /// the owner of the recipe.
   ///
-  /// RecipeStateException: TX rejected because the recipe is already disabled.
+  /// [RecipeStateException[ : TX rejected because the recipe is already disabled.
   ///
-  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
   /// on the chain.
   ///
-  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
   /// If the operation fails due to an exception thrown by this library, that
@@ -198,23 +227,24 @@ abstract class Wallet {
     throw UnimplementedError();
   }
 
-  /// Creates a transaction to enable the recipe with the provided real,
+  /// Async: Creates a transaction to enable the recipe with the provided real,
   /// on-chain recipe ID against the current profile. Upon successful
-  /// resolution of the transaction, calls callback with the created transaction
-  /// as an argument. May, instead, return one of several exceptions in the event
-  /// that the transaction is not successfully executed:
+  /// resolution of the transaction, returns the created [Transaction].
   ///
-  /// RecipeDoesNotExistException: TX rejected because recipe does not exist.
+  /// Can throw one of the following exceptions in the event that the
+  /// transaction is not resolved successfully:
   ///
-  /// RecipeNotOwnedException: TX rejected because the active profile is not
+  /// [RecipeDoesNotExistException] : TX rejected because recipe does not exist.
+  ///
+  /// [RecipeNotOwnedException] : TX rejected because the active profile is not
   /// the owner of the recipe.
   ///
-  /// RecipeStateException: TX rejected because the recipe is already enabled.
+  /// [RecipeStateException] : TX rejected because the recipe is already enabled.
   ///
-  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
   /// on the chain.
   ///
-  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
   /// If the operation fails due to an exception thrown by this library, that
@@ -223,24 +253,26 @@ abstract class Wallet {
     throw UnimplementedError();
   }
 
-  /// Creates a transaction to execute the recipe with coordinates
+  /// Async: Creates a transaction to execute the recipe with coordinates
   /// cookbookId:recipeName against the current profile. Upon successful
-  /// resolution of the transaction, calls callback with the created transaction
-  /// and the state of the active profile after execution of the recipe as
-  /// arguments. May, instead, return one of several exceptions in the event
-  /// that the transaction is not successfully executed:
+  /// resolution of the transaction, returns a [Tuple2] of the created
+  /// [Transaction] and the state of the active [Profile] after execution of
+  /// the recipe.
   ///
-  /// RecipeDoesNotExistException: TX rejected because recipe does not exist.
+  /// Can throw one of the following exceptions in the event that the
+  /// transaction is not resolved successfully:
   ///
-  /// CookbookDoesNotExistException: TX rejected because cookbook does not exist.
+  /// [RecipeDoesNotExistException] : TX rejected because recipe does not exist.
   ///
-  /// ProfileStateException: TX rejected because profile doesn't have all
+  /// [CookbookDoesNotExistException] : TX rejected because cookbook does not exist.
+  ///
+  /// [ProfileStateException] : TX rejected because profile doesn't have all
   /// necessary recipe inputs.
   ///
-  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
   /// on the chain.
   ///
-  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
   /// If the operation fails due to an exception thrown by this library, that
@@ -249,22 +281,25 @@ abstract class Wallet {
     throw UnimplementedError();
   }
 
-  /// Creates a transaction to post a trade of the provided item for a price
-  /// in pylons against the current profile.
-  /// The active profile must own the item.
-  /// Upon successful resolution of the transaction, calls callback with the
-  /// created transaction, the state of the profile after creation of the
-  /// trade, and the trade as it newly exists on chain as arguments. May,
-  /// instead, return one of several exceptions in the event that the
-  /// transaction is not successfully executed:
+  /// Async: Creates a transaction to post a trade of the provided [Item] for a
+  /// price in pylons against the current profile.
   ///
-  /// ItemNotOwnedException: TX rejected because the active profile is not
+  /// The active profile must own the item.
+  ///
+  /// Upon successful resolution of the transaction, returns a [Tuple3] of the
+  /// created [Transaction], the state of the [Profile] after creation of the
+  /// trade, and the [Trade] as it newly exists on chain.
+  ///
+  /// Can throw one of the following exceptions in the event that the
+  /// transaction is not resolved successfully:
+  ///
+  /// [ItemNotOwnedException] : TX rejected because the active profile is not
   /// the owner of the item to be placed for sale.
   ///
-  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
   /// on the chain.
   ///
-  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
   /// If the operation fails due to an exception thrown by this library, that
@@ -273,29 +308,32 @@ abstract class Wallet {
     throw UnimplementedError();
   }
 
-  /// Creates a transaction to updates the provided cookbook on the Pylons chain
-  /// to match that provided against the current profile.
+  /// Async: Creates a transaction to updates the provided [Cookbook] on the
+  /// Pylons chain to match that provided against the current profile.
+  ///
   /// A cookbook with the same name as the provided one must already exist and
   /// be owned by the active profile.
-  /// Upon successful resolution of the transaction, calls callback with the
-  /// created transaction, the state of the profile after the cookbook is
-  /// updated, and the cookbook as it now exists on chain as arguments. May,
-  /// instead, return one of several exceptions in the event that the
-  /// transaction is not successfully executed:
   ///
-  /// CookbookNotOwnedException: TX rejected because the active profile is not
+  /// Upon successful resolution of the transaction, returns a [Tuple3] of the
+  /// created [Transaction], the state of the [Profile] after the cookbook is
+  /// updated, and the [Cookbook] as it now exists on chain.
+  ///
+  /// Can throw one of the following exceptions in the event that the
+  /// transaction is not resolved successfully:
+  ///
+  /// [CookbookNotOwnedException] : TX rejected because the active profile is not
   /// the owner of the cookbook to be updated.
   ///
-  /// CookbookDoesNotExistException: TX rejected because a cookbook with the
+  /// [CookbookDoesNotExistException] : TX rejected because a cookbook with the
   /// provided name already exists.
   ///
-  /// ProfileStateException: The active profile was not able to create the
+  /// [ProfileStateException] : The active profile was not able to create the
   /// cookbook on account of insufficient funds.
   ///
-  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
   /// on the chain.
   ///
-  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
   /// If the operation fails due to an exception thrown by this library, that
@@ -304,30 +342,34 @@ abstract class Wallet {
     throw UnimplementedError();
   }
 
-  /// Creates a transaction to update an extant recipe on the Pylons chain
-  /// to conform to the one provided against the current profile.
-  /// A recipe must already exist at the coordinates of the provided recipe.
-  /// Upon successful resolution of the transaction, calls callback with the
-  /// created transaction, the state of the profile after updating the
-  /// recipe, and the recipe as it now exists on chain as arguments. May,
-  /// instead, return one of several exceptions in the event that the
-  /// transaction is not successfully executed:
+  /// Async: Creates a transaction to updates the provided [Recipe] on the
+  /// Pylons chain to match that provided against the current profile.
   ///
-  /// RecipeValidationException: No TX was created because the recipe failed
+  /// A recipe must already exist at the coordinates of the provided recipe,
+  /// and be owned by the current profile..
+  ///
+  /// Upon successful resolution of the transaction, returns a [Tuple3] of the
+  /// created [Transaction], the state of the [Profile] after the recipe is
+  /// updated, and the [Recipe] as it now exists on chain.
+  ///
+  /// Can throw one of the following exceptions in the event that the
+  /// transaction is not resolved successfully:
+  ///
+  /// [RecipeValidationException] : No TX was created because the recipe failed
   /// basic clientside sanity-checking before one could be built. This could
   /// be because of impossible outputs, etc. The error message provides more
   /// info on why the sanity check failed.
   ///
-  /// RecipeNotOwnedException: TX rejected because the active profile is not
+  /// [RecipeNotOwnedException] : TX rejected because the active profile is not
   /// the owner of the recipe to be updated.
   ///
-  /// RecipeDoesNotExistException: TX rejected because the recipe to be
+  /// [RecipeDoesNotExistException] : TX rejected because the recipe to be
   /// updated does not exist on the Pylons chain.
   ///
-  /// ProfileDoesNotExistException: TX rejected because profile doesn't exist
+  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
   /// on the chain.
   ///
-  /// NodeInternalErrorException: TX rejected because the Pylons node had an
+  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
   /// If the operation fails due to an exception thrown by this library, that
