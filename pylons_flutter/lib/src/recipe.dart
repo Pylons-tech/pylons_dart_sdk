@@ -17,12 +17,23 @@ class Recipe {
   EntriesList entries;
   List<WeightedOutput> outputs;
 
-  Recipe(this.nodeVersion, this.sender, this.id, this.disabled, this.name,
-      this.cookbookId, this.description, this.extraInfo, this.blockInterval,
-      this.coinInputs, this.itemInputs, this.entries, this.outputs);
+  Recipe(
+      this.nodeVersion,
+      this.sender,
+      this.id,
+      this.disabled,
+      this.name,
+      this.cookbookId,
+      this.description,
+      this.extraInfo,
+      this.blockInterval,
+      this.coinInputs,
+      this.itemInputs,
+      this.entries,
+      this.outputs);
 
   /// Generate a web link for this recipe.
-  String generateWebLink () {
+  String generateWebLink() {
     throw UnimplementedError();
   }
 }
@@ -142,8 +153,7 @@ class ItemOutput {
   List<StringParam> strings;
   int transferFee;
 
-  ItemOutput(this.id, this.doubles, this.longs, this.strings,
-      this.transferFee);
+  ItemOutput(this.id, this.doubles, this.longs, this.strings, this.transferFee);
 }
 
 /// TODO: describe this

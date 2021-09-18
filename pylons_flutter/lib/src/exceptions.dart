@@ -7,8 +7,8 @@ class CookbookAlreadyExistsException implements Exception {
   final String cookbookSender;
   final String errMsg;
 
-  CookbookAlreadyExistsException(c, s, e) :
-        cookbook = c,
+  CookbookAlreadyExistsException(c, s, e)
+      : cookbook = c,
         cookbookSender = s,
         errMsg = e;
 }
@@ -19,8 +19,8 @@ class CookbookDoesNotExistException implements Exception {
   final String cookbook;
   final String errMsg;
 
-  CookbookDoesNotExistException(c, e) :
-        cookbook = c,
+  CookbookDoesNotExistException(c, e)
+      : cookbook = c,
         errMsg = e;
 }
 
@@ -32,8 +32,8 @@ class CookbookNotOwnedException implements Exception {
   final String cbSender;
   final String errMsg;
 
-  CookbookNotOwnedException(c, s, e) :
-        cookbook = c,
+  CookbookNotOwnedException(c, s, e)
+      : cookbook = c,
         cbSender = s,
         errMsg = e;
 }
@@ -45,8 +45,8 @@ class ItemNotOwnedException implements Exception {
   final String itemOwner;
   final String errMsg;
 
-  ItemNotOwnedException(i, o, e) :
-        item = i,
+  ItemNotOwnedException(i, o, e)
+      : item = i,
         itemOwner = o,
         errMsg = e;
 }
@@ -57,22 +57,21 @@ class PaymentNotValidException implements Exception {
   final String paymentId;
   final String errMsg;
 
-  PaymentNotValidException(p, e) :
-      paymentId = p,
-      errMsg = e;
+  PaymentNotValidException(p, e)
+      : paymentId = p,
+        errMsg = e;
 }
-
 
 /// Exception thrown by API calls when a profile does not exist on the chain.
 class ProfileDoesNotExistException implements Exception {
   final String address;
   final String errMsg;
 
-  ProfileDoesNotExistException(a) :
-        address = a,
+  ProfileDoesNotExistException(a)
+      : address = a,
         errMsg = "The account does not exist on the chain.";
-  ProfileDoesNotExistException.constructorWithMessage(a, e) :
-        address = a,
+  ProfileDoesNotExistException.constructorWithMessage(a, e)
+      : address = a,
         errMsg = e;
 }
 
@@ -81,8 +80,7 @@ class ProfileDoesNotExistException implements Exception {
 class ProfileStateException implements Exception {
   final String errMsg;
 
-  ProfileStateException(e) :
-        errMsg = e;
+  ProfileStateException(e) : errMsg = e;
 }
 
 /// Exception thrown by TX-emitting API calls when a recipe already exists
@@ -93,14 +91,14 @@ class RecipeAlreadyExistsException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeAlreadyExistsException(c, rN, e) :
-        cookbook = c,
+  RecipeAlreadyExistsException(c, rN, e)
+      : cookbook = c,
         recipeName = rN,
         recipeId = "",
         errMsg = e;
 
-  RecipeAlreadyExistsException.constructorWithRecipeID(r, e) :
-        cookbook = "",
+  RecipeAlreadyExistsException.constructorWithRecipeID(r, e)
+      : cookbook = "",
         recipeName = "",
         recipeId = r,
         errMsg = e;
@@ -114,14 +112,14 @@ class RecipeDoesNotExistException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeDoesNotExistException(c, rN, e) :
-      cookbook = c,
-      recipeName = rN,
-      recipeId = "",
-      errMsg = e;
+  RecipeDoesNotExistException(c, rN, e)
+      : cookbook = c,
+        recipeName = rN,
+        recipeId = "",
+        errMsg = e;
 
-  RecipeDoesNotExistException.constructorWithRecipeID(r, e) :
-        cookbook = "",
+  RecipeDoesNotExistException.constructorWithRecipeID(r, e)
+      : cookbook = "",
         recipeName = "",
         recipeId = r,
         errMsg = e;
@@ -136,8 +134,8 @@ class RecipeNotOwnedException implements Exception {
   final String recipeSender;
   final String errMsg;
 
-  RecipeNotOwnedException(c, rN, rI, s, e) :
-        cookbook = c,
+  RecipeNotOwnedException(c, rN, rI, s, e)
+      : cookbook = c,
         recipeName = rN,
         recipeId = rI,
         recipeSender = s,
@@ -152,8 +150,23 @@ class RecipeStateException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeStateException (c, rN, rI, e) :
-        cookbook = c,
+  RecipeStateException(c, rN, rI, e)
+      : cookbook = c,
+        recipeName = rN,
+        recipeId = rI,
+        errMsg = e;
+}
+
+/// Exception thrown by TX-emitting API calls when a recipe fails the sanity
+/// check performed before the transaction is generated.
+class RecipeValidationException implements Exception {
+  final String cookbook;
+  final String recipeName;
+  final String recipeId;
+  final String errMsg;
+
+  RecipeValidationException(c, rN, rI, e)
+      : cookbook = c,
         recipeName = rN,
         recipeId = rI,
         errMsg = e;
@@ -167,8 +180,8 @@ class NodeInternalErrorException implements Exception {
   final String nodeErrMsg;
   final String errMsg;
 
-  NodeInternalErrorException(e, n, eM) :
-      errorCode = e,
-      nodeErrMsg = n,
-      errMsg = eM;
+  NodeInternalErrorException(e, n, eM)
+      : errorCode = e,
+        nodeErrMsg = n,
+        errMsg = eM;
 }

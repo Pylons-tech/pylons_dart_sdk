@@ -5,13 +5,12 @@ import 'package:dartz/dartz.dart';
 
 /// Object representing a Pylons wallet.
 abstract class Wallet {
-
   /// Retrieves the [AndroidWallet] instance. Since [AndroidWallet] is a
   /// singleton, this method will always return a reference to the same object.
   static void android() => AndroidWallet();
 
   /// Async: Returns true if an IPC target exists. False otherwise.
-  Future<bool> exists ();
+  Future<bool> exists();
 
   /// Async: Retrieves all cookbooks belonging to the current profile on the
   /// Pylons chain.
@@ -31,7 +30,7 @@ abstract class Wallet {
   /// or current state of attached wallet's own profile if null.
   /// Returns the retrieved [Profile] as an argument.
   ///
-  /// If the profile doesn't exist, throws a [ProfileNotFoundException];
+  /// If the profile doesn't exist, throws a [ProfileDoesNotExistException];
   /// otherwise, this will not throw an exception unless something's wrong
   /// with the implementation.
   Future<Profile> getProfile(String? address) {
@@ -100,7 +99,8 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txBuyItem(String tradeId, String paymentId) {
+  Future<Tuple2<Transaction, Profile>> txBuyItem(
+      String tradeId, String paymentId) {
     throw UnimplementedError();
   }
 
@@ -129,7 +129,8 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txBuyPylons(int pylons, String paymentId) {
+  Future<Tuple2<Transaction, Profile>> txBuyPylons(
+      int pylons, String paymentId) {
     throw UnimplementedError();
   }
 
@@ -159,7 +160,8 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(Cookbook cookbook) {
+  Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(
+      Cookbook cookbook) {
     throw UnimplementedError();
   }
 
@@ -223,7 +225,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Transaction> txDisableRecipe (String recipeId) {
+  Future<Transaction> txDisableRecipe(String recipeId) {
     throw UnimplementedError();
   }
 
@@ -249,7 +251,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Transaction> txEnableRecipe (String recipeId) {
+  Future<Transaction> txEnableRecipe(String recipeId) {
     throw UnimplementedError();
   }
 
@@ -277,7 +279,8 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txExecuteRecipe (String cookbookId, String recipeName) {
+  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(
+      String cookbookId, String recipeName) {
     throw UnimplementedError();
   }
 
@@ -304,7 +307,8 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale (Item item, int price) {
+  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(
+      Item item, int price) {
     throw UnimplementedError();
   }
 
@@ -338,7 +342,8 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(Cookbook cookbook) {
+  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(
+      Cookbook cookbook) {
     throw UnimplementedError();
   }
 
