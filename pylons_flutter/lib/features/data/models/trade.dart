@@ -1,7 +1,9 @@
 library pylons_flutter_trade;
 
-import 'package:pylons_flutter/pylons_flutter.dart';
-import 'recipe.dart';
+import 'package:pylons_flutter/features/data/models/item.dart';
+import 'package:pylons_flutter/features/data/models/recipe.dart';
+
+
 
 /// A record of a trade that exists on a Pylons blockchain.
 class Trade {
