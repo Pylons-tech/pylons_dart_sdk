@@ -74,6 +74,65 @@ void main() {
     test("Throws a NoWalletException if there's no wallet", () {
       throw UnimplementedError("TODO");
     });
-    // todo: testing tx-emitters...
+    test("Throws a PaymentNotValidException if the payment is garbage", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a PaymentNotValidException if the payment is real but"
+        "incorrect", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileStateException if insufficient funds", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if no profile", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if active profile doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a NodeInternalErrorException if node errors during "
+        "handling", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Profile state reflects item purchase if TX accepted", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX rejected, profile state unchanged", () {
+      throw UnimplementedError("TODO");
+    });
+  });
+
+  group("Wallet.txBuyPylons", () {
+    test("Throws a NoWalletException if there's no wallet", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a PaymentNotValidException if the payment is garbage", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a PaymentNotValidException if the payment is real but"
+        "incorrect", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileStateException if insufficient funds", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if no profile", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if active profile doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a NodeInternalErrorException if node errors during "
+        "handling", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Profile state reflects pylons purchase if TX accepted", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX rejected, profile state unchanged", () {
+      throw UnimplementedError("TODO");
+    });
   });
 }
