@@ -1,3 +1,4 @@
+/// Types and functionality for dealing with cookbooks.
 library pylons_flutter_cookbook;
 
 /// A cookbook that exists (or can exist) on the Pylons chain, in which recipes

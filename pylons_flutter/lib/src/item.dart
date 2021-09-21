@@ -1,3 +1,4 @@
+/// Types and functionality for dealing with items.
 library pylons_flutter_item;
 
 /// An item that exists (or can exist) on the Pylons chain.

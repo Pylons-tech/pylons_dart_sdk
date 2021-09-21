@@ -1,3 +1,7 @@
+/// Types and functionality for interacting with the Pylons wallet.
+///
+/// The APIs exposed by this library, specifically, are the main way most
+/// client apps should structure their interactions with the wallet.
 library pylons_flutter_wallet;
 
 import 'package:pylons_flutter/pylons_flutter.dart';
@@ -19,9 +23,13 @@ abstract class Wallet {
   /// ordinarily be "successful" even if there are no cookbooks to be retrieved,
   /// in which case it'll just give you an empty list.
   ///
-  /// Since there's no normal way for this operation to fail, an exception will
-  /// only be passed in the result of faulty behavior on the part of
-  /// this library.
+  /// Can throw one of the following exceptions in the event that the
+  /// cookbooks are not retrieved successfully:
+  ///
+  /// [NoWalletException] : There's no attached wallet.
+  ///
+  /// If the operation fails due to an exception thrown by this library, that
+  /// exception will be passed directly.
   Future<List<Cookbook>> getCookbooks() {
     throw UnimplementedError();
   }
@@ -30,9 +38,19 @@ abstract class Wallet {
   /// or current state of attached wallet's own profile if null.
   /// Returns the retrieved [Profile] as an argument.
   ///
-  /// If the profile doesn't exist, throws a [ProfileDoesNotExistException];
-  /// otherwise, this will not throw an exception unless something's wrong
-  /// with the implementation.
+  /// Can throw one of the following exceptions in the event that the
+  /// profile is not retrieved successfully:
+  ///
+  /// [NoWalletException] : There's no attached wallet.
+  ///
+  /// [NotAnAddressException] : An argument was provided, but did not pass
+  /// address validation.
+  ///
+  /// [ProfileDoesNotExistException] : There is no profile at the provided
+  /// address.
+  ///
+  /// If the operation fails due to an exception thrown by this library, that
+  /// exception will be passed directly.
   Future<Profile> getProfile(String? address) {
     throw UnimplementedError();
   }
@@ -46,9 +64,13 @@ abstract class Wallet {
   /// ordinarily be "successful" even if there are no recipes to be retrieved,
   /// in which case it'll just give you an empty list.
   ///
-  /// Since there's no normal way for this operation to fail, an exception will
-  /// only be passed in the result of faulty behavior on the part of
-  /// this library.
+  /// Can throw one of the following exceptions in the event that the
+  /// recipes are not retrieved successfully:
+  ///
+  /// [NoWalletException] : There's no attached wallet.
+  ///
+  /// If the operation fails due to an exception thrown by this library, that
+  /// exception will be passed directly.
   Future<List<Recipe>> getRecipes(String? address) {
     throw UnimplementedError();
   }
@@ -59,9 +81,13 @@ abstract class Wallet {
   /// ordinarily be "successful" even if there are no trades to be retrieved,
   /// in which case it'll just give you an empty list.
   ///
-  /// Since there's no normal way for this operation to fail, an exception will
-  /// only be passed in the result of faulty behavior on the part of
-  /// this library.
+  /// Can throw one of the following exceptions in the event that the
+  /// trades are not retrieved successfully:
+  ///
+  /// [NoWalletException] : There's no attached wallet.
+  ///
+  /// If the operation fails due to an exception thrown by this library, that
+  /// exception will be passed directly.
   Future<List<Trade>> getTrades() {
     throw UnimplementedError();
   }
@@ -84,6 +110,8 @@ abstract class Wallet {
   ///
   /// Can throw one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
+  ///
+  /// [NoWalletException] : There's no attached wallet.
   ///
   /// [PaymentNotValidException] : The paymentId does not exist, or is not for
   /// the item being purchased.
@@ -118,6 +146,8 @@ abstract class Wallet {
   /// Can throw one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
+  /// [NoWalletException] : There's no attached wallet.
+  ///
   /// [PaymentNotValidException] : The paymentId does not exist, or is not for
   /// the number of Pylons we're attempting to purchase.
   ///
@@ -145,6 +175,8 @@ abstract class Wallet {
   ///
   /// Can throw one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
+  ///
+  /// [NoWalletException] : There's no attached wallet.
   ///
   /// [CookbookAlreadyExistsException] : TX rejected because a cookbook with the
   /// provided name already exists.
@@ -176,6 +208,8 @@ abstract class Wallet {
   ///
   /// Can throw one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
+  ///
+  /// [NoWalletException] : There's no attached wallet.
   ///
   /// [RecipeValidationException] : No TX was created because the recipe failed
   /// basic clientside sanity-checking before one could be built. This could
@@ -210,6 +244,8 @@ abstract class Wallet {
   /// Can throw one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
+  /// [NoWalletException] : There's no attached wallet.
+  ///
   /// [RecipeDoesNotExistException] : TX rejected because recipe does not exist.
   ///
   /// [RecipeNotOwnedException] : TX rejected because the active profile is not
@@ -235,6 +271,8 @@ abstract class Wallet {
   ///
   /// Can throw one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
+  ///
+  /// [NoWalletException] : There's no attached wallet.
   ///
   /// [RecipeDoesNotExistException] : TX rejected because recipe does not exist.
   ///
@@ -263,6 +301,8 @@ abstract class Wallet {
   ///
   /// Can throw one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
+  ///
+  /// [NoWalletException] : There's no attached wallet.
   ///
   /// [RecipeDoesNotExistException] : TX rejected because recipe does not exist.
   ///
@@ -296,6 +336,8 @@ abstract class Wallet {
   /// Can throw one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
+  /// [NoWalletException] : There's no attached wallet.
+  ///
   /// [ItemNotOwnedException] : TX rejected because the active profile is not
   /// the owner of the item to be placed for sale.
   ///
@@ -324,6 +366,8 @@ abstract class Wallet {
   ///
   /// Can throw one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
+  ///
+  /// [NoWalletException] : There's no attached wallet.
   ///
   /// [CookbookNotOwnedException] : TX rejected because the active profile is not
   /// the owner of the cookbook to be updated.
@@ -359,6 +403,8 @@ abstract class Wallet {
   ///
   /// Can throw one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
+  ///
+  /// [NoWalletException] : There's no attached wallet.
   ///
   /// [RecipeValidationException] : No TX was created because the recipe failed
   /// basic clientside sanity-checking before one could be built. This could

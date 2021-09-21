@@ -1,3 +1,4 @@
+/// Custom exceptions that can be thrown by API calls.
 library pylons_flutter_exceptions;
 
 /// Exception thrown by TX-emitting API calls when a cookbook already exists
@@ -49,6 +50,23 @@ class ItemNotOwnedException implements Exception {
       : item = i,
         itemOwner = o,
         errMsg = e;
+}
+
+/// Exception thrown by API calls that accept an address as an argument when
+/// the supplied argument is not a valid address.
+class NotAnAddressException implements Exception {
+  final String address;
+  final String errMsg;
+
+  NotAnAddressException(this.address,
+      {this.errMsg = "Supplied address is not an address"});
+}
+
+/// Exception thrown by API calls when the wallet doesn't exist.
+class NoWalletException implements Exception {
+  final String errMsg;
+
+  NoWalletException({this.errMsg = "The wallet does not exist"});
 }
 
 /// Exception thrown by TX-emitting API calls when a provided payment ID does

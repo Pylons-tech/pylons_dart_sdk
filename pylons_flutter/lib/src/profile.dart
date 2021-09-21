@@ -1,3 +1,4 @@
+/// Types and functionality for dealing with profiles.
 library pylons_flutter_profile;
 
 import 'package:pylons_flutter/pylons_flutter.dart';

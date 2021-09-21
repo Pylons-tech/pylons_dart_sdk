@@ -1,3 +1,4 @@
+/// Types and functionality for dealing with trades.
 library pylons_flutter_trade;
 
 import 'package:pylons_flutter/pylons_flutter.dart';

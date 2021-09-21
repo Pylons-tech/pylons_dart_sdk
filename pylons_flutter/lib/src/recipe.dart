@@ -1,3 +1,4 @@
+/// Types and functionality for dealing with recipes.
 library pylons_flutter_recipe;
 
 /// A recipe that exists (or can exist) on the Pylons chain, which can be
