@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 /// TODO: doc wallet_test
 void main() {
-  group("Wallet.exists", () {
+  group("PylonsWallet.exists", () {
     test("Returns true when the target exists", () {
       throw UnimplementedError("TODO");
     });
@@ -12,7 +12,7 @@ void main() {
     });
   });
 
-  group("Wallet.getCookbooks", () {
+  group("PylonsWallet.getCookbooks", () {
     test("Throws a NoWalletException if there's no wallet", () {
       throw UnimplementedError("TODO");
     });
@@ -24,7 +24,7 @@ void main() {
     });
   });
 
-  group("Wallet.getProfile", () {
+  group("PylonsWallet.getProfile", () {
     test("Throws a NoWalletException if there's no wallet", () {
       throw UnimplementedError("TODO");
     });
@@ -39,7 +39,7 @@ void main() {
     });
   });
 
-  group("Wallet.getRecipes", () {
+  group("PylonsWallet.getRecipes", () {
     test("Throws a NoWalletException if there's no wallet", () {
       throw UnimplementedError("TODO");
     });
@@ -58,7 +58,7 @@ void main() {
     });
   });
 
-  group("Wallet.getTrades", () {
+  group("PylonsWallet.getTrades", () {
     test("Throws a NoWalletException if there's no wallet", () {
       throw UnimplementedError("TODO");
     });
@@ -70,7 +70,7 @@ void main() {
     });
   });
 
-  group("Wallet.txBuyItem", () {
+  group("PylonsWallet.txBuyItem", () {
     test("Throws a NoWalletException if there's no wallet", () {
       throw UnimplementedError("TODO");
     });
@@ -103,7 +103,7 @@ void main() {
     });
   });
 
-  group("Wallet.txBuyPylons", () {
+  group("PylonsWallet.txBuyPylons", () {
     test("Throws a NoWalletException if there's no wallet", () {
       throw UnimplementedError("TODO");
     });
@@ -132,6 +132,279 @@ void main() {
       throw UnimplementedError("TODO");
     });
     test("If TX rejected, profile state unchanged", () {
+      throw UnimplementedError("TODO");
+    });
+  });
+
+  group("PylonsWallet.txCreateCookbook", () {
+    test("Throws a NoWalletException if there's no wallet", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a CookbookAlreadyExistsException if the cookbook exists", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileStateException if insufficient funds", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if no profile", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if active profile doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a NodeInternalErrorException if node errors during "
+        "handling", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Profile state reflects cookbook creation costs if TX accepted", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX rejected, profile state unchanged", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX accepted, returned cookbook matches that obtained by using"
+        "getCookbooks", () {
+      throw UnimplementedError("TODO");
+    });
+  });
+
+  group("PylonsWallet.txCreateRecipe", () {
+    test("Throws a NoWalletException if there's no wallet", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeValidationException when given a bad recipe", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeAlreadyExistsException if the recipe already "
+        "exists", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a CookbookNotOwnedException if we don't own the cookbook", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a CookbookDoesNotExist exception if the cookbook doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileStateException if insufficient funds", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if no profile", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if active profile doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a NodeInternalErrorException if node errors during "
+        "handling", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Profile state reflects recipe creation costs if TX accepted", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX rejected, profile state unchanged", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX accepted, returned recipe matches that obtained by using"
+        "getRecipes", () {
+      throw UnimplementedError("TODO");
+    });
+  });
+
+  group("PylonsWallet.txDisableRecipe", () {
+    test("Throws a NoWalletException if there's no wallet", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeNotOwnedException if we don't own the recipe", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeDoesNotExist exception if the recipe doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeStateException if recipe is disabled", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if no profile", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if active profile doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a NodeInternalErrorException if node errors during "
+        "handling", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX accepted, recipe is disabled", () {
+      throw UnimplementedError("TODO");
+    });
+  });
+
+  group("PylonsWallet.txEnableRecipe", () {
+    test("Throws a NoWalletException if there's no wallet", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeNotOwnedException if we don't own the recipe", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeDoesNotExist exception if the recipe doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeStateException if recipe is enabled", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if no profile", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if active profile doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a NodeInternalErrorException if node errors during "
+        "handling", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX accepted, recipe is enabled", () {
+      throw UnimplementedError("TODO");
+    });
+  });
+
+  group("PylonsWallet.txExecuteRecipe", () {
+    test("Throws a NoWalletException if there's no wallet", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeDoesNotExist exception if the recipe doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a CookbookDoesNotExist exception if the cookbook doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileStateException if missing recipe inputs", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if no profile", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if active profile doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a NodeInternalErrorException if node errors during "
+        "handling", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX accepted, profile state reflects recipe execution", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX rejected, profile state unchanged", () {
+      throw UnimplementedError("TODO");
+    });
+  });
+
+  group("PylonsWallet.txPlaceForSale", () {
+    test("Throws a NoWalletException if there's no wallet", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws an ItemDoesNotExist exception if the item doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ItemNotOwnedException if we don't own the item", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if no profile", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if active profile doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a NodeInternalErrorException if node errors during "
+        "handling", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX accepted, profile state reflects trade creation", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX rejected, profile state unchanged", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX accepted, returned trade matches that obtained by using"
+        "getTrades", () {
+      throw UnimplementedError("TODO");
+    });
+  });
+
+  group("PylonsWallet.txUpdateCookbook", () {
+    test("Throws a NoWalletException if there's no wallet", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a CookbookNotOwnedException if we don't own the cookbook", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a CookbookDoesNotExist exception if the cookbook doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileStateException if insufficient funds", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if no profile", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if active profile doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a NodeInternalErrorException if node errors during "
+        "handling", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Profile state reflects cookbook update costs if TX accepted", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX rejected, profile state unchanged", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX accepted, returned cookbook matches that obtained by using"
+        "getCookbooks", () {
+      throw UnimplementedError("TODO");
+    });
+  });
+
+  group("PylonsWallet.txUpdateRecipe", () {
+    test("Throws a NoWalletException if there's no wallet", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeValidationException when given a bad recipe", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeNotOwnedException if we don't own the recipe", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a RecipeDoesNotExist exception if the recipe doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if no profile", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a ProfileDoesNotExistException if active profile doesn't "
+        "exist", () {
+      throw UnimplementedError("TODO");
+    });
+    test("Throws a NodeInternalErrorException if node errors during "
+        "handling", () {
+      throw UnimplementedError("TODO");
+    });
+    test("If TX accepted, returned recipe matches that obtained by using"
+        "getRecipes", () {
       throw UnimplementedError("TODO");
     });
   });
