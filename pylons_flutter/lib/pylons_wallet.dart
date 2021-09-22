@@ -2,19 +2,22 @@
 ///
 /// The APIs exposed by this library, specifically, are the main way most
 /// client apps should structure their interactions with the wallet.
-library pylons_flutter_wallet;
+library pylons_flutter;
 
-import 'package:pylons_flutter/pylons_flutter.dart';
 import 'package:dartz/dartz.dart';
+import 'package:pylons_flutter/pylons_flutter.dart';
 
-/// Object representing a Pylons wallet.
-abstract class Wallet {
+/// The Pylons class is the main endpoint developers use for structured,
+/// high-level interactions with the Pylons wallet.
+abstract class PylonsWallet {
   /// Retrieves the [AndroidWallet] instance. Since [AndroidWallet] is a
   /// singleton, this method will always return a reference to the same object.
   static void android() => AndroidWallet();
 
   /// Async: Returns true if an IPC target exists. False otherwise.
-  Future<bool> exists();
+  static Future<bool> exists() async {
+    throw UnimplementedError();
+  }
 
   /// Async: Retrieves all cookbooks belonging to the current profile on the
   /// Pylons chain.
@@ -30,7 +33,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Cookbook>> getCookbooks() {
+  Future<List<Cookbook>> getCookbooks() async {
     throw UnimplementedError();
   }
 
@@ -51,7 +54,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Profile> getProfile(String? address) {
+  Future<Profile> getProfile(String? address) async {
     throw UnimplementedError();
   }
 
@@ -71,7 +74,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Recipe>> getRecipes(String? address) {
+  Future<List<Recipe>> getRecipes(String? address) async {
     throw UnimplementedError();
   }
 
@@ -88,7 +91,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Trade>> getTrades() {
+  Future<List<Trade>> getTrades() async {
     throw UnimplementedError();
   }
 
@@ -128,7 +131,7 @@ abstract class Wallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple2<Transaction, Profile>> txBuyItem(
-      String tradeId, String paymentId) {
+      String tradeId, String paymentId) async {
     throw UnimplementedError();
   }
 
@@ -160,7 +163,7 @@ abstract class Wallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple2<Transaction, Profile>> txBuyPylons(
-      int pylons, String paymentId) {
+      int pylons, String paymentId) async {
     throw UnimplementedError();
   }
 
@@ -193,7 +196,7 @@ abstract class Wallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(
-      Cookbook cookbook) {
+      Cookbook cookbook) async {
     throw UnimplementedError();
   }
 
@@ -233,7 +236,8 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Recipe>> txCreateRecipe(Recipe recipe) {
+  Future<Tuple3<Transaction, Profile, Recipe>> txCreateRecipe(
+      Recipe recipe) async {
     throw UnimplementedError();
   }
 
@@ -261,7 +265,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Transaction> txDisableRecipe(String recipeId) {
+  Future<Transaction> txDisableRecipe(String recipeId) async {
     throw UnimplementedError();
   }
 
@@ -289,7 +293,7 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Transaction> txEnableRecipe(String recipeId) {
+  Future<Transaction> txEnableRecipe(String recipeId) async {
     throw UnimplementedError();
   }
 
@@ -320,7 +324,7 @@ abstract class Wallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple2<Transaction, Profile>> txExecuteRecipe(
-      String cookbookId, String recipeName) {
+      String cookbookId, String recipeName) async {
     throw UnimplementedError();
   }
 
@@ -350,7 +354,7 @@ abstract class Wallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(
-      Item item, int price) {
+      Item item, int price) async {
     throw UnimplementedError();
   }
 
@@ -387,7 +391,7 @@ abstract class Wallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(
-      Cookbook cookbook) {
+      Cookbook cookbook) async {
     throw UnimplementedError();
   }
 
@@ -425,24 +429,19 @@ abstract class Wallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(Recipe recipe) {
+  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(
+      Recipe recipe) async {
     throw UnimplementedError();
   }
 }
 
 /// The Android implementation of the Pylons wallet.
-class AndroidWallet extends Wallet {
+class AndroidWallet extends PylonsWallet {
   AndroidWallet._privateConstructor();
 
   static final AndroidWallet _instance = AndroidWallet._privateConstructor();
 
   factory AndroidWallet() {
     return _instance;
-  }
-
-  @override
-  Future<bool> exists() {
-    // TODO: implement exists
-    throw UnimplementedError();
   }
 }

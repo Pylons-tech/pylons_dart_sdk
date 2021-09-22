@@ -1,10 +1,11 @@
 /// Types and functionality for dealing with TX message data.
 library pylons_flutter_transaction_msg;
 
-import 'package:pylons_flutter/src/recipe.dart';
-import 'package:pylons_flutter/src/trade.dart';
+import 'package:pylons_flutter/features/data/models/recipe.dart';
+import 'package:pylons_flutter/features/data/models/trade.dart';
 
-import '../pylons_flutter.dart';
+import '../../../pylons_flutter.dart';
+import 'item.dart';
 
 /// TODO: Doc comment
 abstract class Msg {
