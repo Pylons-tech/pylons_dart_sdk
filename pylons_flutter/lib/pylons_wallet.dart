@@ -10,13 +10,19 @@ import 'package:pylons_flutter/pylons_flutter.dart';
 /// The Pylons class is the main endpoint developers use for structured,
 /// high-level interactions with the Pylons wallet.
 abstract class PylonsWallet {
+  PylonsWallet() {
+    instance = this;
+  }
+
+  static PylonsWallet? instance;
+
   /// Retrieves the [AndroidWallet] instance. Since [AndroidWallet] is a
   /// singleton, this method will always return a reference to the same object.
   static void android() => AndroidWallet();
 
   /// Async: Returns true if an IPC target exists. False otherwise.
   static Future<bool> exists() async {
-    throw UnimplementedError();
+    return instance != null;
   }
 
   /// Async: Retrieves all cookbooks belonging to the current profile on the
@@ -443,7 +449,7 @@ abstract class PylonsWallet {
 
 /// The Android implementation of the Pylons wallet.
 class AndroidWallet extends PylonsWallet {
-  AndroidWallet._privateConstructor();
+  AndroidWallet._privateConstructor() : super();
 
   static final AndroidWallet _instance = AndroidWallet._privateConstructor();
 

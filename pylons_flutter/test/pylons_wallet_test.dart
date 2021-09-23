@@ -1,14 +1,41 @@
 import 'package:flutter_test/flutter_test.dart';
-//import 'package:pylons_flutter/pylons_flutter.dart';
+import 'package:pylons_flutter/pylons_flutter.dart';
+
+/// Utility functions for pylons_wallet_test
+class TestUtil {
+  /// Set up MockWallet and (TODO) our mock backend stuff.
+  static void mockIpcTarget () {
+    MockWallet();
+  }
+}
+
+/// The Android implementation of the Pylons wallet.
+class MockWallet extends PylonsWallet {
+  MockWallet._privateConstructor(): super();
+
+  static final MockWallet _instance = MockWallet._privateConstructor();
+
+  factory MockWallet() {
+    return _instance;
+  }
+}
 
 /// TODO: doc wallet_test
 void main() {
   group("PylonsWallet.exists", () {
     test("Returns true when the target exists", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      PylonsWallet.exists().then(
+          expectAsync1((value) {value == true;}
+          ), onError: (err) { fail('Error: $err'); }
+      );
     });
     test("Returns false when it doesn't", () {
-      throw UnimplementedError("TODO");
+      // We don't mock the IPC target here, since we want exists to return false
+      PylonsWallet.exists().then(
+          expectAsync1((value) {value == false;}
+          ), onError: (err) { fail('Error: $err'); }
+      );
     });
   });
 
