@@ -41,19 +41,41 @@ void main() {
 
   group("PylonsWallet.getCookbooks", () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError("TODO");
+      // We don't mock the IPC target here, since we want a NoWalletException
+      MockWallet().getCookbooks().then(
+          expectAsync1((_) { fail("Operation should not succeed"); }
+          ), onError: (err) {
+        assert(err.runtimeType == NoWalletException);
+      }
+      );
     });
     test("Returns cookbooks while there are cookbooks", () {
-      throw UnimplementedError("TODO");
+      // TODO: load some cookbooks
+      //  (what's an idiomatic way to handle the fixtures?)
+      TestUtil.mockIpcTarget();
+      MockWallet().getCookbooks().then(
+          expectAsync1((cbs) {  } // TODO: compare cookbooks efficiently
+          ), onError: (err) { fail('Error: $err'); }
+      );
     });
     test("Returns an empty list if there are no cookbooks", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      MockWallet().getCookbooks().then(
+          expectAsync1((cbs) { assert(cbs.isEmpty); }
+          ), onError: (err) { fail('Error: $err'); }
+      );
     });
   });
 
   group("PylonsWallet.getProfile", () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError("TODO");
+      // We don't mock the IPC target here, since we want a NoWalletException
+      MockWallet().getProfile(null).then(
+          expectAsync1((_) { fail("Operation should not succeed"); }
+          ), onError: (err) {
+        assert(err.runtimeType == NoWalletException);
+      }
+      );
     });
     test("Throws a NotAnAddressException if given a bad address", () {
       throw UnimplementedError("TODO");
