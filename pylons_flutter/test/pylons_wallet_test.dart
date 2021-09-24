@@ -1,22 +1,43 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:dartz/dartz_unsafe.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
 
 /// Utility functions for pylons_wallet_test
 class TestUtil {
   /// Set up MockWallet and (TODO) our mock backend stuff.
-  static void mockIpcTarget () {
-    MockWallet();
+  static MockWallet mockIpcTarget () {
+    return MockWallet();
+  }
+
+  /// Load a file out of our test resources folder, get a string
+  static String loadFile (String path) {
+    final file = File('test_resources/$path');
+    return file.readAsStringSync();
+  }
+
+  static Cookbook loadCookbook (String path) {
+    final Cookbook cb = jsonDecode(loadFile(path));
+    return cb;
   }
 }
 
 /// The Android implementation of the Pylons wallet.
 class MockWallet extends PylonsWallet {
+  List<Cookbook> cookbooks = List.empty();
   MockWallet._privateConstructor(): super();
 
   static final MockWallet _instance = MockWallet._privateConstructor();
 
   factory MockWallet() {
     return _instance;
+  }
+
+  /// Load the provided cookbooks. We'll use these to mock getCookbooks.
+  void loadCookbooks(List<Cookbook> cbs) {
+    cookbooks.addAll(cbs);
   }
 }
 
@@ -50,11 +71,17 @@ void main() {
       );
     });
     test("Returns cookbooks while there are cookbooks", () {
-      // TODO: load some cookbooks
-      //  (what's an idiomatic way to handle the fixtures?)
-      TestUtil.mockIpcTarget();
+      TestUtil.mockIpcTarget().loadCookbooks([
+        TestUtil.loadCookbook("cookbook/cb1.json"),
+        TestUtil.loadCookbook("cookbook/cb2.json"),
+        TestUtil.loadCookbook("cookbook/cb3.json")]);
       MockWallet().getCookbooks().then(
-          expectAsync1((cbs) {  } // TODO: compare cookbooks efficiently
+          expectAsync1((cbs) {
+            assert(cbs.length == MockWallet().cookbooks.length);
+            for (var i = 0; i < cbs.length; i++) {
+              assert(cbs[i].id == MockWallet().cookbooks[i].id);
+            }
+          }
           ), onError: (err) { fail('Error: $err'); }
       );
     });
