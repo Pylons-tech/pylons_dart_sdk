@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:dartz/dartz_unsafe.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
+import 'package:mockito/mockito.dart';
+
 
 /// Utility functions for pylons_wallet_test
 class TestUtil {
@@ -25,15 +27,8 @@ class TestUtil {
 }
 
 /// The Android implementation of the Pylons wallet.
-class MockWallet extends PylonsWallet {
+class MockWallet extends Mock implements PylonsWallet {
   List<Cookbook> cookbooks = List.empty();
-  MockWallet._privateConstructor(): super();
-
-  static final MockWallet _instance = MockWallet._privateConstructor();
-
-  factory MockWallet() {
-    return _instance;
-  }
 
   /// Load the provided cookbooks. We'll use these to mock getCookbooks.
   void loadCookbooks(List<Cookbook> cbs) {
@@ -105,7 +100,13 @@ void main() {
       );
     });
     test("Throws a NotAnAddressException if given a bad address", () {
-      throw UnimplementedError("TODO");
+      
+      MockWallet().getProfile("fakeAddress").then(
+        expectAsync1((_) { fail("Operation should not succeed"); }
+        ), onError: (err) {
+          assert(err.runtimeType == NotAnAddressException);
+        }
+        );
     });
     test("When there's no argument, get the active profile", () {
       throw UnimplementedError("TODO");
@@ -117,10 +118,20 @@ void main() {
 
   group("PylonsWallet.getRecipes", () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError("TODO");
+      MockWallet().getRecipes(null).then(
+        expectAsync1((_) {fail("Operation should fail - No wallet to retrieve recipes"); }
+        ), onError: (err) {
+          assert(err.runtimeType == NoWalletException);
+        }
+      );
     });
     test("Throws a NotAnAddressException if given a bad address", () {
-      throw UnimplementedError("TODO");
+      MockWallet().getRecipes("bad address").then(
+        expectAsync1((_) {fail("Operation should fail - Bad Wallet Address"); }
+        ), onError: (err) {
+          assert(err.runtimeType == NotAnAddressException);
+        }
+      );
     });
     test("Returns all recipes while there are recipes, if no argument", () {
       throw UnimplementedError("TODO");
