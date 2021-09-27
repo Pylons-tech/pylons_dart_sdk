@@ -12,7 +12,11 @@ class Transaction {
   String rawLog;
 
   Transaction(
-      this.state, this.txData, this.stdTx, this.responseCode, this.rawLog);
+      {required this.state,
+      required this.txData,
+      required this.stdTx,
+      required this.responseCode,
+      required this.rawLog});
 }
 
 const int responseCodeOk = 0;
@@ -28,7 +32,11 @@ class StdTx {
   List<StdSignature> signatures;
   String memo;
 
-  StdTx(this.msgs, this.fee, this.signatures, this.memo);
+  StdTx(
+      {required this.msgs,
+      required this.fee,
+      required this.signatures,
+      required this.memo});
 }
 
 /// TODO: Doc comment
@@ -36,7 +44,7 @@ class StdFee {
   Map<String, int> amount;
   int gas;
 
-  StdFee(this.amount, this.gas);
+  StdFee({required this.amount, required this.gas});
 }
 
 /// TODO: Doc comment
@@ -44,7 +52,7 @@ class StdSignature {
   String signature;
   PubKey pubKey;
 
-  StdSignature(this.signature, this.pubKey);
+  StdSignature({required this.signature, required this.pubKey});
 }
 
 /// TODO: Doc comment
@@ -52,7 +60,7 @@ class PubKey {
   String type;
   String value;
 
-  PubKey(this.type, this.value);
+  PubKey({required this.type, required this.value});
 }
 
 /// TODO: Doc comment
@@ -61,7 +69,7 @@ class TxData {
   String status;
   List<TxDataOutput> output;
 
-  TxData(this.msg, this.status, this.output);
+  TxData({required this.msg, required this.status, required this.output});
 }
 
 /// TODO: Doc comment
@@ -71,5 +79,9 @@ class TxDataOutput {
   int amount;
   String itemId;
 
-  TxDataOutput(this.type, this.coin, this.amount, this.itemId);
+  TxDataOutput(
+      {required this.type,
+      required this.coin,
+      required this.amount,
+      required this.itemId});
 }

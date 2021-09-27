@@ -10,5 +10,9 @@ class Profile {
   Map<String, int> coins;
   List<Item> items;
 
-  Profile(this.address, this.name, this.coins, this.items);
+  Profile(
+      {required this.address,
+      required this.name,
+      required this.coins,
+      required this.items});
 }
