@@ -27,5 +27,8 @@ linter:
     - avoid_returning_null_for_void
     - avoid_returning_null
     - file_names
-    - flutter_style_todos
-    - lines_longer_than_80_chars
+
+  errors:
+    unused_import: error
+    lines_longer_than_80_chars: error
+    flutter_style_todos: error
