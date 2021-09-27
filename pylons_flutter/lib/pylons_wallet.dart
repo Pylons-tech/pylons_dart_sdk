@@ -222,6 +222,9 @@ abstract class PylonsWallet {
   /// [CookbookNotOwnedException] : TX rejected because the active profile is not
   /// the owner of the cookbook in which the recipe was to be created.
   ///
+  /// [CookbookDoesNotExistException] : TX rejected because the cookbook in
+  /// which the recipe was to be created does not exist.
+  ///
   /// [RecipeAlreadyExistsException] : TX rejected because recipe already exists
   /// at the provided coordinates.
   ///
@@ -342,6 +345,9 @@ abstract class PylonsWallet {
   ///
   /// [NoWalletException] : There's no attached wallet.
   ///
+  /// [ItemDoesNotExistException] : TX rejected because the item does not
+  /// exist on the chain.
+  ///
   /// [ItemNotOwnedException] : TX rejected because the active profile is not
   /// the owner of the item to be placed for sale.
   ///
@@ -379,7 +385,7 @@ abstract class PylonsWallet {
   /// [CookbookDoesNotExistException] : TX rejected because a cookbook with the
   /// provided name already exists.
   ///
-  /// [ProfileStateException] : The active profile was not able to create the
+  /// [ProfileStateException] : The active profile was not able to update the
   /// cookbook on account of insufficient funds.
   ///
   /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
