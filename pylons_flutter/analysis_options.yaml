@@ -2,3 +2,30 @@ include: package:flutter_lints/flutter.yaml
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+
+linter:
+  rules:
+    - always_use_package_imports
+    - always_declare_return_types
+    - always_specify_types
+    - annotate_overrides
+    - avoid_empty_else
+    - empty_catches
+    - avoid_return_types_on_setters
+    - await_only_futures
+    - camel_case_types
+    - empty_constructor_bodies
+    - empty_statements
+    - hash_and_equals
+    - implementation_imports
+    - avoid_multiple_declarations_per_line
+    - unnecessary_getters_setters
+    - avoid_returning_null_for_void
+    - avoid_returning_null
+    - file_names
+    - flutter_style_todos
+    - lines_longer_than_80_chars
