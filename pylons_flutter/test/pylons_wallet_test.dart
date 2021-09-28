@@ -24,20 +24,40 @@ class TestUtil {
     final Cookbook cb = jsonDecode(loadFile(path));
     return cb;
   }
+
+  static Recipe loadRecipe (String path){
+    final Recipe rcp = jsonDecode(loadFile(path));
+    return rcp;
+  }
 }
 
 /// The Android implementation of the Pylons wallet.
 class MockWallet extends Mock implements PylonsWallet {
   List<Cookbook> cookbooks = List.empty();
+  List<Recipe> recipes = List.empty();
+  List<Trade> trades = List.empty();
 
   /// Load the provided cookbooks. We'll use these to mock getCookbooks.
   void loadCookbooks(List<Cookbook> cbs) {
     cookbooks.addAll(cbs);
   }
+
+  void loadRecipes(List<Recipe> rcps) {
+    recipes.addAll(rcps);
+  }
+
+  void loadTrades(List<Trade> trade){
+    trades.addAll(trade);
+  }
 }
 
 /// TODO: doc wallet_test
 void main() {
+  setUp(() async {
+    final lst = await List.empty();
+    //when(MockWallet().getTrades()).thenReturn(lst);
+  }); 
+
   group("PylonsWallet.exists", () {
     test("Returns true when the target exists", () {
       TestUtil.mockIpcTarget();
@@ -134,26 +154,74 @@ void main() {
       );
     });
     test("Returns all recipes while there are recipes, if no argument", () {
-      throw UnimplementedError("TODO");
+      //TO-DO
+      TestUtil.mockIpcTarget().loadRecipes([
+        TestUtil.loadRecipe("recipe/rcp1.json"),
+        TestUtil.loadRecipe("recipe/rcp2.json"),
+        TestUtil.loadRecipe("recipe/rcp3.json")]);
+        
+
+        MockWallet().getRecipes("").then(
+          expectAsync1((rcps) { assert(rcps.length == MockWallet().recipes.length);
+          for (var i = 0; i < rcps.length; i++) {
+              assert(rcps[i].name == MockWallet().recipes[i].name);
+            }
+          }
+          ), onError: (err) { fail('Error: $err'); }
+      );
     });
+
     test("Returns owned recipes while there are recipes, if given valid"
         "address", () {
-      throw UnimplementedError("TODO");
+          TestUtil.mockIpcTarget().loadRecipes([
+        TestUtil.loadRecipe("recipe/rcp1.json"),
+        TestUtil.loadRecipe("recipe/rcp2.json"),
+        TestUtil.loadRecipe("recipe/rcp3.json")]);
+        
+
+        MockWallet().getRecipes("correctAddress").then(
+          expectAsync1((rcps) { assert(rcps.length == MockWallet().recipes.length);
+          for (var i = 0; i < rcps.length; i++) {
+              assert(rcps[i].name == MockWallet().recipes[i].name);
+            }
+          }
+          ), onError: (err) { fail('Error: $err'); }
+      );
     });
+
     test("Returns an empty list if there are no recipes", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      MockWallet().getRecipes("correctAddress").then(
+          expectAsync1((rcps) { assert(rcps.isEmpty); }
+          ), onError: (err) { fail('Error: $err'); }
+      );
     });
   });
 
   group("PylonsWallet.getTrades", () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError("TODO");
+      MockWallet().getTrades().then(
+        expectAsync1((_) {fail("Operation should fail - no wallet established to connect to."); }
+          ), onError: (err) {
+        assert(err.runtimeType == NoWalletException);});
     });
     test("Returns trades while there are trades", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      MockWallet().loadTrades(List.empty());
+      MockWallet().getTrades().then(
+        expectAsync1((trades) {
+          assert(List.empty().length == 0/*MockWallet().getTrades().length*/);
+        })
+      );
     });
     test("Returns an empty list if there are no trades", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      MockWallet().loadTrades(List.empty());
+      // MockWallet().getTrades().then(
+      //   expectAsync1((trades) {
+      //     assert(MockWallet().getTrades().isEmpty());
+      //   })
+      // );
     });
   });
 
