@@ -29,6 +29,11 @@ class TestUtil {
     final Recipe rcp = jsonDecode(loadFile(path));
     return rcp;
   }
+
+  static Trade loadTrade (String path){
+    final Trade trade = jsonDecode(loadFile(path));
+    return trade;
+  }
 }
 
 /// The Android implementation of the Pylons wallet.
@@ -206,31 +211,40 @@ void main() {
         assert(err.runtimeType == NoWalletException);});
     });
     test("Returns trades while there are trades", () {
-      TestUtil.mockIpcTarget();
-      MockWallet().loadTrades(List.empty());
+      TestUtil.mockIpcTarget().loadTrades([
+        TestUtil.loadTrade("trade/trade1.json"),
+        TestUtil.loadTrade("trade/trade2.json"),
+        TestUtil.loadTrade("trade/trade3.json")
+      ]);
       MockWallet().getTrades().then(
-        expectAsync1((trades) {
-          assert(List.empty().length == 0/*MockWallet().getTrades().length*/);
-        })
+        expectAsync1((trades) { assert(trades.length == MockWallet().trades.length);
+          for (var i = 0; i < trades.length; i++) {
+              assert(trades[i].id == MockWallet().trades[i].id);
+            }
+          }
+          ), onError: (err) { fail('Error: $err'); 
+        }
       );
     });
     test("Returns an empty list if there are no trades", () {
       TestUtil.mockIpcTarget();
       MockWallet().loadTrades(List.empty());
-      // MockWallet().getTrades().then(
-      //   expectAsync1((trades) {
-      //     assert(MockWallet().getTrades().isEmpty());
-      //   })
-      // );
+      expect(MockWallet().getTrades(), hasLength(0));
     });
   });
 
   group("PylonsWallet.txBuyItem", () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError("TODO");
+      MockWallet().txBuyItem("shouldFailTradeId", "shouldFailPaymentId").then(
+        expectAsync1((_) {fail("Operation should fail - No wallet to retrieve recipes"); }
+        ), onError: (err) {
+          assert(err.runtimeType == NoWalletException);
+        }
+      );
     });
     test("Throws a PaymentNotValidException if the payment is garbage", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      //MockWallet().txBuyItem("trade1", paymentId)
     });
     test("Throws a PaymentNotValidException if the payment is real but"
         "incorrect", () {
@@ -498,24 +512,58 @@ void main() {
 
   group("PylonsWallet.txUpdateCookbook", () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError("TODO");
+      Cookbook cookbook = Cookbook("nodeVersion","id", "name", "description", "version", "developer",  "sender", "supportEmail", 2);
+      MockWallet().txUpdateCookbook(cookbook).then(
+        expectAsync1((_) {fail("Operation should fail - NoWalletExpection");})
+      );
     });
     test("Throws a CookbookNotOwnedException if we don't own the cookbook", () {
-      throw UnimplementedError("TODO");
+      Cookbook cookbook = Cookbook("nodeVersion","id", "name", "description", "version", "developer",  "sender", "***@pylons.tech", 2);
+      MockWallet().txUpdateCookbook(cookbook).then(
+        expectAsync1((cookbook) {assert(MockWallet().cookbooks.length == 1);
+        var emailLength = MockWallet().cookbooks[0].supportEmail.length;
+        assert("pylons.tech" == MockWallet().cookbooks[0].supportEmail.substring(emailLength - 11));
+            
+          }
+          ), onError: (err) { fail('Error: $err'); 
+        }
+
+      );
     });
     test("Throws a CookbookDoesNotExist exception if the cookbook doesn't "
         "exist", () {
-      throw UnimplementedError("TODO");
+      Cookbook cookbookDoesNotExist = Cookbook("null", "null", "null","null","null","null","null","null",0);
+      TestUtil.mockIpcTarget();
+      MockWallet().txUpdateCookbook(cookbookDoesNotExist).then(
+        expectAsync1((cookbookDoesNotExist) {fail("Operation should fail - cookbook should not exist."); }
+          ), onError: (err) {
+        assert(err.runtimeType == CookbookDoesNotExistException);});
     });
     test("Throws a ProfileStateException if insufficient funds", () {
       throw UnimplementedError("TODO");
     });
     test("Throws a ProfileDoesNotExistException if no profile", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget().getProfile(null);
+      Cookbook ckbk = Cookbook("nodeVersion", "id", "name", "description", "version", "developer", "sender", "supportEmail", 0);
+      MockWallet().txUpdateCookbook(ckbk).then(
+        expectAsync1((_) {fail(" Operation should fail - no profile");}),
+        onError: (err){
+          assert(err.runtimeType == ProfileDoesNotExistException);
+        }
+      );
     });
     test("Throws a ProfileDoesNotExistException if active profile doesn't "
         "exist", () {
-      throw UnimplementedError("TODO");
+          TestUtil.mockIpcTarget();
+      when(MockWallet().getProfile(any)).thenReturn(MockWallet().getProfile(null));
+      MockWallet().getProfile(null);
+      Cookbook ckbk = Cookbook("nodeVersion", "id", "name", "description", "version", "developer", "sender", "supportEmail", 0);
+      MockWallet().txUpdateCookbook(ckbk).then(
+        expectAsync1((_) {fail(" Operation should fail - no profile");}),
+        onError: (err){
+          assert(err.runtimeType == ProfileDoesNotExistException);
+        }
+      );
     });
     test("Throws a NodeInternalErrorException if node errors during "
         "handling", () {
@@ -529,10 +577,17 @@ void main() {
     });
     test("If TX accepted, returned cookbook matches that obtained by using"
         "getCookbooks", () {
-      throw UnimplementedError("TODO");
-    });
-  });
+      
+      Cookbook originalCkbk = Cookbook("nodeVersion", "id", "originalCookbook", "description", "version", "developer", "sender", "supportEmail", 0);
+      TestUtil.mockIpcTarget().loadCookbooks([originalCkbk]);
+      Cookbook updatedCkbk = Cookbook("nodeVersion", "id", "updatedCookbook", "description", "version", "developer", "sender", "supportEmail", 0);
 
+      MockWallet().txUpdateCookbook(updatedCkbk).then(
+        expectAsync1((updatedCkbk) {
+          assert(MockWallet().cookbooks[0].name == "updatedCookbook");
+        })
+      );
+    });
   group("PylonsWallet.txUpdateRecipe", () {
     test("Throws a NoWalletException if there's no wallet", () {
       throw UnimplementedError("TODO");
