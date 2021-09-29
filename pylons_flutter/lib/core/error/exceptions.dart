@@ -102,13 +102,13 @@ class RecipeAlreadyExistsException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeAlreadyExistsException(c, rN, e)
+  RecipeAlreadyExistsException(String c, String rN, String e)
       : cookbook = c,
         recipeName = rN,
         recipeId = "",
         errMsg = e;
 
-  RecipeAlreadyExistsException.constructorWithRecipeID(r, e)
+  RecipeAlreadyExistsException.constructorWithRecipeID(String r, String e)
       : cookbook = "",
         recipeName = "",
         recipeId = r,
@@ -123,13 +123,13 @@ class RecipeDoesNotExistException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeDoesNotExistException(c, rN, e)
+  RecipeDoesNotExistException(String c, String rN, String e)
       : cookbook = c,
         recipeName = rN,
         recipeId = "",
         errMsg = e;
 
-  RecipeDoesNotExistException.constructorWithRecipeID(r, e)
+  RecipeDoesNotExistException.constructorWithRecipeID(String r, String e)
       : cookbook = "",
         recipeName = "",
         recipeId = r,
