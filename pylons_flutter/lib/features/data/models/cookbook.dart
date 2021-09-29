@@ -4,8 +4,8 @@ library pylons_flutter_cookbook;
 /// A cookbook that exists (or can exist) on the Pylons chain, in which recipes
 /// can be created.
 class Cookbook {
+  String? id;
   String nodeVersion;
-  String id;
   String name;
   String description;
   String version;
@@ -14,8 +14,16 @@ class Cookbook {
   String supportEmail;
   int costPerBlock;
 
-  Cookbook(this.nodeVersion, this.id, this.name, this.description, this.version,
-      this.developer, this.sender, this.supportEmail, this.costPerBlock);
+  Cookbook(
+      {this.id,
+      required this.nodeVersion,
+      required this.name,
+      required this.description,
+      required this.version,
+      required this.developer,
+      required this.sender,
+      required this.supportEmail,
+      required this.costPerBlock});
 
   /// Takes a [String] app name and generates an auto-cookbook for the provided app name.
   /// An auto-cookbook is just a normal cookbook; values are auto-generated for

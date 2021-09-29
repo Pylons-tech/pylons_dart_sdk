@@ -6,8 +6,8 @@ import 'package:pylons_flutter/features/data/models/recipe.dart';
 
 /// A record of a trade that exists on a Pylons blockchain.
 class Trade {
+  String? id;
   String nodeVersion;
-  String id;
   List<CoinInput> coinInputs;
   List<TradeItemInput> itemInputs;
   Map<String, int> coinOutputs;
@@ -19,17 +19,17 @@ class Trade {
   bool completed;
 
   Trade(
-      this.nodeVersion,
-      this.id,
-      this.coinInputs,
-      this.itemInputs,
-      this.coinOutputs,
-      this.itemOutputs,
-      this.sender,
-      this.fulfiller,
-      this.extraInfo,
-      this.disabled,
-      this.completed);
+      {this.id,
+      required this.nodeVersion,
+      required this.coinInputs,
+      required this.itemInputs,
+      required this.coinOutputs,
+      required this.itemOutputs,
+      required this.sender,
+      required this.fulfiller,
+      required this.extraInfo,
+      required this.disabled,
+      required this.completed});
 }
 
 /// TODO: describe this
@@ -37,5 +37,5 @@ class TradeItemInput {
   String cookbookId;
   ItemInput itemInput;
 
-  TradeItemInput(this.cookbookId, this.itemInput);
+  TradeItemInput({required this.cookbookId, required this.itemInput});
 }
