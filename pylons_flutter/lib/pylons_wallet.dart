@@ -13,7 +13,6 @@ import 'package:pylons_flutter/pylons_flutter.dart';
 /// The Pylons class is the main endpoint developers use for structured,
 /// high-level interactions with the Pylons wallet.
 abstract class PylonsWallet {
-
   /// Async: Send the provided message over the IPC channel, then retrieve a
   /// response.
   ///
@@ -80,8 +79,9 @@ abstract class PylonsWallet {
     List<String> splut = response.split(',');
     String key = decoder.convert(base64Decode(splut.first));
     List<String> elems = splut.sublist(1, splut.length);
-    for (int i = 0; i < elems.length; i++) { elems[i] =
-        decoder.convert(base64Decode(elems[i])); }
+    for (int i = 0; i < elems.length; i++) {
+      elems[i] = decoder.convert(base64Decode(elems[i]));
+    }
     return Tuple2<String, List<String>>(key, elems);
   }
 
@@ -458,7 +458,7 @@ abstract class PylonsWallet {
   Future<Tuple2<Transaction, Profile>> txBuyPylons(
       int pylons, String paymentId) async {
     Completer<Tuple2<Transaction, Profile>> completer =
-    Completer<Tuple2<Transaction, Profile>>();
+        Completer<Tuple2<Transaction, Profile>>();
     _validateExists(completer);
     String key = "txBuyPylons";
     sendMessage([key, pylons.toString(), paymentId]).then((String response) {
@@ -466,13 +466,13 @@ abstract class PylonsWallet {
       _validateResponseMatchesKey(key, r, completer);
       if (_responseIsError(r.value1, key)) {
         bool handled = _procError(
-            "payment",
-            r,
-            PaymentNotValidException(
-                r.value2[1],
-                "Bad "
+                "payment",
+                r,
+                PaymentNotValidException(
+                    r.value2[1],
+                    "Bad "
                     "payment"),
-            completer) ||
+                completer) ||
             _procError(
                 "profileState",
                 r,
@@ -488,7 +488,7 @@ abstract class PylonsWallet {
                     int.parse(r.value2[1]),
                     r.value2[2],
                     "Node threw an unexpected error! "
-                        "Debug this!"),
+                    "Debug this!"),
                 completer);
         if (!handled) {
           completer.completeError(UnhandledErrorException(
@@ -545,21 +545,20 @@ abstract class PylonsWallet {
   Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(
       Cookbook cookbook) async {
     Completer<Tuple3<Transaction, Profile, Cookbook>> completer =
-    Completer<Tuple3<Transaction, Profile, Cookbook>>();
+        Completer<Tuple3<Transaction, Profile, Cookbook>>();
     _validateExists(completer);
     String key = "txCreateCookbook";
-    sendMessage([key, const JsonEncoder().convert(cookbook)]).then((String response) {
+    sendMessage([key, const JsonEncoder().convert(cookbook)])
+        .then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
       if (_responseIsError(r.value1, key)) {
         bool handled = _procError(
-            "cookbookAlreadyExists",
-            r,
-            CookbookAlreadyExistsException(
-                r.value2[1],
-                r.value2[2],
-                "Cookbook already exists"),
-            completer) ||
+                "cookbookAlreadyExists",
+                r,
+                CookbookAlreadyExistsException(
+                    r.value2[1], r.value2[2], "Cookbook already exists"),
+                completer) ||
             _procError(
                 "profileState",
                 r,
@@ -575,7 +574,7 @@ abstract class PylonsWallet {
                     int.parse(r.value2[1]),
                     r.value2[2],
                     "Node threw an unexpected error! "
-                        "Debug this!"),
+                    "Debug this!"),
                 completer);
         if (!handled) {
           completer.completeError(UnhandledErrorException(
@@ -594,7 +593,8 @@ abstract class PylonsWallet {
           completer
               .completeError(ResponseException(response, "Malformed cookbook"));
         } else {
-          completer.complete(Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb));
+          completer
+              .complete(Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb));
         }
       }
     });
@@ -647,36 +647,32 @@ abstract class PylonsWallet {
   Future<Tuple3<Transaction, Profile, Recipe>> txCreateRecipe(
       Recipe recipe) async {
     Completer<Tuple3<Transaction, Profile, Recipe>> completer =
-    Completer<Tuple3<Transaction, Profile, Recipe>>();
+        Completer<Tuple3<Transaction, Profile, Recipe>>();
     _validateExists(completer);
     _validateRecipe(recipe, completer);
     String key = "txCreateRecipe";
-    sendMessage([key, const JsonEncoder().convert(recipe)]).then((String response) {
+    sendMessage([key, const JsonEncoder().convert(recipe)])
+        .then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
       if (_responseIsError(r.value1, key)) {
         bool handled = _procError(
-            "cookbookDoesNotExist",
-            r,
-            CookbookDoesNotExistException(
-                r.value2[1],
-                "Cookbook does not exist"),
-            completer) ||
+                "cookbookDoesNotExist",
+                r,
+                CookbookDoesNotExistException(
+                    r.value2[1], "Cookbook does not exist"),
+                completer) ||
             _procError(
                 "cookbookNotOwned",
                 r,
                 CookbookNotOwnedException(
-                    r.value2[1],
-                    r.value2[2],
-                    "Cookbook not owned"),
+                    r.value2[1], r.value2[2], "Cookbook not owned"),
                 completer) ||
             _procError(
                 "recipeAlreadyyExists",
                 r,
                 RecipeAlreadyExistsException(
-                    r.value2[1],
-                    r.value2[2],
-                    "Recipe already exists"),
+                    r.value2[1], r.value2[2], "Recipe already exists"),
                 completer) ||
             _procError(
                 "profileState",
@@ -693,7 +689,7 @@ abstract class PylonsWallet {
                     int.parse(r.value2[1]),
                     r.value2[2],
                     "Node threw an unexpected error! "
-                        "Debug this!"),
+                    "Debug this!"),
                 completer);
         if (!handled) {
           completer.completeError(UnhandledErrorException(
@@ -712,7 +708,8 @@ abstract class PylonsWallet {
           completer
               .completeError(ResponseException(response, "Malformed recipe"));
         } else {
-          completer.complete(Tuple3<Transaction, Profile, Recipe>(tx, prf, rcp));
+          completer
+              .complete(Tuple3<Transaction, Profile, Recipe>(tx, prf, rcp));
         }
       }
     });
@@ -894,27 +891,25 @@ abstract class PylonsWallet {
   Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(
       Cookbook cookbook) async {
     Completer<Tuple3<Transaction, Profile, Cookbook>> completer =
-    Completer<Tuple3<Transaction, Profile, Cookbook>>();
+        Completer<Tuple3<Transaction, Profile, Cookbook>>();
     _validateExists(completer);
     String key = "txUpdateCookbook";
-    sendMessage([key, const JsonEncoder().convert(cookbook)]).then((String response) {
+    sendMessage([key, const JsonEncoder().convert(cookbook)])
+        .then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
       if (_responseIsError(r.value1, key)) {
         bool handled = _procError(
-            "cookbookDoesNotExist",
-            r,
-            CookbookDoesNotExistException(
-                r.value2[1],
-                "Cookbook already exists"),
-            completer) ||
+                "cookbookDoesNotExist",
+                r,
+                CookbookDoesNotExistException(
+                    r.value2[1], "Cookbook already exists"),
+                completer) ||
             _procError(
                 "cookbookNotOwned",
                 r,
                 CookbookNotOwnedException(
-                    r.value2[1],
-                    r.value2[2],
-                    "Cookbook already exists"),
+                    r.value2[1], r.value2[2], "Cookbook already exists"),
                 completer) ||
             _procError(
                 "profileState",
@@ -931,7 +926,7 @@ abstract class PylonsWallet {
                     int.parse(r.value2[1]),
                     r.value2[2],
                     "Node threw an unexpected error! "
-                        "Debug this!"),
+                    "Debug this!"),
                 completer);
         if (!handled) {
           completer.completeError(UnhandledErrorException(
@@ -950,7 +945,8 @@ abstract class PylonsWallet {
           completer
               .completeError(ResponseException(response, "Malformed cookbook"));
         } else {
-          completer.complete(Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb));
+          completer
+              .complete(Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb));
         }
       }
     });
@@ -1016,6 +1012,4 @@ class AndroidWallet extends PylonsWallet {
     // TODO: implement sendMessage
     throw UnimplementedError();
   }
-
-
 }
