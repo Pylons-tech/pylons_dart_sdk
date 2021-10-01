@@ -173,6 +173,15 @@ class RecipeValidationException implements Exception {
       this.cookbook, this.recipeName, this.recipeId, this.errMsg);
 }
 
+/// Exception thrown when an outgoing message gets an illegal response.
+/// This should not be seen in production environments.
+class ResponseException implements Exception {
+  final String rawResponse;
+  final String errMsg;
+
+  ResponseException(this.rawResponse, this.errMsg);
+}
+
 /// Exception thrown by TX-emitting API calls when the Pylons node has an
 /// internal error during processing of the emitted TX. If this occurs in
 /// production environments, that's a problem.
@@ -182,4 +191,14 @@ class NodeInternalErrorException implements Exception {
   final String errMsg;
 
   NodeInternalErrorException(this.errorCode, this.nodeErrMsg, this.errMsg);
+}
+
+/// Exception thrown by API calls when they get an error they aren't prepared
+/// for. This should absolutely, 100 percent never be seen in production
+/// environments.
+class UnhandledErrorException implements Exception {
+  final String errType;
+  final String errMsg;
+
+  UnhandledErrorException(this.errType, this.errMsg);
 }

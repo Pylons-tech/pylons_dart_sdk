@@ -4,12 +4,27 @@
 /// client apps should structure their interactions with the wallet.
 library pylons_flutter;
 
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
 
 /// The Pylons class is the main endpoint developers use for structured,
 /// high-level interactions with the Pylons wallet.
 abstract class PylonsWallet {
+
+  /// Async: Send the provided message over the IPC channel, then retrieve a
+  /// response.
+  ///
+  /// [msg] is a list of strings which are converted to base64 and combined
+  /// to form a single comma-separated string before being sent over the
+  /// channel.
+  ///
+  /// The string that is eventually retrieved as a response fits the same
+  /// format.
+  Future<String> sendMessage(List<String> msg);
+
   /// Retrieves the [AndroidWallet] instance. Since [AndroidWallet] is a
   /// singleton, this method will always return a reference to the same object.
   static void android() => AndroidWallet();
@@ -17,6 +32,57 @@ abstract class PylonsWallet {
   /// Async: Returns true if an IPC target exists. False otherwise.
   static Future<bool> exists() async {
     throw UnimplementedError();
+  }
+
+  static void _validateExists(Completer completer) {
+    exists().then((bool v) {
+      if (v == false) {
+        completer.completeError(NoWalletException());
+      }
+    });
+  }
+
+  static bool _validateAddress(String? address, Completer completer) {
+    throw UnimplementedError();
+  }
+
+  static bool _validateRecipe(Recipe recipe, Completer completer) {
+    throw UnimplementedError();
+  }
+
+  static bool _responseIsError(String v, String key) {
+    return v == "err_$key";
+  }
+
+  static void _validateResponseMatchesKey(
+      String key, Tuple2<String, List<String>> response, Completer completer) {
+    if ((response.value1 != "response_$key" && response.value1 != "err_$key")) {
+      completer.completeError(ResponseException(
+          const JsonEncoder().convert(response), "Bad response: $response"));
+    }
+  }
+
+  static bool _procError(String err, Tuple2<String, List<String>> response,
+      Exception exception, Completer completer) {
+    if (response.value2[0] == err) {
+      try {
+        completer.completeError(exception);
+      } catch (e) {
+        completer.completeError(UnhandledErrorException(
+            err, "Bad error passed: ${response.value2}"));
+      }
+    }
+    return response.value2[0] == err;
+  }
+
+  static Tuple2<String, List<String>> _procResponse(String response) {
+    Utf8Decoder decoder = const Utf8Decoder();
+    List<String> splut = response.split(',');
+    String key = decoder.convert(base64Decode(splut.first));
+    List<String> elems = splut.sublist(1, splut.length);
+    for (int i = 0; i < elems.length; i++) { elems[i] =
+        decoder.convert(base64Decode(elems[i])); }
+    return Tuple2<String, List<String>>(key, elems);
   }
 
   /// Async: Retrieves all cookbooks belonging to the current profile on the
@@ -31,10 +97,52 @@ abstract class PylonsWallet {
   ///
   /// [NoWalletException] : There's no attached wallet.
   ///
+  /// [NodeInternalErrorException] : The node threw an unexpected error when
+  /// handling the query. This should not occur in production environments.
+  ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
+  ///
+  /// [ResponseException] : After sending the message to the wallet, the
+  /// received response does not fit the expected format.
+  ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<List<Cookbook>> getCookbooks() async {
-    throw UnimplementedError();
+    Completer<List<Cookbook>> completer = Completer<List<Cookbook>>();
+    _validateExists(completer);
+    String key = "getCookbooks";
+    sendMessage([key]).then((String response) {
+      Tuple2<String, List<String>> r = _procResponse(response);
+      _validateResponseMatchesKey(key, r, completer);
+      if (_responseIsError(r.value1, key)) {
+        bool handled = _procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            _procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                    "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        List<Cookbook>? cbs = jsonDecode(r.value2[0]) as List<Cookbook>?;
+        if (cbs == null) {
+          completer.completeError(
+              ResponseException(response, "Malformed cookbooks"));
+        } else {
+          completer.complete(cbs);
+        }
+      }
+    });
+    return completer.future;
   }
 
   /// Async: Retrieves current state of profile with given address if provided,
@@ -52,10 +160,55 @@ abstract class PylonsWallet {
   /// [ProfileDoesNotExistException] : There is no profile at the provided
   /// address.
   ///
+  /// [NodeInternalErrorException] : The node threw an unexpected error when
+  /// handling the query. This should not occur in production environments.
+  ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
+  ///
+  /// [ResponseException] : After sending the message to the wallet, the
+  /// received response does not fit the expected format.
+  ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Profile> getProfile(String? address) async {
-    throw UnimplementedError();
+    Completer<Profile> completer = Completer<Profile>();
+    _validateExists(completer);
+    _validateAddress(address, completer);
+    String key = "getProfile";
+    List<String> ls = [key];
+    if (address != null) ls.add(address);
+    sendMessage(ls).then((String response) {
+      Tuple2<String, List<String>> r = _procResponse(response);
+      _validateResponseMatchesKey(key, r, completer);
+      if (_responseIsError(r.value1, key)) {
+        bool handled = _procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            _procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                    "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Profile? p = jsonDecode(r.value2[0]) as Profile?;
+        if (p == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else {
+          completer.complete(p);
+        }
+      }
+    });
+    return completer.future;
   }
 
   /// Async: Retrieves a list of recipes on the Pylons chain. If address is
@@ -72,10 +225,55 @@ abstract class PylonsWallet {
   ///
   /// [NoWalletException] : There's no attached wallet.
   ///
+  /// [NodeInternalErrorException] : The node threw an unexpected error when
+  /// handling the query. This should not occur in production environments.
+  ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
+  ///
+  /// [ResponseException] : After sending the message to the wallet, the
+  /// received response does not fit the expected format.
+  ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<List<Recipe>> getRecipes(String? address) async {
-    throw UnimplementedError();
+    Completer<List<Recipe>> completer = Completer<List<Recipe>>();
+    _validateExists(completer);
+    _validateAddress(address, completer);
+    String key = "getRecipes";
+    List<String> ls = [key];
+    if (address != null) ls.add(address);
+    sendMessage(ls).then((String response) {
+      Tuple2<String, List<String>> r = _procResponse(response);
+      _validateResponseMatchesKey(key, r, completer);
+      if (_responseIsError(r.value1, key)) {
+        bool handled = _procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            _procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                    "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        List<Recipe>? rs = jsonDecode(r.value2[0]) as List<Recipe>?;
+        if (rs == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed recipes"));
+        } else {
+          completer.complete(rs);
+        }
+      }
+    });
+    return completer.future;
   }
 
   /// Async: Retrieves all current trades that exist on the Pylons chain.
@@ -89,10 +287,47 @@ abstract class PylonsWallet {
   ///
   /// [NoWalletException] : There's no attached wallet.
   ///
+  /// [NodeInternalErrorException] : The node threw an unexpected error when
+  /// handling the query. This should not occur in production environments.
+  ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
+  ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<List<Trade>> getTrades() async {
-    throw UnimplementedError();
+    Completer<List<Trade>> completer = Completer<List<Trade>>();
+    _validateExists(completer);
+    String key = "getTrades";
+    sendMessage([key]).then((String response) {
+      Tuple2<String, List<String>> r = _procResponse(response);
+      _validateResponseMatchesKey(key, r, completer);
+      if (_responseIsError(r.value1, key)) {
+        bool handled = _procError(
+            "node",
+            r,
+            NodeInternalErrorException(
+                int.parse(r.value2[1]),
+                r.value2[2],
+                "Node threw an unexpected error! "
+                "Debug this!"),
+            completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        List<Trade>? ts = jsonDecode(r.value2[0]) as List<Trade>?;
+        if (ts == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed trades"));
+        } else {
+          completer.complete(ts);
+        }
+      }
+    });
+    return completer.future;
   }
 
   /// Async: Creates a transaction to buy an item using either Pylons or a
@@ -128,11 +363,65 @@ abstract class PylonsWallet {
   /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
+  ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple2<Transaction, Profile>> txBuyItem(
       String tradeId, String paymentId) async {
-    throw UnimplementedError();
+    Completer<Tuple2<Transaction, Profile>> completer =
+        Completer<Tuple2<Transaction, Profile>>();
+    _validateExists(completer);
+    String key = "txBuyItem";
+    sendMessage([key, tradeId, paymentId]).then((String response) {
+      Tuple2<String, List<String>> r = _procResponse(response);
+      _validateResponseMatchesKey(key, r, completer);
+      if (_responseIsError(r.value1, key)) {
+        bool handled = _procError(
+                "payment",
+                r,
+                PaymentNotValidException(
+                    r.value2[1],
+                    "Bad "
+                    "payment"),
+                completer) ||
+            _procError(
+                "profileState",
+                r,
+                ProfileStateException("Insufficient"
+                    "funds"),
+                completer) ||
+            _procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            _procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                    "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Transaction? tx = jsonDecode(r.value2[0]) as Transaction?;
+        Profile? prf = jsonDecode(r.value2[1]) as Profile?;
+        if (tx == null) {
+          completer.completeError(ResponseException(response, "Malformed tx"));
+        } else if (prf == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else {
+          completer.complete(Tuple2<Transaction, Profile>(tx, prf));
+        }
+      }
+    });
+    return completer.future;
   }
 
   /// Async: Creates a transaction to buy the provided number of Pylons using a
@@ -160,11 +449,65 @@ abstract class PylonsWallet {
   /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
+  ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple2<Transaction, Profile>> txBuyPylons(
       int pylons, String paymentId) async {
-    throw UnimplementedError();
+    Completer<Tuple2<Transaction, Profile>> completer =
+    Completer<Tuple2<Transaction, Profile>>();
+    _validateExists(completer);
+    String key = "txBuyPylons";
+    sendMessage([key, pylons.toString(), paymentId]).then((String response) {
+      Tuple2<String, List<String>> r = _procResponse(response);
+      _validateResponseMatchesKey(key, r, completer);
+      if (_responseIsError(r.value1, key)) {
+        bool handled = _procError(
+            "payment",
+            r,
+            PaymentNotValidException(
+                r.value2[1],
+                "Bad "
+                    "payment"),
+            completer) ||
+            _procError(
+                "profileState",
+                r,
+                ProfileStateException("Insufficient"
+                    "funds"),
+                completer) ||
+            _procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            _procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Transaction? tx = jsonDecode(r.value2[0]) as Transaction?;
+        Profile? prf = jsonDecode(r.value2[1]) as Profile?;
+        if (tx == null) {
+          completer.completeError(ResponseException(response, "Malformed tx"));
+        } else if (prf == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else {
+          completer.complete(Tuple2<Transaction, Profile>(tx, prf));
+        }
+      }
+    });
+    return completer.future;
   }
 
   /// Async: Creates a transaction to create the provided [Cookbook] on the
@@ -193,11 +536,69 @@ abstract class PylonsWallet {
   /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
+  ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(
       Cookbook cookbook) async {
-    throw UnimplementedError();
+    Completer<Tuple3<Transaction, Profile, Cookbook>> completer =
+    Completer<Tuple3<Transaction, Profile, Cookbook>>();
+    _validateExists(completer);
+    String key = "txCreateCookbook";
+    sendMessage([key, const JsonEncoder().convert(cookbook)]).then((String response) {
+      Tuple2<String, List<String>> r = _procResponse(response);
+      _validateResponseMatchesKey(key, r, completer);
+      if (_responseIsError(r.value1, key)) {
+        bool handled = _procError(
+            "cookbookAlreadyExists",
+            r,
+            CookbookAlreadyExistsException(
+                r.value2[1],
+                r.value2[2],
+                "Cookbook already exists"),
+            completer) ||
+            _procError(
+                "profileState",
+                r,
+                ProfileStateException("Insufficient"
+                    "funds"),
+                completer) ||
+            _procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            _procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Transaction? tx = jsonDecode(r.value2[0]) as Transaction?;
+        Profile? prf = jsonDecode(r.value2[1]) as Profile?;
+        Cookbook? cb = jsonDecode(r.value2[2]) as Cookbook?;
+        if (tx == null) {
+          completer.completeError(ResponseException(response, "Malformed tx"));
+        } else if (prf == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else if (cb == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed cookbook"));
+        } else {
+          completer.complete(Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb));
+        }
+      }
+    });
+    return completer.future;
   }
 
   /// Async: Creates a transaction to create the provided [Recipe] on the Pylons
@@ -237,11 +638,85 @@ abstract class PylonsWallet {
   /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
+  ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple3<Transaction, Profile, Recipe>> txCreateRecipe(
       Recipe recipe) async {
-    throw UnimplementedError();
+    Completer<Tuple3<Transaction, Profile, Recipe>> completer =
+    Completer<Tuple3<Transaction, Profile, Recipe>>();
+    _validateExists(completer);
+    _validateRecipe(recipe, completer);
+    String key = "txCreateRecipe";
+    sendMessage([key, const JsonEncoder().convert(recipe)]).then((String response) {
+      Tuple2<String, List<String>> r = _procResponse(response);
+      _validateResponseMatchesKey(key, r, completer);
+      if (_responseIsError(r.value1, key)) {
+        bool handled = _procError(
+            "cookbookDoesNotExist",
+            r,
+            CookbookDoesNotExistException(
+                r.value2[1],
+                "Cookbook does not exist"),
+            completer) ||
+            _procError(
+                "cookbookNotOwned",
+                r,
+                CookbookNotOwnedException(
+                    r.value2[1],
+                    r.value2[2],
+                    "Cookbook not owned"),
+                completer) ||
+            _procError(
+                "recipeAlreadyyExists",
+                r,
+                RecipeAlreadyExistsException(
+                    r.value2[1],
+                    r.value2[2],
+                    "Recipe already exists"),
+                completer) ||
+            _procError(
+                "profileState",
+                r,
+                ProfileStateException("Insufficient"
+                    "funds"),
+                completer) ||
+            _procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            _procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Transaction? tx = jsonDecode(r.value2[0]) as Transaction?;
+        Profile? prf = jsonDecode(r.value2[1]) as Profile?;
+        Recipe? rcp = jsonDecode(r.value2[2]) as Recipe?;
+        if (tx == null) {
+          completer.completeError(ResponseException(response, "Malformed tx"));
+        } else if (prf == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else if (rcp == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed recipe"));
+        } else {
+          completer.complete(Tuple3<Transaction, Profile, Recipe>(tx, prf, rcp));
+        }
+      }
+    });
+    return completer.future;
   }
 
   /// Async: Creates a transaction to disable the recipe with the provided real,
@@ -265,6 +740,10 @@ abstract class PylonsWallet {
   ///
   /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
+  ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
@@ -293,6 +772,10 @@ abstract class PylonsWallet {
   ///
   /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
+  ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
@@ -323,6 +806,10 @@ abstract class PylonsWallet {
   ///
   /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
+  ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
@@ -356,6 +843,10 @@ abstract class PylonsWallet {
   ///
   /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
+  ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
@@ -394,11 +885,76 @@ abstract class PylonsWallet {
   /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
+  ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(
       Cookbook cookbook) async {
-    throw UnimplementedError();
+    Completer<Tuple3<Transaction, Profile, Cookbook>> completer =
+    Completer<Tuple3<Transaction, Profile, Cookbook>>();
+    _validateExists(completer);
+    String key = "txUpdateCookbook";
+    sendMessage([key, const JsonEncoder().convert(cookbook)]).then((String response) {
+      Tuple2<String, List<String>> r = _procResponse(response);
+      _validateResponseMatchesKey(key, r, completer);
+      if (_responseIsError(r.value1, key)) {
+        bool handled = _procError(
+            "cookbookDoesNotExist",
+            r,
+            CookbookDoesNotExistException(
+                r.value2[1],
+                "Cookbook already exists"),
+            completer) ||
+            _procError(
+                "cookbookNotOwned",
+                r,
+                CookbookNotOwnedException(
+                    r.value2[1],
+                    r.value2[2],
+                    "Cookbook already exists"),
+                completer) ||
+            _procError(
+                "profileState",
+                r,
+                ProfileStateException("Insufficient"
+                    "funds"),
+                completer) ||
+            _procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            _procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Transaction? tx = jsonDecode(r.value2[0]) as Transaction?;
+        Profile? prf = jsonDecode(r.value2[1]) as Profile?;
+        Cookbook? cb = jsonDecode(r.value2[2]) as Cookbook?;
+        if (tx == null) {
+          completer.completeError(ResponseException(response, "Malformed tx"));
+        } else if (prf == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else if (cb == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed cookbook"));
+        } else {
+          completer.complete(Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb));
+        }
+      }
+    });
+    return completer.future;
   }
 
   /// Async: Creates a transaction to updates the provided [Recipe] on the
@@ -433,6 +989,10 @@ abstract class PylonsWallet {
   /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
   /// internal error. This shouldn't be seen in production.
   ///
+  /// [UnhandledErrorException] : Received an error from the wallet, but the
+  /// error didn't match any errors we were expecting. This should really,
+  /// really not occur in production environments.
+  ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(
@@ -450,4 +1010,12 @@ class AndroidWallet extends PylonsWallet {
   factory AndroidWallet() {
     return _instance;
   }
+
+  @override
+  Future<String> sendMessage(List<String> msg) async {
+    // TODO: implement sendMessage
+    throw UnimplementedError();
+  }
+
+
 }
