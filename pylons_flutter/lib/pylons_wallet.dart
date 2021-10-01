@@ -22,7 +22,7 @@ abstract class PylonsWallet {
   ///
   /// The string that is eventually retrieved as a response fits the same
   /// format.
-  Future<String> sendMessage(List<String> msg);
+  Future<String> _sendMessage(List<String> msg);
 
   /// Retrieves the [AndroidWallet] instance. Since [AndroidWallet] is a
   /// singleton, this method will always return a reference to the same object.
@@ -113,7 +113,7 @@ abstract class PylonsWallet {
     Completer<List<Cookbook>> completer = Completer<List<Cookbook>>();
     _validateExists(completer);
     String key = "getCookbooks";
-    sendMessage([key]).then((String response) {
+    _sendMessage([key]).then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
       if (_responseIsError(r.value1, key)) {
@@ -179,7 +179,7 @@ abstract class PylonsWallet {
     String key = "getProfile";
     List<String> ls = [key];
     if (address != null) ls.add(address);
-    sendMessage(ls).then((String response) {
+    _sendMessage(ls).then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
       if (_responseIsError(r.value1, key)) {
@@ -244,7 +244,7 @@ abstract class PylonsWallet {
     String key = "getRecipes";
     List<String> ls = [key];
     if (address != null) ls.add(address);
-    sendMessage(ls).then((String response) {
+    _sendMessage(ls).then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
       if (_responseIsError(r.value1, key)) {
@@ -300,7 +300,7 @@ abstract class PylonsWallet {
     Completer<List<Trade>> completer = Completer<List<Trade>>();
     _validateExists(completer);
     String key = "getTrades";
-    sendMessage([key]).then((String response) {
+    _sendMessage([key]).then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
       if (_responseIsError(r.value1, key)) {
@@ -375,7 +375,7 @@ abstract class PylonsWallet {
         Completer<Tuple2<Transaction, Profile>>();
     _validateExists(completer);
     String key = "txBuyItem";
-    sendMessage([key, tradeId, paymentId]).then((String response) {
+    _sendMessage([key, tradeId, paymentId]).then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
       if (_responseIsError(r.value1, key)) {
@@ -461,7 +461,7 @@ abstract class PylonsWallet {
         Completer<Tuple2<Transaction, Profile>>();
     _validateExists(completer);
     String key = "txBuyPylons";
-    sendMessage([key, pylons.toString(), paymentId]).then((String response) {
+    _sendMessage([key, pylons.toString(), paymentId]).then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
       if (_responseIsError(r.value1, key)) {
@@ -548,7 +548,7 @@ abstract class PylonsWallet {
         Completer<Tuple3<Transaction, Profile, Cookbook>>();
     _validateExists(completer);
     String key = "txCreateCookbook";
-    sendMessage([key, const JsonEncoder().convert(cookbook)])
+    _sendMessage([key, const JsonEncoder().convert(cookbook)])
         .then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
@@ -651,7 +651,7 @@ abstract class PylonsWallet {
     _validateExists(completer);
     _validateRecipe(recipe, completer);
     String key = "txCreateRecipe";
-    sendMessage([key, const JsonEncoder().convert(recipe)])
+    _sendMessage([key, const JsonEncoder().convert(recipe)])
         .then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
@@ -894,7 +894,7 @@ abstract class PylonsWallet {
         Completer<Tuple3<Transaction, Profile, Cookbook>>();
     _validateExists(completer);
     String key = "txUpdateCookbook";
-    sendMessage([key, const JsonEncoder().convert(cookbook)])
+    _sendMessage([key, const JsonEncoder().convert(cookbook)])
         .then((String response) {
       Tuple2<String, List<String>> r = _procResponse(response);
       _validateResponseMatchesKey(key, r, completer);
@@ -1008,7 +1008,7 @@ class AndroidWallet extends PylonsWallet {
   }
 
   @override
-  Future<String> sendMessage(List<String> msg) async {
+  Future<String> _sendMessage(List<String> msg) async {
     // TODO: implement sendMessage
     throw UnimplementedError();
   }
