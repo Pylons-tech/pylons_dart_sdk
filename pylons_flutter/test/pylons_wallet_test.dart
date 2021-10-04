@@ -244,31 +244,79 @@ void main() {
     });
     test("Throws a PaymentNotValidException if the payment is garbage", () {
       TestUtil.mockIpcTarget();
-      //MockWallet().txBuyItem("trade1", paymentId)
+      MockWallet().txBuyItem("trade1", "failure on payment").then(
+        expectAsync1((_) {fail("Operation should fail - Payment is garbage");}
+        ), onError: (err){
+          assert(err.runtimeType == PaymentNotValidException);
+        }
+      );
     });
     test("Throws a PaymentNotValidException if the payment is real but"
         "incorrect", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      MockWallet().txBuyItem("tradeId1", "incorrectPayment").then(
+        expectAsync1((_) {fail("Operation should fail - real payment but incorrect");}
+        ), onError:(err){
+          assert(err.runtimeType == PaymentNotValidException);
+        });
     });
     test("Throws a ProfileStateException if insufficient funds", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      Map<String, int> testCoins = {"pylons": 1};
+      Future<Profile> mockedProfile = Future<Profile>.value(Profile("testAddress", "testProfile", testCoins, []));
+      when(MockWallet().getProfile(any)).thenReturn(mockedProfile);
+
+      MockWallet().txBuyItem("tradeId1", "testPaymentId").then(
+        expectAsync1((_) {fail("Operation should fail - insufficent funds");}),
+        onError: (err){
+          assert(err.runtimeType == ProfileStateException("Insufficient Funds"));
+        }
+      );
     });
     test("Throws a ProfileDoesNotExistException if no profile", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      Future<Profile> mockedNullProfile = Future<Profile>.value(null);
+      when(MockWallet().getProfile(any)).thenReturn(mockedNullProfile);
+
+      MockWallet().txBuyItem("tradeId1", "testPaymentId").then(
+        expectAsync1((_) {fail("Operation should fail - Profile doesn't exist");}),
+        onError: (err){
+          assert(err.runtimeType == ProfileDoesNotExistException);
+        }
+      );
     });
     test("Throws a ProfileDoesNotExistException if active profile doesn't "
         "exist", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      Map<String, int> testCoins = {"pylons": 1};
+      Future<Profile> mockedNullProfile = Future<Profile>.value(Profile("testAddress", "testProfile", testCoins, []));
+      when(MockWallet().getProfile(any)).thenReturn(mockedNullProfile);
+
+      MockWallet().txBuyItem("tradeId1", "testPaymentId").then(
+        expectAsync1((_) {fail("Operation should fail - Profile doesn't exist");}),
+        onError: (err){
+          assert(err.runtimeType == ProfileDoesNotExistException);
+        }
+      );
     });
     test("Throws a NodeInternalErrorException if node errors during "
         "handling", () {
       throw UnimplementedError("TODO");
     });
     test("Profile state reflects item purchase if TX accepted", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      Map<String, int> testCoins = {"pylons": 1000};
+      Future<Profile> mockedProfile = Future<Profile>.value(Profile("testAddress", "testProfile", testCoins, []));
+      when(MockWallet().getProfile(any)).thenReturn(mockedProfile);
+
+      //MockWallet().txBuyItem("tradeId1", "testPaymentId").then(null);
+
     });
     test("If TX rejected, profile state unchanged", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      MockWallet().txBuyItem("tradeId2", "falsePayment").then(
+        expectAsync1((_) {assert(MockWallet().trades.isEmpty);})
+      );
     });
   });
 
