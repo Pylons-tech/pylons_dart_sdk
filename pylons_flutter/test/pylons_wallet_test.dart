@@ -322,67 +322,174 @@ void main() {
 
   group("PylonsWallet.txBuyPylons", () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError("TODO");
+      MockWallet().txBuyPylons(10, "paymentId").then(
+        expectAsync1((_) {fail("Operation should fail - No wallet to retrieve recipes"); }
+        ), onError: (err) {
+          assert(err.runtimeType == NoWalletException);
+        }
+      );
     });
     test("Throws a PaymentNotValidException if the payment is garbage", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      MockWallet().txBuyPylons(10, "failure on payment").then(
+        expectAsync1((_) {fail("Operation should fail - Payment is garbage");}
+        ), onError: (err){
+          assert(err.runtimeType == PaymentNotValidException);
+        }
+      );
     });
     test("Throws a PaymentNotValidException if the payment is real but"
         "incorrect", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      MockWallet().txBuyPylons(10, "incorrectPayment").then(
+        expectAsync1((_) {fail("Operation should fail - real payment but incorrect");}
+        ), onError:(err){
+          assert(err.runtimeType == PaymentNotValidException);
+        });
     });
     test("Throws a ProfileStateException if insufficient funds", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      Map<String, int> testCoins = {"usd": 1};
+      Future<Profile> mockedProfile = Future<Profile>.value(Profile("testAddress", "testProfile", testCoins, []));
+      when(MockWallet().getProfile(any)).thenReturn(mockedProfile);
+
+      MockWallet().txBuyPylons(10, "testPaymentId").then(
+        expectAsync1((_) {fail("Operation should fail - insufficent funds");}),
+        onError: (err){
+          assert(err.runtimeType == ProfileStateException("Insufficient Funds"));
+        }
+      );
     });
     test("Throws a ProfileDoesNotExistException if no profile", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      Future<Profile> mockedNullProfile = Future<Profile>.value(null);
+      when(MockWallet().getProfile(any)).thenReturn(mockedNullProfile);
+
+      MockWallet().txBuyPylons(10, "testPaymentId").then(
+        expectAsync1((_) {fail("Operation should fail - Profile doesn't exist");}),
+        onError: (err){
+          assert(err.runtimeType == ProfileDoesNotExistException);
+        }
+      );
     });
     test("Throws a ProfileDoesNotExistException if active profile doesn't "
         "exist", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      Map<String, int> testCoins = {"pylons": 1};
+      Future<Profile> mockedNullProfile = Future<Profile>.value(Profile("testAddress", "testProfile", testCoins, []));
+      when(MockWallet().getProfile(any)).thenReturn(mockedNullProfile);
+
+      MockWallet().txBuyPylons(10, "testPaymentId").then(
+        expectAsync1((_) {fail("Operation should fail - Profile doesn't exist");}),
+        onError: (err){
+          assert(err.runtimeType == ProfileDoesNotExistException);
+        }
+      );
     });
     test("Throws a NodeInternalErrorException if node errors during "
         "handling", () {
       throw UnimplementedError("TODO");
     });
-    test("Profile state reflects pylons purchase if TX accepted", () {
-      throw UnimplementedError("TODO");
+    test("Profile state reflects item purchase if TX accepted", () {
+      TestUtil.mockIpcTarget();
+      Map<String, int> testCoins = {"pylons": 1000};
+      Future<Profile> mockedProfile = Future<Profile>.value(Profile("testAddress", "testProfile", testCoins, []));
+      when(MockWallet().getProfile(any)).thenReturn(mockedProfile);
+
+      //MockWallet().txBuyItem("tradeId1", "testPaymentId").then(null);
+
     });
     test("If TX rejected, profile state unchanged", () {
-      throw UnimplementedError("TODO");
+      TestUtil.mockIpcTarget();
+      MockWallet().txBuyPylons(10, "falsePayment").then(
+        /*"TO-DO"*/
+        expectAsync1((_) {assert(/*MockWallet().pylons()*/ true);})
+      );
     });
   });
 
   group("PylonsWallet.txCreateCookbook", () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError("TODO");
+      Cookbook mockCookbook = new Cookbook("nodeVersion", "id", "name", "description", "version", "developer", "sender", "supportEmail", 1);
+      MockWallet().txCreateCookbook(mockCookbook).then(
+          expectAsync1((_) { fail("Operation should not succeed"); }
+          ), onError: (err) {
+        assert(err.runtimeType == NoWalletException);
+      }
+      );
     });
     test("Throws a CookbookAlreadyExistsException if the cookbook exists", () {
-      throw UnimplementedError("TODO");
+      Cookbook mockCookbook = new Cookbook("nodeVersion", "id", "name", "description", "version", "developer", "sender", "supportEmail", 1);
+      TestUtil.mockIpcTarget().loadCookbooks([mockCookbook]);
+
+      MockWallet().txCreateCookbook(mockCookbook).then(
+        expectAsync1((_) {fail("Operation should fail - Cookbook already exists");}
+        ), onError: (err){
+          assert(err.runtimeType == CookbookAlreadyExistsException("name", "sender", "errMsg"));
+        });
     });
     test("Throws a ProfileStateException if insufficient funds", () {
-      throw UnimplementedError("TODO");
+      Cookbook mockCookbook = new Cookbook("nodeVersion", "id", "name", "description", "version", "developer", "sender", "supportEmail", 1);
+      TestUtil.mockIpcTarget().loadCookbooks([mockCookbook]);
+      Map<String, int> testCoins = {"pylons": 0};
+      Future<Profile> mockedProfile = Future<Profile>.value(Profile("testAddress", "testProfile", testCoins, []));
+
+      when(MockWallet().getProfile(any)).thenReturn(mockedProfile);
+
+      MockWallet().txCreateCookbook(mockCookbook).then(
+        expectAsync1((_) {fail("Operation should fail - Insufficient funds");}
+        ), onError: (err){
+          assert(err.runtimeType == ProfileStateException("Insufficient funds"));
+        });
     });
     test("Throws a ProfileDoesNotExistException if no profile", () {
-      throw UnimplementedError("TODO");
+      Cookbook mockCookbook = new Cookbook("nodeVersion", "id", "name", "description", "version", "developer", "sender", "supportEmail", 1);
+      TestUtil.mockIpcTarget().loadCookbooks([mockCookbook]);
+      Map<String, int> testCoins = {"pylons": 0};
+      Future<Profile> mockedProfile = Future<Profile>.value(null);
+
+      when(MockWallet().getProfile(any)).thenReturn(mockedProfile);
+
+      MockWallet().txCreateCookbook(mockCookbook).then(
+        expectAsync1((_) {fail("Operation should fail - Profile does not exist");}
+        ), onError: (err){
+          assert(err.runtimeType == ProfileDoesNotExistException);
+        });
     });
     test("Throws a ProfileDoesNotExistException if active profile doesn't "
         "exist", () {
-      throw UnimplementedError("TODO");
+      throw UnimplementedError("TODO - M");
     });
     test("Throws a NodeInternalErrorException if node errors during "
         "handling", () {
-      throw UnimplementedError("TODO");
+      throw UnimplementedError("TODO - M");
     });
     test("Profile state reflects cookbook creation costs if TX accepted", () {
-      throw UnimplementedError("TODO");
+      Cookbook mockCookbook = new Cookbook("nodeVersion", "id", "name", "description", "version", "developer", "sender", "supportEmail", 1);
+      TestUtil.mockIpcTarget().loadCookbooks([mockCookbook]);
+      Map<String, int> testCoins = {"pylons": 100};
+      Future<Profile> mockedProfile = Future<Profile>.value(Profile("testAddress", "testProfile", testCoins, []));
+
+
+      when(MockWallet().getProfile(any)).thenReturn(mockedProfile);
+
+    throw UnimplementedError("TODO - m");
+      // MockWallet().txCreateCookbook(mockCookbook).then(
+      //   assert(testCoins.), onError: (err){
+      //     assert(err.runtimeType == ProfileDoesNotExistException);
+      //   });
     });
     test("If TX rejected, profile state unchanged", () {
-      throw UnimplementedError("TODO");
+      throw UnimplementedError("TODO - m");
     });
     test("If TX accepted, returned cookbook matches that obtained by using"
         "getCookbooks", () {
-      throw UnimplementedError("TODO");
+      Cookbook mockCookbook = new Cookbook("nodeVersion", "id", "name", "description", "version", "developer", "sender", "supportEmail", 1);
+      TestUtil.mockIpcTarget().loadCookbooks([mockCookbook]);
+
+      MockWallet().getCookbooks().then(
+        expectAsync1((_) {assert(MockWallet().getCookbooks() == mockCookbook);}
+        ));
     });
   });
 
@@ -665,5 +772,6 @@ void main() {
         "getRecipes", () {
       throw UnimplementedError("TODO");
     });
+  });
   });
 }
