@@ -18,24 +18,38 @@ class Recipe {
   EntriesList entries;
   List<WeightedOutput> outputs;
 
-  Recipe(
-      this.nodeVersion,
-      this.sender,
-      this.id,
-      this.disabled,
-      this.name,
-      this.cookbookId,
-      this.description,
-      this.extraInfo,
-      this.blockInterval,
-      this.coinInputs,
-      this.itemInputs,
-      this.entries,
-      this.outputs);
+  Recipe({
+      required this.nodeVersion,
+      required this.sender,
+      required this.id,
+      required this.disabled,
+      required this.name,
+      required this.cookbookId,
+      required this.description,
+      required this.extraInfo,
+      required this.blockInterval,
+      required this.coinInputs,
+      required this.itemInputs,
+      required this.entries,
+      required this.outputs});
 
   /// Generate a web link for this recipe.
   String generateWebLink() {
     throw UnimplementedError();
+  }
+
+  factory Recipe.fromJson(Map<String, dynamic> json ) {
+    return Recipe(nodeVersion: json['nodeVersion'], sender: json['sender'], id: json['id'], 
+    disabled: json['diabled'], 
+    name: json['name'], 
+    cookbookId: json['cookbookId'], 
+    description: json['description'], 
+    extraInfo: json['extraInfo'],
+    blockInterval: json['blockInterval'],
+    coinInputs: json['coinInputs'],
+    itemInputs: json['itemInputs'],
+    entries: json['entries'],
+    outputs: json['outputs']);
   }
 }
 

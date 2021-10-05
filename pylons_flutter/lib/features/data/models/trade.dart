@@ -18,18 +18,32 @@ class Trade {
   bool disabled;
   bool completed;
 
-  Trade(
-      this.nodeVersion,
-      this.id,
-      this.coinInputs,
-      this.itemInputs,
-      this.coinOutputs,
-      this.itemOutputs,
-      this.sender,
-      this.fulfiller,
-      this.extraInfo,
-      this.disabled,
-      this.completed);
+  Trade({
+      required this.nodeVersion,
+      required this.id,
+      required this.coinInputs,
+      required this.itemInputs,
+      required this.coinOutputs,
+      required this.itemOutputs,
+      required this.sender,
+      required this.fulfiller,
+      required this.extraInfo,
+      required this.disabled,
+      required this.completed});
+
+  factory Trade.fromJson(Map<String, dynamic> json ){
+    return Trade(nodeVersion: json['nodeVersion'], 
+    id: json['id'], 
+    coinInputs: json['coinInputs'], 
+    itemInputs: json['itemInputs'], 
+    coinOutputs: json['coinInputs'], 
+    itemOutputs: json['itemOutputs'], 
+    sender: json['sender'], 
+    fulfiller: json['fulfiller'], 
+    extraInfo: json['extraInfo'], 
+    disabled: json['disabled'], 
+    completed: json['completed']);
+  }
 }
 
 /// TODO: describe this
