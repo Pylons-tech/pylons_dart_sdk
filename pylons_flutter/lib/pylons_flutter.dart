@@ -13,3 +13,4 @@ export 'package:pylons_flutter/features/data/models/trade.dart' show Trade;
 export 'package:pylons_flutter/features/data/models/transaction.dart'
     show Transaction;
 export 'package:pylons_flutter/pylons_wallet.dart' show PylonsWallet;
+export 'package:pylons_flutter/pylons_wallet_impl.dart' show PylonsWalletImpl;

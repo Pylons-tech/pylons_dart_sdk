@@ -2,17 +2,18 @@
 ///
 /// The APIs exposed by this library, specifically, are the main way most
 /// client apps should structure their interactions with the wallet.
-library pylons_flutter;
+library pylons_flutter_impl;
 
 import 'dart:async';
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
+import 'package:pylons_flutter/pylons_wallet_comm_util.dart';
 
-/// The PylonsWallet class is the main endpoint developers use for structured,
+/// The Pylons class is the main endpoint developers use for structured,
 /// high-level interactions with the Pylons wallet.
-abstract class PylonsWallet {
+class PylonsWalletImpl implements PylonsWallet {
   /// Async: Send the provided message over the IPC channel, then retrieve a
   /// response.
   ///
@@ -22,10 +23,16 @@ abstract class PylonsWallet {
   ///
   /// The string that is eventually retrieved as a response fits the same
   /// format.
-  Future<String> sendMessage(List<String> msg);
+  @override
+  Future<String> sendMessage(List<String> msg) {
+    throw UnimplementedError();
+  }
 
   /// Async: Returns true if an IPC target exists. False otherwise.
-  Future<bool> exists();
+  @override
+  Future<bool> exists() async {
+    throw UnimplementedError();
+  }
 
   /// Async: Retrieves all cookbooks belonging to the current profile on the
   /// Pylons chain.
@@ -51,7 +58,43 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Cookbook>> getCookbooks();
+  @override
+  Future<List<Cookbook>> getCookbooks() async {
+    Completer<List<Cookbook>> completer = Completer<List<Cookbook>>();
+    PylonsWalletCommUtil.validateExists(this, completer);
+    String key = "getCookbooks";
+    sendMessage([key]).then((String response) {
+      Tuple2<String, List<String>> r = PylonsWalletCommUtil.procResponse(
+          response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r, completer);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        bool handled = PylonsWalletCommUtil.procError("profileDoesNotExist", r,
+            ProfileDoesNotExistException(r.value2[1]), completer) ||
+            PylonsWalletCommUtil.procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        List<Cookbook>? cbs = jsonDecode(r.value2[0]) as List<Cookbook>?;
+        if (cbs == null) {
+          completer.completeError(
+              ResponseException(response, "Malformed cookbooks"));
+        } else {
+          completer.complete(cbs);
+        }
+      }
+    });
+    return completer.future;
+  }
 
   /// Async: Retrieves current state of profile with given address if provided,
   /// or current state of attached wallet's own profile if null.
@@ -80,7 +123,46 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Profile> getProfile(String? address);
+  @override
+  Future<Profile> getProfile(String? address) async {
+    Completer<Profile> completer = Completer<Profile>();
+    PylonsWalletCommUtil.validateExists(this, completer);
+    PylonsWalletCommUtil.validateAddress(address, completer);
+    String key = "getProfile";
+    List<String> ls = [key];
+    if (address != null) ls.add(address);
+    sendMessage(ls).then((String response) {
+      Tuple2<String, List<String>> r = PylonsWalletCommUtil.procResponse(
+          response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r, completer);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        bool handled = PylonsWalletCommUtil.procError("profileDoesNotExist", r,
+            ProfileDoesNotExistException(r.value2[1]), completer) ||
+            PylonsWalletCommUtil.procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Profile? p = jsonDecode(r.value2[0]) as Profile?;
+        if (p == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else {
+          completer.complete(p);
+        }
+      }
+    });
+    return completer.future;
+  }
 
   /// Async: Retrieves a list of recipes on the Pylons chain. If address is
   /// provided, retrieves only recipes belonging to that address; if an empty
@@ -108,7 +190,46 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Recipe>> getRecipes(String? address);
+  @override
+  Future<List<Recipe>> getRecipes(String? address) async {
+    Completer<List<Recipe>> completer = Completer<List<Recipe>>();
+    PylonsWalletCommUtil.validateExists(this, completer);
+    PylonsWalletCommUtil.validateAddress(address, completer);
+    String key = "getRecipes";
+    List<String> ls = [key];
+    if (address != null) ls.add(address);
+    sendMessage(ls).then((String response) {
+      Tuple2<String, List<String>> r = PylonsWalletCommUtil.procResponse(
+          response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r, completer);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        bool handled = PylonsWalletCommUtil.procError("profileDoesNotExist", r,
+            ProfileDoesNotExistException(r.value2[1]), completer) ||
+            PylonsWalletCommUtil.procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        List<Recipe>? rs = jsonDecode(r.value2[0]) as List<Recipe>?;
+        if (rs == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed recipes"));
+        } else {
+          completer.complete(rs);
+        }
+      }
+    });
+    return completer.future;
+  }
 
   /// Async: Retrieves all current trades that exist on the Pylons chain.
   ///
@@ -130,7 +251,41 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Trade>> getTrades();
+  @override
+  Future<List<Trade>> getTrades() async {
+    Completer<List<Trade>> completer = Completer<List<Trade>>();
+    PylonsWalletCommUtil.validateExists(this, completer);
+    String key = "getTrades";
+    sendMessage([key]).then((String response) {
+      Tuple2<String, List<String>> r = PylonsWalletCommUtil.procResponse(
+          response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r, completer);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        bool handled = PylonsWalletCommUtil.procError(
+            "node",
+            r,
+            NodeInternalErrorException(
+                int.parse(r.value2[1]),
+                r.value2[2],
+                "Node threw an unexpected error! "
+                    "Debug this!"),
+            completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        List<Trade>? ts = jsonDecode(r.value2[0]) as List<Trade>?;
+        if (ts == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed trades"));
+        } else {
+          completer.complete(ts);
+        }
+      }
+    });
+    return completer.future;
+  }
 
   /// Async: Creates a transaction to buy an item using either Pylons or a
   /// third-party payment processor.
@@ -171,8 +326,62 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txBuyItem(String tradeId,
-      String paymentId);
+  @override
+  Future<Tuple2<Transaction, Profile>> txBuyItem(
+      String tradeId, String paymentId) async {
+    Completer<Tuple2<Transaction, Profile>> completer =
+    Completer<Tuple2<Transaction, Profile>>();
+    PylonsWalletCommUtil.validateExists(this, completer);
+    String key = "txBuyItem";
+    sendMessage([key, tradeId, paymentId]).then((String response) {
+      Tuple2<String, List<String>> r = PylonsWalletCommUtil.procResponse(
+          response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r, completer);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        bool handled = PylonsWalletCommUtil.procError(
+            "payment",
+            r,
+            PaymentNotValidException(
+                r.value2[1],
+                "Bad "
+                    "payment"),
+            completer) ||
+            PylonsWalletCommUtil.procError(
+                "profileState",
+                r,
+                ProfileStateException("Insufficient"
+                    "funds"),
+                completer) ||
+            PylonsWalletCommUtil.procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            PylonsWalletCommUtil.procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Transaction? tx = jsonDecode(r.value2[0]) as Transaction?;
+        Profile? prf = jsonDecode(r.value2[1]) as Profile?;
+        if (tx == null) {
+          completer.completeError(ResponseException(response, "Malformed tx"));
+        } else if (prf == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else {
+          completer.complete(Tuple2<Transaction, Profile>(tx, prf));
+        }
+      }
+    });
+    return completer.future;
+  }
 
   /// Async: Creates a transaction to buy the provided number of Pylons using a
   /// third-party payment processor.
@@ -205,8 +414,62 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txBuyPylons(int pylons,
-      String paymentId);
+  @override
+  Future<Tuple2<Transaction, Profile>> txBuyPylons(
+      int pylons, String paymentId) async {
+    Completer<Tuple2<Transaction, Profile>> completer =
+    Completer<Tuple2<Transaction, Profile>>();
+    PylonsWalletCommUtil.validateExists(this, completer);
+    String key = "txBuyPylons";
+    sendMessage([key, pylons.toString(), paymentId]).then((String response) {
+      Tuple2<String, List<String>> r = PylonsWalletCommUtil.procResponse(
+          response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r, completer);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        bool handled = PylonsWalletCommUtil.procError(
+            "payment",
+            r,
+            PaymentNotValidException(
+                r.value2[1],
+                "Bad "
+                    "payment"),
+            completer) ||
+            PylonsWalletCommUtil.procError(
+                "profileState",
+                r,
+                ProfileStateException("Insufficient"
+                    "funds"),
+                completer) ||
+            PylonsWalletCommUtil.procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            PylonsWalletCommUtil.procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Transaction? tx = jsonDecode(r.value2[0]) as Transaction?;
+        Profile? prf = jsonDecode(r.value2[1]) as Profile?;
+        if (tx == null) {
+          completer.completeError(ResponseException(response, "Malformed tx"));
+        } else if (prf == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else {
+          completer.complete(Tuple2<Transaction, Profile>(tx, prf));
+        }
+      }
+    });
+    return completer.future;
+  }
 
   /// Async: Creates a transaction to create the provided [Cookbook] on the
   /// Pylons chain against the current profile.
@@ -240,8 +503,66 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
+  @override
   Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(
-      Cookbook cookbook);
+      Cookbook cookbook) async {
+    Completer<Tuple3<Transaction, Profile, Cookbook>> completer =
+    Completer<Tuple3<Transaction, Profile, Cookbook>>();
+    PylonsWalletCommUtil.validateExists(this, completer);
+    String key = "txCreateCookbook";
+    sendMessage([key, const JsonEncoder().convert(cookbook)])
+        .then((String response) {
+      Tuple2<String, List<String>> r = PylonsWalletCommUtil.procResponse(
+          response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r, completer);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        bool handled = PylonsWalletCommUtil.procError(
+            "cookbookAlreadyExists",
+            r,
+            CookbookAlreadyExistsException(
+                r.value2[1], r.value2[2], "Cookbook already exists"),
+            completer) ||
+            PylonsWalletCommUtil.procError(
+                "profileState",
+                r,
+                ProfileStateException("Insufficient"
+                    "funds"),
+                completer) ||
+            PylonsWalletCommUtil.procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            PylonsWalletCommUtil.procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Transaction? tx = jsonDecode(r.value2[0]) as Transaction?;
+        Profile? prf = jsonDecode(r.value2[1]) as Profile?;
+        Cookbook? cb = jsonDecode(r.value2[2]) as Cookbook?;
+        if (tx == null) {
+          completer.completeError(ResponseException(response, "Malformed tx"));
+        } else if (prf == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else if (cb == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed cookbook"));
+        } else {
+          completer
+              .complete(Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb));
+        }
+      }
+    });
+    return completer.future;
+  }
 
   /// Async: Creates a transaction to create the provided [Recipe] on the Pylons
   /// chain against the current profile.
@@ -286,7 +607,79 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Recipe>> txCreateRecipe(Recipe recipe);
+  @override
+  Future<Tuple3<Transaction, Profile, Recipe>> txCreateRecipe(
+      Recipe recipe) async {
+    Completer<Tuple3<Transaction, Profile, Recipe>> completer =
+    Completer<Tuple3<Transaction, Profile, Recipe>>();
+    PylonsWalletCommUtil.validateExists(this, completer);
+    PylonsWalletCommUtil.validateRecipe(recipe, completer);
+    String key = "txCreateRecipe";
+    sendMessage([key, const JsonEncoder().convert(recipe)])
+        .then((String response) {
+      Tuple2<String, List<String>> r = PylonsWalletCommUtil.procResponse(
+          response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r, completer);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        bool handled = PylonsWalletCommUtil.procError(
+            "cookbookDoesNotExist",
+            r,
+            CookbookDoesNotExistException(
+                r.value2[1], "Cookbook does not exist"),
+            completer) ||
+            PylonsWalletCommUtil.procError(
+                "cookbookNotOwned",
+                r,
+                CookbookNotOwnedException(
+                    r.value2[1], r.value2[2], "Cookbook not owned"),
+                completer) ||
+            PylonsWalletCommUtil.procError(
+                "recipeAlreadyyExists",
+                r,
+                RecipeAlreadyExistsException(
+                    r.value2[1], r.value2[2], "Recipe already exists"),
+                completer) ||
+            PylonsWalletCommUtil.procError(
+                "profileState",
+                r,
+                ProfileStateException("Insufficient"
+                    "funds"),
+                completer) ||
+            PylonsWalletCommUtil.procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            PylonsWalletCommUtil.procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Transaction? tx = jsonDecode(r.value2[0]) as Transaction?;
+        Profile? prf = jsonDecode(r.value2[1]) as Profile?;
+        Recipe? rcp = jsonDecode(r.value2[2]) as Recipe?;
+        if (tx == null) {
+          completer.completeError(ResponseException(response, "Malformed tx"));
+        } else if (prf == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else if (rcp == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed recipe"));
+        } else {
+          completer
+              .complete(Tuple3<Transaction, Profile, Recipe>(tx, prf, rcp));
+        }
+      }
+    });
+    return completer.future;
+  }
 
   /// Async: Creates a transaction to disable the recipe with the provided real,
   /// on-chain recipe ID against the current profile. Upon successful
@@ -316,7 +709,10 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Transaction> txDisableRecipe(String recipeId);
+  @override
+  Future<Transaction> txDisableRecipe(String recipeId) async {
+    throw UnimplementedError();
+  }
 
   /// Async: Creates a transaction to enable the recipe with the provided real,
   /// on-chain recipe ID against the current profile. Upon successful
@@ -346,7 +742,10 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Transaction> txEnableRecipe(String recipeId);
+  @override
+  Future<Transaction> txEnableRecipe(String recipeId) async {
+    throw UnimplementedError();
+  }
 
   /// Async: Creates a transaction to execute the recipe with coordinates
   /// cookbookId:recipeName against the current profile. Upon successful
@@ -378,8 +777,11 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(String cookbookId,
-      String recipeName);
+  @override
+  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(
+      String cookbookId, String recipeName) async {
+    throw UnimplementedError();
+  }
 
   /// Async: Creates a transaction to post a trade of the provided [Item] for a
   /// price in pylons against the current profile.
@@ -413,8 +815,11 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(Item item,
-      int price);
+  @override
+  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(
+      Item item, int price) async {
+    throw UnimplementedError();
+  }
 
   /// Async: Creates a transaction to updates the provided [Cookbook] on the
   /// Pylons chain to match that provided against the current profile.
@@ -452,8 +857,72 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
+  @override
   Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(
-      Cookbook cookbook);
+      Cookbook cookbook) async {
+    Completer<Tuple3<Transaction, Profile, Cookbook>> completer =
+    Completer<Tuple3<Transaction, Profile, Cookbook>>();
+    PylonsWalletCommUtil.validateExists(this, completer);
+    String key = "txUpdateCookbook";
+    sendMessage([key, const JsonEncoder().convert(cookbook)])
+        .then((String response) {
+      Tuple2<String, List<String>> r = PylonsWalletCommUtil.procResponse(
+          response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r, completer);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        bool handled = PylonsWalletCommUtil.procError(
+            "cookbookDoesNotExist",
+            r,
+            CookbookDoesNotExistException(
+                r.value2[1], "Cookbook already exists"),
+            completer) ||
+            PylonsWalletCommUtil.procError(
+                "cookbookNotOwned",
+                r,
+                CookbookNotOwnedException(
+                    r.value2[1], r.value2[2], "Cookbook already exists"),
+                completer) ||
+            PylonsWalletCommUtil.procError(
+                "profileState",
+                r,
+                ProfileStateException("Insufficient"
+                    "funds"),
+                completer) ||
+            PylonsWalletCommUtil.procError("profileDoesNotExist", r,
+                ProfileDoesNotExistException(r.value2[1]), completer) ||
+            PylonsWalletCommUtil.procError(
+                "node",
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    "Node threw an unexpected error! "
+                        "Debug this!"),
+                completer);
+        if (!handled) {
+          completer.completeError(UnhandledErrorException(
+              r.value1, "Unknown error passed: ${r.value2}"));
+        }
+      } else {
+        Transaction? tx = jsonDecode(r.value2[0]) as Transaction?;
+        Profile? prf = jsonDecode(r.value2[1]) as Profile?;
+        Cookbook? cb = jsonDecode(r.value2[2]) as Cookbook?;
+        if (tx == null) {
+          completer.completeError(ResponseException(response, "Malformed tx"));
+        } else if (prf == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed profile"));
+        } else if (cb == null) {
+          completer
+              .completeError(ResponseException(response, "Malformed cookbook"));
+        } else {
+          completer
+              .complete(Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb));
+        }
+      }
+    });
+    return completer.future;
+  }
 
   /// Async: Creates a transaction to updates the provided [Recipe] on the
   /// Pylons chain to match that provided against the current profile.
@@ -493,5 +962,9 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(Recipe recipe);
+  @override
+  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(
+      Recipe recipe) async {
+    throw UnimplementedError();
+  }
 }
