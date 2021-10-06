@@ -34,4 +34,17 @@ class Cookbook {
   static Cookbook auto(String appName) {
     throw UnimplementedError();
   }
+
+  factory Cookbook.fromJson(Map<String, dynamic> json) {
+    return Cookbook(
+      nodeVersion: json['nodeVersion'],
+      version: json['version'],
+      supportEmail: json['supportEmail'],
+      name: json['name'],
+      costPerBlock: json['costPerBlock'],
+      description: json['description'],
+      sender: json['sender'],
+      developer: json['developer'],
+    );
+  }
 }

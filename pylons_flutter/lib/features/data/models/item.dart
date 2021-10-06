@@ -29,4 +29,11 @@ class Item {
       required this.doubles,
       required this.longs,
       required this.strings});
+
+
+
+  factory Item.fromJson(Map<String, dynamic> json){
+    return Item(sender: json['sender'], strings: Map.from(json['strings']), ownerTradeId: json['ownerTradeId'], doubles: Map.from(json['doubles']), nodeVersion: json['nodeVersion'], lastUpdate: json['lastUpdate'], cookbookId: json['cookbookId'], longs: {}, transferFee: json['transferFee'], ownerRecipeId: json['ownerRecipeId'], tradable: json['tradable'], );
+  }
+
 }
