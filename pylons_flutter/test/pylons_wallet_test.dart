@@ -29,15 +29,21 @@ void main() {
   });
 
   group("PylonsWallet.getCookbooks", () {
-    test("Throws a NoWalletException if there's no wallet", () {
+    test("Throws a NoWalletException if there's no wallet", () async{
       // We don't mock the IPC target here, since we want a NoWalletException
-      throw UnimplementedError("M - REDO");
+      var mockedWallet = await PylonsWallet.instance;
+      expect(() => mockedWallet?.getCookbooks(), throwsA(NoWalletException));
     });
-    test("Returns cookbooks while there are cookbooks", () {
-      throw UnimplementedError("M - REDO");
+    test("Returns cookbooks while there are cookbooks", () async{
+      var mockedWalletWithCookbooks = TestUtil.mockIpcTarget();
+      mockedWalletWithCookbooks.loadCookbooks([TestUtil.loadCookbook("cookbook/cb1.json")]);
+      var cookbooksFromMockedWallet = await mockedWalletWithCookbooks.getCookbooks();
+      expect(cookbooksFromMockedWallet.length, equals(1));
     });
-    test("Returns an empty list if there are no cookbooks", () {
-      throw UnimplementedError("M - REDO");
+    test("Returns an empty list if there are no cookbooks", () async{
+      var mockedWalletWithNoCookbooks = TestUtil.mockIpcTarget();
+      var cookbooksFromMockedWallet = await mockedWalletWithNoCookbooks.getCookbooks();
+      expect(cookbooksFromMockedWallet, equals(List.empty()));
     });
   });
 
