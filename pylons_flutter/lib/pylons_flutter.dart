@@ -3,11 +3,13 @@
 /// Flutter.
 library pylons_flutter;
 
-export 'package:pylons_flutter/src/cookbook.dart' show Cookbook;
-export 'package:pylons_flutter/src/exceptions.dart';
-export 'package:pylons_flutter/src/item.dart' show Item;
-export 'package:pylons_flutter/src/profile.dart' show Profile;
-export 'package:pylons_flutter/src/recipe.dart' show Recipe;
-export 'package:pylons_flutter/src/trade.dart' show Trade;
-export 'package:pylons_flutter/src/transaction.dart' show Transaction;
-export 'package:pylons_flutter/src/wallet.dart' show Wallet;
+export 'package:pylons_flutter/core/error/exceptions.dart';
+export 'package:pylons_flutter/features/data/models/cookbook.dart'
+    show Cookbook;
+export 'package:pylons_flutter/features/data/models/item.dart' show Item;
+export 'package:pylons_flutter/features/data/models/profile.dart' show Profile;
+export 'package:pylons_flutter/features/data/models/recipe.dart' show Recipe;
+export 'package:pylons_flutter/features/data/models/trade.dart' show Trade;
+export 'package:pylons_flutter/features/data/models/transaction.dart'
+    show Transaction;
+export 'package:pylons_flutter/pylons_wallet.dart' show PylonsWallet;

@@ -8,10 +8,8 @@ class CookbookAlreadyExistsException implements Exception {
   final String cookbookSender;
   final String errMsg;
 
-  CookbookAlreadyExistsException(c, s, e)
-      : cookbook = c,
-        cookbookSender = s,
-        errMsg = e;
+  CookbookAlreadyExistsException(
+      this.cookbook, this.cookbookSender, this.errMsg);
 }
 
 /// Exception thrown by TX-emitting API calls when a cookbook does not exist on
@@ -20,9 +18,7 @@ class CookbookDoesNotExistException implements Exception {
   final String cookbook;
   final String errMsg;
 
-  CookbookDoesNotExistException(c, e)
-      : cookbook = c,
-        errMsg = e;
+  CookbookDoesNotExistException(this.cookbook, this.errMsg);
 }
 
 /// Exception thrown by TX-emitting API calls when a cookbook cannot be modified
@@ -33,10 +29,16 @@ class CookbookNotOwnedException implements Exception {
   final String cbSender;
   final String errMsg;
 
-  CookbookNotOwnedException(c, s, e)
-      : cookbook = c,
-        cbSender = s,
-        errMsg = e;
+  CookbookNotOwnedException(this.cookbook, this.cbSender, this.errMsg);
+}
+
+/// Exception thrown by TX-emitting API calls when an item to be used in
+/// executing a recipe or creating a trade does not exist.
+class ItemDoesNotExistException implements Exception {
+  final String item;
+  final String errMsg;
+
+  ItemDoesNotExistException(this.item, this.errMsg);
 }
 
 /// Exception thrown by TX-emitting API calls when an item to be used in
@@ -46,10 +48,7 @@ class ItemNotOwnedException implements Exception {
   final String itemOwner;
   final String errMsg;
 
-  ItemNotOwnedException(i, o, e)
-      : item = i,
-        itemOwner = o,
-        errMsg = e;
+  ItemNotOwnedException(this.item, this.itemOwner, this.errMsg);
 }
 
 /// Exception thrown by API calls that accept an address as an argument when
@@ -75,9 +74,7 @@ class PaymentNotValidException implements Exception {
   final String paymentId;
   final String errMsg;
 
-  PaymentNotValidException(p, e)
-      : paymentId = p,
-        errMsg = e;
+  PaymentNotValidException(this.paymentId, this.errMsg);
 }
 
 /// Exception thrown by API calls when a profile does not exist on the chain.
@@ -85,12 +82,8 @@ class ProfileDoesNotExistException implements Exception {
   final String address;
   final String errMsg;
 
-  ProfileDoesNotExistException(a)
-      : address = a,
-        errMsg = "The account does not exist on the chain.";
-  ProfileDoesNotExistException.constructorWithMessage(a, e)
-      : address = a,
-        errMsg = e;
+  ProfileDoesNotExistException(this.address,
+      {this.errMsg = "The account does not exist on the chain."});
 }
 
 /// Exception thrown by TX-emitting API calls when a profile is not in a valid
@@ -98,7 +91,7 @@ class ProfileDoesNotExistException implements Exception {
 class ProfileStateException implements Exception {
   final String errMsg;
 
-  ProfileStateException(e) : errMsg = e;
+  ProfileStateException(this.errMsg);
 }
 
 /// Exception thrown by TX-emitting API calls when a recipe already exists
@@ -109,13 +102,13 @@ class RecipeAlreadyExistsException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeAlreadyExistsException(c, rN, e)
+  RecipeAlreadyExistsException(String c, String rN, String e)
       : cookbook = c,
         recipeName = rN,
         recipeId = "",
         errMsg = e;
 
-  RecipeAlreadyExistsException.constructorWithRecipeID(r, e)
+  RecipeAlreadyExistsException.constructorWithRecipeID(String r, String e)
       : cookbook = "",
         recipeName = "",
         recipeId = r,
@@ -130,13 +123,13 @@ class RecipeDoesNotExistException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeDoesNotExistException(c, rN, e)
+  RecipeDoesNotExistException(String c, String rN, String e)
       : cookbook = c,
         recipeName = rN,
         recipeId = "",
         errMsg = e;
 
-  RecipeDoesNotExistException.constructorWithRecipeID(r, e)
+  RecipeDoesNotExistException.constructorWithRecipeID(String r, String e)
       : cookbook = "",
         recipeName = "",
         recipeId = r,
@@ -152,12 +145,8 @@ class RecipeNotOwnedException implements Exception {
   final String recipeSender;
   final String errMsg;
 
-  RecipeNotOwnedException(c, rN, rI, s, e)
-      : cookbook = c,
-        recipeName = rN,
-        recipeId = rI,
-        recipeSender = s,
-        errMsg = e;
+  RecipeNotOwnedException(this.cookbook, this.recipeName, this.recipeId,
+      this.recipeSender, this.errMsg);
 }
 
 /// Exception thrown by TX-emitting API calls when a recipe is not in a valid
@@ -168,11 +157,8 @@ class RecipeStateException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeStateException(c, rN, rI, e)
-      : cookbook = c,
-        recipeName = rN,
-        recipeId = rI,
-        errMsg = e;
+  RecipeStateException(
+      this.cookbook, this.recipeName, this.recipeId, this.errMsg);
 }
 
 /// Exception thrown by TX-emitting API calls when a recipe fails the sanity
@@ -183,11 +169,8 @@ class RecipeValidationException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeValidationException(c, rN, rI, e)
-      : cookbook = c,
-        recipeName = rN,
-        recipeId = rI,
-        errMsg = e;
+  RecipeValidationException(
+      this.cookbook, this.recipeName, this.recipeId, this.errMsg);
 }
 
 /// Exception thrown by TX-emitting API calls when the Pylons node has an
@@ -198,8 +181,5 @@ class NodeInternalErrorException implements Exception {
   final String nodeErrMsg;
   final String errMsg;
 
-  NodeInternalErrorException(e, n, eM)
-      : errorCode = e,
-        nodeErrMsg = n,
-        errMsg = eM;
+  NodeInternalErrorException(this.errorCode, this.nodeErrMsg, this.errMsg);
 }

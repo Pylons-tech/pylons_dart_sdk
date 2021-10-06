@@ -4,9 +4,9 @@ library pylons_flutter_recipe;
 /// A recipe that exists (or can exist) on the Pylons chain, which can be
 /// executed by users to generate coins and items.
 class Recipe {
+  String? id;
   String nodeVersion;
   String sender;
-  String id;
   String name;
   String cookbookId;
   String description;
@@ -19,19 +19,19 @@ class Recipe {
   List<WeightedOutput> outputs;
 
   Recipe(
-      this.nodeVersion,
-      this.sender,
-      this.id,
-      this.disabled,
-      this.name,
-      this.cookbookId,
-      this.description,
-      this.extraInfo,
-      this.blockInterval,
-      this.coinInputs,
-      this.itemInputs,
-      this.entries,
-      this.outputs);
+      {this.id,
+      required this.nodeVersion,
+      required this.sender,
+      required this.disabled,
+      required this.name,
+      required this.cookbookId,
+      required this.description,
+      required this.extraInfo,
+      required this.blockInterval,
+      required this.coinInputs,
+      required this.itemInputs,
+      required this.entries,
+      required this.outputs});
 
   /// Generate a web link for this recipe.
   String generateWebLink() {
@@ -44,20 +44,25 @@ class CoinInput {
   String coin;
   int count;
 
-  CoinInput(this.coin, this.count);
+  CoinInput({required this.coin, required this.count});
 }
 
 /// Describes an item to be consumed by a [Recipe].
 class ItemInput {
-  String id;
+  String? id;
   ConditionList conditions;
   List<DoubleInputParam> doubles;
   List<LongInputParam> longs;
   List<StringInputParam> strings;
   FeeInputParam transferFee;
 
-  ItemInput(this.id, this.conditions, this.doubles, this.longs, this.strings,
-      this.transferFee);
+  ItemInput(
+      {this.id,
+      required this.conditions,
+      required this.doubles,
+      required this.longs,
+      required this.strings,
+      required this.transferFee});
 }
 
 /// TODO: Describe the difference between these fields and the ones in the parent
@@ -67,7 +72,8 @@ class ConditionList {
   List<LongInputParam> longs;
   List<StringInputParam> strings;
 
-  ConditionList(this.doubles, this.longs, this.strings);
+  ConditionList(
+      {required this.doubles, required this.longs, required this.strings});
 }
 
 /// Describes the legal values for a double on an item, if it's to be accepted
@@ -77,7 +83,8 @@ class DoubleInputParam {
   double minValue;
   double maxValue;
 
-  DoubleInputParam(this.key, this.minValue, this.maxValue);
+  DoubleInputParam(
+      {required this.key, required this.minValue, required this.maxValue});
 }
 
 /// Describes the legal values for a long on an item, if it's to be accepted
@@ -87,7 +94,8 @@ class LongInputParam {
   int minValue;
   int maxValue;
 
-  LongInputParam(this.key, this.minValue, this.maxValue);
+  LongInputParam(
+      {required this.key, required this.minValue, required this.maxValue});
 }
 
 /// Describes the legal values for a string on an item, if it's to be accepted
@@ -96,7 +104,7 @@ class StringInputParam {
   String key;
   String value;
 
-  StringInputParam(this.key, this.value);
+  StringInputParam({required this.key, required this.value});
 }
 
 /// Describes a fee associated with the transfer of an [Item].
@@ -105,7 +113,7 @@ class FeeInputParam {
   int minValue;
   int maxValue;
 
-  FeeInputParam(this.minValue, this.maxValue);
+  FeeInputParam({required this.minValue, required this.maxValue});
 }
 
 /// TODO: Describe the relationship between this and [WeightedOutput] sanely
@@ -114,7 +122,10 @@ class EntriesList {
   List<ItemModifyOutput> itemModifyOutputs;
   List<ItemOutput> itemOutputs;
 
-  EntriesList(this.coinOutputs, this.itemModifyOutputs, this.itemOutputs);
+  EntriesList(
+      {required this.coinOutputs,
+      required this.itemModifyOutputs,
+      required this.itemOutputs});
 }
 
 /// TODO: Describe the relationship between this and [EntriesList] sanely
@@ -122,16 +133,16 @@ class WeightedOutput {
   List<String> entryIds;
   double weight;
 
-  WeightedOutput(this.entryIds, this.weight);
+  WeightedOutput({required this.entryIds, required this.weight});
 }
 
 /// Describes the parameters for outputting a [Coin] from a [Recipe].
 class CoinOutput {
-  String id;
+  String? id;
   String coin;
   int count;
 
-  CoinOutput(this.id, this.coin, this.count);
+  CoinOutput({this.id, required this.coin, required this.count});
 }
 
 /// Describes the parameters by which a [Recipe] may modify an existing [Item].
@@ -142,19 +153,28 @@ class ItemModifyOutput {
   List<StringParam> strings;
   int transferFee;
 
-  ItemModifyOutput(this.itemInputRef, this.doubles, this.longs, this.strings,
-      this.transferFee);
+  ItemModifyOutput(
+      {required this.itemInputRef,
+      required this.doubles,
+      required this.longs,
+      required this.strings,
+      required this.transferFee});
 }
 
 /// Describes the parameters by which a [Recipe] may generate a new [Item].
 class ItemOutput {
-  String id;
+  String? id;
   List<DoubleParam> doubles;
   List<LongParam> longs;
   List<StringParam> strings;
   int transferFee;
 
-  ItemOutput(this.id, this.doubles, this.longs, this.strings, this.transferFee);
+  ItemOutput(
+      {this.id,
+      required this.doubles,
+      required this.longs,
+      required this.strings,
+      required this.transferFee});
 }
 
 /// TODO: describe this
@@ -173,7 +193,8 @@ class DoubleWeightRange {
   double lower;
   double weight;
 
-  DoubleWeightRange(this.upper, this.lower, this.weight);
+  DoubleWeightRange(
+      {required this.upper, required this.lower, required this.weight});
 }
 
 /// TODO: describe this
@@ -183,7 +204,11 @@ class LongParam {
   List<LongWeightRange> ranges;
   String program;
 
-  LongParam(this.weight, this.key, this.ranges, this.program);
+  LongParam(
+      {required this.weight,
+      required this.key,
+      required this.ranges,
+      required this.program});
 }
 
 /// TODO: describe this
@@ -192,7 +217,8 @@ class LongWeightRange {
   int lower;
   int weight;
 
-  LongWeightRange(this.upper, this.lower, this.weight);
+  LongWeightRange(
+      {required this.upper, required this.lower, required this.weight});
 }
 
 /// TODO: describe this
@@ -202,5 +228,9 @@ class StringParam {
   String value;
   String program;
 
-  StringParam(this.weight, this.key, this.value, this.program);
+  StringParam(
+      {required this.weight,
+      required this.key,
+      required this.value,
+      required this.program});
 }
