@@ -4,9 +4,9 @@ library pylons_flutter_recipe;
 /// A recipe that exists (or can exist) on the Pylons chain, which can be
 /// executed by users to generate coins and items.
 class Recipe {
+  String? id;
   String nodeVersion;
   String sender;
-  String id;
   String name;
   String cookbookId;
   String description;
@@ -18,10 +18,17 @@ class Recipe {
   EntriesList entries;
   List<WeightedOutput> outputs;
 
+<<<<<<< HEAD
   Recipe({
       required this.nodeVersion,
       required this.sender,
       required this.id,
+=======
+  Recipe(
+      {this.id,
+      required this.nodeVersion,
+      required this.sender,
+>>>>>>> pre-comms-fixes
       required this.disabled,
       required this.name,
       required this.cookbookId,
@@ -38,6 +45,7 @@ class Recipe {
     throw UnimplementedError();
   }
 
+<<<<<<< HEAD
   factory Recipe.fromJson(Map<String, dynamic> json ) {
     return Recipe(nodeVersion: json['nodeVersion'], sender: json['sender'], id: json['id'], 
     disabled: json['diabled'], 
@@ -50,6 +58,22 @@ class Recipe {
     itemInputs: json['itemInputs'],
     entries: json['entries'],
     outputs: json['outputs']);
+=======
+  factory Recipe.fromJson(Map<String, dynamic> json) {
+    return Recipe(
+        extraInfo: json['extraInfo'],
+        description: json['description'],
+        name: json['name'],
+        outputs: [],
+        blockInterval: json['blockInterval'],
+        coinInputs: [...List.from(json['coinInputs']).map((e) => CoinInput.fromJson(e)).toList()],
+        disabled: json['disabled'],
+        entries: json['entries'],
+        cookbookId: json['cookbookId'],
+        nodeVersion: json['nodeVersion'],
+        sender: json['sender'],
+        itemInputs: [...List.from(json['itemInputs']).map((e) => ItemInput.fromJson(e)).toList()]);
+>>>>>>> pre-comms-fixes
   }
 }
 
@@ -58,20 +82,33 @@ class CoinInput {
   String coin;
   int count;
 
-  CoinInput(this.coin, this.count);
+  CoinInput({required this.coin, required this.count});
+
+  factory CoinInput.fromJson(Map<String, dynamic> json) {
+    return CoinInput(count: json['count'], coin: json['coin']);
+  }
 }
 
 /// Describes an item to be consumed by a [Recipe].
 class ItemInput {
-  String id;
+  String? id;
   ConditionList conditions;
   List<DoubleInputParam> doubles;
   List<LongInputParam> longs;
   List<StringInputParam> strings;
   FeeInputParam transferFee;
 
-  ItemInput(this.id, this.conditions, this.doubles, this.longs, this.strings,
-      this.transferFee);
+  ItemInput({this.id, required this.conditions, required this.doubles, required this.longs, required this.strings, required this.transferFee});
+
+  factory ItemInput.fromJson(Map<String, dynamic> json) {
+    return ItemInput(
+      longs: [...List.from(json['longs']).map((e) => LongInputParam.fromJson(e)).toList()],
+      strings: [...List.from(json['strings']).map((e) => StringInputParam.fromJson(e)).toList()],
+      conditions: ConditionList.fromJson(json['conditions']),
+      transferFee: FeeInputParam.fromJson(json['transferFee']),
+      doubles: [...List.from(json['doubles']).map((e) => DoubleInputParam.fromJson(e)).toList()],
+    );
+  }
 }
 
 /// TODO: Describe the difference between these fields and the ones in the parent
@@ -81,7 +118,14 @@ class ConditionList {
   List<LongInputParam> longs;
   List<StringInputParam> strings;
 
-  ConditionList(this.doubles, this.longs, this.strings);
+  ConditionList({required this.doubles, required this.longs, required this.strings});
+
+  factory ConditionList.fromJson(Map<String, dynamic> json) {
+    return ConditionList(
+        doubles: [...List.from(json['doubles']).map((e) => DoubleInputParam.fromJson(e)).toList()],
+        strings: [...List.from(json['strings']).map((e) => StringInputParam.fromJson(e)).toList()],
+        longs: [...List.from(json['longs']).map((e) => LongInputParam.fromJson(e)).toList()]);
+  }
 }
 
 /// Describes the legal values for a double on an item, if it's to be accepted
@@ -91,7 +135,15 @@ class DoubleInputParam {
   double minValue;
   double maxValue;
 
-  DoubleInputParam(this.key, this.minValue, this.maxValue);
+  DoubleInputParam({required this.key, required this.minValue, required this.maxValue});
+
+  factory DoubleInputParam.fromJson(Map<String, dynamic> json) {
+    return DoubleInputParam(
+      minValue: json['minValue'],
+      maxValue: json['maxValue'],
+      key: json['key'],
+    );
+  }
 }
 
 /// Describes the legal values for a long on an item, if it's to be accepted
@@ -101,7 +153,11 @@ class LongInputParam {
   int minValue;
   int maxValue;
 
-  LongInputParam(this.key, this.minValue, this.maxValue);
+  LongInputParam({required this.key, required this.minValue, required this.maxValue});
+
+  factory LongInputParam.fromJson(Map<String, dynamic> json) {
+    return LongInputParam(key: json['key'], maxValue: json['maxValue'], minValue: json['minValue']);
+  }
 }
 
 /// Describes the legal values for a string on an item, if it's to be accepted
@@ -110,7 +166,11 @@ class StringInputParam {
   String key;
   String value;
 
-  StringInputParam(this.key, this.value);
+  StringInputParam({required this.key, required this.value});
+
+  factory StringInputParam.fromJson(Map<String, dynamic> json) {
+    return StringInputParam(key: json['key'], value: json['value']);
+  }
 }
 
 /// Describes a fee associated with the transfer of an [Item].
@@ -119,7 +179,11 @@ class FeeInputParam {
   int minValue;
   int maxValue;
 
-  FeeInputParam(this.minValue, this.maxValue);
+  FeeInputParam({required this.minValue, required this.maxValue});
+
+  factory FeeInputParam.fromJson(Map<String, dynamic> json) {
+    return FeeInputParam(maxValue: json['maxValue'], minValue: json['minValue']);
+  }
 }
 
 /// TODO: Describe the relationship between this and [WeightedOutput] sanely
@@ -128,7 +192,7 @@ class EntriesList {
   List<ItemModifyOutput> itemModifyOutputs;
   List<ItemOutput> itemOutputs;
 
-  EntriesList(this.coinOutputs, this.itemModifyOutputs, this.itemOutputs);
+  EntriesList({required this.coinOutputs, required this.itemModifyOutputs, required this.itemOutputs});
 }
 
 /// TODO: Describe the relationship between this and [EntriesList] sanely
@@ -136,16 +200,16 @@ class WeightedOutput {
   List<String> entryIds;
   double weight;
 
-  WeightedOutput(this.entryIds, this.weight);
+  WeightedOutput({required this.entryIds, required this.weight});
 }
 
 /// Describes the parameters for outputting a [Coin] from a [Recipe].
 class CoinOutput {
-  String id;
+  String? id;
   String coin;
   int count;
 
-  CoinOutput(this.id, this.coin, this.count);
+  CoinOutput({this.id, required this.coin, required this.count});
 }
 
 /// Describes the parameters by which a [Recipe] may modify an existing [Item].
@@ -156,19 +220,18 @@ class ItemModifyOutput {
   List<StringParam> strings;
   int transferFee;
 
-  ItemModifyOutput(this.itemInputRef, this.doubles, this.longs, this.strings,
-      this.transferFee);
+  ItemModifyOutput({required this.itemInputRef, required this.doubles, required this.longs, required this.strings, required this.transferFee});
 }
 
 /// Describes the parameters by which a [Recipe] may generate a new [Item].
 class ItemOutput {
-  String id;
+  String? id;
   List<DoubleParam> doubles;
   List<LongParam> longs;
   List<StringParam> strings;
   int transferFee;
 
-  ItemOutput(this.id, this.doubles, this.longs, this.strings, this.transferFee);
+  ItemOutput({this.id, required this.doubles, required this.longs, required this.strings, required this.transferFee});
 }
 
 /// TODO: describe this
@@ -187,7 +250,7 @@ class DoubleWeightRange {
   double lower;
   double weight;
 
-  DoubleWeightRange(this.upper, this.lower, this.weight);
+  DoubleWeightRange({required this.upper, required this.lower, required this.weight});
 }
 
 /// TODO: describe this
@@ -197,7 +260,7 @@ class LongParam {
   List<LongWeightRange> ranges;
   String program;
 
-  LongParam(this.weight, this.key, this.ranges, this.program);
+  LongParam({required this.weight, required this.key, required this.ranges, required this.program});
 }
 
 /// TODO: describe this
@@ -206,7 +269,7 @@ class LongWeightRange {
   int lower;
   int weight;
 
-  LongWeightRange(this.upper, this.lower, this.weight);
+  LongWeightRange({required this.upper, required this.lower, required this.weight});
 }
 
 /// TODO: describe this
@@ -216,5 +279,5 @@ class StringParam {
   String value;
   String program;
 
-  StringParam(this.weight, this.key, this.value, this.program);
+  StringParam({required this.weight, required this.key, required this.value, required this.program});
 }

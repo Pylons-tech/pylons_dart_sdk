@@ -58,14 +58,14 @@ class NotAnAddressException implements Exception {
   final String errMsg;
 
   NotAnAddressException(this.address,
-      {this.errMsg = "Supplied address is not an address"});
+      {this.errMsg = 'Supplied address is not an address'});
 }
 
 /// Exception thrown by API calls when the wallet doesn't exist.
 class NoWalletException implements Exception {
   final String errMsg;
 
-  NoWalletException({this.errMsg = "The wallet does not exist"});
+  NoWalletException({this.errMsg = 'The wallet does not exist'});
 }
 
 /// Exception thrown by TX-emitting API calls when a provided payment ID does
@@ -83,7 +83,7 @@ class ProfileDoesNotExistException implements Exception {
   final String errMsg;
 
   ProfileDoesNotExistException(this.address,
-      {this.errMsg = "The account does not exist on the chain."});
+      {this.errMsg = 'The account does not exist on the chain.'});
 }
 
 /// Exception thrown by TX-emitting API calls when a profile is not in a valid
@@ -102,15 +102,15 @@ class RecipeAlreadyExistsException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeAlreadyExistsException(c, rN, e)
+  RecipeAlreadyExistsException(String c, String rN, String e)
       : cookbook = c,
         recipeName = rN,
-        recipeId = "",
+        recipeId = '',
         errMsg = e;
 
-  RecipeAlreadyExistsException.constructorWithRecipeID(r, e)
-      : cookbook = "",
-        recipeName = "",
+  RecipeAlreadyExistsException.constructorWithRecipeID(String r, String e)
+      : cookbook = '',
+        recipeName = '',
         recipeId = r,
         errMsg = e;
 }
@@ -123,15 +123,15 @@ class RecipeDoesNotExistException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeDoesNotExistException(c, rN, e)
+  RecipeDoesNotExistException(String c, String rN, String e)
       : cookbook = c,
         recipeName = rN,
-        recipeId = "",
+        recipeId = '',
         errMsg = e;
 
-  RecipeDoesNotExistException.constructorWithRecipeID(r, e)
-      : cookbook = "",
-        recipeName = "",
+  RecipeDoesNotExistException.constructorWithRecipeID(String r, String e)
+      : cookbook = '',
+        recipeName = '',
         recipeId = r,
         errMsg = e;
 }
@@ -173,6 +173,15 @@ class RecipeValidationException implements Exception {
       this.cookbook, this.recipeName, this.recipeId, this.errMsg);
 }
 
+/// Exception thrown when an outgoing message gets an illegal response.
+/// This should not be seen in production environments.
+class ResponseException implements Exception {
+  final String rawResponse;
+  final String errMsg;
+
+  ResponseException(this.rawResponse, this.errMsg);
+}
+
 /// Exception thrown by TX-emitting API calls when the Pylons node has an
 /// internal error during processing of the emitted TX. If this occurs in
 /// production environments, that's a problem.
@@ -182,4 +191,14 @@ class NodeInternalErrorException implements Exception {
   final String errMsg;
 
   NodeInternalErrorException(this.errorCode, this.nodeErrMsg, this.errMsg);
+}
+
+/// Exception thrown by API calls when they get an error they aren't prepared
+/// for. This should absolutely, 100 percent never be seen in production
+/// environments.
+class UnhandledErrorException implements Exception {
+  final String errType;
+  final String errMsg;
+
+  UnhandledErrorException(this.errType, this.errMsg);
 }

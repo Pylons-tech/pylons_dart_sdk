@@ -2,33 +2,20 @@
 ///
 /// The APIs exposed by this library, specifically, are the main way most
 /// client apps should structure their interactions with the wallet.
-library pylons_flutter;
+library pylons_flutter_impl;
 
 import 'dart:async';
-
+import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
+import 'package:pylons_flutter/pylons_wallet_comm_util.dart';
 
-/// The PylonsWallet class is the main endpoint developers use for structured,
+import 'core/constants/strings.dart';
+
+/// The Pylons class is the main endpoint developers use for structured,
 /// high-level interactions with the Pylons wallet.
-abstract class PylonsWallet {
-<<<<<<< HEAD
-  PylonsWallet() {
-    instance = this;
-  }
-
-  static PylonsWallet? instance;
-
-  /// Retrieves the [AndroidWallet] instance. Since [AndroidWallet] is a
-  /// singleton, this method will always return a reference to the same object.
-  static void android() => AndroidWallet();
-
-  /// Async: Returns true if an IPC target exists. False otherwise.
-  static Future<bool> exists() async {
-    return instance != null;
-  }
-=======
+class PylonsWalletImpl implements PylonsWallet {
   /// Async: Send the provided message over the IPC channel, then retrieve a
   /// response.
   ///
@@ -38,11 +25,16 @@ abstract class PylonsWallet {
   ///
   /// The string that is eventually retrieved as a response fits the same
   /// format.
-  Future<String> sendMessage(List<String> msg);
+  @override
+  Future<String> sendMessage(List<String> msg) {
+    throw UnimplementedError();
+  }
 
   /// Async: Returns true if an IPC target exists. False otherwise.
-  Future<bool> exists();
->>>>>>> pre-comms-fixes
+  @override
+  Future<bool> exists() async {
+    throw UnimplementedError();
+  }
 
   /// Async: Retrieves all cookbooks belonging to the current profile on the
   /// Pylons chain.
@@ -68,7 +60,36 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Cookbook>> getCookbooks();
+  @override
+  Future<List<Cookbook>> getCookbooks() async {
+    return Future<List<Cookbook>>.sync(() async {
+      await PylonsWalletCommUtil.validateExists(this);
+      var key = Strings.GET_COOK_BOOKS;
+      var response = await sendMessage([key]);
+      var r = PylonsWalletCommUtil.procResponse(response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        PylonsWalletCommUtil.procError('profileDoesNotExist', r, ProfileDoesNotExistException(r.value2[1])) ||
+            PylonsWalletCommUtil.procError(
+              'node',
+              r,
+              NodeInternalErrorException(
+                  int.parse(r.value2[1]),
+                  r.value2[2],
+                  'Node threw an unexpected error! '
+                  'Debug this!'),
+            );
+
+        throw UnhandledErrorException(r.value1, 'Unknown error passed: ${r.value2}');
+      }
+      var cbs = List.from(jsonDecode(r.value2[0])).map((e) => Cookbook.fromJson(e)).toList();
+      if (cbs.isEmpty) {
+        throw ResponseException(response, 'Malformed cookbooks');
+      }
+
+      return cbs;
+    });
+  }
 
   /// Async: Retrieves current state of profile with given address if provided,
   /// or current state of attached wallet's own profile if null.
@@ -97,7 +118,35 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Profile> getProfile(String? address);
+  @override
+  Future<Profile> getProfile(String? address) async {
+    return Future<Profile>.sync(() async {
+      await PylonsWalletCommUtil.validateExists(this);
+      PylonsWalletCommUtil.validateAddress(address);
+      var key = Strings.GET_PROFILE;
+      var ls = <String>[key];
+      if (address != null) ls.add(address);
+      var response = await sendMessage(ls);
+
+      var r = PylonsWalletCommUtil.procResponse(response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        PylonsWalletCommUtil.procError('profileDoesNotExist', r, ProfileDoesNotExistException(r.value2[1])) ||
+            PylonsWalletCommUtil.procError(
+                'node',
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    'Node threw an unexpected error! '
+                    'Debug this!'));
+
+        throw UnhandledErrorException(r.value1, 'Unknown error passed: ${r.value2}');
+      }
+      var p = Profile.fromJson(jsonDecode(r.value2[0]));
+      return p;
+    });
+  }
 
   /// Async: Retrieves a list of recipes on the Pylons chain. If address is
   /// provided, retrieves only recipes belonging to that address; if an empty
@@ -125,7 +174,39 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Recipe>> getRecipes(String? address);
+  @override
+  Future<List<Recipe>> getRecipes(String? address) async {
+    return Future<List<Recipe>>.sync(() async {
+      await PylonsWalletCommUtil.validateExists(this);
+      PylonsWalletCommUtil.validateAddress(address);
+
+      var key = Strings.GET_RECIPE;
+      var ls = <String>[key];
+      if (address != null) ls.add(address);
+      var response = await sendMessage(ls);
+      var r = PylonsWalletCommUtil.procResponse(response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        PylonsWalletCommUtil.procError('profileDoesNotExist', r, ProfileDoesNotExistException(r.value2[1])) ||
+            PylonsWalletCommUtil.procError(
+                'node',
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    'Node threw an unexpected error! '
+                    'Debug this!'));
+
+        throw UnhandledErrorException(r.value1, 'Unknown error passed: ${r.value2}');
+      }
+      var rs = List.from(jsonDecode(r.value2[0])).map((e) => Recipe.fromJson(e)).toList();
+      if (rs.isEmpty) {
+        throw ResponseException(response, 'Malformed recipes');
+      }
+
+      return rs;
+    });
+  }
 
   /// Async: Retrieves all current trades that exist on the Pylons chain.
   ///
@@ -147,7 +228,35 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Trade>> getTrades();
+  @override
+  Future<List<Trade>> getTrades() async {
+    return Future.sync(() async {
+      await PylonsWalletCommUtil.validateExists(this);
+      var key = Strings.GET_TRADES;
+      var response = await sendMessage([key]);
+      var r = PylonsWalletCommUtil.procResponse(response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        PylonsWalletCommUtil.procError(
+            'node',
+            r,
+            NodeInternalErrorException(
+                int.parse(r.value2[1]),
+                r.value2[2],
+                'Node threw an unexpected error! '
+                'Debug this!'));
+
+        throw UnhandledErrorException(r.value1, 'Unknown error passed: ${r.value2}');
+      }
+
+      var ts = List.from(jsonDecode(r.value2[0])).map((e) => Trade.fromJson(e)).toList();
+      if (ts.isEmpty) {
+        throw ResponseException(response, 'Malformed trades');
+      }
+
+      return ts;
+    });
+  }
 
   /// Async: Creates a transaction to buy an item using either Pylons or a
   /// third-party payment processor.
@@ -188,8 +297,45 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txBuyItem(String tradeId,
-      String paymentId);
+  @override
+  Future<Tuple2<Transaction, Profile>> txBuyItem(String tradeId, String paymentId) async {
+    return Future<Tuple2<Transaction, Profile>>.sync(() async {
+      await PylonsWalletCommUtil.validateExists(this);
+      var key = Strings.TX_BUY_ITEMS;
+      var response = await sendMessage([key, tradeId, paymentId]);
+      var r = PylonsWalletCommUtil.procResponse(response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        PylonsWalletCommUtil.procError(
+                'payment',
+                r,
+                PaymentNotValidException(
+                    r.value2[1],
+                    'Bad '
+                    'payment')) ||
+            PylonsWalletCommUtil.procError(
+                'profileState',
+                r,
+                ProfileStateException('Insufficient'
+                    'funds')) ||
+            PylonsWalletCommUtil.procError('profileDoesNotExist', r, ProfileDoesNotExistException(r.value2[1])) ||
+            PylonsWalletCommUtil.procError(
+                'node',
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    'Node threw an unexpected error! '
+                    'Debug this!'));
+
+        throw UnhandledErrorException(r.value1, 'Unknown error passed: ${r.value2}');
+      }
+      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var prf = Profile.fromJson(jsonDecode(r.value2[1]));
+
+      return Tuple2<Transaction, Profile>(tx, prf);
+    });
+  }
 
   /// Async: Creates a transaction to buy the provided number of Pylons using a
   /// third-party payment processor.
@@ -222,8 +368,48 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txBuyPylons(int pylons,
-      String paymentId);
+  @override
+  Future<Tuple2<Transaction, Profile>> txBuyPylons(int pylons, String paymentId) {
+    return Future<Tuple2<Transaction, Profile>>.sync(() async {
+      await PylonsWalletCommUtil.validateExists(this);
+      var key = Strings.TX_BUY_PYLONS;
+      var response = await sendMessage([key, pylons.toString(), paymentId]);
+
+      var r = PylonsWalletCommUtil.procResponse(response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        PylonsWalletCommUtil.procError(
+              'payment',
+              r,
+              PaymentNotValidException(
+                  r.value2[1],
+                  'Bad '
+                  'payment'),
+            ) ||
+            PylonsWalletCommUtil.procError(
+              'profileState',
+              r,
+              ProfileStateException('Insufficient'
+                  'funds'),
+            ) ||
+            PylonsWalletCommUtil.procError('profileDoesNotExist', r, ProfileDoesNotExistException(r.value2[1])) ||
+            PylonsWalletCommUtil.procError(
+                'node',
+                r,
+                NodeInternalErrorException(
+                    int.parse(r.value2[1]),
+                    r.value2[2],
+                    'Node threw an unexpected error! '
+                    'Debug this!'));
+
+        throw UnhandledErrorException(r.value1, 'Unknown error passed: ${r.value2}');
+      }
+      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var prf = Profile.fromJson(jsonDecode(r.value2[1]));
+
+      return Tuple2<Transaction, Profile>(tx, prf);
+    });
+  }
 
   /// Async: Creates a transaction to create the provided [Cookbook] on the
   /// Pylons chain against the current profile.
@@ -257,8 +443,44 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(
-      Cookbook cookbook);
+  @override
+  Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(Cookbook cookbook) async {
+    return Future<Tuple3<Transaction, Profile, Cookbook>>.sync(() async {
+      await PylonsWalletCommUtil.validateExists(this);
+      var key = Strings.TX_CREATE_COOK_BOOK;
+      var response = await sendMessage([key, const JsonEncoder().convert(cookbook)]);
+
+      var r = PylonsWalletCommUtil.procResponse(response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        PylonsWalletCommUtil.procError('cookbookAlreadyExists', r, CookbookAlreadyExistsException(r.value2[1], r.value2[2], 'Cookbook already exists')) ||
+            PylonsWalletCommUtil.procError(
+              'profileState',
+              r,
+              ProfileStateException('Insufficient'
+                  'funds'),
+            ) ||
+            PylonsWalletCommUtil.procError('profileDoesNotExist', r, ProfileDoesNotExistException(r.value2[1])) ||
+            PylonsWalletCommUtil.procError(
+              'node',
+              r,
+              NodeInternalErrorException(
+                  int.parse(r.value2[1]),
+                  r.value2[2],
+                  'Node threw an unexpected error! '
+                  'Debug this!'),
+            );
+
+        throw UnhandledErrorException(r.value1, 'Unknown error passed: ${r.value2}');
+      }
+
+      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var prf = Profile.fromJson(jsonDecode(r.value2[1]));
+      var cb = Cookbook.fromJson(jsonDecode(r.value2[2]));
+
+      return Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb);
+    });
+  }
 
   /// Async: Creates a transaction to create the provided [Recipe] on the Pylons
   /// chain against the current profile.
@@ -303,7 +525,61 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Recipe>> txCreateRecipe(Recipe recipe);
+  @override
+  Future<Tuple3<Transaction, Profile, Recipe>> txCreateRecipe(Recipe recipe) async {
+    return Future<Tuple3<Transaction, Profile, Recipe>>.sync(() async {
+      await PylonsWalletCommUtil.validateExists(this);
+      PylonsWalletCommUtil.validateRecipe(recipe);
+      var key = Strings.TX_CREATE_RECIPE;
+      var response = await sendMessage([key, const JsonEncoder().convert(recipe)]);
+      var r = PylonsWalletCommUtil.procResponse(response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        PylonsWalletCommUtil.procError(
+              'cookbookDoesNotExist',
+              r,
+              CookbookDoesNotExistException(r.value2[1], 'Cookbook does not exist'),
+            ) ||
+            PylonsWalletCommUtil.procError(
+              'cookbookNotOwned',
+              r,
+              CookbookNotOwnedException(r.value2[1], r.value2[2], 'Cookbook not owned'),
+            ) ||
+            PylonsWalletCommUtil.procError(
+              'recipeAlreadyyExists',
+              r,
+              RecipeAlreadyExistsException(r.value2[1], r.value2[2], 'Recipe already exists'),
+            ) ||
+            PylonsWalletCommUtil.procError(
+              'profileState',
+              r,
+              ProfileStateException('Insufficient'
+                  'funds'),
+            ) ||
+            PylonsWalletCommUtil.procError(
+              'profileDoesNotExist',
+              r,
+              ProfileDoesNotExistException(r.value2[1]),
+            ) ||
+            PylonsWalletCommUtil.procError(
+              'node',
+              r,
+              NodeInternalErrorException(
+                  int.parse(r.value2[1]),
+                  r.value2[2],
+                  'Node threw an unexpected error! '
+                  'Debug this!'),
+            );
+
+        throw UnhandledErrorException(r.value1, 'Unknown error passed: ${r.value2}');
+      }
+      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var prf = Profile.fromJson(jsonDecode(r.value2[1]));
+      var rcp = Recipe.fromJson(jsonDecode(r.value2[2]));
+
+      return Tuple3<Transaction, Profile, Recipe>(tx, prf, rcp);
+    });
+  }
 
   /// Async: Creates a transaction to disable the recipe with the provided real,
   /// on-chain recipe ID against the current profile. Upon successful
@@ -333,7 +609,10 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Transaction> txDisableRecipe(String recipeId);
+  @override
+  Future<Transaction> txDisableRecipe(String recipeId) async {
+    throw UnimplementedError();
+  }
 
   /// Async: Creates a transaction to enable the recipe with the provided real,
   /// on-chain recipe ID against the current profile. Upon successful
@@ -363,7 +642,10 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Transaction> txEnableRecipe(String recipeId);
+  @override
+  Future<Transaction> txEnableRecipe(String recipeId) async {
+    throw UnimplementedError();
+  }
 
   /// Async: Creates a transaction to execute the recipe with coordinates
   /// cookbookId:recipeName against the current profile. Upon successful
@@ -395,8 +677,10 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(String cookbookId,
-      String recipeName);
+  @override
+  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(String cookbookId, String recipeName) async {
+    throw UnimplementedError();
+  }
 
   /// Async: Creates a transaction to post a trade of the provided [Item] for a
   /// price in pylons against the current profile.
@@ -430,8 +714,10 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(Item item,
-      int price);
+  @override
+  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(Item item, int price) async {
+    throw UnimplementedError();
+  }
 
   /// Async: Creates a transaction to updates the provided [Cookbook] on the
   /// Pylons chain to match that provided against the current profile.
@@ -469,8 +755,47 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(
-      Cookbook cookbook);
+  @override
+  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(Cookbook cookbook) async {
+    return Future<Tuple3<Transaction, Profile, Cookbook>>.sync(() async {
+      await PylonsWalletCommUtil.validateExists(this);
+      var key = Strings.TX_UPDATE_COOK_BOOK;
+      var response = await sendMessage([key, const JsonEncoder().convert(cookbook)]);
+      var r = PylonsWalletCommUtil.procResponse(response);
+      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
+      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
+        PylonsWalletCommUtil.procError('cookbookDoesNotExist', r, CookbookDoesNotExistException(r.value2[1], 'Cookbook already exists')) ||
+            PylonsWalletCommUtil.procError('cookbookNotOwned', r, CookbookNotOwnedException(r.value2[1], r.value2[2], 'Cookbook already exists')) ||
+            PylonsWalletCommUtil.procError(
+              'profileState',
+              r,
+              ProfileStateException('Insufficient'
+                  'funds'),
+            ) ||
+            PylonsWalletCommUtil.procError(
+              'profileDoesNotExist',
+              r,
+              ProfileDoesNotExistException(r.value2[1]),
+            ) ||
+            PylonsWalletCommUtil.procError(
+              'node',
+              r,
+              NodeInternalErrorException(
+                  int.parse(r.value2[1]),
+                  r.value2[2],
+                  'Node threw an unexpected error! '
+                  'Debug this!'),
+            );
+
+        throw UnhandledErrorException(r.value1, 'Unknown error passed: ${r.value2}');
+      }
+      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var prf = Profile.fromJson(jsonDecode(r.value2[1]));
+      var cb = Cookbook.fromJson(jsonDecode(r.value2[2]));
+
+      throw Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb);
+    });
+  }
 
   /// Async: Creates a transaction to updates the provided [Recipe] on the
   /// Pylons chain to match that provided against the current profile.
@@ -510,24 +835,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-<<<<<<< HEAD
-  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(
-      Recipe recipe) async {
+  @override
+  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(Recipe recipe) async {
     throw UnimplementedError();
   }
 }
-
-/// The Android implementation of the Pylons wallet.
-class AndroidWallet extends PylonsWallet {
-  AndroidWallet._privateConstructor() : super();
-
-  static final AndroidWallet _instance = AndroidWallet._privateConstructor();
-
-  factory AndroidWallet() {
-    return _instance;
-  }
-}
-=======
-  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(Recipe recipe);
-}
->>>>>>> pre-comms-fixes

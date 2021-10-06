@@ -6,8 +6,8 @@ import 'package:pylons_flutter/features/data/models/recipe.dart';
 
 /// A record of a trade that exists on a Pylons blockchain.
 class Trade {
+  String? id;
   String nodeVersion;
-  String id;
   List<CoinInput> coinInputs;
   List<TradeItemInput> itemInputs;
   Map<String, int> coinOutputs;
@@ -18,9 +18,15 @@ class Trade {
   bool disabled;
   bool completed;
 
+<<<<<<< HEAD
   Trade({
       required this.nodeVersion,
       required this.id,
+=======
+  Trade(
+      {this.id,
+      required this.nodeVersion,
+>>>>>>> pre-comms-fixes
       required this.coinInputs,
       required this.itemInputs,
       required this.coinOutputs,
@@ -31,6 +37,7 @@ class Trade {
       required this.disabled,
       required this.completed});
 
+<<<<<<< HEAD
   factory Trade.fromJson(Map<String, dynamic> json ){
     return Trade(nodeVersion: json['nodeVersion'], 
     id: json['id'], 
@@ -43,6 +50,21 @@ class Trade {
     extraInfo: json['extraInfo'], 
     disabled: json['disabled'], 
     completed: json['completed']);
+=======
+  factory Trade.fromJson(Map<String, dynamic> json) {
+    return Trade(
+      coinOutputs: json['coinOutputs'],
+      itemOutputs: [...List.from(json['itemOutputs']).map((e) => Item.fromJson(e)).toList()],
+      extraInfo: json['extraInfo'],
+      fulfiller: json['fulfiller'],
+      nodeVersion: json['nodeVersion'],
+      completed: json['completed'],
+      sender: json['sender'],
+      itemInputs: [...List.from(json['itemOutputs']).map((e) => TradeItemInput.fromJson(e)).toList()],
+      disabled: json['disabled'],
+      coinInputs: [...List.from(json['coinInputs']).map((e) => CoinInput.fromJson(e)).toList()],
+    );
+>>>>>>> pre-comms-fixes
   }
 }
 
@@ -51,5 +73,12 @@ class TradeItemInput {
   String cookbookId;
   ItemInput itemInput;
 
-  TradeItemInput(this.cookbookId, this.itemInput);
+  TradeItemInput({required this.cookbookId, required this.itemInput});
+
+  factory TradeItemInput.fromJson(Map<String, dynamic> json) {
+    return TradeItemInput(
+      cookbookId: json['cookbookId'],
+      itemInput: ItemInput.fromJson(json['itemInput']),
+    );
+  }
 }
