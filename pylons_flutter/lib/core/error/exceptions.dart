@@ -58,14 +58,14 @@ class NotAnAddressException implements Exception {
   final String errMsg;
 
   NotAnAddressException(this.address,
-      {this.errMsg = "Supplied address is not an address"});
+      {this.errMsg = 'Supplied address is not an address'});
 }
 
 /// Exception thrown by API calls when the wallet doesn't exist.
 class NoWalletException implements Exception {
   final String errMsg;
 
-  NoWalletException({this.errMsg = "The wallet does not exist"});
+  NoWalletException({this.errMsg = 'The wallet does not exist'});
 }
 
 /// Exception thrown by TX-emitting API calls when a provided payment ID does
@@ -83,7 +83,7 @@ class ProfileDoesNotExistException implements Exception {
   final String errMsg;
 
   ProfileDoesNotExistException(this.address,
-      {this.errMsg = "The account does not exist on the chain."});
+      {this.errMsg = 'The account does not exist on the chain.'});
 }
 
 /// Exception thrown by TX-emitting API calls when a profile is not in a valid
@@ -105,12 +105,12 @@ class RecipeAlreadyExistsException implements Exception {
   RecipeAlreadyExistsException(String c, String rN, String e)
       : cookbook = c,
         recipeName = rN,
-        recipeId = "",
+        recipeId = '',
         errMsg = e;
 
   RecipeAlreadyExistsException.constructorWithRecipeID(String r, String e)
-      : cookbook = "",
-        recipeName = "",
+      : cookbook = '',
+        recipeName = '',
         recipeId = r,
         errMsg = e;
 }
@@ -126,12 +126,12 @@ class RecipeDoesNotExistException implements Exception {
   RecipeDoesNotExistException(String c, String rN, String e)
       : cookbook = c,
         recipeName = rN,
-        recipeId = "",
+        recipeId = '',
         errMsg = e;
 
   RecipeDoesNotExistException.constructorWithRecipeID(String r, String e)
-      : cookbook = "",
-        recipeName = "",
+      : cookbook = '',
+        recipeName = '',
         recipeId = r,
         errMsg = e;
 }
