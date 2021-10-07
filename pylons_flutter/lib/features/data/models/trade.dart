@@ -34,15 +34,25 @@ class Trade {
   factory Trade.fromJson(Map<String, dynamic> json) {
     return Trade(
       coinOutputs: json['coinOutputs'],
-      itemOutputs: [...List.from(json['itemOutputs']).map((e) => Item.fromJson(e)).toList()],
+      itemOutputs: [
+        ...List.from(json['itemOutputs']).map((e) => Item.fromJson(e)).toList()
+      ],
       extraInfo: json['extraInfo'],
       fulfiller: json['fulfiller'],
       nodeVersion: json['nodeVersion'],
       completed: json['completed'],
       sender: json['sender'],
-      itemInputs: [...List.from(json['itemOutputs']).map((e) => TradeItemInput.fromJson(e)).toList()],
+      itemInputs: [
+        ...List.from(json['itemOutputs'])
+            .map((e) => TradeItemInput.fromJson(e))
+            .toList()
+      ],
       disabled: json['disabled'],
-      coinInputs: [...List.from(json['coinInputs']).map((e) => CoinInput.fromJson(e)).toList()],
+      coinInputs: [
+        ...List.from(json['coinInputs'])
+            .map((e) => CoinInput.fromJson(e))
+            .toList()
+      ],
     );
   }
 }

@@ -6,7 +6,6 @@ library pylons_flutter;
 
 import 'dart:async';
 
-
 import 'package:dartz/dartz.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
 
@@ -23,9 +22,6 @@ abstract class PylonsWallet {
   /// The string that is eventually retrieved as a response fits the same
   /// format.
   Future<String> sendMessage(List<String> msg);
-
-  /// Async: Returns true if an IPC target exists. False otherwise.
-  Future<bool> exists();
 
   /// Async: Retrieves all cookbooks belonging to the current profile on the
   /// Pylons chain.
@@ -171,8 +167,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txBuyItem(String tradeId,
-      String paymentId);
+  Future<Tuple2<Transaction, Profile>> txBuyItem(
+      String tradeId, String paymentId);
 
   /// Async: Creates a transaction to buy the provided number of Pylons using a
   /// third-party payment processor.
@@ -205,8 +201,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txBuyPylons(int pylons,
-      String paymentId);
+  Future<Tuple2<Transaction, Profile>> txBuyPylons(
+      int pylons, String paymentId);
 
   /// Async: Creates a transaction to create the provided [Cookbook] on the
   /// Pylons chain against the current profile.
@@ -378,8 +374,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(String cookbookId,
-      String recipeName);
+  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(
+      String cookbookId, String recipeName, List<String> itemIds);
 
   /// Async: Creates a transaction to post a trade of the provided [Item] for a
   /// price in pylons against the current profile.
@@ -413,8 +409,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(Item item,
-      int price);
+  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(
+      Item item, int price);
 
   /// Async: Creates a transaction to updates the provided [Cookbook] on the
   /// Pylons chain to match that provided against the current profile.
