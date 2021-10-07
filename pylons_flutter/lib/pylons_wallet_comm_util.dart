@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz_unsafe.dart';
 import 'package:pylons_flutter/core/constants/strings.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
 
@@ -14,9 +15,45 @@ class PylonsWalletCommUtil {
     throw UnimplementedError();
   }
 
-  static bool validateRecipe(Recipe recipe) {
-    // TODO: Implement this.
-    throw UnimplementedError();
+  /// Verifies that all of a recipe's outputs are accessible, and that it
+  /// doesn't refer to any outputs that are not present.
+  static void validateRecipe(Recipe recipe) {
+    var found = <String>[];
+    var reFound = <String>[];
+    var orphanOutputs = <String>[];
+    var unknownOutputs = <String>[];
+    recipe.outputs.forEach((output) {
+      output.entryIds.forEach((entry) {
+        if (!found.contains(entry)) found.add(entry);
+      });
+    });
+    found.forEach((entryId) {
+      recipe.entries.coinOutputs.forEach((output) {
+        if (found.contains(output.id) && !reFound.contains(output.id)) {
+          reFound.add(output.id!);
+        } else {
+          orphanOutputs.add(output.id!);
+        }
+      });
+      recipe.entries.itemOutputs.forEach((output) {
+        if (found.contains(output.id) && !reFound.contains(output.id)) {
+          reFound.add(output.id!);
+        } else {
+          orphanOutputs.add(output.id!);
+        }
+      });
+      if (!reFound.contains(entryId)) unknownOutputs.add(entryId);
+    });
+    if (unknownOutputs.isNotEmpty || orphanOutputs.isNotEmpty) {
+      throw RecipeValidationException(
+          recipe.cookbookId,
+          recipe.name,
+          recipe.id ??= 'n/a',
+          'Recipe validation failed\nUnknown entry ids:\n\n'
+          '${const JsonEncoder().convert(unknownOutputs)}\n\n'
+          'Orphaned entries:\n\n'
+          '${const JsonEncoder().convert(orphanOutputs)}');
+    }
   }
 
   static bool responseIsError(String v, String key) {
