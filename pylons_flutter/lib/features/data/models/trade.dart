@@ -18,15 +18,9 @@ class Trade {
   bool disabled;
   bool completed;
 
-<<<<<<< HEAD
-  Trade({
-      required this.nodeVersion,
-      required this.id,
-=======
   Trade(
       {this.id,
       required this.nodeVersion,
->>>>>>> pre-comms-fixes
       required this.coinInputs,
       required this.itemInputs,
       required this.coinOutputs,
@@ -37,20 +31,6 @@ class Trade {
       required this.disabled,
       required this.completed});
 
-<<<<<<< HEAD
-  factory Trade.fromJson(Map<String, dynamic> json ){
-    return Trade(nodeVersion: json['nodeVersion'], 
-    id: json['id'], 
-    coinInputs: json['coinInputs'], 
-    itemInputs: json['itemInputs'], 
-    coinOutputs: json['coinInputs'], 
-    itemOutputs: json['itemOutputs'], 
-    sender: json['sender'], 
-    fulfiller: json['fulfiller'], 
-    extraInfo: json['extraInfo'], 
-    disabled: json['disabled'], 
-    completed: json['completed']);
-=======
   factory Trade.fromJson(Map<String, dynamic> json) {
     return Trade(
       coinOutputs: json['coinOutputs'],
@@ -64,7 +44,6 @@ class Trade {
       disabled: json['disabled'],
       coinInputs: [...List.from(json['coinInputs']).map((e) => CoinInput.fromJson(e)).toList()],
     );
->>>>>>> pre-comms-fixes
   }
 }
 

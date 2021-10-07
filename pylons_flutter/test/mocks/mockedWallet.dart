@@ -3,8 +3,8 @@ import 'package:pylons_flutter/pylons_flutter.dart';
 
 class MockWallet extends Mock implements PylonsWallet {
   List<Cookbook> cookbooks = [];
-  List<Recipe> recipes = List.empty();
-  List<Trade> trades = List.empty();
+  List<Recipe> recipes = [];
+  List<Trade> trades = [];
 
   /// Load the provided cookbooks. We'll use these to mock getCookbooks.
   void loadCookbooks(List<Cookbook> cbs) {

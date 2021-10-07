@@ -13,22 +13,6 @@ import 'package:pylons_flutter/pylons_flutter.dart';
 /// The PylonsWallet class is the main endpoint developers use for structured,
 /// high-level interactions with the Pylons wallet.
 abstract class PylonsWallet {
-<<<<<<< HEAD
-  PylonsWallet() {
-    instance = this;
-  }
-
-  static PylonsWallet? instance;
-
-  /// Retrieves the [AndroidWallet] instance. Since [AndroidWallet] is a
-  /// singleton, this method will always return a reference to the same object.
-  static void android() => AndroidWallet();
-
-  /// Async: Returns true if an IPC target exists. False otherwise.
-  static Future<bool> exists() async {
-    return instance != null;
-  }
-=======
   /// Async: Send the provided message over the IPC channel, then retrieve a
   /// response.
   ///
@@ -42,7 +26,6 @@ abstract class PylonsWallet {
 
   /// Async: Returns true if an IPC target exists. False otherwise.
   Future<bool> exists();
->>>>>>> pre-comms-fixes
 
   /// Async: Retrieves all cookbooks belonging to the current profile on the
   /// Pylons chain.
@@ -510,24 +493,5 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-<<<<<<< HEAD
-  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(
-      Recipe recipe) async {
-    throw UnimplementedError();
-  }
-}
-
-/// The Android implementation of the Pylons wallet.
-class AndroidWallet extends PylonsWallet {
-  AndroidWallet._privateConstructor() : super();
-
-  static final AndroidWallet _instance = AndroidWallet._privateConstructor();
-
-  factory AndroidWallet() {
-    return _instance;
-  }
-}
-=======
   Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(Recipe recipe);
 }
->>>>>>> pre-comms-fixes

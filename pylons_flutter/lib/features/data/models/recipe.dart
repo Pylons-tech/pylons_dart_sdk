@@ -18,17 +18,10 @@ class Recipe {
   EntriesList entries;
   List<WeightedOutput> outputs;
 
-<<<<<<< HEAD
-  Recipe({
-      required this.nodeVersion,
-      required this.sender,
-      required this.id,
-=======
   Recipe(
       {this.id,
       required this.nodeVersion,
       required this.sender,
->>>>>>> pre-comms-fixes
       required this.disabled,
       required this.name,
       required this.cookbookId,
@@ -45,20 +38,6 @@ class Recipe {
     throw UnimplementedError();
   }
 
-<<<<<<< HEAD
-  factory Recipe.fromJson(Map<String, dynamic> json ) {
-    return Recipe(nodeVersion: json['nodeVersion'], sender: json['sender'], id: json['id'], 
-    disabled: json['diabled'], 
-    name: json['name'], 
-    cookbookId: json['cookbookId'], 
-    description: json['description'], 
-    extraInfo: json['extraInfo'],
-    blockInterval: json['blockInterval'],
-    coinInputs: json['coinInputs'],
-    itemInputs: json['itemInputs'],
-    entries: json['entries'],
-    outputs: json['outputs']);
-=======
   factory Recipe.fromJson(Map<String, dynamic> json) {
     return Recipe(
         extraInfo: json['extraInfo'],
@@ -73,7 +52,6 @@ class Recipe {
         nodeVersion: json['nodeVersion'],
         sender: json['sender'],
         itemInputs: [...List.from(json['itemInputs']).map((e) => ItemInput.fromJson(e)).toList()]);
->>>>>>> pre-comms-fixes
   }
 }
 
