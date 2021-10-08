@@ -13,6 +13,8 @@ import 'core/constants/strings.dart';
 class PylonsWalletCommUtil {
   static bool validateAddress(String? address) {
     // TODO: Implement this. Crib code out of flutter wallet to make it easier.
+    const HRP = 'cosmos1';
+
     throw UnimplementedError();
   }
 
