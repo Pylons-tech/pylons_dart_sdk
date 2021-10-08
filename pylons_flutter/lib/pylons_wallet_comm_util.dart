@@ -12,6 +12,8 @@ import 'package:pylons_flutter/pylons_flutter.dart';
 class PylonsWalletCommUtil {
   static bool validateAddress(String? address) {
     // TODO: Implement this. Crib code out of flutter wallet to make it easier.
+    const HRP = 'cosmos1';
+
     throw UnimplementedError();
   }
 
