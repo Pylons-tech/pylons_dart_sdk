@@ -2,6 +2,8 @@ import 'package:bitstream/bitstream.dart';
 
 import 'dart:typed_data';
 
+import 'package:pylons_flutter/core/error/exceptions.dart';
+
 class Bech32Data {
   final String hrp;
   final Int8List data;
@@ -220,9 +222,10 @@ class Bech32Cosmos {
   static String encode(String humanReadablePart, Int8List data) {
     var hrp = humanReadablePart;
 
-    // todo: these should have a catchable exception type
-    if (hrp.isEmpty) throw Exception('Human-readable part is too short');
-    if (hrp.length > 83) throw Exception('Human-readable part is too long');
+    if (hrp.isEmpty)
+      throw AddressFormatExceptionHrpLength('Human-readable part is too short');
+    if (hrp.length > 83)
+      throw AddressFormatExceptionHrpLength('Human-readable part is too long');
 
     hrp = hrp.toLowerCase();
     var checksum = _createChecksum(hrp, data);
@@ -243,39 +246,41 @@ class Bech32Cosmos {
   static Bech32Data decode(String str) {
     var lower = false;
     var upper = false;
-    // todo: as above, these need catchable exceptions
     if (str.length < 8) {
-      throw Exception('Input too short: ${str.length}');
+      throw AddressFormatExceptionDataLength('Input too short: ${str.length}');
     }
     if (str.length > 90) {
-      throw Exception('Input too long: ${str.length}');
+      throw AddressFormatExceptionDataLength('Input too long: ${str.length}');
     }
     for (var i = 0; i < str.length; i++) {
       var c = str[i];
       var codePoint = str.codeUnitAt(i);
-      // todo: as above, needs catchable exception
       if (str.codeUnits[i] < 33 || str.codeUnits[i] > 126) {
-        throw Exception('Invalid character $c at position $i');
+        throw AddressFormatExceptionInvalidCharacter(
+            'Invalid character $c at position $i');
       }
       if (codePoint >= 0x61 && codePoint < 0x7b) {
         // 0x61 == a, 0x7a == z
-        // todo: as above, needs catchable exception
-        if (upper) throw Exception('Invalid character $c at position $i');
+        if (upper)
+          throw AddressFormatExceptionInvalidCharacter(
+              'Invalid character $c at position $i');
         lower = true;
       }
       if (codePoint >= 0x41 && codePoint < 0x5b) {
         // 0x41 == A, 0x5a == Z
-        if (lower) throw Exception('Invalid character $c at position $i');
+        if (lower)
+          throw AddressFormatExceptionInvalidCharacter(
+              'Invalid character $c at position $i');
         upper = true;
       }
     }
     var pos = str.lastIndexOf('1');
-    // todo: as above, needs catchable exception
-    if (pos < 1) throw Exception('Missing human-readable part');
+    if (pos < 1)
+      throw AddressFormatExceptionNoHrp('Missing human-readable part');
     var dataPartLength = str.length - 1 - pos;
-    // todo: as above, needs catchable exception
     if (dataPartLength < 6) {
-      throw Exception('Data part too short: $dataPartLength');
+      throw AddressFormatExceptionDataLength(
+          'Data part too short: $dataPartLength');
     }
     var values = Int8List(dataPartLength);
     for (var i = 0; i < dataPartLength; i++) {
@@ -283,13 +288,15 @@ class Bech32Cosmos {
       var codePoint = str.codeUnitAt(i + pos + 1);
       // todo: as above, needs catchable exception
       if (CHARSET_REV[codePoint] == -1) {
-        throw Exception('Invalid character $c at position $i + post + 1');
+        throw AddressFormatExceptionInvalidCharacter(
+            'Invalid character $c at position $i + post + 1');
       }
       values[i] = CHARSET_REV[codePoint];
     }
     var hrp = str.substring(0, pos).toLowerCase();
     // todo: as above, needs catchable exception
-    if (!_verifyChecksum(hrp, values)) throw Exception('Invalid checksum');
+    if (!_verifyChecksum(hrp, values))
+      throw AddressFormatExceptionChecksumFail('Invalid checksum');
     return Bech32Data(hrp, values.sublist(0, values.length - 6));
   }
 
@@ -310,7 +317,8 @@ class Bech32Cosmos {
       var value = data[i] & 0xff;
       if ((value >>> fromBits) != 0) {
         // todo: as above, needs catchable exception
-        throw Exception('Input value $value exceeds $fromBits bit size');
+        throw AddressFormatExceptionBitConvertFail(
+            'Input value $value exceeds $fromBits bit size');
       }
       acc = ((acc << fromBits) | value) & max_acc;
       bits += fromBits;
@@ -326,7 +334,8 @@ class Bech32Cosmos {
       }
     } else if (bits >= fromBits || ((acc << (toBits - bits)) & maxv) != 0) {
       // todo: as above, needs catchable exception
-      throw Exception('Could not convert bits, invalid padding');
+      throw AddressFormatExceptionBitConvertFail(
+          'Could not convert bits, invalid padding');
     }
     // This should work, but we do have to go from uint to int, so note this as potentially suspect.
     return out.getStream().buffer.asInt8List();

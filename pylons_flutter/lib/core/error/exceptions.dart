@@ -202,3 +202,57 @@ class UnhandledErrorException implements Exception {
 
   UnhandledErrorException(this.errType, this.errMsg);
 }
+
+/// Parent class for exceptions thrown during address encoding and decoding.
+/// An exception of type AddressFormatException should never be thrown; throw
+/// one of the child types instead.
+class AddressFormatException implements Exception {}
+
+/// Exception thrown by [Bech32Cosmos] when trying to encode an address with a bad human-readable part
+class AddressFormatExceptionHrpLength implements AddressFormatException {
+  final String errMsg;
+
+  AddressFormatExceptionHrpLength(this.errMsg);
+}
+
+/// Exception thrown by [Bech32Cosmos] when trying to decode an address of incorrect length
+class AddressFormatExceptionInputLength implements AddressFormatException {
+  final String errMsg;
+
+  AddressFormatExceptionInputLength(this.errMsg);
+}
+
+/// Exception thrown by [Bech32Cosmos] when trying to decode an address containing an invalid character
+class AddressFormatExceptionInvalidCharacter implements AddressFormatException {
+  final String errMsg;
+
+  AddressFormatExceptionInvalidCharacter(this.errMsg);
+}
+
+/// Exception thrown by [Bech32Cosmos] when trying to decode an address with a data part of incorrect length
+class AddressFormatExceptionDataLength implements AddressFormatException {
+  final String errMsg;
+
+  AddressFormatExceptionDataLength(this.errMsg);
+}
+
+/// Exception thrown by [Bech32Cosmos] when trying to decode an address with no human-readable part
+class AddressFormatExceptionNoHrp implements AddressFormatException {
+  final String errMsg;
+
+  AddressFormatExceptionNoHrp(this.errMsg);
+}
+
+/// Exception thrown by [Bech32Cosmos] when trying to decode an address with a bad checksum
+class AddressFormatExceptionChecksumFail implements AddressFormatException {
+  final String errMsg;
+
+  AddressFormatExceptionChecksumFail(this.errMsg);
+}
+
+/// Exception thrown by [Bech32Cosmos] when convertBits fails
+class AddressFormatExceptionBitConvertFail implements AddressFormatException {
+  final String errMsg;
+
+  AddressFormatExceptionBitConvertFail(this.errMsg);
+}
