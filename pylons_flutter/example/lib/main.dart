@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -75,9 +76,27 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  var MOCK_COOKBOOK = '''{
+  "creator": "pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2",
+  "ID": "cookbookLOUD",
+  "name": "Legend of the Undead Dragon",
+  "nodeVersion": "v0.1.3",
+  "description": "Cookbook for running pylons recreation of LOUD",
+  "developer": "Pylons Inc",
+  "version": "v0.0.1",
+  "supportEmail": "alex@shmeeload.xyz",
+  "costPerBlock": {"denom":  "upylon", "amount":  "1000000"},
+  "enabled": true
+}''';
+
+
   void _incrementCounter() async {
 
-    // PylonsWallet.instance.exists();
+    var cookBook = Cookbook.fromJson(jsonDecode(MOCK_COOKBOOK));
+    var key = 'txCreateCookbook';
+    var dataToEncode = [key, const JsonEncoder().convert(cookBook)];
+
+    print(await PylonsWallet.instance.sendMessage(dataToEncode));
 
 
 

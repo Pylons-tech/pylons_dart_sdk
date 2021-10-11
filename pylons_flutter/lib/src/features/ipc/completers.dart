@@ -1,3 +1,3 @@
 import 'dart:async';
 
-late Completer<bool> existsCompleter;
+Completer<String> cookBookCompleter = Completer();
