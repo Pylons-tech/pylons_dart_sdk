@@ -45,4 +45,21 @@ void main() {
     expect(testRecipeFromJson.outputs.length, equals(0) );
   });
 
+  test("Test Coin Input from Json", () async{
+    String jsonRaw = '{"coin": "pylons", "count": 2}';
+    Map<String, dynamic> jsonMap = jsonDecode(jsonRaw);
+    CoinInput testCoinInputFromJson = CoinInput.fromJson(jsonMap);
+    expect(testCoinInputFromJson.coin, equals("pylons"));
+    expect(testCoinInputFromJson.count, equals(2));
+  });
+
+  test("Test Item Input", () async{
+    String jsonRaw = '{"id": "testItem", "conditions": {"doubles": {}, "longs":{}, "strings": {}}, "doubles": {}, longs:{}, strings: {}, transferFee:}';
+    Map<String, dynamic> jsonMap = jsonDecode(jsonRaw);
+    ItemInput testItemInputFromJson = ItemInput.fromJson(jsonMap);
+    expect(testItemInputFromJson.id, equals("testItem"));
+    expect(testItemInputFromJson.conditions.runtimeType, equals(ConditionList));
+    
+  });
+
 }
