@@ -12,19 +12,17 @@ import 'package:pylons_flutter/pylons_flutter.dart';
 /// be weird or fiddly or otherwise awkward to work with.)
 class PylonsWalletCommUtil {
   /// Verifies that the provided address, if not null, is a legal Cosmos address.
-  static void validateAddress(String? address) {
-    if (address != null) {
-      // Since we ported Bech32Cosmos, we actually have a much more granular
-      // set of exceptions available than just NotAnAddressException, but it
-      // may be better to err on the side of simplicity regardless.
-      try {
-        var v = AccAddress.verifyAddress(address);
-        if (!v.value2) {
-          throw NotAnAddressException(address);
-        }
-      } on AddressFormatException {
+  static void validateAddress(String address) {
+    // Since we ported Bech32Cosmos, we actually have a much more granular
+    // set of exceptions available than just NotAnAddressException, but it
+    // may be better to err on the side of simplicity regardless.
+    try {
+      var v = AccAddress.verifyAddress(address);
+      if (!v.value2) {
         throw NotAnAddressException(address);
       }
+    } on AddressFormatException {
+      throw NotAnAddressException(address);
     }
   }
 
@@ -35,28 +33,28 @@ class PylonsWalletCommUtil {
     var reFound = <String>[];
     var orphanOutputs = <String>[];
     var unknownOutputs = <String>[];
-    recipe.outputs.forEach((output) {
-      output.entryIds.forEach((entry) {
+    for (var output in recipe.outputs) {
+      for (var entry in output.entryIds) {
         if (!found.contains(entry)) found.add(entry);
-      });
-    });
-    found.forEach((entryId) {
-      recipe.entries.coinOutputs.forEach((output) {
+      }
+    }
+    for (var entryId in found) {
+      for (var output in recipe.entries.coinOutputs) {
         if (found.contains(output.id) && !reFound.contains(output.id)) {
           reFound.add(output.id!);
         } else {
           orphanOutputs.add(output.id!);
         }
-      });
-      recipe.entries.itemOutputs.forEach((output) {
+      }
+      for (var output in recipe.entries.itemOutputs) {
         if (found.contains(output.id) && !reFound.contains(output.id)) {
           reFound.add(output.id!);
         } else {
           orphanOutputs.add(output.id!);
         }
-      });
+      }
       if (!reFound.contains(entryId)) unknownOutputs.add(entryId);
-    });
+    }
     if (unknownOutputs.isNotEmpty || orphanOutputs.isNotEmpty) {
       throw RecipeValidationException(
           recipe.cookbookId,
