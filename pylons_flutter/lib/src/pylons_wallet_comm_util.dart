@@ -2,6 +2,9 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz_unsafe.dart';
+import 'package:pylons_flutter/core/constants/strings.dart';
+import 'package:pylons_flutter/features/data/models/address.dart';
 
 import 'package:pylons_flutter/pylons_flutter.dart';
 
@@ -11,11 +14,21 @@ import 'core/constants/strings.dart';
 /// (Since this protocol is ad-hoc, specific, and strictly temporary, these may
 /// be weird or fiddly or otherwise awkward to work with.)
 class PylonsWalletCommUtil {
-  static bool validateAddress(String? address) {
-    // TODO: Implement this. Crib code out of flutter wallet to make it easier.
-    const HRP = 'cosmos1';
-
-    throw UnimplementedError();
+  /// Verifies that the provided address, if not null, is a legal Cosmos address.
+  static void validateAddress(String? address) {
+    if (address != null) {
+      // Since we ported Bech32Cosmos, we actually have a much more granular
+      // set of exceptions available than just NotAnAddressException, but it
+      // may be better to err on the side of simplicity regardless.
+      try {
+        var v = AccAddress.verifyAddress(address);
+        if (!v.value2) {
+          throw NotAnAddressException(address);
+        }
+      } on AddressFormatException {
+        throw NotAnAddressException(address);
+      }
+    }
   }
 
   /// Verifies that all of a recipe's outputs are accessible, and that it
