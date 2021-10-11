@@ -10,7 +10,6 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
-import 'package:pylons_flutter/src/features/ipc/completers.dart';
 import 'package:pylons_flutter/src/features/ipc/ipc_constants.dart';
 import 'package:pylons_flutter/src/pylons_wallet_comm_util.dart';
 
@@ -847,7 +846,5 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
 
-  @override
-  void startIPC() {
-  }
+
 }

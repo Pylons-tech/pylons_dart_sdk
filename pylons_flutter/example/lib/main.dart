@@ -1,6 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     PylonsWallet.instance.exists().then((value){
-      print('WALLET Existence $value');
+      log('WALLET Existence $value');
 
     });
   }

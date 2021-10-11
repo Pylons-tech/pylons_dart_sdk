@@ -104,10 +104,6 @@ class PylonsWalletDevImpl implements PylonsWallet {
     throw UnimplementedError();
   }
 
-  @override
-  void startIPC() {
-    // TODO: implement startIPC
-  }
 
 
 
