@@ -140,7 +140,9 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<Profile> getProfile(String? address) async {
     return Future<Profile>.sync(() async {
-      PylonsWalletCommUtil.validateAddress(address);
+      if (address != null) {
+        PylonsWalletCommUtil.validateAddress(address);
+      } // address is an optional field
       var key = Strings.GET_PROFILE;
       var ls = <String>[key];
       if (address != null) ls.add(address);
@@ -191,7 +193,9 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<List<Recipe>> getRecipes(String? address) async {
     return Future<List<Recipe>>.sync(() async {
-      PylonsWalletCommUtil.validateAddress(address);
+      if (address != null) {
+        PylonsWalletCommUtil.validateAddress(address);
+      } // address is an optional field
       var key = Strings.GET_RECIPE;
       var ls = <String>[key];
       if (address != null) ls.add(address);
