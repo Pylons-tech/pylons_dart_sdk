@@ -23,7 +23,14 @@ import '../core/constants/strings.dart';
 class PylonsWalletImpl implements PylonsWallet {
   late StreamSubscription _sub;
 
-  PylonsWalletImpl() {
+  final String host;
+
+  PylonsWalletImpl(this.host) {
+
+
+
+
+
     // // Attach a listener to the stream
     _sub = linkStream.listen((String? uri) {
       print(uri);
@@ -55,6 +62,10 @@ class PylonsWalletImpl implements PylonsWallet {
   /// format.
   @override
   Future<String> sendMessage(List<String> msg) {
+
+    // Append the host to the msg
+    msg.insert(0, host);
+
     var encodedMessage = encodeMessage(msg);
     dispatchUniLink('$BASE_UNI_LINK/$encodedMessage');
     cookBookCompleter = Completer();

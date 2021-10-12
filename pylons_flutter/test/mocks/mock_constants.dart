@@ -10,3 +10,8 @@ var MOCK_COOKBOOK = '''{
   "costPerBlock": {"denom":  "upylon", "amount":  "1000000"},
   "enabled": true
 }''';
+
+
+
+
+const String MOCK_HOST = 'example';

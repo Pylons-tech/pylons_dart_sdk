@@ -16,7 +16,7 @@ void main() {
       var cookBook = Cookbook.fromJson(jsonDecode(MOCK_COOKBOOK));
       var key = Strings.TX_CREATE_COOKBOOK;
       var dataToEncode = [key, const JsonEncoder().convert(cookBook)];
-      var pylonsWallet = PylonsWalletImpl();
+      var pylonsWallet = PylonsWalletImpl(MOCK_HOST);
 
       // Act
       var encodedMessage = pylonsWallet.encodeMessage(dataToEncode);
@@ -45,7 +45,7 @@ void main() {
       var cookBook = Cookbook.fromJson(jsonDecode(MOCK_COOKBOOK));
       var key = Strings.TX_CREATE_COOKBOOK;
       var dataToEncode = [key, const JsonEncoder().convert(cookBook)];
-      var pylonsWallet = PylonsWalletImpl();
+      var pylonsWallet = PylonsWalletImpl(MOCK_HOST);
 
       var encodedMessage = pylonsWallet.encodeMessage(dataToEncode);
 
