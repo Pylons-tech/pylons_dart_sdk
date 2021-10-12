@@ -12,6 +12,7 @@ import 'package:pylons_flutter/pylons_flutter.dart';
 import 'package:pylons_flutter/src/features/ipc/completers.dart';
 import 'package:pylons_flutter/src/features/ipc/ipc_constants.dart';
 import 'package:pylons_flutter/src/pylons_wallet_comm_util.dart';
+import 'package:uni_links/uni_links.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
@@ -24,19 +25,21 @@ class PylonsWalletImpl implements PylonsWallet {
 
   PylonsWalletImpl() {
     // // Attach a listener to the stream
-    // _sub = linkStream.listen((String? uri) {
-    //   print(uri);
-    //   //
-    //   // var encodedUrl = uri!.split("/").last;
-    //   // var decoded = utf8.decode(base64.decode(encodedUrl));     // username:password
-    //   //
-    //   // print(encodedUrl);
-    //   // print(decoded);
-    //   // Use the uri and warn the user, if it is not correct
-    // }, onError: (err) {
-    //   // Handle exception by warning the user their action did not succeed
-    //   _sub.cancel();
-    // });
+    _sub = linkStream.listen((String? uri) {
+      print(uri);
+
+      cookBookCompleter.complete('OK');
+      //
+      // var encodedUrl = uri!.split("/").last;
+      // var decoded = utf8.decode(base64.decode(encodedUrl));     // username:password
+      //
+      // print(encodedUrl);
+      // print(decoded);
+      // Use the uri and warn the user, if it is not correct
+    }, onError: (err) {
+      // Handle exception by warning the user their action did not succeed
+      _sub.cancel();
+    });
 
     // startIPC();
   }
