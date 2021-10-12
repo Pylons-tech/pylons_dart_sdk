@@ -18,6 +18,13 @@ dependencies:
   bit_array: ^2.2.0
   crypto: ^3.0.1
 
+#Used it for ipc
+  uni_links: ^0.5.1
+
+
+  url_launcher: ^6.0.12
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
