@@ -2,7 +2,8 @@ import 'package:bitstream/bitstream.dart';
 
 import 'dart:typed_data';
 
-import 'package:pylons_flutter/core/error/exceptions.dart';
+
+import '../pylons_flutter.dart';
 
 class Bech32Data {
   final String hrp;
@@ -222,10 +223,12 @@ class Bech32Cosmos {
   static String encode(String humanReadablePart, Int8List data) {
     var hrp = humanReadablePart;
 
-    if (hrp.isEmpty)
+    if (hrp.isEmpty) {
       throw AddressFormatExceptionHrpLength('Human-readable part is too short');
-    if (hrp.length > 83)
+    }
+    if (hrp.length > 83) {
       throw AddressFormatExceptionHrpLength('Human-readable part is too long');
+    }
 
     hrp = hrp.toLowerCase();
     var checksum = _createChecksum(hrp, data);
@@ -261,22 +264,25 @@ class Bech32Cosmos {
       }
       if (codePoint >= 0x61 && codePoint < 0x7b) {
         // 0x61 == a, 0x7a == z
-        if (upper)
+        if (upper) {
           throw AddressFormatExceptionInvalidCharacter(
               'Invalid character $c at position $i');
+        }
         lower = true;
       }
       if (codePoint >= 0x41 && codePoint < 0x5b) {
         // 0x41 == A, 0x5a == Z
-        if (lower)
+        if (lower) {
           throw AddressFormatExceptionInvalidCharacter(
               'Invalid character $c at position $i');
+        }
         upper = true;
       }
     }
     var pos = str.lastIndexOf('1');
-    if (pos < 1)
+    if (pos < 1) {
       throw AddressFormatExceptionNoHrp('Missing human-readable part');
+    }
     var dataPartLength = str.length - 1 - pos;
     if (dataPartLength < 6) {
       throw AddressFormatExceptionDataLength(
@@ -295,8 +301,9 @@ class Bech32Cosmos {
     }
     var hrp = str.substring(0, pos).toLowerCase();
     // todo: as above, needs catchable exception
-    if (!_verifyChecksum(hrp, values))
+    if (!_verifyChecksum(hrp, values)) {
       throw AddressFormatExceptionChecksumFail('Invalid checksum');
+    }
     return Bech32Data(hrp, values.sublist(0, values.length - 6));
   }
 

@@ -1,0 +1,1 @@
+const  String EXISTS_CONSTANT = 'pylons://wallet/exists';
