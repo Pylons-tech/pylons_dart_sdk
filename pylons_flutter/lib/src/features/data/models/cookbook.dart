@@ -1,6 +1,6 @@
 class Cookbook {
   String creator;
-  String ID;
+  String iD;
   String name;
   String nodeVersion;
   String description;
@@ -12,7 +12,7 @@ class Cookbook {
 
   Cookbook(
       {required  this.creator,
-        required this.ID,
+        required this.iD,
         required this.name,
         required this.nodeVersion,
         required this.description,
@@ -23,14 +23,14 @@ class Cookbook {
         required this.enabled});
 
   factory Cookbook.fromJson(Map<String, dynamic> json) {
-    return Cookbook(ID: json['ID'], creator: json['creator'], developer: json['developer'], description: json['description'], name: json['name'], version: json['version'], costPerBlock: CostPerBlock.fromJson(json['costPerBlock']), enabled: json['enabled'], nodeVersion: json['nodeVersion'], supportEmail: json['supportEmail']);
+    return Cookbook(iD: json['ID'], creator: json['creator'], developer: json['developer'], description: json['description'], name: json['name'], version: json['version'], costPerBlock: CostPerBlock.fromJson(json['costPerBlock']), enabled: json['enabled'], nodeVersion: json['nodeVersion'], supportEmail: json['supportEmail']);
 
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['creator'] = creator;
-    data['ID'] = ID;
+    data['ID'] = iD;
     data['name'] = name;
     data['nodeVersion'] = nodeVersion;
     data['description'] = description;
