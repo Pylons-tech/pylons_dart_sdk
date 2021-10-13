@@ -1,39 +1,64 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+**Pylons**
+A Flutter plugin project to connect any app with pylons blockchain.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+Note in order to be able to connect with pylons blockchain you must have pylons wallet already installed on your mobile device.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+**Installation**
+To use the plugin, add pylons_flutter as a dependency in your pubspec.yaml file.
 
-## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+**Permission**
+Android and iOS require to declare links permission in a configuration file.
 
-## Getting started
+Feel free to examine tha example app in the example directory for Deep Links (Android) and Custom URL schemes (iOS).
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+The following steps are not Flutter specific, but platform specific.
 
-## Usage
+**For Android**
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+You need to declare the following intent filters in android/app/src/main/AndroidManifest.xml:
 
-```dart
-const like = 'sample';
-```
+<manifest ...>
+  <!-- ... other tags -->
+<application ...>
+<activity ...>
+<!-- ... other tags -->
 
-## Additional information
+      <!-- Pylons Links -->
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <!-- Accepts URIs that begin with YOUR_SCHEME://YOUR_HOST -->
+        <data
+          android:scheme="pylons"
+          android:host="[YOUR_HOST]" />
+      </intent-filter>
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+
+    </activity>
+  </application>
+</manifest>
+The android:host attribute variable is the one that you need to put it must be as unique as possible
+
+
+**For Dart side:**
+Initialise the sdk before the run app.
+
+
+    WidgetsFlutterBinding.ensureInitialized();  
+    
+    PylonsWallet.setup(mode: PylonsMode.prod, host: 'example');  
+ 
+    runApp(const MyApp());
+        
+Here host should be same what you put in the 
+
+
+> android/app/src/main/AndroidManifest.xml:
+
+
+Functions supported right now:
+1) Exists
+2) Send message 
