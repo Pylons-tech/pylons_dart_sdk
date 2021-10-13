@@ -47,10 +47,15 @@ abstract class PylonsWallet {
   ///
   /// [PylonsMode.dev] test net will be used
   ///
+  /// ,
+  ///
+  /// [host] is the host which is added in android manifest and xcode setup of the 3rd part sdk .
+  /// Required for getting the return message from the wallet
+  ///
   /// This method can throw the following errors
   ///
   /// [WalletInitializationAlreadyDoneException] :  If user tries to initialize the sdk more than once this error will throw
-  static void setup({required PylonsMode mode}) {
+  static void setup({required PylonsMode mode, required String host}) {
 
     if(_instance != null){
       throw WalletInitializationAlreadyDoneException('Wallet is already intialiazed');
@@ -59,7 +64,7 @@ abstract class PylonsWallet {
 
 
     if(PylonsMode.prod  == mode ){
-      _instance = PylonsWalletImpl();
+      _instance = PylonsWalletImpl(host);
       return;
      }
 
