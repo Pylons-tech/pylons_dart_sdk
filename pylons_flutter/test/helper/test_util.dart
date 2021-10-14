@@ -20,19 +20,19 @@ class TestUtil {
 
   static Cookbook loadCookbook(String path) {
     var json  = jsonDecode(loadFile(path));
-    final Cookbook cb = Cookbook.fromJson(json);
+    final cb = Cookbook.fromJson(json);
     return cb;
   }
 
   static Recipe loadRecipe (String path){
     var json  = jsonDecode(loadFile(path));
-    final Recipe rcp = Recipe.fromJson(json);
+    final rcp = Recipe.fromJson(json);
     return rcp;
   }
 
   static Trade loadTrade (String path){
     var json  = jsonDecode(loadFile(path));
-    final Trade trade = Trade.fromJson(json);
+    final trade = Trade.fromJson(json);
     return trade;
   }
 }
