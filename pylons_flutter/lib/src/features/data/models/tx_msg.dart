@@ -1,7 +1,6 @@
 /// Types and functionality for dealing with TX message data.
 library pylons_flutter_transaction_msg;
 
-
 import 'item.dart';
 import 'recipe.dart';
 import 'trade.dart';

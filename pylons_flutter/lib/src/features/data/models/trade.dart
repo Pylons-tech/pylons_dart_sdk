@@ -1,7 +1,6 @@
 /// Types and functionality for dealing with trades.
 library pylons_flutter_trade;
 
-
 import '../../../../pylons_flutter.dart';
 import 'recipe.dart';
 

@@ -15,7 +15,7 @@ class MockWallet extends Mock implements PylonsWallet {
     recipes.addAll(rcps);
   }
 
-  void loadTrades(List<Trade> trade){
+  void loadTrades(List<Trade> trade) {
     trades.addAll(trade);
   }
 }

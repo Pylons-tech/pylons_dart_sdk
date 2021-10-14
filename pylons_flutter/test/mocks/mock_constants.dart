@@ -11,7 +11,4 @@ var MOCK_COOKBOOK = '''{
   "enabled": true
 }''';
 
-
-
-
 const String MOCK_HOST = 'example';

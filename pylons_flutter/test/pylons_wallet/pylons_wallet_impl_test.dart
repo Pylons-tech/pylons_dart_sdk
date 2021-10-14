@@ -29,7 +29,8 @@ void main() {
   });
 
   group('cookbook', () {
-    test('should check if the cookbook unilink was created successfuly or not ', () {
+    test('should check if the cookbook unilink was created successfuly or not ',
+        () {
       TestWidgetsFlutterBinding.ensureInitialized();
 
       const channel = MethodChannel('plugins.flutter.io/url_launcher');

@@ -2,10 +2,6 @@ import 'package:dartz/dartz.dart';
 
 import '../../pylons_flutter.dart';
 
-
-
-
-
 /// The Pylons class is used for the test net .
 class PylonsWalletDevImpl implements PylonsWallet {
   @override
@@ -39,19 +35,22 @@ class PylonsWalletDevImpl implements PylonsWallet {
   }
 
   @override
-  Future<Tuple2<Transaction, Profile>> txBuyItem(String tradeId, String paymentId) {
+  Future<Tuple2<Transaction, Profile>> txBuyItem(
+      String tradeId, String paymentId) {
     // TODO: implement txBuyItem
     throw UnimplementedError();
   }
 
   @override
-  Future<Tuple2<Transaction, Profile>> txBuyPylons(int pylons, String paymentId) {
+  Future<Tuple2<Transaction, Profile>> txBuyPylons(
+      int pylons, String paymentId) {
     // TODO: implement txBuyPylons
     throw UnimplementedError();
   }
 
   @override
-  Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(Cookbook cookbook) {
+  Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(
+      Cookbook cookbook) {
     // TODO: implement txCreateCookbook
     throw UnimplementedError();
   }
@@ -75,19 +74,22 @@ class PylonsWalletDevImpl implements PylonsWallet {
   }
 
   @override
-  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(String cookbookId, String recipeName, List<String> itemIds) {
+  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(
+      String cookbookId, String recipeName, List<String> itemIds) {
     // TODO: implement txExecuteRecipe
     throw UnimplementedError();
   }
 
   @override
-  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(Item item, int price) {
+  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(
+      Item item, int price) {
     // TODO: implement txPlaceForSale
     throw UnimplementedError();
   }
 
   @override
-  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(Cookbook cookbook) {
+  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(
+      Cookbook cookbook) {
     // TODO: implement txUpdateCookbook
     throw UnimplementedError();
   }
@@ -103,8 +105,4 @@ class PylonsWalletDevImpl implements PylonsWallet {
     // TODO: implement exists
     throw UnimplementedError();
   }
-
-
-
-
 }

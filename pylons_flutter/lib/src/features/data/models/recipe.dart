@@ -18,16 +18,16 @@ class Recipe {
 
   Recipe(
       {this.id,
-        required this.enabled,
-        required this.name,
-        required this.cookbookId,
-        required this.description,
-        required this.version,
-        required this.extraInfo,
-        required this.coinInputs,
-        required this.itemInputs,
-        required this.entries,
-        required this.outputs});
+      required this.enabled,
+      required this.name,
+      required this.cookbookId,
+      required this.description,
+      required this.version,
+      required this.extraInfo,
+      required this.coinInputs,
+      required this.itemInputs,
+      required this.entries,
+      required this.outputs});
 
   /// Generate a web link for this recipe.
   String generateWebLink() {

@@ -203,27 +203,20 @@ class UnhandledErrorException implements Exception {
   UnhandledErrorException(this.errType, this.errMsg);
 }
 
-
-
 /// Exception thrown when the user tries to setup the wallet again
 class WalletInitializationAlreadyDoneException implements Exception {
-
   final String errMsg;
 
   WalletInitializationAlreadyDoneException(this.errMsg);
 }
 
-
-
-
-
 /// Exception thrown when the user tries to setup the wallet again
 class WalletInitializationNotDone implements Exception {
-
   final String errMsg;
 
   WalletInitializationNotDone(this.errMsg);
 }
+
 /// Parent class for exceptions thrown during address encoding and decoding.
 /// An exception of type AddressFormatException should never be thrown; throw
 /// one of the child types instead.

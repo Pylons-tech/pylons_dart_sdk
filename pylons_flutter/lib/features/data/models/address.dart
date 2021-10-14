@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:pylons_flutter/core/bech32_cosmos.dart';
 
-
 class AccAddress {
   /// The number of bytes in an address
   static const addressLength = 20;

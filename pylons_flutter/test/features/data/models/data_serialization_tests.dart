@@ -27,12 +27,15 @@ void main() {
       final encoded = encoder.convert(cb.toJson());
       // We have to do the encode/decode because we can't otherwise easily guarantee the same whitespace rules, but
       // we never convert the decoded json into a data type. We just consume the json, then emit it immediately.
-      final decoded = encoder.convert(JsonDecoder().convert(TestUtil.loadFile('cookbook/cookbook_from_node.json')));
+      final decoded = encoder.convert(JsonDecoder()
+          .convert(TestUtil.loadFile('cookbook/cookbook_from_node.json')));
       assert(encoded == decoded);
     });
     test('Cookbook JSON from remote deserializes correctly', () {
       late final Cookbook cb;
-      expect(() => cb = TestUtil.loadCookbook('cookbook/cookbook_from_node.json'), returnsNormally,
+      expect(
+          () => cb = TestUtil.loadCookbook('cookbook/cookbook_from_node.json'),
+          returnsNormally,
           reason: 'Deserialization failed');
       assert(cb.enabled == true);
       assert(cb.name == 'Legend of the Undead Dragon');
@@ -40,7 +43,8 @@ void main() {
       assert(cb.costPerBlock.denom == 'upylon');
       assert(cb.creator == 'pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2');
       assert(cb.developer == 'Pylons Inc');
-      assert(cb.description == 'Cookbook for running pylons recreation of LOUD');
+      assert(
+          cb.description == 'Cookbook for running pylons recreation of LOUD');
       assert(cb.iD == 'cookbookLOUD');
       assert(cb.nodeVersion == 'v0.1.3');
       assert(cb.supportEmail == 'alex@shmeeload.xyz');
@@ -58,7 +62,8 @@ void main() {
           version: 'v0.0.1',
           coinInputs: [],
           itemInputs: [],
-          entries: EntriesList(coinOutputs: [],itemModifyOutputs: [],itemOutputs: [
+          entries:
+              EntriesList(coinOutputs: [], itemModifyOutputs: [], itemOutputs: [
             ItemOutput(
                 doubles: [DoubleParam('1.000000000000000000', 'XP', [], '1')],
                 longs: [],
@@ -70,7 +75,8 @@ void main() {
       final encoded = encoder.convert(r.toJson());
       // We have to do the encode/decode because we can't otherwise easily guarantee the same whitespace rules, but
       // we never convert the decoded json into a data type. We just consume the json, then emit it immediately.
-      final decoded = encoder.convert(JsonDecoder().convert(TestUtil.loadFile('recipe/recipe_from_node.json')));
+      final decoded = encoder.convert(JsonDecoder()
+          .convert(TestUtil.loadFile('recipe/recipe_from_node.json')));
       assert(encoded == decoded);
     });
     test('Recipe JSON from remote deserializes correctly', () {

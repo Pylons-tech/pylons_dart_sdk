@@ -3,7 +3,6 @@
 /// The APIs exposed by this library, specifically, are the main way most
 /// client apps should structure their interactions with the wallet.
 
-
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
@@ -12,31 +11,20 @@ import 'package:pylons_flutter/pylons_flutter.dart';
 import 'pylons_wallet/pylons_wallet_dev.dart';
 import 'pylons_wallet/pylons_wallet_impl.dart';
 
-
-enum PylonsMode {dev, prod}
-
-
+enum PylonsMode { dev, prod }
 
 /// The PylonsWallet class is the main endpoint developers use for structured,
 /// high-level interactions with the Pylons wallet.
 abstract class PylonsWallet {
-
-
-
   static PylonsWallet? _instance;
 
-
-
-
   static PylonsWallet get instance {
-
-    if(_instance == null){
+    if (_instance == null) {
       throw WalletInitializationNotDone('Sdk not initialized');
     }
 
     return _instance!;
   }
-
 
   /// This method is to used to setup pylons
   /// [Input] : [PylonsMode] tells which net to be used
@@ -56,29 +44,21 @@ abstract class PylonsWallet {
   ///
   /// [WalletInitializationAlreadyDoneException] :  If user tries to initialize the sdk more than once this error will throw
   static void setup({required PylonsMode mode, required String host}) {
-
-    if(_instance != null){
-      throw WalletInitializationAlreadyDoneException('Wallet is already intialiazed');
+    if (_instance != null) {
+      throw WalletInitializationAlreadyDoneException(
+          'Wallet is already intialiazed');
     }
 
-
-
-    if(PylonsMode.prod  == mode ){
+    if (PylonsMode.prod == mode) {
       _instance = PylonsWalletImpl(host);
       return;
-     }
+    }
 
-    if(PylonsMode.dev  == mode ){
+    if (PylonsMode.dev == mode) {
       _instance = PylonsWalletDevImpl();
       return;
     }
   }
-
-
-
-
-
-
 
   /// Async: Send the provided message over the IPC channel, then retrieve a
   /// response.

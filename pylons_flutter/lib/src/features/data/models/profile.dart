@@ -3,8 +3,6 @@ library pylons_flutter_profile;
 
 import '../../../../pylons_flutter.dart';
 
-
-
 /// A user profile that exists on a Pylons blockchain.
 class Profile {
   String address;
