@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pylons_flutter/features/data/models/profile.dart';
+import 'package:pylons_flutter/pylons_flutter.dart';
 
 void main() {
 
-  test("Test Profile input from Json Variable", () async{
-    String jsonRaw = '{"address": "testAddress","name": "testName","coins": {},"items": []}';
+  test('Test Profile input from Json Variable', () async{
+    var jsonRaw = '{"address": "testAddress","name": "testName","coins": {},"items": []}';
       Map<String, dynamic> jsonData = jsonDecode(jsonRaw);
-      Profile testProfileFromJson = Profile.fromJson((jsonData));
+      var testProfileFromJson = Profile.fromJson((jsonData));
       expect(testProfileFromJson.runtimeType, equals(Profile));
       expect(testProfileFromJson.address, equals("testAddress"));
       expect(testProfileFromJson.name, equals("testName"));
