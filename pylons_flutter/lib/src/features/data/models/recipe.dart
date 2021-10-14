@@ -5,14 +5,12 @@ library pylons_flutter_recipe;
 /// executed by users to generate coins and items.
 class Recipe {
   String? id;
-  String nodeVersion;
-  String sender;
   String name;
   String cookbookId;
   String description;
+  String version;
   String extraInfo;
-  bool disabled;
-  int blockInterval;
+  bool enabled;
   List<CoinInput> coinInputs;
   List<ItemInput> itemInputs;
   EntriesList entries;
@@ -20,18 +18,16 @@ class Recipe {
 
   Recipe(
       {this.id,
-      required this.nodeVersion,
-      required this.sender,
-      required this.disabled,
-      required this.name,
-      required this.cookbookId,
-      required this.description,
-      required this.extraInfo,
-      required this.blockInterval,
-      required this.coinInputs,
-      required this.itemInputs,
-      required this.entries,
-      required this.outputs});
+        required this.enabled,
+        required this.name,
+        required this.cookbookId,
+        required this.description,
+        required this.version,
+        required this.extraInfo,
+        required this.coinInputs,
+        required this.itemInputs,
+        required this.entries,
+        required this.outputs});
 
   /// Generate a web link for this recipe.
   String generateWebLink() {
@@ -44,22 +40,24 @@ class Recipe {
         description: json['description'],
         name: json['name'],
         outputs: [],
-        blockInterval: json['blockInterval'],
+        version: json['version'],
         coinInputs: [
           ...List.from(json['coinInputs'])
               .map((e) => CoinInput.fromJson(e))
               .toList()
         ],
-        disabled: json['disabled'],
+        enabled: json['enabled'],
         entries: json['entries'],
-        cookbookId: json['cookbookId'],
-        nodeVersion: json['nodeVersion'],
-        sender: json['sender'],
+        cookbookId: json['cookbookID'],
         itemInputs: [
           ...List.from(json['itemInputs'])
               .map((e) => ItemInput.fromJson(e))
               .toList()
         ]);
+  }
+
+  Map<String, dynamic> toJson() {
+    throw UnimplementedError();
   }
 }
 
@@ -269,7 +267,7 @@ class ItemOutput {
 
 /// TODO: describe this
 class DoubleParam {
-  double weight;
+  String weight;
   String key;
   List<DoubleWeightRange> ranges;
   String program;

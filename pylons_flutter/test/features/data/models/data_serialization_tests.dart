@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
 import 'package:pylons_flutter/src/features/data/models/cookbook.dart';
+import 'package:pylons_flutter/src/features/data/models/recipe.dart';
 
 import '../../../helper/test_util.dart';
 
@@ -48,7 +49,29 @@ void main() {
   });
   group('Recipe', () {
     test('Recipe type serializes correctly', () {
-      throw UnimplementedError();
+      final r = Recipe(
+          enabled: true,
+          name: 'LOUDGetCharacter123125',
+          cookbookId: 'cookbookLOUD',
+          description: 'Creates a basic character in LOUD',
+          extraInfo: 'extraInfo',
+          version: 'v0.0.1',
+          coinInputs: [],
+          itemInputs: [],
+          entries: EntriesList(coinOutputs: [],itemModifyOutputs: [],itemOutputs: [
+            ItemOutput(
+                doubles: [DoubleParam('1.000000000000000000', 'XP', [], '1')],
+                longs: [],
+                strings: [],
+                transferFee: 0)
+          ]),
+          outputs: []);
+      const encoder = JsonEncoder();
+      final encoded = encoder.convert(r.toJson());
+      // We have to do the encode/decode because we can't otherwise easily guarantee the same whitespace rules, but
+      // we never convert the decoded json into a data type. We just consume the json, then emit it immediately.
+      final decoded = encoder.convert(JsonDecoder().convert(TestUtil.loadFile('recipe/recipe_from_node.json')));
+      assert(encoded == decoded);
     });
     test('Recipe JSON from remote deserializes correctly', () {
       throw UnimplementedError();
