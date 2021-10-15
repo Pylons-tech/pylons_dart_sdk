@@ -26,7 +26,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  mockito: 5.0.16
+  mockito:  any
   code_builder: ^4.0.0
 
 flutter:

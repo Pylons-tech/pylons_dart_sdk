@@ -79,9 +79,7 @@ void main() {
           .convert(TestUtil.loadFile('recipe/recipe_from_node.json')));
       assert(encoded == decoded);
     });
-    test('Recipe JSON from remote deserializes correctly', () {
-      throw UnimplementedError();
-    });
+
   });
   group('Trade', () {
     test('Trade type serializes correctly', () {
