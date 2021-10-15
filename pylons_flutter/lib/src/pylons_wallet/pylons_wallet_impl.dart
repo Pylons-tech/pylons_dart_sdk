@@ -11,6 +11,10 @@ import 'package:dartz/dartz.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
 import 'package:pylons_flutter/src/features/ipc/completers.dart';
 import 'package:pylons_flutter/src/features/ipc/ipc_constants.dart';
+import 'package:pylons_flutter/src/generated/pylons/cookbook.pb.dart';
+import 'package:pylons_flutter/src/generated/pylons/item.pb.dart';
+import 'package:pylons_flutter/src/generated/pylons/recipe.pb.dart';
+import 'package:pylons_flutter/src/generated/pylons/trade.pb.dart';
 import 'package:pylons_flutter/src/pylons_wallet_comm_util.dart';
 import 'package:uni_links/uni_links.dart';
 
@@ -712,6 +716,7 @@ class PylonsWalletImpl implements PylonsWallet {
       var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
       var tr = Trade.fromJson(jsonDecode(r.value2[2]));
+
       return Tuple3<Transaction, Profile, Trade>(tx, prf, tr);
     });
   }

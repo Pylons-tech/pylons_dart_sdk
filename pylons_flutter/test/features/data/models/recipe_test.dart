@@ -39,12 +39,12 @@ void main() {
   });
   group('Weblink tests', () {
     test('When generateWebLink called, web link is generated', () async {
-      expect(testRecipe.generateWebLink(), equals('TO DO - DeepLink'),
-          skip: true);
+      //expect(testRecipe.generateWebLink(), equals('TO DO - DeepLink'),
+      //    skip: true);
     });
     test('When generateWebLink fails: , ____ exception returned', () async {
-      expect(() => testRecipe.generateWebLink(), throwsA(Exception()),
-          skip: true);
+      //expect(() => testRecipe.generateWebLink(), throwsA(Exception()),
+      //    skip: true);
     });
   });
 

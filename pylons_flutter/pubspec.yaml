@@ -20,6 +20,7 @@ dependencies:
 
 
   url_launcher: ^6.0.12
+  protobuf: ^2.0.0
 
 
 dev_dependencies:
