@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:pylons_flutter/src/features/data/models/transaction.dart';
 import 'package:pylons_flutter/src/generated/pylons/cookbook.pb.dart';
 import 'package:pylons_flutter/src/generated/pylons/item.pb.dart';
 import 'package:pylons_flutter/src/generated/pylons/recipe.pb.dart';

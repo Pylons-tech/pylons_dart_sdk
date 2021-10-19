@@ -10,6 +10,7 @@ import 'package:pylons_flutter/pylons_flutter.dart';
 import 'package:pylons_flutter/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
 import 'package:sacco/models/transactions/export.dart';
 
+import 'features/data/models/transaction.dart';
 import 'generated/pylons/cookbook.pb.dart';
 import 'generated/pylons/item.pb.dart';
 import 'generated/pylons/recipe.pb.dart';
@@ -224,7 +225,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Tx, Profile>> txBuyItem(
+  Future<Tuple2<Transaction, Profile>> txBuyItem(
       String tradeId, String paymentId);
 
   /// Async: Creates a transaction to buy the provided number of Pylons using a
@@ -505,7 +506,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<StdTx, Profile, Cookbook>> txUpdateCookbook(
+  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(
       Cookbook cookbook);
 
   /// Async: Creates a transaction to updates the provided [Recipe] on the

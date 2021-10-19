@@ -321,10 +321,10 @@ class PylonsWalletImpl implements PylonsWallet {
           Strings.ERR_PROFILE_DOES_NOT_EXIST
         ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
 
-      return Tuple2<Transaction, Profile>(tx, prf);
+      return Tuple2<Transaction, Profile>(Transaction.wrap(tx), prf);
     });
   }
 
@@ -374,9 +374,9 @@ class PylonsWalletImpl implements PylonsWallet {
           Strings.ERR_PROFILE_DOES_NOT_EXIST
         ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
-      return Tuple2<Transaction, Profile>(tx, prf);
+      return Tuple2<Transaction, Profile>(Transaction.wrap(tx), prf);
     });
   }
 
@@ -429,11 +429,11 @@ class PylonsWalletImpl implements PylonsWallet {
           Strings.ERR_PROFILE_DOES_NOT_EXIST
         ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
       var cb = Cookbook.fromJson(jsonDecode(r.value2[2]));
 
-      return Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb);
+      return Tuple3<Transaction, Profile, Cookbook>(Transaction.wrap(tx), prf, cb);
     });
   }
 
@@ -500,11 +500,11 @@ class PylonsWalletImpl implements PylonsWallet {
           Strings.ERR_COOKBOOK_NOT_OWNED
         ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
       var rcp = Recipe.fromJson(jsonDecode(r.value2[2]));
 
-      return Tuple3<Transaction, Profile, Recipe>(tx, prf, rcp);
+      return Tuple3<Transaction, Profile, Recipe>(Transaction.wrap(tx), prf, rcp);
     });
   }
 
@@ -552,8 +552,8 @@ class PylonsWalletImpl implements PylonsWallet {
           Strings.ERR_PROFILE_DOES_NOT_EXIST
         ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
-      return tx;
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
+      return Transaction.wrap(tx);
     });
   }
 
@@ -601,8 +601,8 @@ class PylonsWalletImpl implements PylonsWallet {
           Strings.ERR_PROFILE_DOES_NOT_EXIST
         ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
-      return tx;
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
+      return Transaction.wrap(tx);
     });
   }
 
@@ -660,9 +660,9 @@ class PylonsWalletImpl implements PylonsWallet {
           Strings.ERR_PROFILE_DOES_NOT_EXIST
         ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
-      return Tuple2<Transaction, Profile>(tx, prf);
+      return Tuple2<Transaction, Profile>(Transaction.wrap(tx), prf);
     });
   }
 
@@ -779,10 +779,10 @@ class PylonsWalletImpl implements PylonsWallet {
           Strings.ERR_PROFILE_DOES_NOT_EXIST
         ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
       var cb = Cookbook.fromJson(jsonDecode(r.value2[2]));
-      throw Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb);
+      throw Tuple3<Transaction, Profile, Cookbook>(Transaction.wrap(tx), prf, cb);
     });
   }
 
@@ -842,10 +842,10 @@ class PylonsWalletImpl implements PylonsWallet {
           Strings.ERR_PROFILE_DOES_NOT_EXIST
         ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
       var rcp = Cookbook.fromJson(jsonDecode(r.value2[2]));
-      throw Tuple3<Transaction, Profile, Cookbook>(tx, prf, rcp);
+      throw Tuple3<Transaction, Profile, Cookbook>(Transaction.wrap(tx), prf, rcp);
     });
   }
 
