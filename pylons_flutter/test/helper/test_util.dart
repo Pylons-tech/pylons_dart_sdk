@@ -8,8 +8,8 @@ import '../mocks/mockedWallet.dart';
 /// Utility functions for pylons_wallet_test
 class TestUtil {
   /// Set up MockWallet and (TODO) our mock backend stuff.
-  static MockWallet mockIpcTarget() {
-    return MockWallet();
+  static MockWallet mockIpcTarget({bool exists = true}) {
+    return MockWallet(exists);
   }
 
   /// Load a file out of our test resources folder, get a string
@@ -22,6 +22,12 @@ class TestUtil {
     var json = jsonDecode(loadFile(path));
     final cb = Cookbook.fromJson(json);
     return cb;
+  }
+
+  static Item loadItem(String path) {
+    var json = jsonDecode(loadFile(path));
+    final item = Item.fromJson(json);
+    return item;
   }
 
   static Recipe loadRecipe(String path) {

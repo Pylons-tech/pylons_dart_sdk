@@ -15,22 +15,21 @@ void main() {
 
   group('PylonsWallet.exists', () {
     test('Returns true when the target exists', () async {
-      // Pyl= TestUtil.mockIpcTarget();
-      // var response = await PylonsWallet.exists();
-      // expect(true, response);
+      var target = TestUtil.mockIpcTarget();
+      var response = await target.exists();
+      expect(true, response);
     });
     test("Returns false when it doesn't", () async {
-      // We don't mock the IPC target here, since we want exists to return false
-      // var response = await PylonsWallet.exists();
-      // expect(false, response);
+      var target = TestUtil.mockIpcTarget(exists: false);
+      var response = await target.exists();
+      expect(false, response);
     });
   });
 
   group('PylonsWallet.getCookbooks', () {
     test("Throws a NoWalletException if there's no wallet", () async {
-      // We don't mock the IPC target here, since we want a NoWalletException
-      // var mockedWallet = await PylonsWallet.instance;
-      // expect(() => mockedWallet?.getCookbooks(), throwsA(NoWalletException));
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.getCookbooks(), throwsA(NoWalletException));
     });
     test('Returns cookbooks while there are cookbooks', () async {
       var mockedWalletWithCookbooks = TestUtil.mockIpcTarget();
@@ -50,9 +49,8 @@ void main() {
 
   group('PylonsWallet.getProfile', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      // We don't mock the IPC target here, since we want a NoWalletException
-      // var response = PylonsWallet.instance;
-      // expect(() => response?.getProfile("address"), throwsA(NoWalletException));
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.getProfile(null), throwsA(NoWalletException));
     });
     test('Throws a NotAnAddressException if given a bad address', () {
       var mockWallet = TestUtil.mockIpcTarget();
@@ -61,7 +59,7 @@ void main() {
     });
     test("When there's no argument, get the active profile", () {
       var mockWallet = TestUtil.mockIpcTarget();
-      expect(Profile, mockWallet.getProfile('address').runtimeType);
+      expect(Profile, mockWallet.getProfile(null).runtimeType);
     });
     test("When there's a valid address, get the correct profile", () {
       var mockWallet = TestUtil.mockIpcTarget();
@@ -72,13 +70,13 @@ void main() {
 
   group('PylonsWallet.getRecipes', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('M - REDO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.getRecipes('not_a_real_address'), throwsA(NoWalletException));
     });
     test('Throws a NotAnAddressException if given a bad address', () {
       throw UnimplementedError('M - REDO');
     });
     test('Returns all recipes while there are recipes, if no argument', () {
-      //TO-DO
       throw UnimplementedError('M - REDO');
     });
 
@@ -95,7 +93,8 @@ void main() {
 
   group('PylonsWallet.getTrades', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('M - REDO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.getTrades(), throwsA(NoWalletException));
     });
     test('Returns trades while there are trades', () {
       throw UnimplementedError('M - REDO');
@@ -107,7 +106,8 @@ void main() {
 
   group('PylonsWallet.txBuyItem', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('M - REDO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.txBuyItem('not_a_real_trade', 'not_a_real_payment'), throwsA(NoWalletException));
     });
     test('Throws a PaymentNotValidException if the payment is garbage', () {
       throw UnimplementedError('M - REDO');
@@ -143,7 +143,8 @@ void main() {
 
   group('PylonsWallet.txBuyPylons', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('M - REDO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.txBuyPylons(123, 'not_a_real_payment'), throwsA(NoWalletException));
     });
     test('Throws a PaymentNotValidException if the payment is garbage', () {
       throw UnimplementedError('M - REDO');
@@ -179,7 +180,8 @@ void main() {
 
   group('PylonsWallet.txCreateCookbook', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('M - REDO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.txCreateCookbook(TestUtil.loadCookbook('cb1.json')), throwsA(NoWalletException));
     });
     test('Throws a CookbookAlreadyExistsException if the cookbook exists', () {
       throw UnimplementedError('M - REDO');
@@ -219,7 +221,8 @@ void main() {
 
   group('PylonsWallet.txCreateRecipe', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('TODO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.txCreateRecipe(TestUtil.loadRecipe('rcp1.json')), throwsA(NoWalletException));
     });
     test('Throws a RecipeValidationException when given a bad recipe', () {
       throw UnimplementedError('TODO');
@@ -268,7 +271,8 @@ void main() {
 
   group('PylonsWallet.txDisableRecipe', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('TODO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.txDisableRecipe('not_a_real_recipe'), throwsA(NoWalletException));
     });
     test("Throws a RecipeNotOwnedException if we don't own the recipe", () {
       throw UnimplementedError('TODO');
@@ -301,7 +305,8 @@ void main() {
 
   group('PylonsWallet.txEnableRecipe', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('TODO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.txEnableRecipe('not_a_real_recipe'), throwsA(NoWalletException));
     });
     test("Throws a RecipeNotOwnedException if we don't own the recipe", () {
       throw UnimplementedError('TODO');
@@ -334,7 +339,8 @@ void main() {
 
   group('PylonsWallet.txExecuteRecipe', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('TODO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.txExecuteRecipe('not_a_real_cookbook', 'not_a_real_recipe', []), throwsA(NoWalletException));
     });
     test(
         "Throws a RecipeDoesNotExist exception if the recipe doesn't "
@@ -372,7 +378,8 @@ void main() {
 
   group('PylonsWallet.txPlaceForSale', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('TODO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.txPlaceForSale(TestUtil.loadItem('itm1.json'), 1), throwsA(NoWalletException));
     });
     test(
         "Throws an ItemDoesNotExist exception if the item doesn't "
@@ -410,7 +417,8 @@ void main() {
 
   group('PylonsWallet.txUpdateCookbook', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('M - REDO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.txUpdateCookbook(TestUtil.loadCookbook('cb1.json')), throwsA(NoWalletException));
     });
     test("Throws a CookbookNotOwnedException if we don't own the cookbook", () {
       throw UnimplementedError('M - REDO');
@@ -450,7 +458,8 @@ void main() {
   });
   group('PylonsWallet.txUpdateRecipe', () {
     test("Throws a NoWalletException if there's no wallet", () {
-      throw UnimplementedError('TODO');
+      var target = TestUtil.mockIpcTarget(exists: false);
+      expect(() => target.txUpdateRecipe(TestUtil.loadRecipe('rcp1.json')), throwsA(NoWalletException));
     });
     test('Throws a RecipeValidationException when given a bad recipe', () {
       throw UnimplementedError('TODO');

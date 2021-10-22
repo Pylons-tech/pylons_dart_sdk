@@ -2,9 +2,14 @@ import 'package:mockito/mockito.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
 
 class MockWallet extends Mock implements PylonsWallet {
+  bool _exists;
   List<Cookbook> cookbooks = [];
   List<Recipe> recipes = [];
   List<Trade> trades = [];
+
+  MockWallet(bool exists) {
+    _exists = exists;
+  }
 
   /// Load the provided cookbooks. We'll use these to mock getCookbooks.
   void loadCookbooks(List<Cookbook> cbs) {
