@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
 
 import '../../pylons_flutter.dart';
 
@@ -50,17 +51,7 @@ class PylonsWalletDevImpl implements PylonsWallet {
     throw UnimplementedError();
   }
 
-  @override
-  Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(Cookbook cookbook) {
-    // TODO: implement txCreateCookbook
-    throw UnimplementedError();
-  }
 
-  @override
-  Future<Tuple3<Transaction, Profile, Recipe>> txCreateRecipe(Recipe recipe) {
-    // TODO: implement txCreateRecipe
-    throw UnimplementedError();
-  }
 
   @override
   Future<Transaction> txDisableRecipe(String recipeId) {
@@ -101,6 +92,18 @@ class PylonsWalletDevImpl implements PylonsWallet {
   @override
   Future<bool> exists() {
     // TODO: implement exists
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<SDKIPCResponse> txCreateCookbook(Cookbook cookbook) {
+    // TODO: implement txCreateCookbook
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<SDKIPCResponse> txCreateRecipe(Recipe recipe) {
+    // TODO: implement txCreateRecipe
     throw UnimplementedError();
   }
 

@@ -9,6 +9,8 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
 
+import 'features/models/sdk_ipc_message.dart';
+import 'features/models/sdk_ipc_response.dart';
 import 'pylons_wallet/pylons_wallet_dev.dart';
 import 'pylons_wallet/pylons_wallet_impl.dart';
 
@@ -304,7 +306,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Cookbook>> txCreateCookbook(
+  Future<SDKIPCResponse> txCreateCookbook(
       Cookbook cookbook);
 
   /// Async: Creates a transaction to create the provided [Recipe] on the Pylons
@@ -350,7 +352,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Recipe>> txCreateRecipe(Recipe recipe);
+  Future<SDKIPCResponse> txCreateRecipe(Recipe recipe);
 
   /// Async: Creates a transaction to disable the recipe with the provided real,
   /// on-chain recipe ID against the current profile. Upon successful

@@ -74,9 +74,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
+
+
+
   var MOCK_COOKBOOK = '''{
-  "creator": "pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2",
-  "ID": "cookbookLOUD",
+  "creator": "",
+  "ID": "cookbookLOUDjawad",
   "name": "Legend of the Undead Dragon",
   "nodeVersion": "v0.1.3",
   "description": "Cookbook for running pylons recreation of LOUD",
@@ -89,14 +95,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   void _incrementCounter() async {
-
-    print('Cookbook 1 sent');
     var cookBook = Cookbook.fromJson(jsonDecode(MOCK_COOKBOOK));
-    var key = 'txCreateCookbook';
-    var dataToEncode = [key, const JsonEncoder().convert(cookBook)];
 
-    print(await PylonsWallet.instance.sendMessage(dataToEncode));
-    print('Cookbook 1 received');
+    var response = await PylonsWallet.instance.txCreateCookbook(cookBook);
+
+    print('From App $response');
+
+
+    if(response.success){
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Cookbook created")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:  Text("Cookbook error : ${response.error}")));
+    }
 
 
 
@@ -106,13 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
@@ -123,14 +128,20 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: () async {
 
 
-            print('Cookbook 2 sent');
-            var cookBook = Cookbook.fromJson(jsonDecode(MOCK_COOKBOOK));
-            var key = 'txCreateCookbook';
-            var dataToEncode = [key, const JsonEncoder().convert(cookBook)];
-
-            print(await PylonsWallet.instance.sendMessage(dataToEncode));
-
-            print('Cookbook 2 received');
+            // print('Cookbook 2 sent');
+            // var cookBook = Cookbook.fromJson(jsonDecode(MOCK_COOKBOOK));
+            // var key = 'txCreateCookbook';
+            // var dataToEncode = [key, const JsonEncoder().convert(cookBook)];
+            //
+            // var response = await PylonsWallet.instance.sendMessage(dataToEncode);
+            //
+            //
+            //
+            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(response)));
+            //
+            // print('Cookbook 2 received');
+            //
+            //
 
           },
           child: Text('send another message '),
