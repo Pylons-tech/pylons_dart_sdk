@@ -5,14 +5,14 @@
         <entry key="_fe_analyzer_shared">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-27.0.0/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-30.0.0/lib" />
             </list>
           </value>
         </entry>
         <entry key="analyzer">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-2.4.0/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-2.7.0/lib" />
             </list>
           </value>
         </entry>
@@ -89,7 +89,7 @@
         <entry key="cli_util">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/cli_util-0.3.4/lib" />
+              <option value="$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/cli_util-0.3.5/lib" />
             </list>
           </value>
         </entry>
@@ -216,7 +216,6 @@
           <value>
             <list>
               <option value="$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.4/lib" />
-              <option value="$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.3/lib" />
             </list>
           </value>
         </entry>
@@ -280,13 +279,6 @@
           <value>
             <list>
               <option value="$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="pedantic">
-          <value>
-            <list>
-              <option value="$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.11.1/lib" />
             </list>
           </value>
         </entry>
@@ -475,8 +467,8 @@
       </option>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-27.0.0/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-2.4.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-30.0.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-2.7.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/args-2.3.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/bech32-0.2.1/lib" />
@@ -487,7 +479,7 @@
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/built_value-8.1.2/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/charcode-1.3.1/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/cli_util-0.3.4/lib" />
+      <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/cli_util-0.3.5/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/clock-1.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/code_builder-4.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0/lib" />
@@ -502,7 +494,6 @@
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/fixnum-1.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/glob-2.0.2/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.3/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.4/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.3/lib" />
@@ -513,7 +504,6 @@
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/mockito-5.0.16/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/package_config-2.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0/lib" />
-      <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.11.1/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/pointycastle-3.3.4/lib" />
       <root url="file://$PROJECT_DIR$/../../flutter/flutter/.pub-cache/hosted/pub.dartlang.org/protobuf-2.0.0/lib" />

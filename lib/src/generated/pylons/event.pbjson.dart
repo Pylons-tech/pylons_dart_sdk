@@ -8,6 +8,16 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use eventBurnDebtTokenDescriptor instead')
+const EventBurnDebtToken$json = const {
+  '1': 'EventBurnDebtToken',
+  '2': const [
+    const {'1': 'redeemInfo', '3': 1, '4': 1, '5': 11, '6': '.Pylonstech.pylons.pylons.RedeemInfo', '8': const {}, '10': 'redeemInfo'},
+  ],
+};
+
+/// Descriptor for `EventBurnDebtToken`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List eventBurnDebtTokenDescriptor = $convert.base64Decode('ChJFdmVudEJ1cm5EZWJ0VG9rZW4SSgoKcmVkZWVtSW5mbxgBIAEoCzIkLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5SZWRlZW1JbmZvQgTI3h8AUgpyZWRlZW1JbmZv');
 @$core.Deprecated('Use eventCreateAccountDescriptor instead')
 const EventCreateAccount$json = const {
   '1': 'EventCreateAccount',
@@ -91,11 +101,12 @@ const EventCreateExecution$json = const {
   '2': const [
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
     const {'1': 'ID', '3': 2, '4': 1, '5': 9, '10': 'ID'},
+    const {'1': 'paymentInfos', '3': 3, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.PaymentInfo', '8': const {}, '10': 'paymentInfos'},
   ],
 };
 
 /// Descriptor for `EventCreateExecution`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventCreateExecutionDescriptor = $convert.base64Decode('ChRFdmVudENyZWF0ZUV4ZWN1dGlvbhIYCgdjcmVhdG9yGAEgASgJUgdjcmVhdG9yEg4KAklEGAIgASgJUgJJRA==');
+final $typed_data.Uint8List eventCreateExecutionDescriptor = $convert.base64Decode('ChRFdmVudENyZWF0ZUV4ZWN1dGlvbhIYCgdjcmVhdG9yGAEgASgJUgdjcmVhdG9yEg4KAklEGAIgASgJUgJJRBJPCgxwYXltZW50SW5mb3MYAyADKAsyJS5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuUGF5bWVudEluZm9CBMjeHwBSDHBheW1lbnRJbmZvcw==');
 @$core.Deprecated('Use eventCompleteExecutionDescriptor instead')
 const EventCompleteExecution$json = const {
   '1': 'EventCompleteExecution',
@@ -194,11 +205,12 @@ const EventFulfillTrade$json = const {
     const {'1': 'coinInputs', '3': 5, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'coinInputs'},
     const {'1': 'itemOutputs', '3': 6, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.ItemRef', '8': const {}, '10': 'itemOutputs'},
     const {'1': 'coinOutputs', '3': 7, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'coinOutputs'},
+    const {'1': 'paymentInfos', '3': 8, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.PaymentInfo', '8': const {}, '10': 'paymentInfos'},
   ],
 };
 
 /// Descriptor for `EventFulfillTrade`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventFulfillTradeDescriptor = $convert.base64Decode('ChFFdmVudEZ1bGZpbGxUcmFkZRIOCgJJRBgBIAEoBFICSUQSGAoHY3JlYXRvchgCIAEoCVIHY3JlYXRvchIcCglmdWxmaWxsZXIYAyABKAlSCWZ1bGZpbGxlchJHCgppdGVtSW5wdXRzGAQgAygLMiEuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLkl0ZW1SZWZCBMjeHwBSCml0ZW1JbnB1dHMSawoKY29pbklucHV0cxgFIAMoCzIZLmNvc21vcy5iYXNlLnYxYmV0YTEuQ29pbkIwyN4fAKrfHyhnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3R5cGVzLkNvaW5zUgpjb2luSW5wdXRzEkkKC2l0ZW1PdXRwdXRzGAYgAygLMiEuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLkl0ZW1SZWZCBMjeHwBSC2l0ZW1PdXRwdXRzEm0KC2NvaW5PdXRwdXRzGAcgAygLMhkuY29zbW9zLmJhc2UudjFiZXRhMS5Db2luQjDI3h8Aqt8fKGdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvdHlwZXMuQ29pbnNSC2NvaW5PdXRwdXRz');
+final $typed_data.Uint8List eventFulfillTradeDescriptor = $convert.base64Decode('ChFFdmVudEZ1bGZpbGxUcmFkZRIOCgJJRBgBIAEoBFICSUQSGAoHY3JlYXRvchgCIAEoCVIHY3JlYXRvchIcCglmdWxmaWxsZXIYAyABKAlSCWZ1bGZpbGxlchJHCgppdGVtSW5wdXRzGAQgAygLMiEuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLkl0ZW1SZWZCBMjeHwBSCml0ZW1JbnB1dHMSawoKY29pbklucHV0cxgFIAMoCzIZLmNvc21vcy5iYXNlLnYxYmV0YTEuQ29pbkIwyN4fAKrfHyhnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3R5cGVzLkNvaW5zUgpjb2luSW5wdXRzEkkKC2l0ZW1PdXRwdXRzGAYgAygLMiEuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLkl0ZW1SZWZCBMjeHwBSC2l0ZW1PdXRwdXRzEm0KC2NvaW5PdXRwdXRzGAcgAygLMhkuY29zbW9zLmJhc2UudjFiZXRhMS5Db2luQjDI3h8Aqt8fKGdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvdHlwZXMuQ29pbnNSC2NvaW5PdXRwdXRzEk8KDHBheW1lbnRJbmZvcxgIIAMoCzIlLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5QYXltZW50SW5mb0IEyN4fAFIMcGF5bWVudEluZm9z');
 @$core.Deprecated('Use eventGooglePurchaseDescriptor instead')
 const EventGooglePurchase$json = const {
   '1': 'EventGooglePurchase',

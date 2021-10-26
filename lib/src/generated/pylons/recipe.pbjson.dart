@@ -86,14 +86,13 @@ const DoubleParam$json = const {
   '1': 'DoubleParam',
   '2': const [
     const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'rate', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'rate'},
-    const {'1': 'weightRanges', '3': 3, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.DoubleWeightRange', '8': const {}, '10': 'weightRanges'},
-    const {'1': 'program', '3': 4, '4': 1, '5': 9, '10': 'program'},
+    const {'1': 'weightRanges', '3': 2, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.DoubleWeightRange', '8': const {}, '10': 'weightRanges'},
+    const {'1': 'program', '3': 3, '4': 1, '5': 9, '10': 'program'},
   ],
 };
 
 /// Descriptor for `DoubleParam`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List doubleParamDescriptor = $convert.base64Decode('CgtEb3VibGVQYXJhbRIQCgNrZXkYASABKAlSA2tleRJCCgRyYXRlGAIgASgJQi7I3h8A2t4fJmdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvdHlwZXMuRGVjUgRyYXRlElUKDHdlaWdodFJhbmdlcxgDIAMoCzIrLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Eb3VibGVXZWlnaHRSYW5nZUIEyN4fAFIMd2VpZ2h0UmFuZ2VzEhgKB3Byb2dyYW0YBCABKAlSB3Byb2dyYW0=');
+final $typed_data.Uint8List doubleParamDescriptor = $convert.base64Decode('CgtEb3VibGVQYXJhbRIQCgNrZXkYASABKAlSA2tleRJVCgx3ZWlnaHRSYW5nZXMYAiADKAsyKy5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuRG91YmxlV2VpZ2h0UmFuZ2VCBMjeHwBSDHdlaWdodFJhbmdlcxIYCgdwcm9ncmFtGAMgASgJUgdwcm9ncmFt');
 @$core.Deprecated('Use intWeightRangeDescriptor instead')
 const IntWeightRange$json = const {
   '1': 'IntWeightRange',
@@ -111,27 +110,25 @@ const LongParam$json = const {
   '1': 'LongParam',
   '2': const [
     const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'rate', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'rate'},
-    const {'1': 'weightRanges', '3': 3, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.IntWeightRange', '8': const {}, '10': 'weightRanges'},
-    const {'1': 'program', '3': 4, '4': 1, '5': 9, '10': 'program'},
+    const {'1': 'weightRanges', '3': 2, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.IntWeightRange', '8': const {}, '10': 'weightRanges'},
+    const {'1': 'program', '3': 3, '4': 1, '5': 9, '10': 'program'},
   ],
 };
 
 /// Descriptor for `LongParam`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List longParamDescriptor = $convert.base64Decode('CglMb25nUGFyYW0SEAoDa2V5GAEgASgJUgNrZXkSQgoEcmF0ZRgCIAEoCUIuyN4fANreHyZnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3R5cGVzLkRlY1IEcmF0ZRJSCgx3ZWlnaHRSYW5nZXMYAyADKAsyKC5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuSW50V2VpZ2h0UmFuZ2VCBMjeHwBSDHdlaWdodFJhbmdlcxIYCgdwcm9ncmFtGAQgASgJUgdwcm9ncmFt');
+final $typed_data.Uint8List longParamDescriptor = $convert.base64Decode('CglMb25nUGFyYW0SEAoDa2V5GAEgASgJUgNrZXkSUgoMd2VpZ2h0UmFuZ2VzGAIgAygLMiguUHlsb25zdGVjaC5weWxvbnMucHlsb25zLkludFdlaWdodFJhbmdlQgTI3h8AUgx3ZWlnaHRSYW5nZXMSGAoHcHJvZ3JhbRgDIAEoCVIHcHJvZ3JhbQ==');
 @$core.Deprecated('Use stringParamDescriptor instead')
 const StringParam$json = const {
   '1': 'StringParam',
   '2': const [
     const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'rate', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'rate'},
-    const {'1': 'value', '3': 3, '4': 1, '5': 9, '10': 'value'},
-    const {'1': 'program', '3': 4, '4': 1, '5': 9, '10': 'program'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+    const {'1': 'program', '3': 3, '4': 1, '5': 9, '10': 'program'},
   ],
 };
 
 /// Descriptor for `StringParam`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List stringParamDescriptor = $convert.base64Decode('CgtTdHJpbmdQYXJhbRIQCgNrZXkYASABKAlSA2tleRJCCgRyYXRlGAIgASgJQi7I3h8A2t4fJmdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvdHlwZXMuRGVjUgRyYXRlEhQKBXZhbHVlGAMgASgJUgV2YWx1ZRIYCgdwcm9ncmFtGAQgASgJUgdwcm9ncmFt');
+final $typed_data.Uint8List stringParamDescriptor = $convert.base64Decode('CgtTdHJpbmdQYXJhbRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWUSGAoHcHJvZ3JhbRgDIAEoCVIHcHJvZ3JhbQ==');
 @$core.Deprecated('Use coinOutputDescriptor instead')
 const CoinOutput$json = const {
   '1': 'CoinOutput',

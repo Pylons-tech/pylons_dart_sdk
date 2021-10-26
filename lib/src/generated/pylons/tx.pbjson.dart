@@ -8,11 +8,31 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import 'trade.pbjson.dart' as $4;
+import 'redeem_info.pbjson.dart' as $3;
+import 'trade.pbjson.dart' as $6;
+import 'payment_info.pbjson.dart' as $5;
 import 'recipe.pbjson.dart' as $2;
 import '../cosmos/base/v1beta1/coin.pbjson.dart' as $0;
 import 'item.pbjson.dart' as $1;
 
+@$core.Deprecated('Use msgBurnDebtTokenDescriptor instead')
+const MsgBurnDebtToken$json = const {
+  '1': 'MsgBurnDebtToken',
+  '2': const [
+    const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
+    const {'1': 'redeemInfo', '3': 2, '4': 1, '5': 11, '6': '.Pylonstech.pylons.pylons.RedeemInfo', '8': const {}, '10': 'redeemInfo'},
+  ],
+};
+
+/// Descriptor for `MsgBurnDebtToken`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgBurnDebtTokenDescriptor = $convert.base64Decode('ChBNc2dCdXJuRGVidFRva2VuEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISSgoKcmVkZWVtSW5mbxgCIAEoCzIkLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5SZWRlZW1JbmZvQgTI3h8AUgpyZWRlZW1JbmZv');
+@$core.Deprecated('Use msgBurnDebtTokenResponseDescriptor instead')
+const MsgBurnDebtTokenResponse$json = const {
+  '1': 'MsgBurnDebtTokenResponse',
+};
+
+/// Descriptor for `MsgBurnDebtTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgBurnDebtTokenResponseDescriptor = $convert.base64Decode('ChhNc2dCdXJuRGVidFRva2VuUmVzcG9uc2U=');
 @$core.Deprecated('Use msgUpdateAccountDescriptor instead')
 const MsgUpdateAccount$json = const {
   '1': 'MsgUpdateAccount',
@@ -57,11 +77,12 @@ const MsgFulfillTrade$json = const {
     const {'1': 'ID', '3': 2, '4': 1, '5': 4, '10': 'ID'},
     const {'1': 'coinInputsIndex', '3': 3, '4': 1, '5': 4, '10': 'coinInputsIndex'},
     const {'1': 'items', '3': 4, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.ItemRef', '8': const {}, '10': 'items'},
+    const {'1': 'paymentInfos', '3': 5, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.PaymentInfo', '8': const {}, '10': 'paymentInfos'},
   ],
 };
 
 /// Descriptor for `MsgFulfillTrade`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgFulfillTradeDescriptor = $convert.base64Decode('Cg9Nc2dGdWxmaWxsVHJhZGUSGAoHY3JlYXRvchgBIAEoCVIHY3JlYXRvchIOCgJJRBgCIAEoBFICSUQSKAoPY29pbklucHV0c0luZGV4GAMgASgEUg9jb2luSW5wdXRzSW5kZXgSPQoFaXRlbXMYBCADKAsyIS5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuSXRlbVJlZkIEyN4fAFIFaXRlbXM=');
+final $typed_data.Uint8List msgFulfillTradeDescriptor = $convert.base64Decode('Cg9Nc2dGdWxmaWxsVHJhZGUSGAoHY3JlYXRvchgBIAEoCVIHY3JlYXRvchIOCgJJRBgCIAEoBFICSUQSKAoPY29pbklucHV0c0luZGV4GAMgASgEUg9jb2luSW5wdXRzSW5kZXgSPQoFaXRlbXMYBCADKAsyIS5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuSXRlbVJlZkIEyN4fAFIFaXRlbXMSTwoMcGF5bWVudEluZm9zGAUgAygLMiUuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLlBheW1lbnRJbmZvQgTI3h8AUgxwYXltZW50SW5mb3M=');
 @$core.Deprecated('Use msgFulfillTradeResponseDescriptor instead')
 const MsgFulfillTradeResponse$json = const {
   '1': 'MsgFulfillTradeResponse',
@@ -201,11 +222,12 @@ const MsgExecuteRecipe$json = const {
     const {'1': 'recipeID', '3': 3, '4': 1, '5': 9, '10': 'recipeID'},
     const {'1': 'coinInputsIndex', '3': 4, '4': 1, '5': 4, '10': 'coinInputsIndex'},
     const {'1': 'itemIDs', '3': 5, '4': 3, '5': 9, '8': const {}, '10': 'itemIDs'},
+    const {'1': 'paymentInfos', '3': 6, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.PaymentInfo', '8': const {}, '10': 'paymentInfos'},
   ],
 };
 
 /// Descriptor for `MsgExecuteRecipe`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgExecuteRecipeDescriptor = $convert.base64Decode('ChBNc2dFeGVjdXRlUmVjaXBlEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISHgoKY29va2Jvb2tJRBgCIAEoCVIKY29va2Jvb2tJRBIaCghyZWNpcGVJRBgDIAEoCVIIcmVjaXBlSUQSKAoPY29pbklucHV0c0luZGV4GAQgASgEUg9jb2luSW5wdXRzSW5kZXgSHgoHaXRlbUlEcxgFIAMoCUIEyN4fAFIHaXRlbUlEcw==');
+final $typed_data.Uint8List msgExecuteRecipeDescriptor = $convert.base64Decode('ChBNc2dFeGVjdXRlUmVjaXBlEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISHgoKY29va2Jvb2tJRBgCIAEoCVIKY29va2Jvb2tJRBIaCghyZWNpcGVJRBgDIAEoCVIIcmVjaXBlSUQSKAoPY29pbklucHV0c0luZGV4GAQgASgEUg9jb2luSW5wdXRzSW5kZXgSHgoHaXRlbUlEcxgFIAMoCUIEyN4fAFIHaXRlbUlEcxJPCgxwYXltZW50SW5mb3MYBiADKAsyJS5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuUGF5bWVudEluZm9CBMjeHwBSDHBheW1lbnRJbmZvcw==');
 @$core.Deprecated('Use msgExecuteRecipeResponseDescriptor instead')
 const MsgExecuteRecipeResponse$json = const {
   '1': 'MsgExecuteRecipeResponse',
@@ -348,6 +370,7 @@ final $typed_data.Uint8List msgUpdateCookbookResponseDescriptor = $convert.base6
 const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
   '1': 'Msg',
   '2': const [
+    const {'1': 'BurnDebtToken', '2': '.Pylonstech.pylons.pylons.MsgBurnDebtToken', '3': '.Pylonstech.pylons.pylons.MsgBurnDebtTokenResponse'},
     const {'1': 'UpdateAccount', '2': '.Pylonstech.pylons.pylons.MsgUpdateAccount', '3': '.Pylonstech.pylons.pylons.MsgUpdateAccountResponse'},
     const {'1': 'FulfillTrade', '2': '.Pylonstech.pylons.pylons.MsgFulfillTrade', '3': '.Pylonstech.pylons.pylons.MsgFulfillTradeResponse'},
     const {'1': 'CreateTrade', '2': '.Pylonstech.pylons.pylons.MsgCreateTrade', '3': '.Pylonstech.pylons.pylons.MsgCreateTradeResponse'},
@@ -368,10 +391,14 @@ const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
 
 @$core.Deprecated('Use msgServiceDescriptor instead')
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgServiceBase$messageJson = const {
+  '.Pylonstech.pylons.pylons.MsgBurnDebtToken': MsgBurnDebtToken$json,
+  '.Pylonstech.pylons.pylons.RedeemInfo': $3.RedeemInfo$json,
+  '.Pylonstech.pylons.pylons.MsgBurnDebtTokenResponse': MsgBurnDebtTokenResponse$json,
   '.Pylonstech.pylons.pylons.MsgUpdateAccount': MsgUpdateAccount$json,
   '.Pylonstech.pylons.pylons.MsgUpdateAccountResponse': MsgUpdateAccountResponse$json,
   '.Pylonstech.pylons.pylons.MsgFulfillTrade': MsgFulfillTrade$json,
-  '.Pylonstech.pylons.pylons.ItemRef': $4.ItemRef$json,
+  '.Pylonstech.pylons.pylons.ItemRef': $6.ItemRef$json,
+  '.Pylonstech.pylons.pylons.PaymentInfo': $5.PaymentInfo$json,
   '.Pylonstech.pylons.pylons.MsgFulfillTradeResponse': MsgFulfillTradeResponse$json,
   '.Pylonstech.pylons.pylons.MsgCreateTrade': MsgCreateTrade$json,
   '.Pylonstech.pylons.pylons.CoinInput': $2.CoinInput$json,
@@ -420,4 +447,4 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgService
 };
 
 /// Descriptor for `Msg`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List msgServiceDescriptor = $convert.base64Decode('CgNNc2cSbwoNVXBkYXRlQWNjb3VudBIqLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dVcGRhdGVBY2NvdW50GjIuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ1VwZGF0ZUFjY291bnRSZXNwb25zZRJsCgxGdWxmaWxsVHJhZGUSKS5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnRnVsZmlsbFRyYWRlGjEuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0Z1bGZpbGxUcmFkZVJlc3BvbnNlEmkKC0NyZWF0ZVRyYWRlEiguUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0NyZWF0ZVRyYWRlGjAuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0NyZWF0ZVRyYWRlUmVzcG9uc2USaQoLQ2FuY2VsVHJhZGUSKC5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnQ2FuY2VsVHJhZGUaMC5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnQ2FuY2VsVHJhZGVSZXNwb25zZRKKAQoWQ29tcGxldGVFeGVjdXRpb25FYXJseRIzLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dDb21wbGV0ZUV4ZWN1dGlvbkVhcmx5GjsuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0NvbXBsZXRlRXhlY3V0aW9uRWFybHlSZXNwb25zZRJ4ChBUcmFuc2ZlckNvb2tib29rEi0uUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ1RyYW5zZmVyQ29va2Jvb2saNS5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnVHJhbnNmZXJDb29rYm9va1Jlc3BvbnNlEpkBChtHb29nbGVJbkFwcFB1cmNoYXNlR2V0Q29pbnMSOC5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnR29vZ2xlSW5BcHBQdXJjaGFzZUdldENvaW5zGkAuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0dvb2dsZUluQXBwUHVyY2hhc2VHZXRDb2luc1Jlc3BvbnNlEm8KDUNyZWF0ZUFjY291bnQSKi5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnQ3JlYXRlQWNjb3VudBoyLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dDcmVhdGVBY2NvdW50UmVzcG9uc2USYwoJU2VuZEl0ZW1zEiYuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ1NlbmRJdGVtcxouLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dTZW5kSXRlbXNSZXNwb25zZRJvCg1FeGVjdXRlUmVjaXBlEiouUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0V4ZWN1dGVSZWNpcGUaMi5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnRXhlY3V0ZVJlY2lwZVJlc3BvbnNlEm8KDVNldEl0ZW1TdHJpbmcSKi5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnU2V0SXRlbVN0cmluZxoyLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dTZXRJdGVtU3RyaW5nUmVzcG9uc2USbAoMQ3JlYXRlUmVjaXBlEikuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0NyZWF0ZVJlY2lwZRoxLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dDcmVhdGVSZWNpcGVSZXNwb25zZRJsCgxVcGRhdGVSZWNpcGUSKS5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnVXBkYXRlUmVjaXBlGjEuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ1VwZGF0ZVJlY2lwZVJlc3BvbnNlEnIKDkNyZWF0ZUNvb2tib29rEisuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0NyZWF0ZUNvb2tib29rGjMuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0NyZWF0ZUNvb2tib29rUmVzcG9uc2UScgoOVXBkYXRlQ29va2Jvb2sSKy5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnVXBkYXRlQ29va2Jvb2saMy5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnVXBkYXRlQ29va2Jvb2tSZXNwb25zZQ==');
+final $typed_data.Uint8List msgServiceDescriptor = $convert.base64Decode('CgNNc2cSbwoNQnVybkRlYnRUb2tlbhIqLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dCdXJuRGVidFRva2VuGjIuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0J1cm5EZWJ0VG9rZW5SZXNwb25zZRJvCg1VcGRhdGVBY2NvdW50EiouUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ1VwZGF0ZUFjY291bnQaMi5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnVXBkYXRlQWNjb3VudFJlc3BvbnNlEmwKDEZ1bGZpbGxUcmFkZRIpLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dGdWxmaWxsVHJhZGUaMS5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnRnVsZmlsbFRyYWRlUmVzcG9uc2USaQoLQ3JlYXRlVHJhZGUSKC5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnQ3JlYXRlVHJhZGUaMC5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnQ3JlYXRlVHJhZGVSZXNwb25zZRJpCgtDYW5jZWxUcmFkZRIoLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dDYW5jZWxUcmFkZRowLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dDYW5jZWxUcmFkZVJlc3BvbnNlEooBChZDb21wbGV0ZUV4ZWN1dGlvbkVhcmx5EjMuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0NvbXBsZXRlRXhlY3V0aW9uRWFybHkaOy5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnQ29tcGxldGVFeGVjdXRpb25FYXJseVJlc3BvbnNlEngKEFRyYW5zZmVyQ29va2Jvb2sSLS5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnVHJhbnNmZXJDb29rYm9vaxo1LlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dUcmFuc2ZlckNvb2tib29rUmVzcG9uc2USmQEKG0dvb2dsZUluQXBwUHVyY2hhc2VHZXRDb2lucxI4LlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dHb29nbGVJbkFwcFB1cmNoYXNlR2V0Q29pbnMaQC5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnR29vZ2xlSW5BcHBQdXJjaGFzZUdldENvaW5zUmVzcG9uc2USbwoNQ3JlYXRlQWNjb3VudBIqLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dDcmVhdGVBY2NvdW50GjIuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0NyZWF0ZUFjY291bnRSZXNwb25zZRJjCglTZW5kSXRlbXMSJi5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnU2VuZEl0ZW1zGi4uUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ1NlbmRJdGVtc1Jlc3BvbnNlEm8KDUV4ZWN1dGVSZWNpcGUSKi5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnRXhlY3V0ZVJlY2lwZRoyLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dFeGVjdXRlUmVjaXBlUmVzcG9uc2USbwoNU2V0SXRlbVN0cmluZxIqLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dTZXRJdGVtU3RyaW5nGjIuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ1NldEl0ZW1TdHJpbmdSZXNwb25zZRJsCgxDcmVhdGVSZWNpcGUSKS5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnQ3JlYXRlUmVjaXBlGjEuUHlsb25zdGVjaC5weWxvbnMucHlsb25zLk1zZ0NyZWF0ZVJlY2lwZVJlc3BvbnNlEmwKDFVwZGF0ZVJlY2lwZRIpLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dVcGRhdGVSZWNpcGUaMS5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnVXBkYXRlUmVjaXBlUmVzcG9uc2UScgoOQ3JlYXRlQ29va2Jvb2sSKy5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnQ3JlYXRlQ29va2Jvb2saMy5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuTXNnQ3JlYXRlQ29va2Jvb2tSZXNwb25zZRJyCg5VcGRhdGVDb29rYm9vaxIrLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dVcGRhdGVDb29rYm9vaxozLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5Nc2dVcGRhdGVDb29rYm9va1Jlc3BvbnNl');
