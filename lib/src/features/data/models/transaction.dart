@@ -1,31 +1,135 @@
 /// Types and functionality for dealing with transactions.
 library pylons_flutter_transaction;
 
-import 'tx_msg.dart';
+import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:pylons_flutter/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
+import 'package:pylons_flutter/src/generated/pylons/tx.pb.dart';
 
 /// TODO: Doc comment
 class Transaction {
-  TxState state;
-  TxData txData;
-  StdTx stdTx;
-  int responseCode;
-  String rawLog;
+  Tx nativeTx;
+  IList<MsgCancelTrade> msgs_CancelTrade;
+  IList<MsgCompleteExecutionEarly> msgs_CompleteExecutionEarly;
+  IList<MsgCreateAccount> msgs_CreateAccount;
+  IList<MsgCreateCookbook> msgs_CreateCookbook;
+  IList<MsgCreateRecipe> msgs_CreateRecipe;
+  IList<MsgCreateTrade> msgs_CreateTrade;
+  IList<MsgExecuteRecipe> msgs_ExecuteRecipe;
+  IList<MsgFulfillTrade> msgs_FulfillTrade;
+  IList<MsgGoogleInAppPurchaseGetCoins> msgs_GoogleInAppPurchaseGetCoins;
+  IList<MsgSendItems> msgs_SendItems;
+  IList<MsgSetItemString> msgs_SetItemString;
+  IList<MsgTransferCookbook> msgs_TransferCookbook;
+  IList<MsgUpdateAccount> msgs_UpdateAccount;
+  IList<MsgUpdateCookbook> msgs_UpdateCookbook;
+  IList<MsgUpdateRecipe> msgs_UpdateRecipe;
+
+  factory Transaction.wrap(Tx tx) {
+
+    final List<MsgCancelTrade> cancelTrade = [];
+    final List<MsgCompleteExecutionEarly> completeExecutionEarly = [];
+    final List<MsgCreateAccount> createAccount = [];
+    final List<MsgCreateCookbook> createCookbook = [];
+    final List<MsgCreateRecipe> createRecipe = [];
+    final List<MsgCreateTrade> createTrade = [];
+    final List<MsgExecuteRecipe> executeRecipe = [];
+    final List<MsgFulfillTrade> fulfillTrade = [];
+    final List<MsgGoogleInAppPurchaseGetCoins> googleInAppPurchaseGetCoins = [];
+    final List<MsgSendItems> sendItems = [];
+    final List<MsgSetItemString> setItemString = [];
+    final List<MsgTransferCookbook> transferCookbook = [];
+    final List<MsgUpdateAccount> updateAccount = [];
+    final List<MsgUpdateCookbook> updateCookbook = [];
+    final List<MsgUpdateRecipe> updateRecipe = [];
+
+
+    for (var msg in tx.body.messages) {
+      switch (msg.typeUrl) {
+        case '/Pylonstech.pylons.pylons.MsgCancelTrade': {
+          cancelTrade.add(msg.unpackInto(MsgCancelTrade()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgCompleteExecutionEarly': {
+          completeExecutionEarly.add(msg.unpackInto(MsgCompleteExecutionEarly()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgCreateAccount': {
+          createAccount.add(msg.unpackInto(MsgCreateAccount()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgCreateCookbook': {
+          createCookbook.add(msg.unpackInto(MsgCreateCookbook()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgCreateRecipe': {
+          createRecipe.add(msg.unpackInto(MsgCreateRecipe()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgCreateTrade': {
+          createTrade.add(msg.unpackInto(MsgCreateTrade()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgExecuteRecipe': {
+          executeRecipe.add(msg.unpackInto(MsgExecuteRecipe()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgFulfillTrade': {
+          fulfillTrade.add(msg.unpackInto(MsgFulfillTrade()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgGoogleInAppPurchaseGetCoins': {
+          googleInAppPurchaseGetCoins.add(msg.unpackInto(MsgGoogleInAppPurchaseGetCoins()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgSendItems': {
+          sendItems.add(msg.unpackInto(MsgSendItems()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgSetItemString': {
+          setItemString.add(msg.unpackInto(MsgSetItemString()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgTransferCookbook': {
+          transferCookbook.add(msg.unpackInto(MsgTransferCookbook()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgUpdateAccount': {
+          updateAccount.add(msg.unpackInto(MsgUpdateAccount()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgUpdateCookbook': {
+          updateCookbook.add(msg.unpackInto(MsgUpdateCookbook()));
+          break;
+        }
+        case '/Pylonstech.pylons.pylons.MsgUpdateRecipe': {
+          updateRecipe.add(msg.unpackInto(MsgUpdateRecipe()));
+          break;
+        }
+      }
+    }
+    return Transaction(tx, IList.from(cancelTrade), IList.from(completeExecutionEarly), IList.from(createAccount), IList.from(createCookbook), IList.from(createRecipe), IList.from(createTrade), 
+        IList.from(executeRecipe), IList.from(fulfillTrade), IList.from(googleInAppPurchaseGetCoins),IList.from(sendItems), IList.from(setItemString), IList.from(transferCookbook), 
+        IList.from(updateAccount), IList.from(updateCookbook), IList.from(updateRecipe));
+  }
 
   Transaction(
-      {required this.state,
-      required this.txData,
-      required this.stdTx,
-      required this.responseCode,
-      required this.rawLog});
-
-  factory Transaction.fromJson(Map<String, dynamic> json) {
-    return Transaction(
-        stdTx: StdTx.fromJson(json['stdTx']),
-        rawLog: json['rawLog'],
-        txData: TxData.fromJson(json['txData']),
-        state: json['state'].toString().toTxStateEnum(),
-        responseCode: json['responseCode']);
-  }
+      this.nativeTx,
+      this.msgs_CancelTrade,
+      this.msgs_CompleteExecutionEarly,
+      this.msgs_CreateAccount,
+      this.msgs_CreateCookbook,
+      this.msgs_CreateRecipe,
+      this.msgs_CreateTrade,
+      this.msgs_ExecuteRecipe,
+      this.msgs_FulfillTrade,
+      this.msgs_GoogleInAppPurchaseGetCoins,
+      this.msgs_SendItems,
+      this.msgs_SetItemString,
+      this.msgs_TransferCookbook,
+      this.msgs_UpdateAccount,
+      this.msgs_UpdateCookbook,
+      this.msgs_UpdateRecipe);
 }
 
 const int responseCodeOk = 0;
@@ -37,115 +141,7 @@ enum TxState { notYetSent, notYetAccepted, committed, refused }
 extension TxStatePar on String {
   TxState toTxStateEnum() {
     return TxState.values.firstWhere(
-        (e) => e.toString().toLowerCase() == 'TxState.$this'.toLowerCase(),
+            (e) => e.toString().toLowerCase() == 'TxState.$this'.toLowerCase(),
         orElse: () => TxState.notYetSent); //return null if not found
-  }
-}
-
-/// TODO: Doc comment
-class StdTx {
-  List<Msg> msgs;
-  StdFee fee;
-  List<StdSignature> signatures;
-  String memo;
-
-  StdTx(
-      {required this.msgs,
-      required this.fee,
-      required this.signatures,
-      required this.memo});
-
-  factory StdTx.fromJson(Map<String, dynamic> json) {
-    return StdTx(
-        fee: StdFee.fromJson(json['fee']),
-        signatures: [
-          ...List.from(json['signatures'])
-              .map((e) => StdSignature.fromJson(e))
-              .toList()
-        ],
-        msgs: [],
-        memo: json['memo']);
-  }
-}
-
-/// TODO: Doc comment
-class StdFee {
-  Map<String, int> amount;
-  int gas;
-
-  StdFee({required this.amount, required this.gas});
-
-  factory StdFee.fromJson(Map<String, dynamic> json) {
-    return StdFee(
-      gas: json['gas'],
-      amount: json['amount'],
-    );
-  }
-}
-
-/// TODO: Doc comment
-class StdSignature {
-  String signature;
-  PubKey pubKey;
-
-  StdSignature({required this.signature, required this.pubKey});
-
-  factory StdSignature.fromJson(Map<String, dynamic> json) {
-    return StdSignature(
-      pubKey: PubKey.fromJson(json['pubKey']),
-      signature: json['signature'],
-    );
-  }
-}
-
-/// TODO: Doc comment
-class PubKey {
-  String type;
-  String value;
-
-  PubKey({required this.type, required this.value});
-
-  factory PubKey.fromJson(Map<String, dynamic> json) {
-    return PubKey(
-      value: json['value'],
-      type: json['type'],
-    );
-  }
-}
-
-/// TODO: Doc comment
-class TxData {
-  String msg;
-  String status;
-  List<TxDataOutput> output;
-
-  TxData({required this.msg, required this.status, required this.output});
-
-  factory TxData.fromJson(json) {
-    return TxData(output: [
-      ...List.from(json['output']).map((e) => TxDataOutput.fromJson(e)).toList()
-    ], msg: json['msg'], status: json['status']);
-  }
-}
-
-/// TODO: Doc comment
-class TxDataOutput {
-  String type;
-  String coin;
-  int amount;
-  String itemId;
-
-  TxDataOutput(
-      {required this.type,
-      required this.coin,
-      required this.amount,
-      required this.itemId});
-
-  factory TxDataOutput.fromJson(Map<String, dynamic> json) {
-    return TxDataOutput(
-        itemId: json['itemId'],
-        type: json['type'],
-        amount: json['amount'],
-        coin: json['coin']);
   }
 }

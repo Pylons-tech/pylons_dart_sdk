@@ -10,8 +10,14 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
+import 'package:pylons_flutter/src/features/data/models/transaction.dart';
 import 'package:pylons_flutter/src/features/ipc/completers.dart';
 import 'package:pylons_flutter/src/features/ipc/ipc_constants.dart';
+import 'package:pylons_flutter/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
+import 'package:pylons_flutter/src/generated/pylons/cookbook.pb.dart';
+import 'package:pylons_flutter/src/generated/pylons/item.pb.dart';
+import 'package:pylons_flutter/src/generated/pylons/recipe.pb.dart';
+import 'package:pylons_flutter/src/generated/pylons/trade.pb.dart';
 import 'package:pylons_flutter/src/features/ipc/ipc_handler_factory.dart';
 import 'package:pylons_flutter/src/features/models/sdk_ipc_message.dart';
 import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
@@ -132,7 +138,9 @@ class PylonsWalletImpl implements PylonsWallet {
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
         PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE]);
       }
-      var cbs = List.from(jsonDecode(r.value2[0])).map((e) => Cookbook.fromJson(e)).toList();
+      var cbs = List.from(jsonDecode(r.value2[0]))
+          .map((e) => Cookbook.fromJson(e))
+          .toList();
       if (cbs.isEmpty) {
         throw ResponseException(response, 'Malformed cookbooks');
       }
@@ -180,7 +188,8 @@ class PylonsWalletImpl implements PylonsWallet {
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(
+            r, [Strings.ERR_NODE, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
       }
       var p = Profile.fromJson(jsonDecode(r.value2[0]));
       return p;
@@ -233,12 +242,15 @@ class PylonsWalletImpl implements PylonsWallet {
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
         if (address != null) {
-          PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+          PylonsWalletCommUtil.handleErrors(
+              r, [Strings.ERR_NODE, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
         } else {
           PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE]);
         }
       }
-      var rs = List.from(jsonDecode(r.value2[0])).map((e) => Recipe.fromJson(e)).toList();
+      var rs = List.from(jsonDecode(r.value2[0]))
+          .map((e) => Recipe.fromJson(e))
+          .toList();
       if (rs.isEmpty) {
         throw ResponseException(response, 'Malformed recipes');
       }
@@ -276,7 +288,9 @@ class PylonsWalletImpl implements PylonsWallet {
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
         PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE]);
       }
-      var ts = List.from(jsonDecode(r.value2[0])).map((e) => Trade.fromJson(e)).toList();
+      var ts = List.from(jsonDecode(r.value2[0]))
+          .map((e) => Trade.fromJson(e))
+          .toList();
       if (ts.isEmpty) {
         throw ResponseException(response, 'Malformed trades');
       }
@@ -324,19 +338,25 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Tuple2<Transaction, Profile>> txBuyItem(String tradeId, String paymentId) async {
+  Future<Tuple2<Transaction, Profile>> txBuyItem(
+      String tradeId, String paymentId) async {
     return Future<Tuple2<Transaction, Profile>>.sync(() async {
       var key = Strings.TX_BUY_ITEMS;
       var response = await sendMessage([key, tradeId, paymentId]);
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_INSUFFICIENT_FUNDS, Strings.ERR_PAYMENT_NOT_VALID, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(r, [
+          Strings.ERR_NODE,
+          Strings.ERR_INSUFFICIENT_FUNDS,
+          Strings.ERR_PAYMENT_NOT_VALID,
+          Strings.ERR_PROFILE_DOES_NOT_EXIST
+        ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
 
-      return Tuple2<Transaction, Profile>(tx, prf);
+      return Tuple2<Transaction, Profile>(Transaction.wrap(tx), prf);
     });
   }
 
@@ -372,18 +392,23 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Tuple2<Transaction, Profile>> txBuyPylons(int pylons, String paymentId) {
+  Future<Tuple2<Transaction, Profile>> txBuyPylons(
+      int pylons, String paymentId) {
     return Future<Tuple2<Transaction, Profile>>.sync(() async {
       var key = Strings.TX_BUY_PYLONS;
       var response = await sendMessage([key, pylons.toString(), paymentId]);
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_PAYMENT_NOT_VALID, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(r, [
+          Strings.ERR_NODE,
+          Strings.ERR_PAYMENT_NOT_VALID,
+          Strings.ERR_PROFILE_DOES_NOT_EXIST
+        ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
-      return Tuple2<Transaction, Profile>(tx, prf);
+      return Tuple2<Transaction, Profile>(Transaction.wrap(tx), prf);
     });
   }
 
@@ -554,11 +579,16 @@ class PylonsWalletImpl implements PylonsWallet {
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(
-            r, [Strings.ERR_NODE, Strings.ERR_RECIPE_DOES_NOT_EXIST, Strings.ERR_RECIPE_NOT_OWNED, Strings.ERR_RECIPE_ALREADY_DISABLED, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(r, [
+          Strings.ERR_NODE,
+          Strings.ERR_RECIPE_DOES_NOT_EXIST,
+          Strings.ERR_RECIPE_NOT_OWNED,
+          Strings.ERR_RECIPE_ALREADY_DISABLED,
+          Strings.ERR_PROFILE_DOES_NOT_EXIST
+        ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
-      return tx;
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
+      return Transaction.wrap(tx);
     });
   }
 
@@ -598,11 +628,16 @@ class PylonsWalletImpl implements PylonsWallet {
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(
-            r, [Strings.ERR_NODE, Strings.ERR_RECIPE_DOES_NOT_EXIST, Strings.ERR_RECIPE_NOT_OWNED, Strings.ERR_RECIPE_ALREADY_ENABLED, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(r, [
+          Strings.ERR_NODE,
+          Strings.ERR_RECIPE_DOES_NOT_EXIST,
+          Strings.ERR_RECIPE_NOT_OWNED,
+          Strings.ERR_RECIPE_ALREADY_ENABLED,
+          Strings.ERR_PROFILE_DOES_NOT_EXIST
+        ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
-      return tx;
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
+      return Transaction.wrap(tx);
     });
   }
 
@@ -641,10 +676,12 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(String cookbookId, String recipeName, List<String> itemIds) async {
+  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(
+      String cookbookId, String recipeName, List<String> itemIds) async {
     return Future<Tuple2<Transaction, Profile>>.sync(() async {
       var key = Strings.TX_EXECUTE_RECIPE;
-      var response = await sendMessage([key, cookbookId, recipeName, const JsonEncoder().convert(itemIds)]);
+      var response = await sendMessage(
+          [key, cookbookId, recipeName, const JsonEncoder().convert(itemIds)]);
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
@@ -658,9 +695,9 @@ class PylonsWalletImpl implements PylonsWallet {
           Strings.ERR_PROFILE_DOES_NOT_EXIST
         ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
-      return Tuple2<Transaction, Profile>(tx, prf);
+      return Tuple2<Transaction, Profile>(Transaction.wrap(tx), prf);
     });
   }
 
@@ -697,19 +734,29 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(Item item, int price) async {
+  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(
+      Item item, int price) async {
     return Future<Tuple3<Transaction, Profile, Trade>>.sync(() async {
       var key = Strings.TX_PLACE_FOR_SALE;
-      var response = await sendMessage([key, const JsonEncoder().convert(item), price.toString()]);
+      var response = await sendMessage(
+          [key, const JsonEncoder().convert(item), price.toString()]);
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_ITEM_NOT_OWNED, Strings.ERR_ITEM_DOES_NOT_EXIST, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(r, [
+          Strings.ERR_NODE,
+          Strings.ERR_ITEM_NOT_OWNED,
+          Strings.ERR_ITEM_DOES_NOT_EXIST,
+          Strings.ERR_PROFILE_DOES_NOT_EXIST
+        ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+
+
+
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
       var tr = Trade.fromJson(jsonDecode(r.value2[2]));
-      return Tuple3<Transaction, Profile, Trade>(tx, prf, tr);
+      return Tuple3<Transaction, Profile, Trade>(Transaction.wrap(tx), prf, tr);
     });
   }
 
@@ -750,20 +797,27 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(Cookbook cookbook) async {
+  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(
+      Cookbook cookbook) async {
     return Future<Tuple3<Transaction, Profile, Cookbook>>.sync(() async {
       var key = Strings.TX_UPDATE_COOKBOOK;
-      var response = await sendMessage([key, const JsonEncoder().convert(cookbook)]);
+      var response =
+          await sendMessage([key, const JsonEncoder().convert(cookbook)]);
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(
-            r, [Strings.ERR_NODE, Strings.ERR_COOKBOOK_DOES_NOT_EXIST, Strings.ERR_COOKBOOK_NOT_OWNED, Strings.ERR_INSUFFICIENT_FUNDS, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(r, [
+          Strings.ERR_NODE,
+          Strings.ERR_COOKBOOK_DOES_NOT_EXIST,
+          Strings.ERR_COOKBOOK_NOT_OWNED,
+          Strings.ERR_INSUFFICIENT_FUNDS,
+          Strings.ERR_PROFILE_DOES_NOT_EXIST
+        ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
       var cb = Cookbook.fromJson(jsonDecode(r.value2[2]));
-      throw Tuple3<Transaction, Profile, Cookbook>(tx, prf, cb);
+      throw Tuple3<Transaction, Profile, Cookbook>(Transaction.wrap(tx), prf, cb);
     });
   }
 
@@ -806,19 +860,27 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(Recipe recipe) async {
+  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(
+      Recipe recipe) async {
     return Future<Tuple3<Transaction, Profile, Recipe>>.sync(() async {
       var key = Strings.TX_UPDATE_RECIPE;
-      var response = await sendMessage([key, const JsonEncoder().convert(recipe)]);
+      var response =
+          await sendMessage([key, const JsonEncoder().convert(recipe)]);
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_RECIPE_DOES_NOT_EXIST, Strings.ERR_RECIPE_NOT_OWNED, Strings.ERR_INSUFFICIENT_FUNDS, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(r, [
+          Strings.ERR_NODE,
+          Strings.ERR_RECIPE_DOES_NOT_EXIST,
+          Strings.ERR_RECIPE_NOT_OWNED,
+          Strings.ERR_INSUFFICIENT_FUNDS,
+          Strings.ERR_PROFILE_DOES_NOT_EXIST
+        ]);
       }
-      var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
+      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
       var rcp = Cookbook.fromJson(jsonDecode(r.value2[2]));
-      throw Tuple3<Transaction, Profile, Cookbook>(tx, prf, rcp);
+      throw Tuple3<Transaction, Profile, Cookbook>(Transaction.wrap(tx), prf, rcp);
     });
   }
 
@@ -833,7 +895,8 @@ class PylonsWalletImpl implements PylonsWallet {
   /// [Input] : [msg] is the string received from the wallet
   /// [Output] : [List] contains the decoded response
   String encodeMessage(List<String> msg) {
-    var encodedMessageWithComma = msg.map((e) => base64Url.encode(utf8.encode(e))).join(',');
+    var encodedMessageWithComma =
+        msg.map((e) => base64Url.encode(utf8.encode(e))).join(',');
     return base64Url.encode(utf8.encode(encodedMessageWithComma));
   }
 
@@ -842,7 +905,10 @@ class PylonsWalletImpl implements PylonsWallet {
   /// [Output] : [List] contains the decoded response
   List<String> decodeMessage(String msg) {
     var decoded = utf8.decode(base64Url.decode(msg));
-    return decoded.split(',').map((e) => utf8.decode(base64Url.decode(e))).toList();
+    return decoded
+        .split(',')
+        .map((e) => utf8.decode(base64Url.decode(e)))
+        .toList();
   }
 
   /// This method sends the unilink to the wallet app
@@ -852,6 +918,8 @@ class PylonsWalletImpl implements PylonsWallet {
   ///
   /// [NoWalletException] : If no wallet exists this method will throw the following error.
   void dispatchUniLink(String uniLink) async {
-    await canLaunch(uniLink) ? await launch(uniLink) : throw NoWalletException();
+    await canLaunch(uniLink)
+        ? await launch(uniLink)
+        : throw NoWalletException();
   }
 }

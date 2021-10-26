@@ -7,7 +7,6 @@ environment:
   sdk: ">=2.14.0 <3.0.0"
 
 dependencies:
-
   flutter:
     sdk: flutter
 
@@ -21,14 +20,14 @@ dependencies:
 
 
   url_launcher: ^6.0.12
+  protobuf: ^2.0.0
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  mockito: 5.0.16
+  mockito:  any
+  code_builder: ^4.0.0
 
 flutter:
-
-

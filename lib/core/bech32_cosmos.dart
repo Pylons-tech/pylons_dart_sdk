@@ -2,7 +2,6 @@ import 'package:bitstream/bitstream.dart';
 
 import 'dart:typed_data';
 
-
 import '../pylons_flutter.dart';
 
 class Bech32Data {
