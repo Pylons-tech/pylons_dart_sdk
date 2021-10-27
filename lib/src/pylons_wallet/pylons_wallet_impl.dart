@@ -449,20 +449,11 @@ class PylonsWalletImpl implements PylonsWallet {
     return Future<SDKIPCResponse>.sync(() async {
       var key = Strings.TX_CREATE_COOKBOOK;
 
-      var sdkIPCMessage = SDKIPCMessage(key, const JsonEncoder().convert(cookbook), host);
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(cookbook.toProto3Json()), host);
 
       cookBookCompleter = Completer();
 
       var response = await sendMessageNew(sdkIPCMessage, cookBookCompleter);
-      // var r = PylonsWalletCommUtil.procResponse(response);
-      // PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
-      // if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-      //   PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_INSUFFICIENT_FUNDS, Strings.ERR_COOKBOOK_ALREADY_EXISTS, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
-      // }
-      // var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
-      // var prf = Profile.fromJson(jsonDecode(r.value2[1]));
-      // var cb = Cookbook.fromJson(jsonDecode(r.value2[2]));
-
       return response;
     });
   }
@@ -516,29 +507,11 @@ class PylonsWalletImpl implements PylonsWallet {
       PylonsWalletCommUtil.validateRecipe(recipe);
       var key = Strings.TX_CREATE_RECIPE;
 
-      var sdkIPCMessage = SDKIPCMessage(key, const JsonEncoder().convert(recipe), host);
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()), host);
 
       recipeCompleter = Completer();
 
       var response = await sendMessageNew(sdkIPCMessage, recipeCompleter);
-
-      // var response = await sendMessageNew([key, const JsonEncoder().convert(recipe)]);
-      // var r = PylonsWalletCommUtil.procResponse(response);
-      // PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
-      // if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-      //   PylonsWalletCommUtil.handleErrors(r, [
-      //     Strings.ERR_NODE,
-      //     Strings.ERR_INSUFFICIENT_FUNDS,
-      //     Strings.ERR_RECIPE_ALREADY_EXISTS,
-      //     Strings.ERR_COOKBOOK_DOES_NOT_EXIST,
-      //     Strings.ERR_PROFILE_DOES_NOT_EXIST,
-      //     Strings.ERR_COOKBOOK_NOT_OWNED
-      //   ]);
-      // }
-      // var tx = Transaction.fromJson(jsonDecode(r.value2[0]));
-      // var prf = Profile.fromJson(jsonDecode(r.value2[1]));
-      // var rcp = Recipe.fromJson(jsonDecode(r.value2[2]));
-
       return response;
     });
   }

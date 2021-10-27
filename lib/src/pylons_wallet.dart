@@ -60,7 +60,7 @@ abstract class PylonsWallet {
     }
 
     if (PylonsMode.dev == mode) {
-      _instance = PylonsWalletDevImpl();
+      _instance = PylonsWalletDevImpl(host);
       return;
     }
   }
