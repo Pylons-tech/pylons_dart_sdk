@@ -13,3 +13,4 @@ export 'src/generated/pylons/item.pb.dart';
 export 'src/generated/pylons/cookbook.pb.dart';
 export 'src/generated/pylons/recipe.pb.dart';
 export 'src/generated/pylons/trade.pb.dart';
+export 'src/features/helper/dec_string.dart';
