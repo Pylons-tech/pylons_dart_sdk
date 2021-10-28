@@ -97,6 +97,14 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: const Text('Recipe'),
           ),
+
+          RaisedButton(
+            onPressed: () async {
+              executeRecipe();
+            },
+            child: const Text('Execute Recipe'),
+          ),
+
         ],
       ),
 // This trailing comma makes auto-formatting nicer for build methods.
@@ -106,14 +114,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void createCookBook() async {
     var cookBook1 = Cookbook(
         creator: "",
-        iD: "cookbookLOUDahmed",
+        iD: "cookbookLOUDahmed4",
         name: "Legend of the Undead Dragon",
         nodeVersion: "v0.1.3",
         description: "Cookbook for running pylons recreation of LOUD",
         developer: "Pylons Inc",
         version: "v0.0.1",
         supportEmail: "alex@shmeeload.xyz",
-        costPerBlock: Coin(denom: "upylon", amount: "1000000"));
+        costPerBlock: Coin(denom: "upylon", amount: "1000000"), enabled: true);
 
     var response = await PylonsWallet.instance.txCreateCookbook(cookBook1);
 
@@ -128,8 +136,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void createRecipe() async {
     var recipe = Recipe(
-        cookbookID: "cookbookLOUDahmed",
-        iD: "khwaja",
+        cookbookID: "cookbookLOUDahmed4",
+        iD: "khwaja20",
         nodeVersion: "v0.1.3",
         name: "LOUD's Wooden sword lv1 buy recipe",
         description: "this recipe is used to buy wooden sword lv1.",
@@ -144,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
             strings: [],
             mutableStrings: [],
             transferFee: [],
-            tradePercentage: "0.10",
+            tradePercentage: DecString.decStringFromDouble(0.1),
             tradeable: true,
           ),
         ], itemModifyOutputs: []),
@@ -152,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
           WeightedOutputs(entryIDs: ["copper_sword_lv1"], weight: Int64(1))
         ],
         blockInterval: Int64(0),
-        enabled: false,
+        enabled: true,
         extraInfo: "extraInfo");
 
     var response = await PylonsWallet.instance.txCreateRecipe(recipe);
@@ -160,9 +168,25 @@ class _MyHomePageState extends State<MyHomePage> {
     print('From App $response');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Cookbook created")));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Receipe created")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Cookbook error : ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Receipe error : ${response.error}")));
     }
+  }
+
+  void executeRecipe() async {
+
+    var response = await PylonsWallet.instance.txExecuteRecipe(cookbookId: 'cookbookLOUDahmed4', recipeName: 'khwaja20', coinInputIndex: 0, itemIds: [], paymentInfo: []);
+
+    print('From App $response');
+
+    if (response.success) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Recipe  executed")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Recipe  error : ${response.error}")));
+    }
+
+
+
   }
 }

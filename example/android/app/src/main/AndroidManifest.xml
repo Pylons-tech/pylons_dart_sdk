@@ -1,5 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pylons.example">
+
+
+    <queries>
+        <package android:name="tech.pylons.wallet" />
+    </queries>
+
+
    <application
         android:label="example"
         android:icon="@mipmap/ic_launcher">

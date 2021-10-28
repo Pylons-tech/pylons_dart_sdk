@@ -11,6 +11,7 @@ import 'package:pylons_flutter/src/features/ipc/ipc_handler_factory.dart';
 import 'package:pylons_flutter/src/features/models/sdk_ipc_message.dart';
 import 'package:pylons_flutter/src/generated/pylons/cookbook.pb.dart';
 import 'package:pylons_flutter/src/generated/pylons/item.pb.dart';
+import 'package:pylons_flutter/src/generated/pylons/payment_info.pb.dart';
 import 'package:pylons_flutter/src/generated/pylons/recipe.pb.dart';
 import 'package:pylons_flutter/src/generated/pylons/trade.pb.dart';
 import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
@@ -117,12 +118,7 @@ class PylonsWalletDevImpl implements PylonsWallet {
     throw UnimplementedError();
   }
 
-  @override
-  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(
-      String cookbookId, String recipeName, List<String> itemIds) {
-    // TODO: implement txExecuteRecipe
-    throw UnimplementedError();
-  }
+
 
   @override
   Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(
@@ -199,5 +195,11 @@ class PylonsWalletDevImpl implements PylonsWallet {
     await canLaunch(uniLink)
         ? await launch(uniLink)
         : throw NoWalletException();
+  }
+
+  @override
+  Future<SDKIPCResponse> txExecuteRecipe({required String cookbookId, required String recipeName, required List<String> itemIds, required int coinInputIndex, required List<PaymentInfo> paymentInfo}) {
+    // TODO: implement txExecuteRecipe
+    throw UnimplementedError();
   }
 }
