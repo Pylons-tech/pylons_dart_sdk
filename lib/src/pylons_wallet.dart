@@ -10,6 +10,7 @@ import 'package:pylons_flutter/pylons_flutter.dart';
 import 'features/data/models/transaction.dart';
 import 'generated/pylons/cookbook.pb.dart';
 import 'generated/pylons/item.pb.dart';
+import 'generated/pylons/payment_info.pb.dart';
 import 'generated/pylons/recipe.pb.dart';
 import 'generated/pylons/trade.pb.dart';
 import 'features/models/sdk_ipc_response.dart';
@@ -60,7 +61,7 @@ abstract class PylonsWallet {
     }
 
     if (PylonsMode.dev == mode) {
-      _instance = PylonsWalletDevImpl();
+      _instance = PylonsWalletDevImpl(host);
       return;
     }
   }
@@ -430,8 +431,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txExecuteRecipe(
-      String cookbookId, String recipeName, List<String> itemIds);
+  Future<SDKIPCResponse> txExecuteRecipe({
+    required String cookbookId, required String recipeName, required List<String> itemIds, required int coinInputIndex, required List<PaymentInfo> paymentInfo});
 
   /// Async: Creates a transaction to post a trade of the provided [Item] for a
   /// price in pylons against the current profile.

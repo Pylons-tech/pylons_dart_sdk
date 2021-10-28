@@ -20,6 +20,11 @@ class IPCHandlerFactory {
       return;
     }
 
+    if(sdkipcResponse.action == Strings.TX_EXECUTE_RECIPE){
+      executeRecipeCompleter.complete(sdkipcResponse);
+      return;
+    }
+
     // if (sdkipcMessage.action == TX_CREATE_COOKBOOK) {
     //   return CreateCookBookHandler(sdkipcMessage);
     // }

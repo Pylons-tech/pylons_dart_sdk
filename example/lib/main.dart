@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
+import 'package:fixnum/fixnum.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
 
   PylonsWallet.setup(mode: PylonsMode.prod, host: 'example');
 
@@ -21,17 +22,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-
   @override
   void initState() {
     super.initState();
-    PylonsWallet.instance.exists().then((value){
+    PylonsWallet.instance.exists().then((value) {
       log('WALLET Existence $value');
-
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -73,49 +70,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
-
-
-
-
-
-  void _incrementCounter() async {
-
-
-
-    var MOCK_COOKBOOK = '''{
-  "creator": "",
-  "ID": "cookbookLOUDjad",
-  "name": "Legend of the Undead Dragon",
-  "nodeVersion": "v0.1.3",
-  "description": "Cookbook for running pylons recreation of LOUD",
-  "developer": "Pylons Inc",
-  "version": "v0.0.1",
-  "supportEmail": "alex@shmeeload.xyz",
-  "costPerBlock": {"denom":  "upylon", "amount":  "1000000"},
-  "enabled": true
-}''';
-    var cookBook = Cookbook.fromJson(jsonDecode(MOCK_COOKBOOK));
-
-    var response = await PylonsWallet.instance.txCreateCookbook(cookBook);
-
-    print('From App $response');
-
-
-    if(response.success){
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Cookbook created")));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:  Text("Cookbook error : ${response.error}")));
-    }
-
-
-
-    setState(() {
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,37 +81,112 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () async {
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          RaisedButton(
+            onPressed: () async {
+              createCookBook();
+            },
+            child: const Text('Cookbook'),
+          ),
+          RaisedButton(
+            onPressed: () async {
+              createRecipe();
+            },
+            child: const Text('Recipe'),
+          ),
 
+          RaisedButton(
+            onPressed: () async {
+              executeRecipe();
+            },
+            child: const Text('Execute Recipe'),
+          ),
 
-            // print('Cookbook 2 sent');
-            // var cookBook = Cookbook.fromJson(jsonDecode(MOCK_COOKBOOK));
-            // var key = 'txCreateCookbook';
-            // var dataToEncode = [key, const JsonEncoder().convert(cookBook)];
-            //
-            // var response = await PylonsWallet.instance.sendMessage(dataToEncode);
-            //
-            //
-            //
-            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(response)));
-            //
-            // print('Cookbook 2 received');
-            //
-            //
-
-          },
-          child: Text('send another message '),
-
-        ),
+        ],
       ),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+// This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void createCookBook() async {
+    var cookBook1 = Cookbook(
+        creator: "",
+        iD: "cookbookLOUDahmed4",
+        name: "Legend of the Undead Dragon",
+        nodeVersion: "v0.1.3",
+        description: "Cookbook for running pylons recreation of LOUD",
+        developer: "Pylons Inc",
+        version: "v0.0.1",
+        supportEmail: "alex@shmeeload.xyz",
+        costPerBlock: Coin(denom: "upylon", amount: "1000000"), enabled: true);
+
+    var response = await PylonsWallet.instance.txCreateCookbook(cookBook1);
+
+    print('From App $response');
+
+    if (response.success) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Cookbook created")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Cookbook error : ${response.error}")));
+    }
+  }
+
+  void createRecipe() async {
+    var recipe = Recipe(
+        cookbookID: "cookbookLOUDahmed4",
+        iD: "khwaja20",
+        nodeVersion: "v0.1.3",
+        name: "LOUD's Wooden sword lv1 buy recipe",
+        description: "this recipe is used to buy wooden sword lv1.",
+        version: "v0.1.3",
+        coinInputs: [],
+        itemInputs: [],
+        entries: EntriesList(coinOutputs: [], itemOutputs: [
+          ItemOutput(
+            iD: "copper_sword_lv1",
+            doubles: [],
+            longs: [],
+            strings: [],
+            mutableStrings: [],
+            transferFee: [],
+            tradePercentage: DecString.decStringFromDouble(0.1),
+            tradeable: true,
+          ),
+        ], itemModifyOutputs: []),
+        outputs: [
+          WeightedOutputs(entryIDs: ["copper_sword_lv1"], weight: Int64(1))
+        ],
+        blockInterval: Int64(0),
+        enabled: true,
+        extraInfo: "extraInfo");
+
+    var response = await PylonsWallet.instance.txCreateRecipe(recipe);
+
+    print('From App $response');
+
+    if (response.success) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Receipe created")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Receipe error : ${response.error}")));
+    }
+  }
+
+  void executeRecipe() async {
+
+    var response = await PylonsWallet.instance.txExecuteRecipe(cookbookId: 'cookbookLOUDahmed4', recipeName: 'khwaja20', coinInputIndex: 0, itemIds: [], paymentInfo: []);
+
+    print('From App $response');
+
+    if (response.success) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Recipe  executed")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Recipe  error : ${response.error}")));
+    }
+
+
+
   }
 }
