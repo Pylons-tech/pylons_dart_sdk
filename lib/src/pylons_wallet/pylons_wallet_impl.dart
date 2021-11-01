@@ -8,6 +8,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:ffi';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:pylons_flutter/pylons_flutter.dart';
@@ -27,6 +28,7 @@ import 'package:pylons_flutter/src/pylons_wallet_comm_util.dart';
 import 'package:uni_links/uni_links.dart';
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
 
 import '../core/constants/strings.dart';
 
@@ -36,10 +38,11 @@ class PylonsWalletImpl implements PylonsWallet {
   late StreamSubscription _sub;
 
   final String host;
+  final UniLinksPlatform uniLink;
 
-  PylonsWalletImpl(this.host) {
+  PylonsWalletImpl({required this.host, required this.uniLink}) {
     // // Attach a listener to the stream
-    _sub = linkStream.listen((String? link) {
+    _sub = uniLink.linkStream.listen((String? link) {
       if (link == null) {
         return;
       }
@@ -82,7 +85,7 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<String> sendMessage(List<String> msg) {
     // Append the host to the msg
-    msg.insert(0, host);
+    msg.insert(0, getHostBasedOnOS(Platform.isAndroid));
 
     var encodedMessage = encodeMessage(msg);
     dispatchUniLink('$BASE_UNI_LINK/$encodedMessage');
@@ -101,7 +104,9 @@ class PylonsWalletImpl implements PylonsWallet {
   /// format.
   Future<SDKIPCResponse> sendMessageNew(SDKIPCMessage sdkipcMessage, Completer<SDKIPCResponse> completer) {
     var encodedMessage = sdkipcMessage.createMessage();
-    dispatchUniLink('$BASE_UNI_LINK/$encodedMessage');
+
+    var universalLink = createLinkBasedOnOS(encodedMessage: encodedMessage, isAndroid: Platform.isAndroid);
+    dispatchUniLink(universalLink);
     return completer.future;
   }
 
@@ -432,7 +437,7 @@ class PylonsWalletImpl implements PylonsWallet {
     return Future<SDKIPCResponse>.sync(() async {
       var key = Strings.TX_CREATE_COOKBOOK;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(cookbook.toProto3Json()), host);
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(cookbook.toProto3Json()), getHostBasedOnOS(Platform.isAndroid));
 
       cookBookCompleter = Completer();
 
@@ -490,7 +495,7 @@ class PylonsWalletImpl implements PylonsWallet {
       PylonsWalletCommUtil.validateRecipe(recipe);
       var key = Strings.TX_CREATE_RECIPE;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()), host);
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()), getHostBasedOnOS(Platform.isAndroid));
 
       recipeCompleter = Completer();
 
@@ -629,7 +634,7 @@ class PylonsWalletImpl implements PylonsWallet {
 
       var key = Strings.TX_EXECUTE_RECIPE;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(msgExecuteRecipe.toProto3Json()), host);
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(msgExecuteRecipe.toProto3Json()), getHostBasedOnOS(Platform.isAndroid));
 
       executeRecipeCompleter = Completer();
 
@@ -828,5 +833,29 @@ class PylonsWalletImpl implements PylonsWallet {
   /// [NoWalletException] : If no wallet exists this method will throw the following error.
   void dispatchUniLink(String uniLink) async {
     await canLaunch(uniLink) ? await launch(uniLink) : throw NoWalletException();
+  }
+
+  /// This method creates link based on the OS
+  /// [Input] : [encodedMessage] the message to sent to the wallet, [isAndroid] tells whether the underlying platform is Android or not
+  /// [Output] : [String] the message with appropriate link based on the OS
+  String createLinkBasedOnOS({required String encodedMessage, required bool isAndroid}) {
+    if (isAndroid) {
+      return '$BASE_UNI_LINK/$encodedMessage';
+    }
+
+    return '$BASE_UNI_LINK_IOS/$encodedMessage';
+  }
+
+
+
+  /// This method returns the host based on the OS
+  /// [Input] : [bool] specifies whether the platform is Android or not
+  /// [Output] : [String] the host for particular platform
+  String getHostBasedOnOS(bool isAndroid) {
+    if (isAndroid) {
+      return host;
+    }
+
+    return 'pylons_$host';
   }
 }

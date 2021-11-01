@@ -50,7 +50,7 @@
          <string>example</string>
          <key>CFBundleURLSchemes</key>
          <array>
-           <string>pylons</string>
+           <string>pylons_example</string>
          </array>
        </dict>
      </array>
