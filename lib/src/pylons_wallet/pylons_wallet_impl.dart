@@ -106,6 +106,7 @@ class PylonsWalletImpl implements PylonsWallet {
     var encodedMessage = sdkipcMessage.createMessage();
 
     var universalLink = createLinkBasedOnOS(encodedMessage: encodedMessage, isAndroid: Platform.isAndroid);
+    print(universalLink);
     dispatchUniLink(universalLink);
     return completer.future;
   }
@@ -805,7 +806,10 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<bool> exists() {
     return Future.sync(() {
-      return canLaunch(EXISTS_CONSTANT);
+      if(Platform.isAndroid){
+        return canLaunch(BASE_UNI_LINK);
+      }
+      return canLaunch(BASE_UNI_LINK_IOS);
     });
   }
 
@@ -843,7 +847,7 @@ class PylonsWalletImpl implements PylonsWallet {
       return '$BASE_UNI_LINK/$encodedMessage';
     }
 
-    return '$BASE_UNI_LINK_IOS/$encodedMessage';
+    return '$BASE_UNI_LINK_IOS$encodedMessage';
   }
 
 
@@ -856,6 +860,6 @@ class PylonsWalletImpl implements PylonsWallet {
       return host;
     }
 
-    return 'pylons_$host';
+    return 'pylons-$host';
   }
 }

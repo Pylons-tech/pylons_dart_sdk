@@ -19,28 +19,52 @@ The following steps are not Flutter specific, but platform specific.
 
 You need to declare the following intent filters in android/app/src/main/AndroidManifest.xml:
 
+```
 <manifest ...>
-  <!-- ... other tags -->
-<application ...>
-<activity ...>
-<!-- ... other tags -->
+    <!-- ... other tags -->
+    <application ...>
+        <activity ...>
+        <!-- ... other tags -->
 
-      <!-- Pylons Links -->
-      <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-        <!-- Accepts URIs that begin with YOUR_SCHEME://YOUR_HOST -->
-        <data
-          android:scheme="pylons"
-          android:host="[YOUR_HOST]" />
-      </intent-filter>
+        <!-- Pylons Links -->
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with YOUR_SCHEME://YOUR_HOST -->
+                <data
+                    android:scheme="pylons"
+                    android:host="[YOUR_HOST]" />
+        </intent-filter>
 
 
-    </activity>
-  </application>
+        </activity>
+    </application>
 </manifest>
+```    
 The android:host attribute variable is the one that you need to put it must be as unique as possible
+
+**For IOS**
+You need to declare the following  in ios/Runner/Info.plist:
+```
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>[Put your bundle id here]</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>pylons-[YOUR_HOST]</string>
+			</array>
+		</dict>
+	</array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>pylons-wallet</string>
+    </array>
+```
 
 
 **For Dart side:**
@@ -52,13 +76,9 @@ Initialise the sdk before the run app.
     PylonsWallet.setup(mode: PylonsMode.prod, host: 'example');  
  
     runApp(const MyApp());
-        
-Here host should be same what you put in the 
+
+Here host should be same what you put in the
 
 
 > android/app/src/main/AndroidManifest.xml:
-
-
-Functions supported right now:
-1) Exists
-2) Send message 
+> ios/Runner/Info.plist:
