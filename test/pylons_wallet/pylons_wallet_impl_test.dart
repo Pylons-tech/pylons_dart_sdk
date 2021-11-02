@@ -87,7 +87,7 @@ void createLinkBasedOnOS() {
 
     test('should return wallet link for ios ', () {
 
-      var expectedLink = '$BASE_UNI_LINK_IOS/';
+      var expectedLink = '$BASE_UNI_LINK_IOS';
 
       var uniLink = MockUniLinksPlatform();
       when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
@@ -123,7 +123,7 @@ void getHostBasedOnOsTest() {
 
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
-      var expectedHost = 'pylons_$host';
+      var expectedHost = 'pylons-$host';
 
       var hostBasedOnPlatform = pylonsWallet.getHostBasedOnOS(false);
       expect(expectedHost, hostBasedOnPlatform);
