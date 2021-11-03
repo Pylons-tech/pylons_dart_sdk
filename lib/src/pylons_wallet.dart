@@ -547,5 +547,5 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(Recipe recipe);
+  Future<SDKIPCResponse> txUpdateRecipe(Recipe recipe);
 }

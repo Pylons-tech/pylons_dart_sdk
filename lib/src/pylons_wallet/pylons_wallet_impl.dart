@@ -7,7 +7,6 @@ library pylons_flutter_impl;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
@@ -25,7 +24,6 @@ import 'package:pylons_flutter/src/features/ipc/ipc_handler_factory.dart';
 import 'package:pylons_flutter/src/features/models/sdk_ipc_message.dart';
 import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
 import 'package:pylons_flutter/src/pylons_wallet_comm_util.dart';
-import 'package:uni_links/uni_links.dart';
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
@@ -787,19 +785,17 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Tuple3<Transaction, Profile, Recipe>> txUpdateRecipe(Recipe recipe) async {
-    return Future<Tuple3<Transaction, Profile, Recipe>>.sync(() async {
+  Future<SDKIPCResponse> txUpdateRecipe(Recipe recipe) async {
+    return Future<SDKIPCResponse>.sync(() async {
+      PylonsWalletCommUtil.validateRecipe(recipe);
       var key = Strings.TX_UPDATE_RECIPE;
-      var response = await sendMessage([key, const JsonEncoder().convert(recipe)]);
-      var r = PylonsWalletCommUtil.procResponse(response);
-      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
-      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_RECIPE_DOES_NOT_EXIST, Strings.ERR_RECIPE_NOT_OWNED, Strings.ERR_INSUFFICIENT_FUNDS, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
-      }
-      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
-      var prf = Profile.fromJson(jsonDecode(r.value2[1]));
-      var rcp = Cookbook.fromJson(jsonDecode(r.value2[2]));
-      throw Tuple3<Transaction, Profile, Cookbook>(Transaction.wrap(tx), prf, rcp);
+
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()), getHostBasedOnOS(Platform.isAndroid));
+
+      recipeUpdateCompleter = Completer();
+
+      var response = await sendMessageNew(sdkIPCMessage, recipeCompleter);
+      return response;
     });
   }
 
