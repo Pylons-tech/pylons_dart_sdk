@@ -16,6 +16,7 @@ import 'generated/pylons/trade.pb.dart';
 import 'features/models/sdk_ipc_response.dart';
 import 'pylons_wallet/pylons_wallet_dev.dart';
 import 'pylons_wallet/pylons_wallet_impl.dart';
+import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
 
 enum PylonsMode { dev, prod }
 
@@ -56,7 +57,7 @@ abstract class PylonsWallet {
     }
 
     if (PylonsMode.prod == mode) {
-      _instance = PylonsWalletImpl(host);
+      _instance = PylonsWalletImpl(host: host, uniLink: UniLinksPlatform.instance);
       return;
     }
 

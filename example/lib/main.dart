@@ -28,6 +28,8 @@ class _MyAppState extends State<MyApp> {
     PylonsWallet.instance.exists().then((value) {
       log('WALLET Existence $value');
     });
+
+
   }
 
   @override
