@@ -506,7 +506,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(
+  Future<SDKIPCResponse> txUpdateCookbook(
       Cookbook cookbook);
 
   /// Async: Creates a transaction to updates the provided [Recipe] on the

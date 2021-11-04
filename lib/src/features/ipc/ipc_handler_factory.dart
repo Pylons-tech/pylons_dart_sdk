@@ -14,6 +14,13 @@ class IPCHandlerFactory {
     }
 
 
+
+    if(sdkipcResponse.action == Strings.TX_UPDATE_COOKBOOK){
+      cookBookUpdateCompleter.complete(sdkipcResponse);
+      return;
+    }
+
+
     if(sdkipcResponse.action == Strings.TX_CREATE_RECIPE){
       recipeCompleter.complete(sdkipcResponse);
       return;
@@ -29,13 +36,5 @@ class IPCHandlerFactory {
       return;
     }
 
-    // if (sdkipcMessage.action == TX_CREATE_COOKBOOK) {
-    //   return CreateCookBookHandler(sdkipcMessage);
-    // }
-    // if (sdkipcMessage.action == TX_CREATE_RECIPE) {
-    //   return CreateRecipeHandler(sdkipcMessage);
-    // }
-    //
-    // return CreateCookBookHandler(sdkipcMessage);
   }
 }

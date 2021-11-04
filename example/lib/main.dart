@@ -74,6 +74,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
+
+
+  String cookBookId = "cookbookLOUDahmed6";
+  String recipeId = "Ticket";
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,6 +98,13 @@ class _MyHomePageState extends State<MyHomePage> {
               createCookBook();
             },
             child: const Text('Cookbook'),
+          ),
+
+          RaisedButton(
+            onPressed: () async {
+              updateCookBook();
+            },
+            child: const Text('Update Cookbook'),
           ),
           RaisedButton(
             onPressed: () async {
@@ -124,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void createCookBook() async {
     var cookBook1 = Cookbook(
         creator: "",
-        iD: "cookbookLOUDahmed5",
+        iD: cookBookId,
         name: "Legend of the Undead Dragon",
         nodeVersion: "v0.1.3",
         description: "Cookbook for running pylons recreation of LOUD",
@@ -146,8 +159,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void createRecipe() async {
     var recipe = Recipe(
-        cookbookID: "cookbookLOUDahmed5",
-        iD: "khwaja20",
+        cookbookID: cookBookId,
+        iD: recipeId,
         nodeVersion: "v0.1.3",
         name: "LOUD's Wooden sword lv1 buy recipe",
         description: "this recipe is used to buy wooden sword lv1.",
@@ -186,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void executeRecipe() async {
 
-    var response = await PylonsWallet.instance.txExecuteRecipe(cookbookId: 'cookbookLOUDahmed4', recipeName: 'khwaja20', coinInputIndex: 0, itemIds: [], paymentInfo: []);
+    var response = await PylonsWallet.instance.txExecuteRecipe(cookbookId: cookBookId, recipeName: recipeId, coinInputIndex: 0, itemIds: [], paymentInfo: []);
 
     print('From App $response');
 
@@ -195,15 +208,12 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Recipe  error : ${response.error}")));
     }
-
-
-
   }
 
   void updateRecipe() async {
     var recipe = Recipe(
-        cookbookID: "cookbookLOUDahmed5",
-        iD: "khwaja20",
+        cookbookID: cookBookId,
+        iD: recipeId,
         nodeVersion: "v0.1.3",
         name: "LOUD's Wooden sword lv1 buy recipe",
         description: "this recipe is used to buy wooden sword lv1.",
@@ -238,6 +248,32 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Receipe update error : ${response.error}")));
     }
+
+  }
+
+  void updateCookBook() async {
+
+    var cookBook1 = Cookbook(
+        creator: "",
+        iD: cookBookId,
+        name: "Legend of the Undead Dianasour",
+        nodeVersion: "v0.1.3",
+        description: "Cookbook for running pylons recreation of LOUD",
+        developer: "Pylons Inc",
+        version: "v0.0.2",
+        supportEmail: "alex@shmeeload.xyz",
+        costPerBlock: Coin(denom: "upylon", amount: "1000000"), enabled: true);
+
+    var response = await PylonsWallet.instance.txUpdateCookbook(cookBook1);
+
+    print('From App $response');
+
+    if (response.success) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Cookbook updated")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Cookbook updation error : ${response.error}")));
+    }
+
 
   }
 }

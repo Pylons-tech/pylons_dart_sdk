@@ -66,6 +66,7 @@ You need to declare the following  in ios/Runner/Info.plist:
     </array>
 ```
 
+Note: Dont't put underscore in the host name. The iOS system will not send response from wallet to your app.
 
 **For Dart side:**
 Initialise the sdk before the run app.
