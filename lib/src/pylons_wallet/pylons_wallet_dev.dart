@@ -112,12 +112,6 @@ class PylonsWalletDevImpl implements PylonsWallet {
     throw UnimplementedError();
   }
 
-  @override
-  Future<Transaction> txEnableRecipe(String recipeId) {
-    // TODO: implement txEnableRecipe
-    throw UnimplementedError();
-  }
-
 
 
   @override
@@ -200,6 +194,12 @@ class PylonsWalletDevImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse> txExecuteRecipe({required String cookbookId, required String recipeName, required List<String> itemIds, required int coinInputIndex, required List<PaymentInfo> paymentInfo}) {
     // TODO: implement txExecuteRecipe
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<SDKIPCResponse> txEnableRecipe(String cookBookId, String recipeId, String version) {
+    // TODO: implement txEnableRecipe
     throw UnimplementedError();
   }
 }

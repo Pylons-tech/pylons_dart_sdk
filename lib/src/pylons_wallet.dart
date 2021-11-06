@@ -400,7 +400,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Transaction> txEnableRecipe(String recipeId);
+  Future<SDKIPCResponse> txEnableRecipe(String cookBookId, String recipeId, String version);
 
   /// Async: Creates a transaction to execute the recipe with coordinates
   /// cookbookId:recipeName against the current profile. Upon successful
