@@ -128,7 +128,7 @@ class PylonsWalletDevImpl implements PylonsWallet {
   }
 
   @override
-  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(
+  Future<SDKIPCResponse> txUpdateCookbook(
       Cookbook cookbook) {
     // TODO: implement txUpdateCookbook
     throw UnimplementedError();

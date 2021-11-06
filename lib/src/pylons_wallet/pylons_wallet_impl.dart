@@ -729,20 +729,16 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Tuple3<Transaction, Profile, Cookbook>> txUpdateCookbook(Cookbook cookbook) async {
-    return Future<Tuple3<Transaction, Profile, Cookbook>>.sync(() async {
+  Future<SDKIPCResponse> txUpdateCookbook(Cookbook cookbook) async {
+    return Future<SDKIPCResponse>.sync(() async {
       var key = Strings.TX_UPDATE_COOKBOOK;
-      var response = await sendMessage([key, const JsonEncoder().convert(cookbook)]);
-      var r = PylonsWalletCommUtil.procResponse(response);
-      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
-      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(
-            r, [Strings.ERR_NODE, Strings.ERR_COOKBOOK_DOES_NOT_EXIST, Strings.ERR_COOKBOOK_NOT_OWNED, Strings.ERR_INSUFFICIENT_FUNDS, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
-      }
-      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
-      var prf = Profile.fromJson(jsonDecode(r.value2[1]));
-      var cb = Cookbook.fromJson(jsonDecode(r.value2[2]));
-      throw Tuple3<Transaction, Profile, Cookbook>(Transaction.wrap(tx), prf, cb);
+
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(cookbook.toProto3Json()), getHostBasedOnOS(Platform.isAndroid));
+
+      cookBookUpdateCompleter = Completer();
+
+      var response = await sendMessageNew(sdkIPCMessage, recipeCompleter);
+      return response;
     });
   }
 
