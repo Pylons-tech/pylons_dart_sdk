@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   String cookBookId = "cookbookLOUDahmed6";
-  String recipeId = "Ticket";
+  String recipeId = "Ticket1";
 
 
   @override
@@ -128,6 +128,13 @@ class _MyHomePageState extends State<MyHomePage> {
             child: const Text('Update Recipe'),
           ),
 
+
+          RaisedButton(
+            onPressed: () async {
+              enableRecipe();
+            },
+            child: const Text('Enable Recipe'),
+          ),
         ],
       ),
 // This trailing comma makes auto-formatting nicer for build methods.
@@ -183,7 +190,7 @@ class _MyHomePageState extends State<MyHomePage> {
           WeightedOutputs(entryIDs: ["copper_sword_lv1"], weight: Int64(1))
         ],
         blockInterval: Int64(0),
-        enabled: true,
+        enabled: false,
         extraInfo: "extraInfo");
 
     var response = await PylonsWallet.instance.txCreateRecipe(recipe);
@@ -191,7 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
     print('From App $response');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Receipe created")));
+      ScaffoldMessenger.of(context).showSnackBar( const SnackBar(content: Text("Receipe created")));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Receipe error : ${response.error}")));
     }
@@ -240,6 +247,21 @@ class _MyHomePageState extends State<MyHomePage> {
         extraInfo: "extraInfo");
 
     var response = await PylonsWallet.instance.txUpdateRecipe(recipe);
+
+    print('From App $response');
+
+    if (response.success) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Receipe updated")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Receipe update error : ${response.error}")));
+    }
+
+  }
+
+
+  void enableRecipe() async {
+
+    var response = await PylonsWallet.instance.txEnableRecipe(cookBookId, recipeId, "v1.0.5");
 
     print('From App $response');
 

@@ -576,18 +576,20 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Transaction> txEnableRecipe(String recipeId) async {
-    return Future<Transaction>.sync(() async {
+  Future<SDKIPCResponse> txEnableRecipe(String cookbookId, String recipeId, String version) async {
+    return Future<SDKIPCResponse>.sync(() async {
       var key = Strings.TX_ENABLE_RECIPE;
-      var response = await sendMessage([key, recipeId]);
-      var r = PylonsWalletCommUtil.procResponse(response);
-      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
-      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(
-            r, [Strings.ERR_NODE, Strings.ERR_RECIPE_DOES_NOT_EXIST, Strings.ERR_RECIPE_NOT_OWNED, Strings.ERR_RECIPE_ALREADY_ENABLED, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
-      }
-      var tx = Tx.fromJson(jsonDecode(r.value2[0]));
-      return Transaction.wrap(tx);
+
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode({
+        'cookbookId' : cookbookId,
+        'recipeId' : recipeId,
+        'version': version
+      }), getHostBasedOnOS(Platform.isAndroid));
+
+      enableRecipeCompleter = Completer();
+
+      var response = await sendMessageNew(sdkIPCMessage, executeRecipeCompleter);
+      return response;
     });
   }
 
@@ -798,7 +800,7 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<bool> exists() {
     return Future.sync(() {
-      if(Platform.isAndroid){
+      if (Platform.isAndroid) {
         return canLaunch(BASE_UNI_LINK);
       }
       return canLaunch(BASE_UNI_LINK_IOS);
@@ -841,8 +843,6 @@ class PylonsWalletImpl implements PylonsWallet {
 
     return '$BASE_UNI_LINK_IOS$encodedMessage';
   }
-
-
 
   /// This method returns the host based on the OS
   /// [Input] : [bool] specifies whether the platform is Android or not

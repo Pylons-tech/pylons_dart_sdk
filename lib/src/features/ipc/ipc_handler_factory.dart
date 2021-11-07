@@ -36,5 +36,12 @@ class IPCHandlerFactory {
       return;
     }
 
+
+    if(sdkipcResponse.action == Strings.TX_ENABLE_RECIPE){
+      enableRecipeCompleter.complete(sdkipcResponse);
+      return;
+    }
+
+
   }
 }
