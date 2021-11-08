@@ -21,7 +21,7 @@ void main() {
 
 
 
-  test('should complete the updation of cookbook when response arrives', () {
+  test('should complete the updating of cookbook when response arrives', () {
     cookBookUpdateCompleter = Completer();
 
     expect(false, cookBookUpdateCompleter.isCompleted);

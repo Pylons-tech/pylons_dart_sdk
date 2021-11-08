@@ -292,7 +292,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (response.success) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Cookbook updated")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Cookbook updation error : ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Cookbook update error: ${response.error}")));
     }
   }
 
