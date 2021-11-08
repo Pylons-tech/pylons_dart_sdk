@@ -134,7 +134,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Profile> getProfile(String? address);
+  Future<SDKIPCResponse> getProfile();
 
   /// Async: Retrieves a list of recipes on the Pylons chain. If address is
   /// provided, retrieves only recipes belonging to that address; if an empty

@@ -8,3 +8,4 @@ Completer<SDKIPCResponse> recipeCompleter = Completer();
 Completer<SDKIPCResponse> recipeUpdateCompleter = Completer();
 Completer<SDKIPCResponse> executeRecipeCompleter = Completer();
 Completer<SDKIPCResponse> enableRecipeCompleter = Completer();
+Completer<SDKIPCResponse> getProfileCompleter = Completer();

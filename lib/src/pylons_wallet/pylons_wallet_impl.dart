@@ -180,22 +180,17 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Profile> getProfile(String? address) async {
-    return Future<Profile>.sync(() async {
-      if (address != null) {
-        PylonsWalletCommUtil.validateAddress(address);
-      } // address is an optional field
+  Future<SDKIPCResponse> getProfile() async {
+
+    return Future<SDKIPCResponse>.sync(() async {
       var key = Strings.GET_PROFILE;
-      var ls = <String>[key];
-      if (address != null) ls.add(address);
-      var response = await sendMessage(ls);
-      var r = PylonsWalletCommUtil.procResponse(response);
-      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
-      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
-      }
-      var p = Profile.fromJson(jsonDecode(r.value2[0]));
-      return p;
+
+      var sdkIPCMessage = SDKIPCMessage(key, '', getHostBasedOnOS(Platform.isAndroid));
+
+      getProfileCompleter = Completer();
+
+      var response = await sendMessageNew(sdkIPCMessage, getProfileCompleter);
+      return response;
     });
   }
 

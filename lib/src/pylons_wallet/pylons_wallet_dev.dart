@@ -69,7 +69,7 @@ class PylonsWalletDevImpl implements PylonsWallet {
   }
 
   @override
-  Future<Profile> getProfile(String? address) {
+  Future<SDKIPCResponse> getProfile() {
     // TODO: implement getProfile
     throw UnimplementedError();
   }

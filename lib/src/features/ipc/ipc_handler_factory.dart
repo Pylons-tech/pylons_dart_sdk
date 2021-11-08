@@ -1,7 +1,6 @@
 import 'package:pylons_flutter/src/core/constants/strings.dart';
 import 'package:pylons_flutter/src/features/ipc/base/ipc_handler.dart';
 import 'package:pylons_flutter/src/features/ipc/completers.dart';
-import 'package:pylons_flutter/src/features/ipc/handlers/existance_ipc_handler.dart';
 import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
 
 class IPCHandlerFactory {
@@ -41,6 +40,13 @@ class IPCHandlerFactory {
       enableRecipeCompleter.complete(sdkipcResponse);
       return;
     }
+
+
+    if(sdkipcResponse.action == Strings.GET_PROFILE){
+      getProfileCompleter.complete(sdkipcResponse);
+      return;
+    }
+
 
 
   }
