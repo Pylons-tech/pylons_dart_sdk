@@ -6,7 +6,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:pylons_flutter/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
 import 'package:pylons_flutter/src/generated/pylons/tx.pb.dart';
 
-/// TODO: Doc comment
+/// The Transaction class wraps a native Cosmos [Tx] type, as used by the Pylons node,
+/// and extracts Pylons messages into strongly-typed lists to facilitate more idiomatic
+/// Dart code.
 class Transaction {
   Tx nativeTx;
   IList<MsgCancelTrade> msgs_CancelTrade;
@@ -25,8 +27,8 @@ class Transaction {
   IList<MsgUpdateCookbook> msgs_UpdateCookbook;
   IList<MsgUpdateRecipe> msgs_UpdateRecipe;
 
+  /// Generate a new [Transaction] wrapping the provides [Tx].
   factory Transaction.wrap(Tx tx) {
-
     final List<MsgCancelTrade> cancelTrade = [];
     final List<MsgCompleteExecutionEarly> completeExecutionEarly = [];
     final List<MsgCreateAccount> createAccount = [];
@@ -135,7 +137,9 @@ class Transaction {
 const int responseCodeOk = 0;
 const int responseCodeError = -1;
 
-/// TODO: Doc comment
+/// Enumeration of possible states a [Transaction] can be in.
+///
+/// TODO: does this still make sense for us at all? at present, it's not actually in use
 enum TxState { notYetSent, notYetAccepted, committed, refused }
 
 extension TxStatePar on String {

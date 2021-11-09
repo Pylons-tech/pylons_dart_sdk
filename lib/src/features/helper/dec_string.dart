@@ -1,6 +1,7 @@
 library pylons_flutter_dec_string;
 
 /// Very rough compatibility functions for cosmos decimal types.
+///
 /// TODO: This is a temporary solution to make working w/ decimals a little more tolerable,
 /// but we should actually port the Cosmos decimal type over properly
 class DecString {
