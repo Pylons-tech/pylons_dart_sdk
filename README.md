@@ -22,6 +22,10 @@ You need to declare the following intent filters in android/app/src/main/Android
 ```
 <manifest ...>
     <!-- ... other tags -->
+    <queries>
+        <package android:name="tech.pylons.wallet" />
+    </queries>
+    
     <application ...>
         <activity ...>
         <!-- ... other tags -->
