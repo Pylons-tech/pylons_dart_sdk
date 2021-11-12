@@ -1,0 +1,38 @@
+name: pylons_flutter
+description: Pylons client-side SDK
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: ">=2.14.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  sacco: ^0.2.0
+  dartz: ^0.10.0
+  equatable: ^2.0.3
+  bitstream: ^0.0.4
+
+#Used it for ipc
+  uni_links: ^0.5.1
+
+
+  url_launcher: ^6.0.12
+  protobuf: ^2.0.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  mockito: ^5.0.16
+
+  #  code_builder: ^4.0.0
+  build_runner: ^2.1.4
+
+
+
+
+flutter:
