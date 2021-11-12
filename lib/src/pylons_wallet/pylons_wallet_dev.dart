@@ -22,7 +22,8 @@ class PylonsWalletDevImpl extends PylonsWalletImpl {
       PylonsWalletCommUtil.validateRecipe(recipe);
       var key = Strings.TX_CREATE_RECIPE;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()), host);
+      var sdkIPCMessage =
+          SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()), host);
 
       recipeCompleter = Completer();
 

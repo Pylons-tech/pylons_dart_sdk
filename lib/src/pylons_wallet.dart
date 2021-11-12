@@ -33,31 +33,23 @@ abstract class PylonsWallet {
     return _instance!;
   }
 
-  /// This method is to used to setup pylons
-  /// [Input] : [PylonsMode] tells which net to be used
+  /// Initializes the wallet model.
   ///
-  /// This mode will tell the sdk which net to use
+  /// [mode] identifies which chain will be used - [PylonsMode.prod] will run on mainnet; [PylonsMode.dev] will run on testnet.
   ///
-  /// [PylonsMode.prod] main net will be used
+  /// [host] is the host to be used in an Android manifest and/or XCode setup, and is required for getting a respponse
+  /// from the wallet.
   ///
-  /// [PylonsMode.dev] test net will be used
-  ///
-  /// ,
-  ///
-  /// [host] is the host which is added in android manifest and xcode setup of the 3rd part sdk .
-  /// Required for getting the return message from the wallet
-  ///
-  /// This method can throw the following errors
-  ///
-  /// [WalletInitializationAlreadyDoneException] :  If user tries to initialize the sdk more than once this error will throw
+  /// Throws [WalletInitializationAlreadyDoneException] if called while already initialized.
   static void setup({required PylonsMode mode, required String host}) {
     if (_instance != null) {
       throw WalletInitializationAlreadyDoneException(
-          'Wallet is already intialiazed');
+          'Wallet is already initialized');
     }
 
     if (PylonsMode.prod == mode) {
-      _instance = PylonsWalletImpl(host: host, uniLink: UniLinksPlatform.instance);
+      _instance =
+          PylonsWalletImpl(host: host, uniLink: UniLinksPlatform.instance);
       return;
     }
 
@@ -294,8 +286,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txCreateCookbook(
-      Cookbook cookbook);
+  Future<SDKIPCResponse> txCreateCookbook(Cookbook cookbook);
 
   /// Async: Creates a transaction to create the provided [Recipe] on the Pylons
   /// chain against the current profile.
@@ -400,7 +391,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txEnableRecipe(String cookBookId, String recipeId, String version);
+  Future<SDKIPCResponse> txEnableRecipe(
+      String cookBookId, String recipeId, String version);
 
   /// Async: Creates a transaction to execute the recipe with coordinates
   /// cookbookId:recipeName against the current profile. Upon successful
@@ -432,8 +424,12 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txExecuteRecipe({
-    required String cookbookId, required String recipeName, required List<String> itemIds, required int coinInputIndex, required List<PaymentInfo> paymentInfo});
+  Future<SDKIPCResponse> txExecuteRecipe(
+      {required String cookbookId,
+      required String recipeName,
+      required List<String> itemIds,
+      required int coinInputIndex,
+      required List<PaymentInfo> paymentInfo});
 
   /// Async: Creates a transaction to post a trade of the provided [Item] for a
   /// price in pylons against the current profile.
@@ -506,8 +502,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txUpdateCookbook(
-      Cookbook cookbook);
+  Future<SDKIPCResponse> txUpdateCookbook(Cookbook cookbook);
 
   /// Async: Creates a transaction to updates the provided [Recipe] on the
   /// Pylons chain to match that provided against the current profile.

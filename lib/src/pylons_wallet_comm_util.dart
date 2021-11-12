@@ -200,7 +200,8 @@ class PylonsWalletCommUtil {
     if (response.value2[0] == err) {
       throw exception;
     } else {
-      throw UnhandledErrorException(err, 'Bad error passed: ${response.value2}');
+      throw UnhandledErrorException(
+          err, 'Bad error passed: ${response.value2}');
     }
   }
 

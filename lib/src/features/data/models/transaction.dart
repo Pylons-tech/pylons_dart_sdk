@@ -45,74 +45,104 @@ class Transaction {
     final List<MsgUpdateCookbook> updateCookbook = [];
     final List<MsgUpdateRecipe> updateRecipe = [];
 
-
     for (var msg in tx.body.messages) {
       switch (msg.typeUrl) {
-        case '/Pylonstech.pylons.pylons.MsgCancelTrade': {
-          cancelTrade.add(msg.unpackInto(MsgCancelTrade()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgCompleteExecutionEarly': {
-          completeExecutionEarly.add(msg.unpackInto(MsgCompleteExecutionEarly()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgCreateAccount': {
-          createAccount.add(msg.unpackInto(MsgCreateAccount()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgCreateCookbook': {
-          createCookbook.add(msg.unpackInto(MsgCreateCookbook()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgCreateRecipe': {
-          createRecipe.add(msg.unpackInto(MsgCreateRecipe()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgCreateTrade': {
-          createTrade.add(msg.unpackInto(MsgCreateTrade()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgExecuteRecipe': {
-          executeRecipe.add(msg.unpackInto(MsgExecuteRecipe()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgFulfillTrade': {
-          fulfillTrade.add(msg.unpackInto(MsgFulfillTrade()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgGoogleInAppPurchaseGetCoins': {
-          googleInAppPurchaseGetCoins.add(msg.unpackInto(MsgGoogleInAppPurchaseGetCoins()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgSendItems': {
-          sendItems.add(msg.unpackInto(MsgSendItems()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgSetItemString': {
-          setItemString.add(msg.unpackInto(MsgSetItemString()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgTransferCookbook': {
-          transferCookbook.add(msg.unpackInto(MsgTransferCookbook()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgUpdateAccount': {
-          updateAccount.add(msg.unpackInto(MsgUpdateAccount()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgUpdateCookbook': {
-          updateCookbook.add(msg.unpackInto(MsgUpdateCookbook()));
-          break;
-        }
-        case '/Pylonstech.pylons.pylons.MsgUpdateRecipe': {
-          updateRecipe.add(msg.unpackInto(MsgUpdateRecipe()));
-          break;
-        }
+        case '/Pylonstech.pylons.pylons.MsgCancelTrade':
+          {
+            cancelTrade.add(msg.unpackInto(MsgCancelTrade()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgCompleteExecutionEarly':
+          {
+            completeExecutionEarly
+                .add(msg.unpackInto(MsgCompleteExecutionEarly()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgCreateAccount':
+          {
+            createAccount.add(msg.unpackInto(MsgCreateAccount()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgCreateCookbook':
+          {
+            createCookbook.add(msg.unpackInto(MsgCreateCookbook()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgCreateRecipe':
+          {
+            createRecipe.add(msg.unpackInto(MsgCreateRecipe()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgCreateTrade':
+          {
+            createTrade.add(msg.unpackInto(MsgCreateTrade()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgExecuteRecipe':
+          {
+            executeRecipe.add(msg.unpackInto(MsgExecuteRecipe()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgFulfillTrade':
+          {
+            fulfillTrade.add(msg.unpackInto(MsgFulfillTrade()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgGoogleInAppPurchaseGetCoins':
+          {
+            googleInAppPurchaseGetCoins
+                .add(msg.unpackInto(MsgGoogleInAppPurchaseGetCoins()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgSendItems':
+          {
+            sendItems.add(msg.unpackInto(MsgSendItems()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgSetItemString':
+          {
+            setItemString.add(msg.unpackInto(MsgSetItemString()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgTransferCookbook':
+          {
+            transferCookbook.add(msg.unpackInto(MsgTransferCookbook()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgUpdateAccount':
+          {
+            updateAccount.add(msg.unpackInto(MsgUpdateAccount()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgUpdateCookbook':
+          {
+            updateCookbook.add(msg.unpackInto(MsgUpdateCookbook()));
+            break;
+          }
+        case '/Pylonstech.pylons.pylons.MsgUpdateRecipe':
+          {
+            updateRecipe.add(msg.unpackInto(MsgUpdateRecipe()));
+            break;
+          }
       }
     }
-    return Transaction(tx, IList.from(cancelTrade), IList.from(completeExecutionEarly), IList.from(createAccount), IList.from(createCookbook), IList.from(createRecipe), IList.from(createTrade), 
-        IList.from(executeRecipe), IList.from(fulfillTrade), IList.from(googleInAppPurchaseGetCoins),IList.from(sendItems), IList.from(setItemString), IList.from(transferCookbook), 
-        IList.from(updateAccount), IList.from(updateCookbook), IList.from(updateRecipe));
+    return Transaction(
+        tx,
+        IList.from(cancelTrade),
+        IList.from(completeExecutionEarly),
+        IList.from(createAccount),
+        IList.from(createCookbook),
+        IList.from(createRecipe),
+        IList.from(createTrade),
+        IList.from(executeRecipe),
+        IList.from(fulfillTrade),
+        IList.from(googleInAppPurchaseGetCoins),
+        IList.from(sendItems),
+        IList.from(setItemString),
+        IList.from(transferCookbook),
+        IList.from(updateAccount),
+        IList.from(updateCookbook),
+        IList.from(updateRecipe));
   }
 
   Transaction(
@@ -145,7 +175,7 @@ enum TxState { notYetSent, notYetAccepted, committed, refused }
 extension TxStatePar on String {
   TxState toTxStateEnum() {
     return TxState.values.firstWhere(
-            (e) => e.toString().toLowerCase() == 'TxState.$this'.toLowerCase(),
+        (e) => e.toString().toLowerCase() == 'TxState.$this'.toLowerCase(),
         orElse: () => TxState.notYetSent); //return null if not found
   }
 }

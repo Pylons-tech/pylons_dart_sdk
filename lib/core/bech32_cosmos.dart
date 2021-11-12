@@ -4,18 +4,12 @@ import 'dart:typed_data';
 
 import '../pylons_flutter.dart';
 
+/// The data to be encoded in a Bech32 string.
 class Bech32Data {
   final String hrp;
   final Int8List data;
 
   Bech32Data(this.hrp, this.data);
-}
-
-class UnencodedBech32Data {
-  final String hrp;
-  final Int8List data;
-
-  UnencodedBech32Data(this.hrp, this.data);
 }
 
 /// Implements Bech32 encoding.
@@ -356,9 +350,9 @@ class Bech32Cosmos {
 
   /// Tendermint bech32 helper.
   /// Decodes a bech32 encoded string and converts to base64 encoded bytes
-  static UnencodedBech32Data decodeAndConvert(String bech) {
+  static Bech32Data decodeAndConvert(String bech) {
     var data = decode(bech);
     var converted = convertBits(data.data, 5, 8, false);
-    return UnencodedBech32Data(data.hrp, converted);
+    return Bech32Data(data.hrp, converted);
   }
 }

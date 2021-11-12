@@ -1,3 +1,6 @@
+/// Contains string constants.
+///
+/// TODO: should these be split into multiple classes based on usage?
 class Strings {
   static const String GET_COOKBOOKS = 'getCookbooks';
   static const String GET_PROFILE = 'getProfile';

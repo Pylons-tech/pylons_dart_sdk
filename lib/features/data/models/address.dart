@@ -5,27 +5,29 @@ class AccAddress {
   /// The number of bytes in an address
   static const addressLength = 20;
 
-  /// The bech32 prefix of an address
+  /// Main prefix for all Bech32 strings
   static const bech32MainPrefix = 'cosmos';
 
-  /// PrefixAccount is the prefix for account keys
+  /// Prefix part for account keys
   static const prefixAccount = 'acc';
 
-  /// PrefixPublic is the prefix for public keys
+  /// Prefix part for public keys
   static const prefixPublic = 'pub';
 
-  /// PrefixAddress is the prefix for addresses
+  /// Prefix part for addresses
   static const prefixAddress = 'addr';
 
-  /// Bech32PrefixAccAddr defines the Bech32 prefix of an account's address
+  /// Account address prefix is just main Bech32 prefix
   static const bech32PrefixAccAddr = bech32MainPrefix;
 
-  /// Bech32PrefixAccPub defines the Bech32 prefix of an account's public key
+  /// Public key prefix is main Bech32 prefix + [prefixPublic]
   static const bech32PrefixAccPub = bech32MainPrefix + prefixPublic;
 
   /// Verifies that the provided string [address] matches the Cosmos address format.
+  ///
   /// Returns a [Tuple2] of a string containing additional information (in the event
-  /// that verification fails) and a bool
+  /// that verification fails) and a bool which is true if the address fits format,
+  /// false otherwise.
   static Tuple2<String, bool> verifyAddress(String address) {
     var bech = Bech32Cosmos.decodeAndConvert(address);
     if (bech.hrp != 'cosmos') {
