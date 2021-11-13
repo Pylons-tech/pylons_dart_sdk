@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:pylons_flutter/features/data/models/address.dart';
+import 'package:pylons_sdk/features/data/models/address.dart';
 
-import 'package:pylons_flutter/pylons_flutter.dart';
+import 'package:pylons_sdk/pylons_sdk.dart';
 
 import 'core/constants/strings.dart';
 import 'generated/pylons/recipe.pb.dart';

@@ -1,7 +1,7 @@
-name: pylons_flutter
+name: pylons_sdk
 description: Pylons client-side SDK
 version: 0.0.1
-homepage:
+homepage: https://www.pylons.tech/
 
 environment:
   sdk: ">=2.14.0 <3.0.0"
@@ -17,6 +17,7 @@ dependencies:
 
 #Used it for ipc
   uni_links: ^0.5.1
+  uni_links_platform_interface: ^1.0.0
 
 
   url_launcher: ^6.0.12

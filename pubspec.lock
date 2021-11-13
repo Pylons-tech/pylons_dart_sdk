@@ -484,7 +484,7 @@ packages:
     source: hosted
     version: "0.5.1"
   uni_links_platform_interface:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: uni_links_platform_interface
       url: "https://pub.dartlang.org"

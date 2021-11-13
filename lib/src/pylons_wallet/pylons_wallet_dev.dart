@@ -3,21 +3,21 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
-import 'package:pylons_flutter/src/core/constants/strings.dart';
-import 'package:pylons_flutter/src/features/data/models/transaction.dart';
-import 'package:pylons_flutter/src/features/ipc/completers.dart';
-import 'package:pylons_flutter/src/features/ipc/ipc_constants.dart';
-import 'package:pylons_flutter/src/features/ipc/ipc_handler_factory.dart';
-import 'package:pylons_flutter/src/features/models/sdk_ipc_message.dart';
-import 'package:pylons_flutter/src/generated/pylons/cookbook.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/item.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/payment_info.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/recipe.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/trade.pb.dart';
-import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
+import 'package:pylons_sdk/src/core/constants/strings.dart';
+import 'package:pylons_sdk/src/features/data/models/transaction.dart';
+import 'package:pylons_sdk/src/features/ipc/completers.dart';
+import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
+import 'package:pylons_sdk/src/features/ipc/ipc_handler_factory.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_message.dart';
+import 'package:pylons_sdk/src/generated/pylons/cookbook.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/item.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/payment_info.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/recipe.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/trade.pb.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 import 'package:uni_links/uni_links.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../pylons_flutter.dart';
+import '../../pylons_sdk.dart';
 import '../pylons_wallet_comm_util.dart';
 
 /// The Pylons class is used for the test net .

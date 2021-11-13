@@ -2,7 +2,7 @@ import 'package:bitstream/bitstream.dart';
 
 import 'dart:typed_data';
 
-import '../pylons_flutter.dart';
+import '../pylons_sdk.dart';
 
 class Bech32Data {
   final String hrp;

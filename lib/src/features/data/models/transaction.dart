@@ -3,8 +3,8 @@ library pylons_flutter_transaction;
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:pylons_flutter/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/tx.pb.dart';
+import 'package:pylons_sdk/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/tx.pb.dart';
 
 /// TODO: Doc comment
 class Transaction {
