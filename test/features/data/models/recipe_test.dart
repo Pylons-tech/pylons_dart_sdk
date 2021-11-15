@@ -7,35 +7,35 @@ void main() {
   group('JSON deserialization tests', () {
 
   });
-  group('JSON serialization tests', () {
-    test('Recipe JSON from remote deserializes correctly', () {
-      throw UnimplementedError();
-    });
-    test('CoinInput deserializes correctly', () {
-      throw UnimplementedError();
-    });
-    test('ItemInput deserializes correctly', () {
-      throw UnimplementedError();
-    });
-    test('CoinOutput deserializes correctly', () {
-      throw UnimplementedError();
-    });
-    test('ItemModifyOutput deserializes correctly', () {
-      throw UnimplementedError();
-    });
-    test('ItemOutput deserializes correctly', () {
-      throw UnimplementedError();
-    });
-    test('WeightedOutput deserializes correctly', () {
-      throw UnimplementedError();
-    });
-    test('EntriesList deserializes correctly', () {
-      throw UnimplementedError();
-    });
-    test('FeeInputParam deserializes correctly', () {
-      throw UnimplementedError();
-    });
-  });
+  // group('JSON serialization tests', () {
+  //   test('Recipe JSON from remote deserializes correctly', () {
+  //     throw UnimplementedError();
+  //   });
+  //   test('CoinInput deserializes correctly', () {
+  //     throw UnimplementedError();
+  //   });
+  //   test('ItemInput deserializes correctly', () {
+  //     throw UnimplementedError();
+  //   });
+  //   test('CoinOutput deserializes correctly', () {
+  //     throw UnimplementedError();
+  //   });
+  //   test('ItemModifyOutput deserializes correctly', () {
+  //     throw UnimplementedError();
+  //   });
+  //   test('ItemOutput deserializes correctly', () {
+  //     throw UnimplementedError();
+  //   });
+  //   test('WeightedOutput deserializes correctly', () {
+  //     throw UnimplementedError();
+  //   });
+  //   test('EntriesList deserializes correctly', () {
+  //     throw UnimplementedError();
+  //   });
+  //   test('FeeInputParam deserializes correctly', () {
+  //     throw UnimplementedError();
+  //   });
+  // });
   group('Weblink tests', () {
     test('When generateWebLink called, web link is generated', () async {
       //expect(testRecipe.generateWebLink(), equals('TO DO - DeepLink'),
