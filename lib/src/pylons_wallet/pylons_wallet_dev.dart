@@ -24,9 +24,7 @@ import '../pylons_wallet_comm_util.dart';
 class PylonsWalletDevImpl implements PylonsWallet {
   late StreamSubscription _sub;
 
-
   final String host;
-
 
   PylonsWalletDevImpl(this.host) {
     // // Attach a listener to the stream
@@ -43,7 +41,6 @@ class PylonsWalletDevImpl implements PylonsWallet {
 
     // startIPC();
   }
-
 
   Future<void> handleLink(String link) async {
     log(link, name: '[IPCEngine : handleLink]');
@@ -112,8 +109,6 @@ class PylonsWalletDevImpl implements PylonsWallet {
     throw UnimplementedError();
   }
 
-
-
   @override
   Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(
       Item item, int price) {
@@ -122,8 +117,7 @@ class PylonsWalletDevImpl implements PylonsWallet {
   }
 
   @override
-  Future<SDKIPCResponse> txUpdateCookbook(
-      Cookbook cookbook) {
+  Future<SDKIPCResponse> txUpdateCookbook(Cookbook cookbook) {
     // TODO: implement txUpdateCookbook
     throw UnimplementedError();
   }
@@ -131,7 +125,6 @@ class PylonsWalletDevImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse> txUpdateRecipe(Recipe recipe) async {
     throw UnimplementedError();
-
   }
 
   @override
@@ -152,7 +145,8 @@ class PylonsWalletDevImpl implements PylonsWallet {
       PylonsWalletCommUtil.validateRecipe(recipe);
       var key = Strings.TX_CREATE_RECIPE;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()), host);
+      var sdkIPCMessage =
+          SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()), host);
 
       recipeCompleter = Completer();
 
@@ -160,8 +154,6 @@ class PylonsWalletDevImpl implements PylonsWallet {
       return response;
     });
   }
-
-
 
   /// Async: Send the provided message over the IPC channel, then retrieve a
   /// response.
@@ -172,12 +164,12 @@ class PylonsWalletDevImpl implements PylonsWallet {
   ///
   /// The string that is eventually retrieved as a response fits the same
   /// format.
-  Future<SDKIPCResponse> sendMessageNew(SDKIPCMessage sdkipcMessage, Completer<SDKIPCResponse> completer) {
+  Future<SDKIPCResponse> sendMessageNew(
+      SDKIPCMessage sdkipcMessage, Completer<SDKIPCResponse> completer) {
     var encodedMessage = sdkipcMessage.createMessage();
     dispatchUniLink('$BASE_UNI_LINK/$encodedMessage');
     return completer.future;
   }
-
 
   /// This method sends the unilink to the wallet app
   /// [Input] : [unilink] is the unilink with data for the wallet app
@@ -192,13 +184,19 @@ class PylonsWalletDevImpl implements PylonsWallet {
   }
 
   @override
-  Future<SDKIPCResponse> txExecuteRecipe({required String cookbookId, required String recipeName, required List<String> itemIds, required int coinInputIndex, required List<PaymentInfo> paymentInfo}) {
+  Future<SDKIPCResponse> txExecuteRecipe(
+      {required String cookbookId,
+      required String recipeName,
+      required List<String> itemIds,
+      required int coinInputIndex,
+      required List<PaymentInfo> paymentInfo}) {
     // TODO: implement txExecuteRecipe
     throw UnimplementedError();
   }
 
   @override
-  Future<SDKIPCResponse> txEnableRecipe(String cookBookId, String recipeId, String version) {
+  Future<SDKIPCResponse> txEnableRecipe(
+      String cookBookId, String recipeId, String version) {
     // TODO: implement txEnableRecipe
     throw UnimplementedError();
   }

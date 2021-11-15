@@ -8,6 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+
 @$core.Deprecated('Use googleInAppPurchaseOrderDescriptor instead')
 const GoogleInAppPurchaseOrder$json = const {
   '1': 'GoogleInAppPurchaseOrder',
@@ -15,10 +16,18 @@ const GoogleInAppPurchaseOrder$json = const {
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
     const {'1': 'productID', '3': 2, '4': 1, '5': 9, '10': 'productID'},
     const {'1': 'purchaseToken', '3': 3, '4': 1, '5': 9, '10': 'purchaseToken'},
-    const {'1': 'receiptDataBase64', '3': 4, '4': 1, '5': 9, '10': 'receiptDataBase64'},
+    const {
+      '1': 'receiptDataBase64',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'receiptDataBase64'
+    },
     const {'1': 'signature', '3': 5, '4': 1, '5': 9, '10': 'signature'},
   ],
 };
 
 /// Descriptor for `GoogleInAppPurchaseOrder`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List googleInAppPurchaseOrderDescriptor = $convert.base64Decode('ChhHb29nbGVJbkFwcFB1cmNoYXNlT3JkZXISGAoHY3JlYXRvchgBIAEoCVIHY3JlYXRvchIcCglwcm9kdWN0SUQYAiABKAlSCXByb2R1Y3RJRBIkCg1wdXJjaGFzZVRva2VuGAMgASgJUg1wdXJjaGFzZVRva2VuEiwKEXJlY2VpcHREYXRhQmFzZTY0GAQgASgJUhFyZWNlaXB0RGF0YUJhc2U2NBIcCglzaWduYXR1cmUYBSABKAlSCXNpZ25hdHVyZQ==');
+final $typed_data.Uint8List googleInAppPurchaseOrderDescriptor =
+    $convert.base64Decode(
+        'ChhHb29nbGVJbkFwcFB1cmNoYXNlT3JkZXISGAoHY3JlYXRvchgBIAEoCVIHY3JlYXRvchIcCglwcm9kdWN0SUQYAiABKAlSCXByb2R1Y3RJRBIkCg1wdXJjaGFzZVRva2VuGAMgASgJUg1wdXJjaGFzZVRva2VuEiwKEXJlY2VpcHREYXRhQmFzZTY0GAQgASgJUhFyZWNlaXB0RGF0YUJhc2U2NBIcCglzaWduYXR1cmUYBSABKAlSCXNpZ25hdHVyZQ==');

@@ -25,8 +25,6 @@ class _MyAppState extends State<MyApp> {
     PylonsWallet.instance.exists().then((value) {
       log('WALLET Existence $value');
     });
-
-
   }
 
   @override
@@ -62,11 +60,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-
-
   String cookBookId = "cookbookLOUDahmed6";
   String recipeId = "Ticket1";
-
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +83,6 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Cookbook'),
             ),
-
             RaisedButton(
               onPressed: () async {
                 updateCookBook();
@@ -101,32 +95,24 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Recipe'),
             ),
-
             RaisedButton(
               onPressed: () async {
                 executeRecipe();
               },
               child: const Text('Execute Recipe'),
             ),
-
-
             RaisedButton(
               onPressed: () async {
                 updateRecipe();
               },
               child: const Text('Update Recipe'),
             ),
-
-
             RaisedButton(
               onPressed: () async {
                 enableRecipe();
               },
               child: const Text('Enable Recipe'),
             ),
-
-
-
             RaisedButton(
               onPressed: () async {
                 getProfile();
@@ -150,16 +136,19 @@ class _MyHomePageState extends State<MyHomePage> {
         developer: "Pylons Inc",
         version: "v0.0.1",
         supportEmail: "alex@shmeeload.xyz",
-        costPerBlock: Coin(denom: "upylon", amount: "1000000"), enabled: true);
+        costPerBlock: Coin(denom: "upylon", amount: "1000000"),
+        enabled: true);
 
     var response = await PylonsWallet.instance.txCreateCookbook(cookBook1);
 
     print('From App $response');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Cookbook created")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Cookbook created")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Cookbook error : ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Cookbook error : ${response.error}")));
     }
   }
 
@@ -197,22 +186,30 @@ class _MyHomePageState extends State<MyHomePage> {
     print('From App $response');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar( const SnackBar(content: Text("Receipe created")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Receipe created")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Receipe error : ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Receipe error : ${response.error}")));
     }
   }
 
   void executeRecipe() async {
-
-    var response = await PylonsWallet.instance.txExecuteRecipe(cookbookId: cookBookId, recipeName: recipeId, coinInputIndex: 0, itemIds: [], paymentInfo: []);
+    var response = await PylonsWallet.instance.txExecuteRecipe(
+        cookbookId: cookBookId,
+        recipeName: recipeId,
+        coinInputIndex: 0,
+        itemIds: [],
+        paymentInfo: []);
 
     print('From App $response');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Recipe  executed")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Recipe  executed")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Recipe  error : ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Recipe  error : ${response.error}")));
     }
   }
 
@@ -250,30 +247,30 @@ class _MyHomePageState extends State<MyHomePage> {
     print('From App $response');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Receipe updated")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Receipe updated")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Receipe update error : ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Receipe update error : ${response.error}")));
     }
-
   }
 
-
   void enableRecipe() async {
-
-    var response = await PylonsWallet.instance.txEnableRecipe(cookBookId, recipeId, "v1.0.5");
+    var response = await PylonsWallet.instance
+        .txEnableRecipe(cookBookId, recipeId, "v1.0.5");
 
     print('From App $response');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Receipe updated")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Receipe updated")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Receipe update error : ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Receipe update error : ${response.error}")));
     }
-
   }
 
   void updateCookBook() async {
-
     var cookBook1 = Cookbook(
         creator: "",
         iD: cookBookId,
@@ -283,21 +280,24 @@ class _MyHomePageState extends State<MyHomePage> {
         developer: "Pylons Inc",
         version: "v0.0.2",
         supportEmail: "alex@shmeeload.xyz",
-        costPerBlock: Coin(denom: "upylon", amount: "1000000"), enabled: true);
+        costPerBlock: Coin(denom: "upylon", amount: "1000000"),
+        enabled: true);
 
     var response = await PylonsWallet.instance.txUpdateCookbook(cookBook1);
 
     print('From App $response');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Cookbook updated")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Cookbook updated")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Cookbook update error: ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Cookbook update error: ${response.error}")));
     }
   }
 
-
   void getProfile() async {
-    log((await PylonsWallet.instance.getProfile()).toString(), name:"Pylons sdk");
+    log((await PylonsWallet.instance.getProfile()).toString(),
+        name: "Pylons sdk");
   }
 }

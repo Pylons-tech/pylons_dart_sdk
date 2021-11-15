@@ -66,42 +66,35 @@ void main() {
 }
 
 void createLinkBasedOnOS() {
-
-
-  group('createLinkBasedOnOS', (){
-
+  group('createLinkBasedOnOS', () {
     var host = 'new_sdk';
 
     test('should return wallet link for android ', () {
-
       var expectedLink = '$BASE_UNI_LINK/';
 
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
-      var response = pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: true);
+      var response =
+          pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: true);
       expect(expectedLink, response);
     });
 
-
     test('should return wallet link for ios ', () {
-
       var expectedLink = '$BASE_UNI_LINK_IOS';
 
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
-      var response = pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: false);
+      var response = pylonsWallet.createLinkBasedOnOS(
+          encodedMessage: '', isAndroid: false);
       expect(expectedLink, response);
     });
-
-
   });
-
-
-
 }
 
 void getHostBasedOnOsTest() {
@@ -110,7 +103,8 @@ void getHostBasedOnOsTest() {
 
     test('should return host as platform in android ', () {
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
       var hostBasedOnPlatform = pylonsWallet.getHostBasedOnOS(true);
@@ -119,7 +113,8 @@ void getHostBasedOnOsTest() {
 
     test('should return host as platform in ios ', () {
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
 
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
@@ -129,9 +124,4 @@ void getHostBasedOnOsTest() {
       expect(expectedHost, hostBasedOnPlatform);
     });
   });
-
-
-
-
-
 }

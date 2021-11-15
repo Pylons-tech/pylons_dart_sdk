@@ -13,10 +13,21 @@ import '../../../google/protobuf/any.pb.dart' as $0;
 import '../../../google/protobuf/timestamp.pb.dart' as $1;
 
 class GenericAuthorization extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GenericAuthorization', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.authz.v1beta1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'msg')
-    ..hasRequiredFields = false
-  ;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GenericAuthorization',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.authz.v1beta1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'msg')
+    ..hasRequiredFields = false;
 
   GenericAuthorization._() : super();
   factory GenericAuthorization({
@@ -28,31 +39,41 @@ class GenericAuthorization extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory GenericAuthorization.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory GenericAuthorization.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  GenericAuthorization clone() => GenericAuthorization()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  GenericAuthorization copyWith(void Function(GenericAuthorization) updates) => super.copyWith((message) => updates(message as GenericAuthorization)) as GenericAuthorization; // ignore: deprecated_member_use
+  factory GenericAuthorization.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GenericAuthorization.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GenericAuthorization clone() =>
+      GenericAuthorization()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GenericAuthorization copyWith(void Function(GenericAuthorization) updates) =>
+      super.copyWith((message) => updates(message as GenericAuthorization))
+          as GenericAuthorization; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static GenericAuthorization create() => GenericAuthorization._();
   GenericAuthorization createEmptyInstance() => create();
-  static $pb.PbList<GenericAuthorization> createRepeated() => $pb.PbList<GenericAuthorization>();
+  static $pb.PbList<GenericAuthorization> createRepeated() =>
+      $pb.PbList<GenericAuthorization>();
   @$core.pragma('dart2js:noInline')
-  static GenericAuthorization getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GenericAuthorization>(create);
+  static GenericAuthorization getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GenericAuthorization>(create);
   static GenericAuthorization? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get msg => $_getSZ(0);
   @$pb.TagNumber(1)
-  set msg($core.String v) { $_setString(0, v); }
+  set msg($core.String v) {
+    $_setString(0, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasMsg() => $_has(0);
   @$pb.TagNumber(1)
@@ -60,11 +81,28 @@ class GenericAuthorization extends $pb.GeneratedMessage {
 }
 
 class Grant extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Grant', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.authz.v1beta1'), createEmptyInstance: create)
-    ..aOM<$0.Any>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'authorization', subBuilder: $0.Any.create)
-    ..aOM<$1.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'expiration', subBuilder: $1.Timestamp.create)
-    ..hasRequiredFields = false
-  ;
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'Grant',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.authz.v1beta1'),
+      createEmptyInstance: create)
+    ..aOM<$0.Any>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'authorization',
+        subBuilder: $0.Any.create)
+    ..aOM<$1.Timestamp>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'expiration',
+        subBuilder: $1.Timestamp.create)
+    ..hasRequiredFields = false;
 
   Grant._() : super();
   factory Grant({
@@ -80,31 +118,39 @@ class Grant extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory Grant.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Grant.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  factory Grant.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Grant.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
   Grant clone() => Grant()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Grant copyWith(void Function(Grant) updates) => super.copyWith((message) => updates(message as Grant)) as Grant; // ignore: deprecated_member_use
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Grant copyWith(void Function(Grant) updates) =>
+      super.copyWith((message) => updates(message as Grant))
+          as Grant; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Grant create() => Grant._();
   Grant createEmptyInstance() => create();
   static $pb.PbList<Grant> createRepeated() => $pb.PbList<Grant>();
   @$core.pragma('dart2js:noInline')
-  static Grant getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Grant>(create);
+  static Grant getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Grant>(create);
   static Grant? _defaultInstance;
 
   @$pb.TagNumber(1)
   $0.Any get authorization => $_getN(0);
   @$pb.TagNumber(1)
-  set authorization($0.Any v) { setField(1, v); }
+  set authorization($0.Any v) {
+    setField(1, v);
+  }
+
   @$pb.TagNumber(1)
   $core.bool hasAuthorization() => $_has(0);
   @$pb.TagNumber(1)
@@ -115,7 +161,10 @@ class Grant extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $1.Timestamp get expiration => $_getN(1);
   @$pb.TagNumber(2)
-  set expiration($1.Timestamp v) { setField(2, v); }
+  set expiration($1.Timestamp v) {
+    setField(2, v);
+  }
+
   @$pb.TagNumber(2)
   $core.bool hasExpiration() => $_has(1);
   @$pb.TagNumber(2)
@@ -123,4 +172,3 @@ class Grant extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $1.Timestamp ensureExpiration() => $_ensure(1);
 }
-

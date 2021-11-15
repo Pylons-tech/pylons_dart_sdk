@@ -1,6 +1,6 @@
 name: pylons_sdk
-description: Pylons client-side SDK
-version: 0.0.1
+description: Pylons sdk converts client apps to the pylons wallet. It helps the client apps to perform actions on the pylons chain.
+version: 0.0.2
 homepage: https://www.pylons.tech/
 
 environment:
@@ -10,10 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  sacco: ^0.2.0
   dartz: ^0.10.0
   equatable: ^2.0.3
-  bitstream: ^0.0.4
 
 #Used it for ipc
   uni_links: ^0.5.1

@@ -8,11 +8,11 @@ class DecString {
   static const MAX = 999999999999999999;
   static const ONE = 100000000000000000.0;
 
-  static String decStringFromDouble (double f) {
+  static String decStringFromDouble(double f) {
     return (f * ONE).toStringAsPrecision(PRECISION).split('.').first;
   }
 
-  static double doubleFromDecString (String f) {
+  static double doubleFromDecString(String f) {
     var i = int.parse(f);
     if (i > MAX) {
       throw Exception('$i requires more than $PRECISION places of precision');

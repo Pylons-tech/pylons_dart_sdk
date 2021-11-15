@@ -4,9 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pylons_sdk/pylons_sdk.dart';
 
 void main() {
-  group('JSON deserialization tests', () {
-
-  });
+  group('JSON deserialization tests', () {});
   // group('JSON serialization tests', () {
   //   test('Recipe JSON from remote deserializes correctly', () {
   //     throw UnimplementedError();
@@ -46,8 +44,6 @@ void main() {
       //    skip: true);
     });
   });
-
-
 
   test('Test Coin Input from Json', () async {
     var jsonRaw = '{"coin": "pylons", "count": 2}';
