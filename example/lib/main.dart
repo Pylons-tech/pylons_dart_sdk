@@ -68,8 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: SingleChildScrollView(
@@ -77,43 +75,43 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            RaisedButton(
+            ElevatedButton(
               onPressed: () async {
                 createCookBook();
               },
               child: const Text('Cookbook'),
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () async {
                 updateCookBook();
               },
               child: const Text('Update Cookbook'),
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () async {
                 createRecipe();
               },
               child: const Text('Recipe'),
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () async {
                 executeRecipe();
               },
               child: const Text('Execute Recipe'),
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () async {
                 updateRecipe();
               },
               child: const Text('Update Recipe'),
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () async {
                 enableRecipe();
               },
               child: const Text('Enable Recipe'),
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () async {
                 getProfile();
               },
@@ -121,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
 
 
-            RaisedButton(
+            ElevatedButton(
               onPressed: () async {
                 getRecipes();
               },
@@ -130,7 +128,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
@@ -149,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     var response = await PylonsWallet.instance.txCreateCookbook(cookBook1);
 
-    print('From App $response');
+    log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
       ScaffoldMessenger.of(context)
@@ -191,7 +188,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     var response = await PylonsWallet.instance.txCreateRecipe(recipe);
 
-    print('From App $response');
+
+    log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
       ScaffoldMessenger.of(context)
@@ -210,7 +208,9 @@ class _MyHomePageState extends State<MyHomePage> {
         itemIds: [],
         paymentInfo: []);
 
-    print('From App $response');
+
+    log('From App $response', name: 'pylons_sdk');
+
 
     if (response.success) {
       ScaffoldMessenger.of(context)
@@ -252,7 +252,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     var response = await PylonsWallet.instance.txUpdateRecipe(recipe);
 
-    print('From App $response');
+    log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
       ScaffoldMessenger.of(context)
@@ -267,7 +267,7 @@ class _MyHomePageState extends State<MyHomePage> {
     var response = await PylonsWallet.instance
         .txEnableRecipe(cookBookId, recipeId, "v1.0.5");
 
-    print('From App $response');
+    log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
       ScaffoldMessenger.of(context)
@@ -293,7 +293,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     var response = await PylonsWallet.instance.txUpdateCookbook(cookBook1);
 
-    print('From App $response');
+    log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
       ScaffoldMessenger.of(context)
@@ -311,7 +311,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future getRecipes() async {
     var sdkResponse = await PylonsWallet.instance.getRecipes(cookBookId);
-    log(sdkResponse.toString(), name:"Pylons sdk");
+    log(sdkResponse.toString(), name: 'pylons_sdk');
     // PylonsWallet.inst
   }
 }

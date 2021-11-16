@@ -2,7 +2,6 @@
 library pylons_flutter_transaction;
 
 import 'package:dartz/dartz.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:pylons_sdk/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/tx.pb.dart';
 
@@ -26,21 +25,21 @@ class Transaction {
   IList<MsgUpdateRecipe> msgs_UpdateRecipe;
 
   factory Transaction.wrap(Tx tx) {
-    final List<MsgCancelTrade> cancelTrade = [];
-    final List<MsgCompleteExecutionEarly> completeExecutionEarly = [];
-    final List<MsgCreateAccount> createAccount = [];
-    final List<MsgCreateCookbook> createCookbook = [];
-    final List<MsgCreateRecipe> createRecipe = [];
-    final List<MsgCreateTrade> createTrade = [];
-    final List<MsgExecuteRecipe> executeRecipe = [];
-    final List<MsgFulfillTrade> fulfillTrade = [];
-    final List<MsgGoogleInAppPurchaseGetCoins> googleInAppPurchaseGetCoins = [];
-    final List<MsgSendItems> sendItems = [];
-    final List<MsgSetItemString> setItemString = [];
-    final List<MsgTransferCookbook> transferCookbook = [];
-    final List<MsgUpdateAccount> updateAccount = [];
-    final List<MsgUpdateCookbook> updateCookbook = [];
-    final List<MsgUpdateRecipe> updateRecipe = [];
+    final cancelTrade = <MsgCancelTrade>[];
+    final completeExecutionEarly = <MsgCompleteExecutionEarly>[];
+    final createAccount = <MsgCreateAccount>[];
+    final createCookbook = <MsgCreateCookbook>[];
+    final createRecipe = <MsgCreateRecipe>[];
+    final createTrade = <MsgCreateTrade>[];
+    final executeRecipe = <MsgExecuteRecipe>[];
+    final fulfillTrade = <MsgFulfillTrade>[];
+    final googleInAppPurchaseGetCoins = <MsgGoogleInAppPurchaseGetCoins>[];
+    final sendItems = <MsgSendItems>[];
+    final setItemString = <MsgSetItemString>[];
+    final transferCookbook = <MsgTransferCookbook>[];
+    final updateAccount = <MsgUpdateAccount>[];
+    final updateCookbook = <MsgUpdateCookbook>[];
+    final updateRecipe = <MsgUpdateRecipe>[];
 
     for (var msg in tx.body.messages) {
       switch (msg.typeUrl) {
