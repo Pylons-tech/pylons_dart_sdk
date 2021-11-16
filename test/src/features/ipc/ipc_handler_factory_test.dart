@@ -118,4 +118,20 @@ void main() {
 
     expect(true, getProfileCompleter.isCompleted);
   });
+
+
+  test('should complete the retrieval of recipes based on cookbook', () {
+    getAllRecipes = Completer();
+
+    expect(false, getAllRecipes.isCompleted);
+
+    var sdkResponse = SDKIPCResponse(success: true, error: '', data: [], errorCode: '', action: Strings.GET_RECIPES);
+    IPCHandlerFactory.getHandler(sdkResponse);
+
+    expect(true, getAllRecipes.isCompleted);
+  });
+
+
+
+
 }

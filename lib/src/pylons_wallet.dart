@@ -163,7 +163,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Recipe>> getRecipes(String? address);
+  Future<SDKIPCResponse<List<Recipe>>> getRecipes(String cookBookId);
 
   /// Async: Retrieves all current trades that exist on the Pylons chain.
   ///

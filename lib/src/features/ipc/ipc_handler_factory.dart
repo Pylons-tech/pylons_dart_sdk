@@ -39,5 +39,15 @@ class IPCHandlerFactory {
       getProfileCompleter.complete(sdkipcResponse);
       return;
     }
+
+
+    if(sdkipcResponse.action == Strings.GET_RECIPES){
+     var getRecipesHandler = GetRecipesHandler();
+     getRecipesHandler.handler(sdkipcResponse);
+      return;
+    }
+
+
+
   }
 }

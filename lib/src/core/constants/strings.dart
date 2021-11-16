@@ -1,7 +1,7 @@
 class Strings {
   static const String GET_COOKBOOKS = 'getCookbooks';
   static const String GET_PROFILE = 'getProfile';
-  static const String GET_RECIPE = 'getRecipes';
+  static const String GET_RECIPES = 'getRecipes';
   static const String GET_TRADES = 'getTrades';
   static const String TX_BUY_ITEMS = 'txBuyItem';
   static const String TX_BUY_PYLONS = 'txBuyPylons';
@@ -28,4 +28,7 @@ class Strings {
   static const String ERR_ITEM_DOES_NOT_EXIST = 'itemDoesNotExist';
   static const String ERR_ITEM_NOT_OWNED = 'itemNotOwned';
   static const String ERR_MISSING_ITEM_INPUTS = 'missingItemInputs';
+  static const String ERR_MALFORMED_RECIPES = 'malformedRecipes';
+
+
 }

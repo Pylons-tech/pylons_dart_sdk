@@ -231,29 +231,21 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<List<Recipe>> getRecipes(String? address) async {
-    return Future<List<Recipe>>.sync(() async {
-      var key = Strings.GET_RECIPE;
-      var ls = <String>[key];
-      if (address != null) ls.add(address);
-      var response = await sendMessage(ls);
-      var r = PylonsWalletCommUtil.procResponse(response);
-      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
-      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        if (address != null) {
-          PylonsWalletCommUtil.handleErrors(
-              r, [Strings.ERR_NODE, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
-        } else {
-          PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE]);
-        }
+  Future<SDKIPCResponse<List<Recipe>>> getRecipes(String cookBookId) async {
+    return Future<SDKIPCResponse<List<Recipe>>>.sync(() async {
+      var key = Strings.GET_RECIPES;
+
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode({'cookbookId': cookBookId}), getHostBasedOnOS(Platform.isAndroid));
+
+      getAllRecipes = Completer();
+
+      var response = await sendMessageNew(sdkIPCMessage, getAllRecipes);
+
+      if (response is SDKIPCResponse<List<Recipe>>) {
+        return response;
       }
-      var rs = List.from(jsonDecode(r.value2[0]))
-          .map((e) => Recipe.fromJson(e))
-          .toList();
-      if (rs.isEmpty) {
-        throw ResponseException(response, 'Malformed recipes');
-      }
-      return rs;
+
+      throw Exception('Response Malformed');
     });
   }
 

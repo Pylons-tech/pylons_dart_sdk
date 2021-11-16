@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-class SDKIPCResponse {
+class SDKIPCResponse<T>{
   bool success;
   String errorCode;
   String error;
-  dynamic data;
+  T data;
   String action;
 
   SDKIPCResponse(
