@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pylons_flutter/src/features/helper/dec_string.dart';
+import 'package:pylons_sdk/src/features/helper/dec_string.dart';
 
 void main() {
   test('string to dec', () {

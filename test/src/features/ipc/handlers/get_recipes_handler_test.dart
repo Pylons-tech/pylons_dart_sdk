@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pylons_flutter/src/features/ipc/completers.dart';
-import 'package:pylons_flutter/src/features/ipc/handlers/get_recipes_handler.dart';
-import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
+import 'package:pylons_sdk/src/features/ipc/completers.dart';
+import 'package:pylons_sdk/src/features/ipc/handlers/get_recipes_handler.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 
 void main() {
   test('should complete the get All recipe future', () {

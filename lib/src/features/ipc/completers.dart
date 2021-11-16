@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:pylons_flutter/pylons_flutter.dart';
-import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
+
+import '../../../pylons_sdk.dart';
 
 Completer<SDKIPCResponse> cookBookCompleter = Completer();
 Completer<SDKIPCResponse> cookBookUpdateCompleter = Completer();

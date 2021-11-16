@@ -8,6 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+
 @$core.Deprecated('Use redeemInfoDescriptor instead')
 const RedeemInfo$json = const {
   '1': 'RedeemInfo',
@@ -15,10 +16,18 @@ const RedeemInfo$json = const {
     const {'1': 'ID', '3': 1, '4': 1, '5': 9, '10': 'ID'},
     const {'1': 'processorName', '3': 2, '4': 1, '5': 9, '10': 'processorName'},
     const {'1': 'address', '3': 3, '4': 1, '5': 9, '10': 'address'},
-    const {'1': 'amount', '3': 4, '4': 1, '5': 9, '8': const {}, '10': 'amount'},
+    const {
+      '1': 'amount',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'amount'
+    },
     const {'1': 'signature', '3': 5, '4': 1, '5': 9, '10': 'signature'},
   ],
 };
 
 /// Descriptor for `RedeemInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List redeemInfoDescriptor = $convert.base64Decode('CgpSZWRlZW1JbmZvEg4KAklEGAEgASgJUgJJRBIkCg1wcm9jZXNzb3JOYW1lGAIgASgJUg1wcm9jZXNzb3JOYW1lEhgKB2FkZHJlc3MYAyABKAlSB2FkZHJlc3MSRgoGYW1vdW50GAQgASgJQi7I3h8A2t4fJmdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvdHlwZXMuSW50UgZhbW91bnQSHAoJc2lnbmF0dXJlGAUgASgJUglzaWduYXR1cmU=');
+final $typed_data.Uint8List redeemInfoDescriptor = $convert.base64Decode(
+    'CgpSZWRlZW1JbmZvEg4KAklEGAEgASgJUgJJRBIkCg1wcm9jZXNzb3JOYW1lGAIgASgJUg1wcm9jZXNzb3JOYW1lEhgKB2FkZHJlc3MYAyABKAlSB2FkZHJlc3MSRgoGYW1vdW50GAQgASgJQi7I3h8A2t4fJmdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvdHlwZXMuSW50UgZhbW91bnQSHAoJc2lnbmF0dXJlGAUgASgJUglzaWduYXR1cmU=');

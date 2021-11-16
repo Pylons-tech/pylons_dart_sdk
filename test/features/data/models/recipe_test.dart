@@ -1,12 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pylons_flutter/pylons_flutter.dart';
 
 void main() {
-  group('JSON deserialization tests', () {
-
-  });
+  group('JSON deserialization tests', () {});
   // group('JSON serialization tests', () {
   //   test('Recipe JSON from remote deserializes correctly', () {
   //     throw UnimplementedError();
@@ -46,8 +43,6 @@ void main() {
       //    skip: true);
     });
   });
-
-
 
   test('Test Coin Input from Json', () async {
     var jsonRaw = '{"coin": "pylons", "count": 2}';

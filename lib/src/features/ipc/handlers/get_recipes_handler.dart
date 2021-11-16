@@ -1,10 +1,11 @@
-import 'dart:convert';
 
-import 'package:pylons_flutter/pylons_flutter.dart';
-import 'package:pylons_flutter/src/core/constants/strings.dart';
-import 'package:pylons_flutter/src/features/ipc/base/ipc_handler.dart';
-import 'package:pylons_flutter/src/features/ipc/completers.dart';
-import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
+import 'package:pylons_sdk/src/core/constants/strings.dart';
+import 'package:pylons_sdk/src/features/ipc/base/ipc_handler.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
+
+import '../../../../pylons_sdk.dart';
+import '../completers.dart';
+
 
 class GetRecipesHandler implements IPCHandler{
   @override

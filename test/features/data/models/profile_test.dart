@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pylons_flutter/pylons_flutter.dart';
+import 'package:pylons_sdk/pylons_sdk.dart';
 
 void main() {
   test('Test Profile input from Json Variable', () async {

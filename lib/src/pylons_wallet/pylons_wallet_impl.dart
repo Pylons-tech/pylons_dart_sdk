@@ -10,20 +10,20 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:pylons_flutter/pylons_flutter.dart';
-import 'package:pylons_flutter/src/features/data/models/transaction.dart';
-import 'package:pylons_flutter/src/features/ipc/completers.dart';
-import 'package:pylons_flutter/src/features/ipc/ipc_constants.dart';
-import 'package:pylons_flutter/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/cookbook.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/item.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/payment_info.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/recipe.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/trade.pb.dart';
-import 'package:pylons_flutter/src/features/ipc/ipc_handler_factory.dart';
-import 'package:pylons_flutter/src/features/models/sdk_ipc_message.dart';
-import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
-import 'package:pylons_flutter/src/pylons_wallet_comm_util.dart';
+import 'package:pylons_sdk/pylons_sdk.dart';
+import 'package:pylons_sdk/src/features/data/models/transaction.dart';
+import 'package:pylons_sdk/src/features/ipc/completers.dart';
+import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
+import 'package:pylons_sdk/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/cookbook.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/item.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/payment_info.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/recipe.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/trade.pb.dart';
+import 'package:pylons_sdk/src/features/ipc/ipc_handler_factory.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_message.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
+import 'package:pylons_sdk/src/pylons_wallet_comm_util.dart';
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
@@ -100,10 +100,12 @@ class PylonsWalletImpl implements PylonsWallet {
   ///
   /// The string that is eventually retrieved as a response fits the same
   /// format.
-  Future<SDKIPCResponse> sendMessageNew(SDKIPCMessage sdkipcMessage, Completer<SDKIPCResponse> completer) {
+  Future<SDKIPCResponse> sendMessageNew(
+      SDKIPCMessage sdkipcMessage, Completer<SDKIPCResponse> completer) {
     var encodedMessage = sdkipcMessage.createMessage();
 
-    var universalLink = createLinkBasedOnOS(encodedMessage: encodedMessage, isAndroid: Platform.isAndroid);
+    var universalLink = createLinkBasedOnOS(
+        encodedMessage: encodedMessage, isAndroid: Platform.isAndroid);
     print(universalLink);
     dispatchUniLink(universalLink);
     return completer.future;
@@ -144,7 +146,9 @@ class PylonsWalletImpl implements PylonsWallet {
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
         PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE]);
       }
-      var cbs = List.from(jsonDecode(r.value2[0])).map((e) => Cookbook.fromJson(e)).toList();
+      var cbs = List.from(jsonDecode(r.value2[0]))
+          .map((e) => Cookbook.fromJson(e))
+          .toList();
       if (cbs.isEmpty) {
         throw ResponseException(response, 'Malformed cookbooks');
       }
@@ -184,7 +188,8 @@ class PylonsWalletImpl implements PylonsWallet {
     return Future<SDKIPCResponse>.sync(() async {
       var key = Strings.GET_PROFILE;
 
-      var sdkIPCMessage = SDKIPCMessage(key, '', getHostBasedOnOS(Platform.isAndroid));
+      var sdkIPCMessage =
+          SDKIPCMessage(key, '', getHostBasedOnOS(Platform.isAndroid));
 
       getProfileCompleter = Completer();
 
@@ -274,7 +279,9 @@ class PylonsWalletImpl implements PylonsWallet {
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
         PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE]);
       }
-      var ts = List.from(jsonDecode(r.value2[0])).map((e) => Trade.fromJson(e)).toList();
+      var ts = List.from(jsonDecode(r.value2[0]))
+          .map((e) => Trade.fromJson(e))
+          .toList();
       if (ts.isEmpty) {
         throw ResponseException(response, 'Malformed trades');
       }
@@ -322,14 +329,20 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Tuple2<Transaction, Profile>> txBuyItem(String tradeId, String paymentId) async {
+  Future<Tuple2<Transaction, Profile>> txBuyItem(
+      String tradeId, String paymentId) async {
     return Future<Tuple2<Transaction, Profile>>.sync(() async {
       var key = Strings.TX_BUY_ITEMS;
       var response = await sendMessage([key, tradeId, paymentId]);
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_INSUFFICIENT_FUNDS, Strings.ERR_PAYMENT_NOT_VALID, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(r, [
+          Strings.ERR_NODE,
+          Strings.ERR_INSUFFICIENT_FUNDS,
+          Strings.ERR_PAYMENT_NOT_VALID,
+          Strings.ERR_PROFILE_DOES_NOT_EXIST
+        ]);
       }
       var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
@@ -370,14 +383,19 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Tuple2<Transaction, Profile>> txBuyPylons(int pylons, String paymentId) {
+  Future<Tuple2<Transaction, Profile>> txBuyPylons(
+      int pylons, String paymentId) {
     return Future<Tuple2<Transaction, Profile>>.sync(() async {
       var key = Strings.TX_BUY_PYLONS;
       var response = await sendMessage([key, pylons.toString(), paymentId]);
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_PAYMENT_NOT_VALID, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(r, [
+          Strings.ERR_NODE,
+          Strings.ERR_PAYMENT_NOT_VALID,
+          Strings.ERR_PROFILE_DOES_NOT_EXIST
+        ]);
       }
       var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       var prf = Profile.fromJson(jsonDecode(r.value2[1]));
@@ -422,7 +440,10 @@ class PylonsWalletImpl implements PylonsWallet {
     return Future<SDKIPCResponse>.sync(() async {
       var key = Strings.TX_CREATE_COOKBOOK;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(cookbook.toProto3Json()), getHostBasedOnOS(Platform.isAndroid));
+      var sdkIPCMessage = SDKIPCMessage(
+          key,
+          jsonEncode(cookbook.toProto3Json()),
+          getHostBasedOnOS(Platform.isAndroid));
 
       cookBookCompleter = Completer();
 
@@ -480,7 +501,8 @@ class PylonsWalletImpl implements PylonsWallet {
       PylonsWalletCommUtil.validateRecipe(recipe);
       var key = Strings.TX_CREATE_RECIPE;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()), getHostBasedOnOS(Platform.isAndroid));
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()),
+          getHostBasedOnOS(Platform.isAndroid));
 
       recipeCompleter = Completer();
 
@@ -525,8 +547,13 @@ class PylonsWalletImpl implements PylonsWallet {
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(
-            r, [Strings.ERR_NODE, Strings.ERR_RECIPE_DOES_NOT_EXIST, Strings.ERR_RECIPE_NOT_OWNED, Strings.ERR_RECIPE_ALREADY_DISABLED, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(r, [
+          Strings.ERR_NODE,
+          Strings.ERR_RECIPE_DOES_NOT_EXIST,
+          Strings.ERR_RECIPE_NOT_OWNED,
+          Strings.ERR_RECIPE_ALREADY_DISABLED,
+          Strings.ERR_PROFILE_DOES_NOT_EXIST
+        ]);
       }
       var tx = Tx.fromJson(jsonDecode(r.value2[0]));
       return Transaction.wrap(tx);
@@ -562,15 +589,24 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<SDKIPCResponse> txEnableRecipe(String cookbookId, String recipeId, String version) async {
+  Future<SDKIPCResponse> txEnableRecipe(
+      String cookbookId, String recipeId, String version) async {
     return Future<SDKIPCResponse>.sync(() async {
       var key = Strings.TX_ENABLE_RECIPE;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode({'cookbookId': cookbookId, 'recipeId': recipeId, 'version': version}), getHostBasedOnOS(Platform.isAndroid));
+      var sdkIPCMessage = SDKIPCMessage(
+          key,
+          jsonEncode({
+            'cookbookId': cookbookId,
+            'recipeId': recipeId,
+            'version': version
+          }),
+          getHostBasedOnOS(Platform.isAndroid));
 
       enableRecipeCompleter = Completer();
 
-      var response = await sendMessageNew(sdkIPCMessage, executeRecipeCompleter);
+      var response =
+          await sendMessageNew(sdkIPCMessage, executeRecipeCompleter);
       return response;
     });
   }
@@ -611,17 +647,31 @@ class PylonsWalletImpl implements PylonsWallet {
   /// exception will be passed directly.
   @override
   Future<SDKIPCResponse> txExecuteRecipe(
-      {required String cookbookId, required String recipeName, required List<String> itemIds, required int coinInputIndex, required List<PaymentInfo> paymentInfo}) async {
+      {required String cookbookId,
+      required String recipeName,
+      required List<String> itemIds,
+      required int coinInputIndex,
+      required List<PaymentInfo> paymentInfo}) async {
     return Future<SDKIPCResponse>.sync(() async {
-      var msgExecuteRecipe = MsgExecuteRecipe(creator: '', cookbookID: cookbookId, recipeID: recipeName, coinInputsIndex: fixnum.Int64(coinInputIndex), itemIDs: itemIds, paymentInfos: paymentInfo);
+      var msgExecuteRecipe = MsgExecuteRecipe(
+          creator: '',
+          cookbookID: cookbookId,
+          recipeID: recipeName,
+          coinInputsIndex: fixnum.Int64(coinInputIndex),
+          itemIDs: itemIds,
+          paymentInfos: paymentInfo);
 
       var key = Strings.TX_EXECUTE_RECIPE;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(msgExecuteRecipe.toProto3Json()), getHostBasedOnOS(Platform.isAndroid));
+      var sdkIPCMessage = SDKIPCMessage(
+          key,
+          jsonEncode(msgExecuteRecipe.toProto3Json()),
+          getHostBasedOnOS(Platform.isAndroid));
 
       executeRecipeCompleter = Completer();
 
-      var response = await sendMessageNew(sdkIPCMessage, executeRecipeCompleter);
+      var response =
+          await sendMessageNew(sdkIPCMessage, executeRecipeCompleter);
       return response;
     });
   }
@@ -659,14 +709,21 @@ class PylonsWalletImpl implements PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   @override
-  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(Item item, int price) async {
+  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(
+      Item item, int price) async {
     return Future<Tuple3<Transaction, Profile, Trade>>.sync(() async {
       var key = Strings.TX_PLACE_FOR_SALE;
-      var response = await sendMessage([key, const JsonEncoder().convert(item), price.toString()]);
+      var response = await sendMessage(
+          [key, const JsonEncoder().convert(item), price.toString()]);
       var r = PylonsWalletCommUtil.procResponse(response);
       PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
       if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE, Strings.ERR_ITEM_NOT_OWNED, Strings.ERR_ITEM_DOES_NOT_EXIST, Strings.ERR_PROFILE_DOES_NOT_EXIST]);
+        PylonsWalletCommUtil.handleErrors(r, [
+          Strings.ERR_NODE,
+          Strings.ERR_ITEM_NOT_OWNED,
+          Strings.ERR_ITEM_DOES_NOT_EXIST,
+          Strings.ERR_PROFILE_DOES_NOT_EXIST
+        ]);
       }
 
       var tx = Tx.fromJson(jsonDecode(r.value2[0]));
@@ -717,7 +774,10 @@ class PylonsWalletImpl implements PylonsWallet {
     return Future<SDKIPCResponse>.sync(() async {
       var key = Strings.TX_UPDATE_COOKBOOK;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(cookbook.toProto3Json()), getHostBasedOnOS(Platform.isAndroid));
+      var sdkIPCMessage = SDKIPCMessage(
+          key,
+          jsonEncode(cookbook.toProto3Json()),
+          getHostBasedOnOS(Platform.isAndroid));
 
       cookBookUpdateCompleter = Completer();
 
@@ -770,7 +830,8 @@ class PylonsWalletImpl implements PylonsWallet {
       PylonsWalletCommUtil.validateRecipe(recipe);
       var key = Strings.TX_UPDATE_RECIPE;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()), getHostBasedOnOS(Platform.isAndroid));
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()),
+          getHostBasedOnOS(Platform.isAndroid));
 
       recipeUpdateCompleter = Completer();
 
@@ -793,7 +854,8 @@ class PylonsWalletImpl implements PylonsWallet {
   /// [Input] : [msg] is the string received from the wallet
   /// [Output] : [List] contains the decoded response
   String encodeMessage(List<String> msg) {
-    var encodedMessageWithComma = msg.map((e) => base64Url.encode(utf8.encode(e))).join(',');
+    var encodedMessageWithComma =
+        msg.map((e) => base64Url.encode(utf8.encode(e))).join(',');
     return base64Url.encode(utf8.encode(encodedMessageWithComma));
   }
 
@@ -802,7 +864,10 @@ class PylonsWalletImpl implements PylonsWallet {
   /// [Output] : [List] contains the decoded response
   List<String> decodeMessage(String msg) {
     var decoded = utf8.decode(base64Url.decode(msg));
-    return decoded.split(',').map((e) => utf8.decode(base64Url.decode(e))).toList();
+    return decoded
+        .split(',')
+        .map((e) => utf8.decode(base64Url.decode(e)))
+        .toList();
   }
 
   /// This method sends the unilink to the wallet app
@@ -812,13 +877,16 @@ class PylonsWalletImpl implements PylonsWallet {
   ///
   /// [NoWalletException] : If no wallet exists this method will throw the following error.
   void dispatchUniLink(String uniLink) async {
-    await canLaunch(uniLink) ? await launch(uniLink) : throw NoWalletException();
+    await canLaunch(uniLink)
+        ? await launch(uniLink)
+        : throw NoWalletException();
   }
 
   /// This method creates link based on the OS
   /// [Input] : [encodedMessage] the message to sent to the wallet, [isAndroid] tells whether the underlying platform is Android or not
   /// [Output] : [String] the message with appropriate link based on the OS
-  String createLinkBasedOnOS({required String encodedMessage, required bool isAndroid}) {
+  String createLinkBasedOnOS(
+      {required String encodedMessage, required bool isAndroid}) {
     if (isAndroid) {
       return '$BASE_UNI_LINK/$encodedMessage';
     }

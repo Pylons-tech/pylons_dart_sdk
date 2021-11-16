@@ -1,4 +1,5 @@
-import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
+
+import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 
 abstract class IPCHandler {
   void handler(SDKIPCResponse response);
