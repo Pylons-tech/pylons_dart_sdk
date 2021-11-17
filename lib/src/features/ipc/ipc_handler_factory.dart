@@ -1,5 +1,6 @@
 import 'package:pylons_sdk/src/core/constants/strings.dart';
 import 'package:pylons_sdk/src/features/ipc/completers.dart';
+import 'package:pylons_sdk/src/features/ipc/handlers/get_cookbook_handler.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 
 import 'handlers/get_recipes_handler.dart';
@@ -47,6 +48,14 @@ class IPCHandlerFactory {
      getRecipesHandler.handler(sdkipcResponse);
       return;
     }
+
+
+    if(sdkipcResponse.action == Strings.GET_COOKBOOK){
+      var getCookBookHandler = GetCookBookHandler();
+      getCookBookHandler.handler(sdkipcResponse);
+      return;
+    }
+
 
 
 

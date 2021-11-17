@@ -111,50 +111,6 @@ class PylonsWalletImpl implements PylonsWallet {
     return completer.future;
   }
 
-  /// Async: Retrieves all cookbooks belonging to the current profile on the
-  /// Pylons chain.
-  ///
-  /// Returns a [List]<[Cookbook]> containing the retrieved cookbooks. This will
-  /// ordinarily be "successful" even if there are no cookbooks to be retrieved,
-  /// in which case it'll just give you an empty list.
-  ///
-  /// Can throw one of the following exceptions in the event that the
-  /// cookbooks are not retrieved successfully:
-  ///
-  /// [NoWalletException] : There's no attached wallet.
-  ///
-  /// [NodeInternalErrorException] : The node threw an unexpected error when
-  /// handling the query. This should not occur in production environments.
-  ///
-  /// [UnhandledErrorException] : Received an error from the wallet, but the
-  /// error didn't match any errors we were expecting. This should really,
-  /// really not occur in production environments.
-  ///
-  /// [ResponseException] : After sending the message to the wallet, the
-  /// received response does not fit the expected format.
-  ///
-  /// If the operation fails due to an exception thrown by this library, that
-  /// exception will be passed directly.
-  @override
-  Future<List<Cookbook>> getCookbooks() async {
-    return Future<List<Cookbook>>.sync(() async {
-      var key = Strings.GET_COOKBOOKS;
-
-      var response = await sendMessage([key]);
-      var r = PylonsWalletCommUtil.procResponse(response);
-      PylonsWalletCommUtil.validateResponseMatchesKey(key, r);
-      if (PylonsWalletCommUtil.responseIsError(r.value1, key)) {
-        PylonsWalletCommUtil.handleErrors(r, [Strings.ERR_NODE]);
-      }
-      var cbs = List.from(jsonDecode(r.value2[0]))
-          .map((e) => Cookbook.fromJson(e))
-          .toList();
-      if (cbs.isEmpty) {
-        throw ResponseException(response, 'Malformed cookbooks');
-      }
-      return cbs;
-    });
-  }
 
   /// Async: Retrieves current state of profile with given address if provided,
   /// or current state of attached wallet's own profile if null.
@@ -235,11 +191,11 @@ class PylonsWalletImpl implements PylonsWallet {
     return Future<SDKIPCResponse<List<Recipe>>>.sync(() async {
       var key = Strings.GET_RECIPES;
 
-      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode({'cookbookId': cookBookId}), getHostBasedOnOS(Platform.isAndroid));
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode({ Strings.COOKBOOK_ID: cookBookId}), getHostBasedOnOS(Platform.isAndroid));
 
-      getAllRecipes = Completer();
+      getAllRecipesCompleter = Completer();
 
-      var response = await sendMessageNew(sdkIPCMessage, getAllRecipes);
+      var response = await sendMessageNew(sdkIPCMessage, getAllRecipesCompleter);
 
       if (response is SDKIPCResponse<List<Recipe>>) {
         return response;
@@ -597,7 +553,7 @@ class PylonsWalletImpl implements PylonsWallet {
       var sdkIPCMessage = SDKIPCMessage(
           key,
           jsonEncode({
-            'cookbookId': cookbookId,
+            Strings.COOKBOOK_ID: cookbookId,
             'recipeId': recipeId,
             'version': version
           }),
@@ -903,5 +859,31 @@ class PylonsWalletImpl implements PylonsWallet {
     }
 
     return 'pylons-$host';
+  }
+
+
+
+  /// This method returns the cookbook associated with the id
+  ///
+  @override
+  Future<SDKIPCResponse<Cookbook>> getCookBook(String cookBookId) {
+    return Future<SDKIPCResponse<Cookbook>>.sync(() async {
+      var key = Strings.GET_COOKBOOK;
+
+      var sdkIPCMessage = SDKIPCMessage(key, jsonEncode({
+        Strings.COOKBOOK_ID: cookBookId
+      }),
+          getHostBasedOnOS(Platform.isAndroid));
+
+      getCookBookCompleter = Completer();
+
+      var response = await sendMessageNew(sdkIPCMessage, getCookBookCompleter);
+
+      if (response is SDKIPCResponse<Cookbook>) {
+        return response;
+      }
+
+      throw Exception('Response Malformed');
+    });
   }
 }

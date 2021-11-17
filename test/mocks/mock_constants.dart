@@ -1,6 +1,6 @@
 var MOCK_COOKBOOK = '''{
   "creator": "pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2",
-  "ID": "cookbookLOUD",
+  "ID": "$MOCK_COOKBOOK_ID",
   "name": "Legend of the Undead Dragon",
   "nodeVersion": "v0.1.3",
   "description": "Cookbook for running pylons recreation of LOUD",
@@ -10,5 +10,8 @@ var MOCK_COOKBOOK = '''{
   "costPerBlock": {"denom":  "upylon", "amount":  "1000000"},
   "enabled": true
 }''';
+
+
+const String MOCK_COOKBOOK_ID = 'cookbookLOUD';
 
 const String MOCK_HOST = 'example';

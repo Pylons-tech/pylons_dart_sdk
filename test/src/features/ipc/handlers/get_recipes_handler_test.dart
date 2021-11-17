@@ -7,13 +7,13 @@ import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 
 void main() {
   test('should complete the get All recipe future', () {
-    getAllRecipes = Completer();
+    getAllRecipesCompleter = Completer();
     var sdkResponse = SDKIPCResponse(success: false, error: '', data: '', errorCode: '', action: '');
 
     var handler = GetRecipesHandler();
 
     handler.handler(sdkResponse);
 
-    expect(true, getAllRecipes.isCompleted);
+    expect(true, getAllRecipesCompleter.isCompleted);
   });
 }

@@ -202,4 +202,10 @@ class PylonsWalletDevImpl implements PylonsWallet {
     // TODO: implement getRecipes
     throw UnimplementedError();
   }
+
+  @override
+  Future<SDKIPCResponse<Cookbook>> getCookBook(String cookBookId) {
+    // TODO: implement getCookBook
+    throw UnimplementedError();
+  }
 }
