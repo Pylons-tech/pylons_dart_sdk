@@ -2,7 +2,7 @@
 
 A Flutter plugin project to connect any app with the Pylons blockchain.
 
-Note: In order to be able to connect to the Pylons blockchain, you must already have a Pylons wallet already installed on your mobile device. This package does not presently support desktop platforms.
+Note: In order to be able to connect to the Pylons blockchain, you must already have a Pylons wallet installed on your mobile device. This package does not presently support desktop platforms.
 
 ## **Installation**
 
