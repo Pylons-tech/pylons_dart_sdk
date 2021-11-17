@@ -24,7 +24,7 @@ dependencies:
 **Permissions**  
 Android and iOS must declare link permissions in a configuration file.
 
-Feel free to examine tha example app in the example directory for Deep Links (Android) and Custom URL schemes (iOS).
+Feel free to examine the example app in the example directory for Deep Links (Android) and Custom URL schemes (iOS).
 
 The following steps are platform-specific:
 
@@ -89,7 +89,7 @@ You need to declare the following in `ios/Runner/Info.plist`:
     </array>
 ```
 
-Note: Dont't put any underscores in the host name, or the iOS system will not send a response from the wallet to your app.
+Note: Don't put any underscores in the host name, or the iOS system will not send a response from the wallet to your app.
 
 <br>
 
