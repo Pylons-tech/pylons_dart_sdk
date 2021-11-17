@@ -1,20 +1,10 @@
 import 'dart:convert';
 
-/// A response received from the wallet app.
-class SDKIPCResponse {
-  /// Was the operation successful?
+class SDKIPCResponse<T>{
   bool success;
-
-  /// Error code, if an error occurred
   String errorCode;
-
-  /// Any error that occurred
   String error;
-
-  /// The body of the response
-  dynamic data;
-
-  /// The action that initiated this response
+  T data;
   String action;
 
   SDKIPCResponse(
@@ -36,7 +26,7 @@ class SDKIPCResponse {
         success: jsonMap['success']);
   }
 
-  String toBase64Hash() => base64Url.encode(utf8.encode(toJson()));
+  String toBas64Hash() => base64Url.encode(utf8.encode(toJson()));
 
   String toJson() => jsonEncode({
         'success': success,

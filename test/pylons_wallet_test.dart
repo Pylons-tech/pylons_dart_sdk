@@ -1,5 +1,3 @@
-import 'package:flutter_test/flutter_test.dart';
-//import 'package:pylons_flutter/pylons_flutter.dart';
 
 /// TODO: doc wallet_test
 void main() {

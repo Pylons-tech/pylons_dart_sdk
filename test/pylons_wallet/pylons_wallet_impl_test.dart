@@ -1,16 +1,7 @@
-import 'dart:convert';
-
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:pylons_flutter/pylons_flutter.dart';
-import 'package:pylons_flutter/src/core/constants/strings.dart';
-import 'package:pylons_flutter/src/features/ipc/ipc_constants.dart';
-import 'package:pylons_flutter/src/pylons_wallet/pylons_wallet_impl.dart';
-import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
-
-import '../mocks/mock_constants.dart';
+import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
+import 'package:pylons_sdk/src/pylons_wallet/pylons_wallet_impl.dart';
 import '../mocks/mock_uni_link.dart';
 
 void main() {
@@ -66,42 +57,35 @@ void main() {
 }
 
 void createLinkBasedOnOS() {
-
-
-  group('createLinkBasedOnOS', (){
-
+  group('createLinkBasedOnOS', () {
     var host = 'new_sdk';
 
     test('should return wallet link for android ', () {
-
       var expectedLink = '$BASE_UNI_LINK/';
 
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
-      var response = pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: true);
+      var response =
+          pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: true);
       expect(expectedLink, response);
     });
 
-
     test('should return wallet link for ios ', () {
-
       var expectedLink = '$BASE_UNI_LINK_IOS';
 
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
-      var response = pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: false);
+      var response = pylonsWallet.createLinkBasedOnOS(
+          encodedMessage: '', isAndroid: false);
       expect(expectedLink, response);
     });
-
-
   });
-
-
-
 }
 
 void getHostBasedOnOsTest() {
@@ -110,7 +94,8 @@ void getHostBasedOnOsTest() {
 
     test('should return host as platform in android ', () {
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
       var hostBasedOnPlatform = pylonsWallet.getHostBasedOnOS(true);
@@ -119,7 +104,8 @@ void getHostBasedOnOsTest() {
 
     test('should return host as platform in ios ', () {
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
 
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
@@ -129,9 +115,4 @@ void getHostBasedOnOsTest() {
       expect(expectedHost, hostBasedOnPlatform);
     });
   });
-
-
-
-
-
 }

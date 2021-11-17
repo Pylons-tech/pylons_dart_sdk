@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:pylons_flutter/core/bech32_cosmos.dart';
+import 'package:pylons_sdk/core/bech32_cosmos.dart';
 
 class AccAddress {
   /// The number of bytes in an address
@@ -33,7 +33,6 @@ class AccAddress {
     if (bech.hrp != 'cosmos') {
       return Tuple2('Address does not start with correct prefix', false);
     }
-    var bz = <int>[3];
     if (bech.data.isEmpty) {
       return Tuple2('Address is empty', false);
     }

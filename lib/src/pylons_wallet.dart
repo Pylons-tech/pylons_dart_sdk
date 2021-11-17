@@ -6,8 +6,7 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
-import 'package:pylons_flutter/pylons_flutter.dart';
-import 'features/data/models/transaction.dart';
+import '../pylons_sdk.dart';
 import 'features/models/sdk_ipc_message.dart';
 import 'generated/pylons/cookbook.pb.dart';
 import 'generated/pylons/item.pb.dart';

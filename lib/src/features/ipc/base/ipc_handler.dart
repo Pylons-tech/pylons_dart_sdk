@@ -1,3 +1,6 @@
+
+import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
+
 abstract class IPCHandler {
-  void handler();
+  void handler(SDKIPCResponse response);
 }

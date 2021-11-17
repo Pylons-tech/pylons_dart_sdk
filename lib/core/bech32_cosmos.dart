@@ -2,7 +2,7 @@ import 'package:bitstream/bitstream.dart';
 
 import 'dart:typed_data';
 
-import '../pylons_flutter.dart';
+import 'package:pylons_sdk/pylons_sdk.dart';
 
 /// The data to be encoded in a Bech32 string.
 class Bech32Data {

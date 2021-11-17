@@ -9,25 +9,17 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:dartz/dartz.dart';
-import 'package:pylons_flutter/pylons_flutter.dart';
-import 'package:pylons_flutter/src/features/data/models/transaction.dart';
-import 'package:pylons_flutter/src/features/ipc/responseCompleters.dart';
-import 'package:pylons_flutter/src/features/ipc/ipc_constants.dart';
-import 'package:pylons_flutter/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/cookbook.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/item.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/payment_info.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/recipe.pb.dart';
-import 'package:pylons_flutter/src/generated/pylons/trade.pb.dart';
-import 'package:pylons_flutter/src/features/ipc/ipc_handler_factory.dart';
-import 'package:pylons_flutter/src/features/models/sdk_ipc_message.dart';
-import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
-import 'package:pylons_flutter/src/pylons_wallet_comm_util.dart';
 import 'package:fixnum/fixnum.dart' as fixnum;
+import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
+import 'package:pylons_sdk/src/features/ipc/ipc_handler_factory.dart';
+import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_message.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
+import 'package:pylons_sdk/src/generated/pylons/payment_info.pb.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
 
+import '../../pylons_sdk.dart';
 import '../core/constants/strings.dart';
 
 /// The Pylons class is the main endpoint developers use for structured,
@@ -54,7 +46,7 @@ class PylonsWalletImpl implements PylonsWallet {
     // startIPC();
   }
 
-  Future<SDKIPCResponse> _dispatch(String key, String data) async {
+  Future<SDKIPCResponse> _dispatch<T>(String key, String data) async {
     final sdkIPCMessage = SDKIPCMessage(key, data, getHostBasedOnOS(Platform.isAndroid));
     return sendMessage(sdkIPCMessage, initResponseCompleter(key));
   }
@@ -100,9 +92,6 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse> getRecipes(String? address) async {
     return Future.sync(() async {
-      if (address != null) {
-        PylonsWalletCommUtil.validateAddress(address);
-      } // address is an optional field
       return await _dispatch(Strings.GET_PROFILE, address == null ? address! : '');
     });
   }

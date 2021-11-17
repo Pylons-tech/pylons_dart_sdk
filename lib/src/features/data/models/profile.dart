@@ -1,7 +1,7 @@
 /// Types and functionality for dealing with profiles.
 library pylons_flutter_profile;
 
-import 'package:pylons_flutter/src/generated/pylons/item.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/item.pb.dart';
 
 /// Object representing a user profile that exists on a Pylons blockchain.
 ///

@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pylons_flutter/src/core/constants/strings.dart';
-import 'package:pylons_flutter/src/features/ipc/responseCompleters.dart';
-import 'package:pylons_flutter/src/features/ipc/ipc_handler_factory.dart';
-import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
+import 'package:pylons_sdk/src/core/constants/strings.dart';
+import 'package:pylons_sdk/src/features/ipc/ipc_handler_factory.dart';
+import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 
 void main() {
   void _genericResponseTestFlow (String key) {

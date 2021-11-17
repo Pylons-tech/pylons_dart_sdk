@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:pylons_flutter/features/data/models/address.dart';
 
-import 'package:pylons_flutter/pylons_flutter.dart';
+import 'package:pylons_sdk/pylons_sdk.dart';
 
 import 'core/constants/strings.dart';
 import 'generated/pylons/recipe.pb.dart';
@@ -12,20 +11,7 @@ import 'generated/pylons/recipe.pb.dart';
 /// (Since this protocol is ad-hoc, specific, and strictly temporary, these may
 /// be weird or fiddly or otherwise awkward to work with.)
 class PylonsWalletCommUtil {
-  /// Verifies that the provided address, if not null, is a legal Cosmos address.
-  static void validateAddress(String address) {
-    // Since we ported Bech32Cosmos, we actually have a much more granular
-    // set of exceptions available than just NotAnAddressException, but it
-    // may be better to err on the side of simplicity regardless.
-    try {
-      var v = AccAddress.verifyAddress(address);
-      if (!v.value2) {
-        throw NotAnAddressException(address);
-      }
-    } on AddressFormatException {
-      throw NotAnAddressException(address);
-    }
-  }
+
 
   /// Verifies that all of a recipe's outputs are accessible, and that it
   /// doesn't refer to any outputs that are not present.
