@@ -17,7 +17,7 @@ import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
 ///    the completer is not initialized by the method body, it'll contain a reference to an old
 ///    (completed) completer when the response grabs it, and bad things will happen.
 ///
-/// c) Don't create these manually. Use the [initResponseCompleter] helper function instead to
+/// c) So, don't create these manually. Use the [initResponseCompleter] helper function instead to
 ///    minimize the chance for dumb bugs to creep in.
 final Map<String, Completer<SDKIPCResponse>> responseCompleters  = {
   // since initResponseCompleter is always called for any given key before a valid response can be handled,

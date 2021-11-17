@@ -77,7 +77,7 @@ abstract class PylonsWallet {
   /// This will ordinarily be "successful" even if there are no cookbooks to be retrieved,
   /// in which case it'll just give you an empty list.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// cookbooks are not retrieved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -101,7 +101,7 @@ abstract class PylonsWallet {
   ///
   /// Response's data field is the retrieved [Profile].
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// profile is not retrieved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -136,7 +136,7 @@ abstract class PylonsWallet {
   /// This will ordinarily be "successful" even if there are no recipes to be retrieved,
   /// in which case it'll just give you an empty list.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// recipes are not retrieved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -161,7 +161,7 @@ abstract class PylonsWallet {
   /// ordinarily be "successful" even if there are no trades to be retrieved,
   /// in which case it'll just give you an empty list.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// trades are not retrieved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -192,7 +192,7 @@ abstract class PylonsWallet {
   /// Upon successful resolution of the transaction, response's data field is
   /// the state of the [Profile] after buying the item.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -228,7 +228,7 @@ abstract class PylonsWallet {
   /// Upon successful resolution of the transaction, response's data field is
   /// the state of the [Profile] after buying the Pylons.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -258,7 +258,7 @@ abstract class PylonsWallet {
   /// Upon successful resolution of the transaction, response's data field is
   /// the [Cookbook] as it newly exists on chain.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -291,7 +291,7 @@ abstract class PylonsWallet {
   /// Upon successful resolution of the transaction, response's data field is
   /// the [Recipe] as it newly exists on chain.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -348,7 +348,7 @@ abstract class PylonsWallet {
   /// Upon successful resolution of the transaction, response's data field is
   /// the state of the active [Profile] after execution of the recipe.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -388,7 +388,7 @@ abstract class PylonsWallet {
   /// [Tuple2] the state of the [Profile] after creation of the
   /// trade and the [Trade] as it newly exists on chain.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -422,7 +422,7 @@ abstract class PylonsWallet {
   /// Upon successful resolution of the transaction, response's data field is
   /// the [Cookbook] as it now exists on chain.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -459,7 +459,7 @@ abstract class PylonsWallet {
   /// Upon successful resolution of the transaction, response's data field is
   /// the [Recipe] as it now exists on chain.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
