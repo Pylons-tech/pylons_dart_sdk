@@ -82,12 +82,10 @@ abstract class PylonsWallet {
   /// Async: Returns true if an IPC target exists. False otherwise.
   Future<bool> exists();
 
-  /// Async: Retrieves all cookbooks belonging to the current profile on the
-  /// Pylons chain.
+  /// Async: Retrieves the cookbook associated against an address.
   ///
-  /// Returns a [List]<[Cookbook]> containing the retrieved cookbooks. This will
-  /// ordinarily be "successful" even if there are no cookbooks to be retrieved,
-  /// in which case it'll just give you an empty list.
+  /// Returns a <[Cookbook]> containing the info related to the cookbook.
+  /// if no cookbook it will throw error
   ///
   /// Can throw one of the following exceptions in the event that the
   /// cookbooks are not retrieved successfully:
@@ -106,7 +104,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Cookbook>> getCookbooks();
+  Future<SDKIPCResponse<Cookbook>> getCookBook(String cookBookId);
 
   /// Async: Retrieves current state of profile with given address if provided,
   /// or current state of attached wallet's own profile if null.

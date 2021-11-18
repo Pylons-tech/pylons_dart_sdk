@@ -24,7 +24,7 @@ class GetRecipesHandler implements IPCHandler{
       defaultResponse.errorCode = Strings.ERR_MALFORMED_RECIPES;
     }
 
-    getAllRecipes.complete(defaultResponse);
+    getAllRecipesCompleter.complete(defaultResponse);
   }
 
 }

@@ -6,6 +6,8 @@ import 'package:pylons_sdk/src/features/ipc/completers.dart';
 import 'package:pylons_sdk/src/features/ipc/ipc_handler_factory.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 
+import '../../../mocks/mock_constants.dart';
+
 void main() {
   test('should complete the creation of cookbook when response arrives', () {
     cookBookCompleter = Completer();
@@ -121,14 +123,27 @@ void main() {
 
 
   test('should complete the retrieval of recipes based on cookbook', () {
-    getAllRecipes = Completer();
+    getAllRecipesCompleter = Completer();
 
-    expect(false, getAllRecipes.isCompleted);
+    expect(false, getAllRecipesCompleter.isCompleted);
 
     var sdkResponse = SDKIPCResponse(success: true, error: '', data: [], errorCode: '', action: Strings.GET_RECIPES);
     IPCHandlerFactory.getHandler(sdkResponse);
 
-    expect(true, getAllRecipes.isCompleted);
+    expect(true, getAllRecipesCompleter.isCompleted);
+  });
+
+
+
+  test('should complete the retrieval of recipes based on cookbook', () {
+    getCookBookCompleter = Completer();
+
+    expect(false, getCookBookCompleter.isCompleted);
+
+    var sdkResponse = SDKIPCResponse(success: true, error: '', data: MOCK_COOKBOOK, errorCode: '', action: Strings.GET_COOKBOOK);
+    IPCHandlerFactory.getHandler(sdkResponse);
+
+    expect(true, getCookBookCompleter.isCompleted);
   });
 
 
