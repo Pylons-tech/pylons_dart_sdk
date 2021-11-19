@@ -5,8 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:pylons_sdk/pylons_sdk.dart';
 import 'package:pylons_sdk/src/core/constants/strings.dart';
-import 'package:pylons_sdk/src/features/ipc/completers.dart';
 import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
+import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 import 'package:pylons_sdk/src/pylons_wallet/pylons_wallet_impl.dart';
 import '../mocks/mock_constants.dart';
@@ -90,10 +90,10 @@ void getCookBookTest() {
 
     Future.delayed(Duration(seconds: 1), () {
       final sdkResponse = SDKIPCResponse<Cookbook>(success: true, error: '', data: cookBook, errorCode: '', action: Strings.GET_COOKBOOK);
-      getCookBookCompleter.complete(sdkResponse);
+      responseCompleters[Strings.GET_COOKBOOK]!.complete(sdkResponse);
     });
 
-    var response = await pylonsWallet.getCookBook(MOCK_COOKBOOK_ID);
+    var response = await pylonsWallet.getCookbook(MOCK_COOKBOOK_ID);
 
     expect(response.data.iD, MOCK_COOKBOOK_ID);
   });

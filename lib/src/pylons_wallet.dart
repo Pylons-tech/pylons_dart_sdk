@@ -6,8 +6,8 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
-import 'package:pylons_sdk/pylons_sdk.dart';
-import 'features/data/models/transaction.dart';
+import '../pylons_sdk.dart';
+import 'features/models/sdk_ipc_message.dart';
 import 'generated/pylons/cookbook.pb.dart';
 import 'generated/pylons/item.pb.dart';
 import 'generated/pylons/payment_info.pb.dart';
@@ -33,37 +33,28 @@ abstract class PylonsWallet {
     return _instance!;
   }
 
-  /// This method is to used to setup pylons
-  /// [Input] : [PylonsMode] tells which net to be used
+  /// Initializes the wallet model.
   ///
-  /// This mode will tell the sdk which net to use
+  /// [mode] identifies which chain will be used - [PylonsMode.prod] will run on mainnet; [PylonsMode.dev] will run on testnet.
   ///
-  /// [PylonsMode.prod] main net will be used
+  /// [host] is the host to be used in an Android manifest and/or XCode setup, and is required for getting a respponse
+  /// from the wallet.
   ///
-  /// [PylonsMode.dev] test net will be used
-  ///
-  /// ,
-  ///
-  /// [host] is the host which is added in android manifest and xcode setup of the 3rd part sdk .
-  /// Required for getting the return message from the wallet
-  ///
-  /// This method can throw the following errors
-  ///
-  /// [WalletInitializationAlreadyDoneException] :  If user tries to initialize the sdk more than once this error will throw
+  /// Throws [WalletInitializationAlreadyDoneException] if called while already initialized.
   static void setup({required PylonsMode mode, required String host}) {
     if (_instance != null) {
       throw WalletInitializationAlreadyDoneException(
-          'Wallet is already intialiazed');
+          'Wallet is already initialized');
     }
 
-    if (PylonsMode.prod == mode) {
+    if (mode == PylonsMode.prod) {
       _instance =
           PylonsWalletImpl(host: host, uniLink: UniLinksPlatform.instance);
       return;
     }
 
-    if (PylonsMode.dev == mode) {
-      _instance = PylonsWalletDevImpl(host);
+    if (mode == PylonsMode.dev) {
+      _instance = PylonsWalletDevImpl(host, UniLinksPlatform.instance);
       return;
     }
   }
@@ -71,24 +62,19 @@ abstract class PylonsWallet {
   /// Async: Send the provided message over the IPC channel, then retrieve a
   /// response.
   ///
-  /// [msg] is a list of strings which are converted to base64 and combined
-  /// to form a single comma-separated string before being sent over the
-  /// channel.
-  ///
-  /// The string that is eventually retrieved as a response fits the same
-  /// format.
-  Future<String> sendMessage(List<String> msg);
+  /// [sdkipcMessage] is the prebuilt message to be sent; [completer] is the completer which will
+  /// generate the final response.
+  Future<SDKIPCResponse> sendMessage(SDKIPCMessage sdkipcMessage, Completer<SDKIPCResponse> completer);
 
   /// Async: Returns true if an IPC target exists. False otherwise.
   Future<bool> exists();
 
-  /// Async: Retrieves the cookbook associated against an address.
+  /// Async: Retrieves the cookbook with provided ID [id].
   ///
-  /// Returns a <[Cookbook]> containing the info related to the cookbook.
-  /// if no cookbook it will throw error
+  /// Response's data field is the retrieved [Cookbook].
   ///
-  /// Can throw one of the following exceptions in the event that the
-  /// cookbooks are not retrieved successfully:
+  /// Error field may list one of the following exceptions in the event that the
+  /// cookbook is not retrieved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
   ///
@@ -104,13 +90,14 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse<Cookbook>> getCookBook(String cookBookId);
+  Future<SDKIPCResponse<Cookbook>> getCookbook(String id);
 
   /// Async: Retrieves current state of profile with given address if provided,
   /// or current state of attached wallet's own profile if null.
-  /// Returns the retrieved [Profile] as an argument.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Response's data field is the retrieved [Profile].
+  ///
+  /// Error field may list one of the following exceptions in the event that the
   /// profile is not retrieved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -135,16 +122,14 @@ abstract class PylonsWallet {
   /// exception will be passed directly.
   Future<SDKIPCResponse> getProfile();
 
-  /// Async: Retrieves a list of recipes on the Pylons chain. If address is
-  /// provided, retrieves only recipes belonging to that address; if an empty
-  /// string is provided as address, retrieves only recipes belonging to current
-  /// profile; otherwise, retrieves all recipes that exist on chain.
+  /// Async: Retrieves a list of recipes on the Pylons chain in the cookbook with ID
+  /// [cookbook].
   ///
-  /// Returns a [List]<[Recipe]> containing the retrieved recipes. This will
-  /// ordinarily be "successful" even if there are no recipes to be retrieved,
+  /// Response's data field is a [List]<[Recipe]> containing the retrieved recipes.
+  /// This will ordinarily be "successful" even if there are no recipes to be retrieved,
   /// in which case it'll just give you an empty list.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// recipes are not retrieved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -161,15 +146,15 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse<List<Recipe>>> getRecipes(String cookBookId);
+  Future<SDKIPCResponse<List<Recipe>>> getRecipes(String cookbook);
 
   /// Async: Retrieves all current trades that exist on the Pylons chain.
   ///
-  /// Returns a [List]<[Trade]> containing the retrieved trades. This will
+  /// Response's data field is a [List]<[Trade]> containing the retrieved trades. This will
   /// ordinarily be "successful" even if there are no trades to be retrieved,
   /// in which case it'll just give you an empty list.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// trades are not retrieved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -183,7 +168,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<List<Trade>> getTrades();
+  Future<SDKIPCResponse> getTrades();
 
   /// Async: Creates a transaction to buy an item using either Pylons or a
   /// third-party payment processor.
@@ -197,11 +182,10 @@ abstract class PylonsWallet {
   /// having that field? If the latter, we should eliminate paymentId from this
   /// call.
   ///
-  /// Upon successful resolution of the transaction, returns a [Tuple2] of the
-  /// created [Transaction] and the state of the [Profile] after buying the
-  /// item.
+  /// Upon successful resolution of the transaction, response's data field is
+  /// the state of the [Profile] after buying the item.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -224,7 +208,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txBuyItem(
+  Future<SDKIPCResponse> txBuyItem(
       String tradeId, String paymentId);
 
   /// Async: Creates a transaction to buy the provided number of Pylons using a
@@ -234,11 +218,10 @@ abstract class PylonsWallet {
   /// (I know we have Stripe integration; dunno if Google Play pylons purchase
   /// is still a thing.)
   ///
-  /// Upon successful resolution of the transaction, returns a [Tuple2] of the
-  /// created [Transaction] and the state of the [Profile] after buying the
-  /// Pylons.
+  /// Upon successful resolution of the transaction, response's data field is
+  /// the state of the [Profile] after buying the Pylons.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -258,19 +241,17 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple2<Transaction, Profile>> txBuyPylons(
-      int pylons, String paymentId);
+  Future<SDKIPCResponse> txBuyPylons(int pylons, String paymentId);
 
   /// Async: Creates a transaction to create the provided [Cookbook] on the
   /// Pylons chain against the current profile.
   ///
   /// A cookbook with the same name as the provided one must not already exist.
   ///
-  /// Upon successful resolution of the transaction, returns a [Tuple3] of the
-  /// created [Transaction],the state of the [Profile] after creating the
-  /// cookbook, and the [Cookbook] as it newly exists on chain.
+  /// Upon successful resolution of the transaction, response's data field is
+  /// the [Cookbook] as it newly exists on chain.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -300,11 +281,10 @@ abstract class PylonsWallet {
   ///
   /// A recipe must not already exist at the coordinates of the provided recipe.
   ///
-  /// Upon successful resolution of the transaction, returns a [Tuple3] of the
-  /// created [Transaction],the state of the [Profile] after creating the
-  /// recipe, and the [Recipe] as it newly exists on chain.
+  /// Upon successful resolution of the transaction, response's data field is
+  /// the [Recipe] as it newly exists on chain.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -340,74 +320,28 @@ abstract class PylonsWallet {
   /// exception will be passed directly.
   Future<SDKIPCResponse> txCreateRecipe(Recipe recipe);
 
-  /// Async: Creates a transaction to disable the recipe with the provided real,
-  /// on-chain recipe ID against the current profile. Upon successful
-  /// resolution of the transaction, returns the created [Transaction].
+  /// DEPRECATED, DO NOT USE
   ///
-  /// Can throw one of the following exceptions in the event that the
-  /// transaction is not resolved successfully:
+  /// Use UpdateRecipe and edit the enabled/disabled field instead.
   ///
-  /// [NoWalletException] : There's no attached wallet.
-  ///
-  /// [RecipeDoesNotExistException] : TX rejected because recipe does not exist.
-  ///
-  /// [RecipeNotOwnedException] : TX rejected because the active profile is not
-  /// the owner of the recipe.
-  ///
-  /// [RecipeStateException[ : TX rejected because the recipe is already disabled.
-  ///
-  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
-  /// on the chain.
-  ///
-  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
-  /// internal error. This shouldn't be seen in production.
-  ///
-  /// [UnhandledErrorException] : Received an error from the wallet, but the
-  /// error didn't match any errors we were expecting. This should really,
-  /// really not occur in production environments.
-  ///
-  /// If the operation fails due to an exception thrown by this library, that
-  /// exception will be passed directly.
-  Future<Transaction> txDisableRecipe(String recipeId);
+  /// TODO: Remove this.
+  Future<SDKIPCResponse> txDisableRecipe(String recipeId);
 
-  /// Async: Creates a transaction to enable the recipe with the provided real,
-  /// on-chain recipe ID against the current profile. Upon successful
-  /// resolution of the transaction, returns the created [Transaction].
+  /// DEPRECATED, DO NOT USE
   ///
-  /// Can throw one of the following exceptions in the event that the
-  /// transaction is not resolved successfully:
+  /// Use UpdateRecipe and edit the enabled/disabled field instead.
   ///
-  /// [NoWalletException] : There's no attached wallet.
-  ///
-  /// [RecipeDoesNotExistException] : TX rejected because recipe does not exist.
-  ///
-  /// [RecipeNotOwnedException] : TX rejected because the active profile is not
-  /// the owner of the recipe.
-  ///
-  /// [RecipeStateException] : TX rejected because the recipe is already enabled.
-  ///
-  /// [ProfileDoesNotExistException] : TX rejected because profile doesn't exist
-  /// on the chain.
-  ///
-  /// [NodeInternalErrorException] : TX rejected because the Pylons node had an
-  /// internal error. This shouldn't be seen in production.
-  ///
-  /// [UnhandledErrorException] : Received an error from the wallet, but the
-  /// error didn't match any errors we were expecting. This should really,
-  /// really not occur in production environments.
-  ///
-  /// If the operation fails due to an exception thrown by this library, that
-  /// exception will be passed directly.
+  /// TODO: Remove this.
   Future<SDKIPCResponse> txEnableRecipe(
       String cookBookId, String recipeId, String version);
 
   /// Async: Creates a transaction to execute the recipe with coordinates
-  /// cookbookId:recipeName against the current profile. Upon successful
-  /// resolution of the transaction, returns a [Tuple2] of the created
-  /// [Transaction] and the state of the active [Profile] after execution of
-  /// the recipe.
+  /// [cookbookId] : [recipeName] against the current profile.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Upon successful resolution of the transaction, response's data field is
+  /// the state of the active [Profile] after execution of the recipe.
+  ///
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -443,11 +377,11 @@ abstract class PylonsWallet {
   ///
   /// The active profile must own the item.
   ///
-  /// Upon successful resolution of the transaction, returns a [Tuple3] of the
-  /// created [Transaction], the state of the [Profile] after creation of the
-  /// trade, and the [Trade] as it newly exists on chain.
+  /// Upon successful resolution of the transaction, response's data field is a
+  /// [Tuple2] the state of the [Profile] after creation of the
+  /// trade and the [Trade] as it newly exists on chain.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -470,8 +404,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<Tuple3<Transaction, Profile, Trade>> txPlaceForSale(
-      Item item, int price);
+  Future<SDKIPCResponse> txPlaceForSale(Item item, int price);
 
   /// Async: Creates a transaction to updates the provided [Cookbook] on the
   /// Pylons chain to match that provided against the current profile.
@@ -479,11 +412,10 @@ abstract class PylonsWallet {
   /// A cookbook with the same name as the provided one must already exist and
   /// be owned by the active profile.
   ///
-  /// Upon successful resolution of the transaction, returns a [Tuple3] of the
-  /// created [Transaction], the state of the [Profile] after the cookbook is
-  /// updated, and the [Cookbook] as it now exists on chain.
+  /// Upon successful resolution of the transaction, response's data field is
+  /// the [Cookbook] as it now exists on chain.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
@@ -517,11 +449,10 @@ abstract class PylonsWallet {
   /// A recipe must already exist at the coordinates of the provided recipe,
   /// and be owned by the current profile..
   ///
-  /// Upon successful resolution of the transaction, returns a [Tuple3] of the
-  /// created [Transaction], the state of the [Profile] after the recipe is
-  /// updated, and the [Recipe] as it now exists on chain.
+  /// Upon successful resolution of the transaction, response's data field is
+  /// the [Recipe] as it now exists on chain.
   ///
-  /// Can throw one of the following exceptions in the event that the
+  /// Error field may list one of the following exceptions in the event that the
   /// transaction is not resolved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.

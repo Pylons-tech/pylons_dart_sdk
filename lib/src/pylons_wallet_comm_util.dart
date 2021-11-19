@@ -58,14 +58,10 @@ class PylonsWalletCommUtil {
     return v == 'err_$key';
   }
 
-  /// This method checks whether the response contains the required key or not
-  /// [Input] : [Strings] is the wallet whose existence we are checking ,
-  /// [response]  Contains the response in which we are checking the key
+  /// Checks whether or not [response] contains a value for the provided key [key].
   ///
-  /// Can throw  the following exception in the event of no matching key in response
-  /// or having error related with this key
-  ///
-  /// [ResponseException] : There is something wrong with response
+  /// Throws a [ResponseException] if the response does not contain a value associated
+  /// with the key, or the value associated with the key is an error.
   static void validateResponseMatchesKey(
       String key, Tuple2<String, List<String>> response) {
     if ((response.value1 != 'response_$key' && response.value1 != 'err_$key')) {
@@ -74,9 +70,11 @@ class PylonsWalletCommUtil {
     }
   }
 
-  /// Handle all errors in [response] in the provided list [errors].
-  /// If no errors in the list are present in the response, this throws an
+  /// Handles all errors in [response] that are in the provided list [errors].
+  ///
+  /// If no errors in the list are present in the response, throws an
   /// [UnhandledErrorException].
+  ///
   /// This function assumes that the provided response is an error, so call it
   /// only after verifying that.
   static void handleErrors(
@@ -85,7 +83,7 @@ class PylonsWalletCommUtil {
       switch (response.value1) {
         case Strings.ERR_NODE:
           {
-            procError(
+            checkError(
                 Strings.ERR_NODE,
                 response,
                 NodeInternalErrorException(
@@ -96,25 +94,25 @@ class PylonsWalletCommUtil {
           }
         case Strings.ERR_PROFILE_DOES_NOT_EXIST:
           {
-            procError(Strings.ERR_PROFILE_DOES_NOT_EXIST, response,
+            checkError(Strings.ERR_PROFILE_DOES_NOT_EXIST, response,
                 ProfileDoesNotExistException(response.value2[1]));
             break;
           }
         case Strings.ERR_PAYMENT_NOT_VALID:
           {
-            procError(Strings.ERR_PAYMENT_NOT_VALID, response,
+            checkError(Strings.ERR_PAYMENT_NOT_VALID, response,
                 PaymentNotValidException(response.value2[1], 'Bad payment'));
             break;
           }
         case Strings.ERR_INSUFFICIENT_FUNDS:
           {
-            procError(Strings.ERR_INSUFFICIENT_FUNDS, response,
+            checkError(Strings.ERR_INSUFFICIENT_FUNDS, response,
                 ProfileStateException('Insufficient funds'));
             break;
           }
         case Strings.ERR_COOKBOOK_ALREADY_EXISTS:
           {
-            procError(
+            checkError(
                 Strings.ERR_COOKBOOK_ALREADY_EXISTS,
                 response,
                 CookbookAlreadyExistsException(response.value2[1],
@@ -123,7 +121,7 @@ class PylonsWalletCommUtil {
           }
         case Strings.ERR_COOKBOOK_DOES_NOT_EXIST:
           {
-            procError(
+            checkError(
               Strings.ERR_COOKBOOK_DOES_NOT_EXIST,
               response,
               CookbookDoesNotExistException(
@@ -133,7 +131,7 @@ class PylonsWalletCommUtil {
           }
         case Strings.ERR_COOKBOOK_NOT_OWNED:
           {
-            procError(
+            checkError(
               Strings.ERR_COOKBOOK_NOT_OWNED,
               response,
               CookbookNotOwnedException(
@@ -143,7 +141,7 @@ class PylonsWalletCommUtil {
           }
         case Strings.ERR_RECIPE_ALREADY_EXISTS:
           {
-            procError(
+            checkError(
               Strings.ERR_RECIPE_ALREADY_EXISTS,
               response,
               RecipeAlreadyExistsException(response.value2[1],
@@ -153,7 +151,7 @@ class PylonsWalletCommUtil {
           }
         case Strings.ERR_RECIPE_ALREADY_DISABLED:
           {
-            procError(
+            checkError(
               Strings.ERR_RECIPE_ALREADY_DISABLED,
               response,
               RecipeStateException(response.value2[1], response.value2[2],
@@ -163,7 +161,7 @@ class PylonsWalletCommUtil {
           }
         case Strings.ERR_RECIPE_ALREADY_ENABLED:
           {
-            procError(
+            checkError(
               Strings.ERR_RECIPE_ALREADY_ENABLED,
               response,
               RecipeStateException(response.value2[1], response.value2[2],
@@ -178,27 +176,24 @@ class PylonsWalletCommUtil {
     }
   }
 
-  /// This method checks whether the response contains the error of the supplied type or not
-  /// [Input] : [err] is the type of error , [response]  is the response in which the error is to be check,
-  /// [exception] is the exception which will be thrown if supplied error found
+  /// Checks whether [response] contains the provided error [err].
+  /// If found, throws [exception].
   ///
-  /// Can throw  the following exception in the event of no matching key in response
-  /// or having error related with this key
-  ///
-  /// [exception] : UnhandledErrorException if something wrong happens
-  static bool procError(
+  /// Alternatively, throws an [UnhandledErrorException] if an error other than
+  /// that expected is found.
+  static void checkError(
       String err, Tuple2<String, List<String>> response, Exception exception) {
     if (response.value2[0] == err) {
-      try {
-        throw exception;
-      } catch (e) {
-        throw UnhandledErrorException(
-            err, 'Bad error passed: ${response.value2}');
-      }
+      throw exception;
+    } else {
+      throw UnhandledErrorException(
+          err, 'Bad error passed: ${response.value2}');
     }
-    return false;
   }
 
+  /// Parses the base64-encoded UTF8 string [response] and outputs a [Tuple2<String, List<String>>].
+  /// The first element of the tuple is the response's key; the second element is a list containing
+  /// the response data.
   static Tuple2<String, List<String>> procResponse(String response) {
     var decoder = const Utf8Decoder();
     var splut = response.split(',');

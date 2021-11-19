@@ -23,6 +23,8 @@ dependencies:
 
   fixnum: ^1.0.0
 
+  bitstream: ^0.0.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

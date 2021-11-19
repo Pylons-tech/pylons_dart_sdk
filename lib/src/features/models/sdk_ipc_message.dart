@@ -1,7 +1,13 @@
 import 'dart:convert';
 
+/// A message to be sent to the wallet app.
+///
+/// Stores raw, unencoded data which will then be used in IPC operations.
 class SDKIPCMessage {
+  /// The operation to be performed by the wallet.
   String action;
+
+  /// The data supplied for that operation.
   String json;
   String sender;
 
