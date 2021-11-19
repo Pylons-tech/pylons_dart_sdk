@@ -69,15 +69,12 @@ abstract class PylonsWallet {
   /// Async: Returns true if an IPC target exists. False otherwise.
   Future<bool> exists();
 
-  /// Async: Retrieves all cookbooks belonging to the current profile on the
-  /// Pylons chain.
+  /// Async: Retrieves the cookbook with provided ID [id].
   ///
-  /// Response's data field is a [List]<[Cookbook]> containing the retrieved cookbooks.
-  /// This will ordinarily be "successful" even if there are no cookbooks to be retrieved,
-  /// in which case it'll just give you an empty list.
+  /// Response's data field is the retrieved [Cookbook].
   ///
   /// Error field may list one of the following exceptions in the event that the
-  /// cookbooks are not retrieved successfully:
+  /// cookbook is not retrieved successfully:
   ///
   /// [NoWalletException] : There's no attached wallet.
   ///
@@ -93,7 +90,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> getCookbooks();
+  Future<SDKIPCResponse<Cookbook>> getCookbook(String id);
 
   /// Async: Retrieves current state of profile with given address if provided,
   /// or current state of attached wallet's own profile if null.
@@ -125,11 +122,8 @@ abstract class PylonsWallet {
   /// exception will be passed directly.
   Future<SDKIPCResponse> getProfile();
 
-  /// Async: Retrieves a list of recipes on the Pylons chain.
-  ///
-  /// If address is provided, retrieves only recipes belonging to that address; if an empty
-  /// string is provided as address, retrieves only recipes belonging to current
-  /// profile; otherwise, retrieves all recipes that exist on chain.
+  /// Async: Retrieves a list of recipes on the Pylons chain in the cookbook with ID
+  /// [cookbook].
   ///
   /// Response's data field is a [List]<[Recipe]> containing the retrieved recipes.
   /// This will ordinarily be "successful" even if there are no recipes to be retrieved,
@@ -152,7 +146,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> getRecipes(String? address);
+  Future<SDKIPCResponse<List<Recipe>>> getRecipes(String cookbook);
 
   /// Async: Retrieves all current trades that exist on the Pylons chain.
   ///

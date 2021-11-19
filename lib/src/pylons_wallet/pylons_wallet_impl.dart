@@ -76,9 +76,13 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
   @override
-  Future<SDKIPCResponse> getCookbooks() async {
-    return Future.sync(() async {
-      return await _dispatch(Strings.GET_COOKBOOKS, '');
+  Future<SDKIPCResponse<Cookbook>> getCookbook(String id) {
+    return Future<SDKIPCResponse<Cookbook>>.sync(() async {
+      final response = await _dispatch(Strings.GET_COOKBOOK, id);
+      if (response is SDKIPCResponse<Cookbook>) {
+        return response;
+      }
+      throw Exception('Response malformed');
     });
   }
 
@@ -90,9 +94,13 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
   @override
-  Future<SDKIPCResponse> getRecipes(String? address) async {
+  Future<SDKIPCResponse<List<Recipe>>> getRecipes(String cookbook) async {
     return Future.sync(() async {
-      return await _dispatch(Strings.GET_PROFILE, address == null ? address! : '');
+      final response = await _dispatch(Strings.GET_RECIPES, jsonEncode({ Strings.COOKBOOK_ID: cookbook}));
+      if (response is SDKIPCResponse<List<Recipe>>) {
+        return response;
+      }
+      throw Exception('Response malformed');
     });
   }
 

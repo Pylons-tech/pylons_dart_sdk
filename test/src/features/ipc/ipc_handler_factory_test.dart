@@ -6,11 +6,17 @@ import 'package:pylons_sdk/src/features/ipc/ipc_handler_factory.dart';
 import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 
+import '../../../mocks/mock_constants.dart';
+
 void main() {
-  void _genericResponseTestFlow (String key) {
+  void _genericResponseTestFlow(String key) {
     initResponseCompleter(key);
     expect(false, responseCompleters[key]!.isCompleted);
-    var sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: key);
+    var sdkResponse = SDKIPCResponse(success: true,
+        error: '',
+        data: '',
+        errorCode: '',
+        action: key);
     IPCHandlerFactory.getHandler(sdkResponse);
     expect(true, responseCompleters[key]!.isCompleted);
   }

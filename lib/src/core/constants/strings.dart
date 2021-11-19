@@ -2,7 +2,7 @@
 ///
 /// TODO: should these be split into multiple classes based on usage?
 class Strings {
-  static const String GET_COOKBOOKS = 'getCookbooks';
+  static const String GET_COOKBOOK = 'getCookbook';
   static const String GET_PROFILE = 'getProfile';
   static const String GET_RECIPES = 'getRecipes';
   static const String GET_TRADES = 'getTrades';
@@ -32,6 +32,8 @@ class Strings {
   static const String ERR_ITEM_NOT_OWNED = 'itemNotOwned';
   static const String ERR_MISSING_ITEM_INPUTS = 'missingItemInputs';
   static const String ERR_MALFORMED_RECIPES = 'malformedRecipes';
+  static const String ERR_MALFORMED_COOKBOOK = 'malformedCookbook';
+  static const String COOKBOOK_ID = 'cookbookId';
 
 
 }

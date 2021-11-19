@@ -9,9 +9,7 @@ import '../../../../pylons_sdk.dart';
 class GetRecipesHandler implements IPCHandler{
   @override
   void handler(SDKIPCResponse<dynamic> response) {
-
-    var defaultResponse = SDKIPCResponse<List<Recipe>>(success: response.success, action: response.action, data: [], error: response.error, errorCode: response.errorCode);
-
+    final defaultResponse = SDKIPCResponse<List<Recipe>>(success: response.success, action: response.action, data: [], error: response.error, errorCode: response.errorCode);
     try {
       if (response.success) {
         defaultResponse.data = List.from(response.data).map((e){
@@ -19,11 +17,9 @@ class GetRecipesHandler implements IPCHandler{
         }).toList();
       }
     } on  Exception catch (_){
-      defaultResponse.error = 'Recipe Parsing Failed';
+      defaultResponse.error = 'Recipe parsing failed';
       defaultResponse.errorCode = Strings.ERR_MALFORMED_RECIPES;
     }
-
     responseCompleters[Strings.GET_RECIPES]!.complete(defaultResponse);
   }
-
 }

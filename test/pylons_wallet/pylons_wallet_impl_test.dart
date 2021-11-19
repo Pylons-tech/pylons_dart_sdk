@@ -1,7 +1,15 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:pylons_sdk/pylons_sdk.dart';
+import 'package:pylons_sdk/src/core/constants/strings.dart';
 import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
+import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 import 'package:pylons_sdk/src/pylons_wallet/pylons_wallet_impl.dart';
+import '../mocks/mock_constants.dart';
 import '../mocks/mock_uni_link.dart';
 
 void main() {
@@ -54,6 +62,41 @@ void main() {
 
   getHostBasedOnOsTest();
   createLinkBasedOnOS();
+  getCookBookTest();
+}
+
+void getCookBookTest() {
+  test('should get cookbook from the wallet', () async {
+    TestWidgetsFlutterBinding.ensureInitialized();
+
+
+    var channel = const MethodChannel('plugins.flutter.io/url_launcher');
+
+    // Register the mock handler.
+    channel.setMockMethodCallHandler((MethodCall methodCall) async {
+      if (methodCall.method == 'canLaunch') {
+        return true;
+      }
+      return null;
+    });
+
+    var host = 'new_sdk';
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
+
+    var cookBook = Cookbook.create()..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
+
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse<Cookbook>(success: true, error: '', data: cookBook, errorCode: '', action: Strings.GET_COOKBOOK);
+      responseCompleters[Strings.GET_COOKBOOK]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.getCookbook(MOCK_COOKBOOK_ID);
+
+    expect(response.data.iD, MOCK_COOKBOOK_ID);
+  });
 }
 
 void createLinkBasedOnOS() {
@@ -64,12 +107,10 @@ void createLinkBasedOnOS() {
       var expectedLink = '$BASE_UNI_LINK/';
 
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream)
-          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
-      var response =
-          pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: true);
+      var response = pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: true);
       expect(expectedLink, response);
     });
 
@@ -77,12 +118,10 @@ void createLinkBasedOnOS() {
       var expectedLink = '$BASE_UNI_LINK_IOS';
 
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream)
-          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
-      var response = pylonsWallet.createLinkBasedOnOS(
-          encodedMessage: '', isAndroid: false);
+      var response = pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: false);
       expect(expectedLink, response);
     });
   });
@@ -94,8 +133,7 @@ void getHostBasedOnOsTest() {
 
     test('should return host as platform in android ', () {
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream)
-          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
       var hostBasedOnPlatform = pylonsWallet.getHostBasedOnOS(true);
@@ -104,8 +142,7 @@ void getHostBasedOnOsTest() {
 
     test('should return host as platform in ios ', () {
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream)
-          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
 
       var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
 
