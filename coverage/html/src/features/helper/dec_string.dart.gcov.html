@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2021-11-22 22:04:25</td>
+            <td class="headerValue">2021-11-22 22:22:49</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -62,26 +62,30 @@
 <pre class="source">
 <a name="1"><span class="lineNum">       1 </span>            : library pylons_flutter_dec_string;</a>
 <a name="2"><span class="lineNum">       2 </span>            : </a>
-<a name="3"><span class="lineNum">       3 </span>            : /// Very rough compatibility functions for cosmos decimal types.</a>
-<a name="4"><span class="lineNum">       4 </span>            : /// TODO: This is a temporary solution to make working w/ decimals a little more tolerable,</a>
-<a name="5"><span class="lineNum">       5 </span>            : /// but we should actually port the Cosmos decimal type over properly</a>
-<a name="6"><span class="lineNum">       6 </span>            : class DecString {</a>
-<a name="7"><span class="lineNum">       7 </span>            :   static const PRECISION = 18;</a>
-<a name="8"><span class="lineNum">       8 </span>            :   static const MAX = 999999999999999999;</a>
-<a name="9"><span class="lineNum">       9 </span>            :   static const ONE = 100000000000000000.0;</a>
-<a name="10"><span class="lineNum">      10 </span>            : </a>
-<a name="11"><span class="lineNum">      11 </span><span class="lineCov">          2 :   static String decStringFromDouble(double f) {</span></a>
-<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          8 :     return (f * ONE).toStringAsPrecision(PRECISION).split('.').first;</span></a>
-<a name="13"><span class="lineNum">      13 </span>            :   }</a>
-<a name="14"><span class="lineNum">      14 </span>            : </a>
-<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          1 :   static double doubleFromDecString(String f) {</span></a>
-<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          1 :     var i = int.parse(f);</span></a>
-<a name="17"><span class="lineNum">      17 </span><span class="lineCov">          1 :     if (i &gt; MAX) {</span></a>
-<a name="18"><span class="lineNum">      18 </span><span class="lineNoCov">          0 :       throw Exception('$i requires more than $PRECISION places of precision');</span></a>
-<a name="19"><span class="lineNum">      19 </span>            :     }</a>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 :     return i / ONE;</span></a>
-<a name="21"><span class="lineNum">      21 </span>            :   }</a>
-<a name="22"><span class="lineNum">      22 </span>            : }</a>
+<a name="3"><span class="lineNum">       3 </span>            : /// Very rough compatibility functions for Cosmos' decimal types.</a>
+<a name="4"><span class="lineNum">       4 </span>            : ///</a>
+<a name="5"><span class="lineNum">       5 </span>            : /// TODO: This is a temporary solution to make working with decimals easier, but</a>
+<a name="6"><span class="lineNum">       6 </span>            : /// it is not a full port of the Cosmos decimal types, and should be deprecated upon</a>
+<a name="7"><span class="lineNum">       7 </span>            : /// the completion of such.</a>
+<a name="8"><span class="lineNum">       8 </span>            : class DecString {</a>
+<a name="9"><span class="lineNum">       9 </span>            :   static const PRECISION = 18;</a>
+<a name="10"><span class="lineNum">      10 </span>            :   static const MAX = 999999999999999999;</a>
+<a name="11"><span class="lineNum">      11 </span>            :   static const ONE = 100000000000000000.0;</a>
+<a name="12"><span class="lineNum">      12 </span>            : </a>
+<a name="13"><span class="lineNum">      13 </span>            :   /// Outputs a string containing a fixed-precision value of 18 places for the input double.</a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          2 :   static String decStringFromDouble(double f) {</span></a>
+<a name="15"><span class="lineNum">      15 </span><span class="lineCov">          8 :     return (f * ONE).toStringAsPrecision(PRECISION).split('.').first;</span></a>
+<a name="16"><span class="lineNum">      16 </span>            :   }</a>
+<a name="17"><span class="lineNum">      17 </span>            : </a>
+<a name="18"><span class="lineNum">      18 </span>            :   /// Outputs a double containing the value represented by the input fixed-precision string of up to 18 places.</a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineCov">          1 :   static double doubleFromDecString(String f) {</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 :     var i = int.parse(f);</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          1 :     if (i &gt; MAX) {</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineNoCov">          0 :       throw Exception('$i requires more than $PRECISION places of precision');</span></a>
+<a name="23"><span class="lineNum">      23 </span>            :     }</a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">          1 :     return i / ONE;</span></a>
+<a name="25"><span class="lineNum">      25 </span>            :   }</a>
+<a name="26"><span class="lineNum">      26 </span>            : }</a>
 </pre>
       </td>
     </tr>

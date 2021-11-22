@@ -47,7 +47,7 @@ void executeRecipeTest() {
 
     Future.delayed(Duration(seconds: 1), () {
       final sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_EXECUTE_RECIPE);
-      executeRecipeCompleter.complete(sdkResponse);
+      responseCompleters[Strings.TX_EXECUTE_RECIPE]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.txExecuteRecipe( paymentInfo: [], recipeName: MOCK_RECIPE_ID, cookbookId: MOCK_COOKBOOK_ID, itemIds: [], coinInputIndex: 0);
@@ -82,7 +82,7 @@ void createCookBookTest() {
 
     Future.delayed(Duration(seconds: 1), () {
       final sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_CREATE_COOKBOOK);
-      cookBookCompleter.complete(sdkResponse);
+      responseCompleters[Strings.TX_CREATE_COOKBOOK]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.txCreateCookbook(cookBook);
@@ -114,7 +114,7 @@ void getRecipesTest() {
 
     Future.delayed(Duration(milliseconds: 500), () {
       final sdkResponse = SDKIPCResponse<List<Recipe>>(success: true, error: '', data: [Recipe()..createEmptyInstance(), Recipe()..createEmptyInstance()], errorCode: '', action: Strings.GET_RECIPES);
-      getAllRecipesCompleter.complete(sdkResponse);
+      responseCompleters[Strings.GET_RECIPES]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.getRecipes(MOCK_COOKBOOK_ID);
@@ -146,7 +146,7 @@ void getProfileTest() {
 
     Future.delayed(Duration(milliseconds: 500), () {
       final sdkResponse = SDKIPCResponse(success: true, error: '', data: MOCK_USERNAME, errorCode: '', action: Strings.GET_PROFILE);
-      getProfileCompleter.complete(sdkResponse);
+      responseCompleters[Strings.GET_PROFILE]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.getProfile();
