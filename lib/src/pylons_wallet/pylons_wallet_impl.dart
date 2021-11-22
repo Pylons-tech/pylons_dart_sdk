@@ -14,6 +14,7 @@ import 'package:pylons_sdk/pylons_sdk.dart';
 import 'package:pylons_sdk/src/features/data/models/transaction.dart';
 import 'package:pylons_sdk/src/features/ipc/completers.dart';
 import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
+import 'package:pylons_sdk/src/features/validations/validate_recipe.dart';
 import 'package:pylons_sdk/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/cookbook.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/item.pb.dart';
@@ -454,7 +455,7 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse> txCreateRecipe(Recipe recipe) async {
     return Future<SDKIPCResponse>.sync(() async {
-      PylonsWalletCommUtil.validateRecipe(recipe);
+      ValidateRecipe.validate(recipe);
       var key = Strings.TX_CREATE_RECIPE;
 
       var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()),
@@ -554,7 +555,7 @@ class PylonsWalletImpl implements PylonsWallet {
           key,
           jsonEncode({
             Strings.COOKBOOK_ID: cookbookId,
-            'recipeId': recipeId,
+            Strings.RECIPE_ID: recipeId,
             'version': version
           }),
           getHostBasedOnOS(Platform.isAndroid));
@@ -783,7 +784,7 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse> txUpdateRecipe(Recipe recipe) async {
     return Future<SDKIPCResponse>.sync(() async {
-      PylonsWalletCommUtil.validateRecipe(recipe);
+      ValidateRecipe.validate(recipe);
       var key = Strings.TX_UPDATE_RECIPE;
 
       var sdkIPCMessage = SDKIPCMessage(key, jsonEncode(recipe.toProto3Json()),

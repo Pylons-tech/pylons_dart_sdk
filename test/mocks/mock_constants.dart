@@ -13,5 +13,7 @@ var MOCK_COOKBOOK = '''{
 
 
 const String MOCK_COOKBOOK_ID = 'cookbookLOUD';
-
+const String MOCK_RECIPE_ID = 'RecipeId';
 const String MOCK_HOST = 'example';
+
+const String MOCK_USERNAME = 'jawad';
