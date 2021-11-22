@@ -3,7 +3,11 @@ library pylons_flutter_profile;
 
 import 'package:pylons_sdk/src/generated/pylons/item.pb.dart';
 
-/// A user profile that exists on a Pylons blockchain.
+/// Object representing a user profile that exists on a Pylons blockchain.
+///
+/// Note that the SDK-provided profile type does not directly mirror any type that exists on chain.
+/// Multiple queries must be made to compose one of these objects. This is not normally relevant to
+/// client applications, but may matter if you're trying to do anything too low-level.
 class Profile {
   String address;
   String name;
