@@ -31,13 +31,13 @@
             <td class="headerValue">new_lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">7</td>
             <td class="headerCovTableEntry">9</td>
-            <td class="headerCovTableEntryMed">77.8 %</td>
+            <td class="headerCovTableEntry">9</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2021-11-22 22:22:49</td>
+            <td class="headerValue">2021-11-23 18:47:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -77,10 +77,10 @@
 <a name="15"><span class="lineNum">      15 </span>            :   /// the completer if no specific handler is set.</a>
 <a name="16"><span class="lineNum">      16 </span><span class="lineCov">          1 :   static void getHandler(SDKIPCResponse sdkipcResponse) {</span></a>
 <a name="17"><span class="lineNum">      17 </span><span class="lineCov">          3 :     if (!responseCompleters.containsKey(sdkipcResponse.action)) {</span></a>
-<a name="18"><span class="lineNum">      18 </span><span class="lineNoCov">          0 :       throw Exception('Unexpected response for unsent message of type ${sdkipcResponse.action}');</span></a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">          3 :       throw Exception('Unexpected response for unsent message of type ${sdkipcResponse.action}');</span></a>
 <a name="19"><span class="lineNum">      19 </span>            :     }</a>
 <a name="20"><span class="lineNum">      20 </span><span class="lineCov">          3 :     if (handlers.containsKey(sdkipcResponse.action)) {</span></a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineNoCov">          0 :       handlers[sdkipcResponse.action]!.handler(sdkipcResponse);</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          4 :       handlers[sdkipcResponse.action]!.handler(sdkipcResponse);</span></a>
 <a name="22"><span class="lineNum">      22 </span>            :     }</a>
 <a name="23"><span class="lineNum">      23 </span>            :     else {</a>
 <a name="24"><span class="lineNum">      24 </span><span class="lineCov">          4 :       responseCompleters[sdkipcResponse.action]!.complete(sdkipcResponse);</span></a>

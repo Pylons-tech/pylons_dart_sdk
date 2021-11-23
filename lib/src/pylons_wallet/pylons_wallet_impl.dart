@@ -12,17 +12,14 @@ import 'dart:io';
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
 import 'package:pylons_sdk/src/features/validations/validate_recipe.dart';
-import 'package:pylons_sdk/src/generated/cosmos/tx/v1beta1/tx.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/cookbook.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/item.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/payment_info.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/recipe.pb.dart';
-import 'package:pylons_sdk/src/generated/pylons/trade.pb.dart';
 import 'package:pylons_sdk/src/features/ipc/ipc_handler_factory.dart';
 import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_message.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
-import 'package:pylons_sdk/src/generated/pylons/payment_info.pb.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
 
@@ -139,6 +136,7 @@ class PylonsWalletImpl implements PylonsWallet {
 
   @override
   Future<SDKIPCResponse> txCreateRecipe(Recipe recipe) async {
+    ValidateRecipe.validate(recipe);
     return Future.sync(() async {
       return await _dispatch(Strings.TX_CREATE_RECIPE, jsonEncode(recipe.toProto3Json()));
     });
@@ -183,6 +181,7 @@ class PylonsWalletImpl implements PylonsWallet {
 
   @override
   Future<SDKIPCResponse> txUpdateRecipe(Recipe recipe) async {
+    ValidateRecipe.validate(recipe);
     return Future.sync(() async {
       return await _dispatch(Strings.TX_UPDATE_RECIPE, jsonEncode(recipe.toProto3Json()));
     });
@@ -198,25 +197,8 @@ class PylonsWalletImpl implements PylonsWallet {
     });
   }
 
-  /// Encodes a message [msg] to be sent to the wallet.
-  ///
-  /// Argument is provided as a list of strings corresponding to each piece of data in the message.
-  ///
-  /// Returns a string containing the encoded base64 representation of the message.
-  String encodeMessage(List<String> msg) {
-    var encodedMessageWithComma = msg.map((e) => base64Url.encode(utf8.encode(e))).join(',');
-    return base64Url.encode(utf8.encode(encodedMessageWithComma));
-  }
 
-  /// Decodes a message [msg] received from the wallet.
-  ///
-  /// Argument is provided as a Base64-encoded string.
-  ///
-  /// Returns a [List<String>] containing the data from the decoded message.
-  List<String> decodeMessage(String msg) {
-    var decoded = utf8.decode(base64Url.decode(msg));
-    return decoded.split(',').map((e) => utf8.decode(base64Url.decode(e))).toList();
-  }
+
 
   /// Sends [unilink] to wallet app.
   ///

@@ -31,13 +31,13 @@
             <td class="headerValue">new_lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">4</td>
             <td class="headerCovTableEntry">11</td>
-            <td class="headerCovTableEntryLo">36.4 %</td>
+            <td class="headerCovTableEntry">11</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2021-11-22 22:22:49</td>
+            <td class="headerValue">2021-11-23 18:47:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -73,14 +73,14 @@
 <a name="11"><span class="lineNum">      11 </span>            :   String json;</a>
 <a name="12"><span class="lineNum">      12 </span>            :   String sender;</a>
 <a name="13"><span class="lineNum">      13 </span>            : </a>
-<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          1 :   SDKIPCMessage(this.action, this.json, this.sender);</span></a>
+<a name="14"><span class="lineNum">      14 </span><span class="lineCov">          2 :   SDKIPCMessage(this.action, this.json, this.sender);</span></a>
 <a name="15"><span class="lineNum">      15 </span>            : </a>
-<a name="16"><span class="lineNum">      16 </span><span class="lineNoCov">          0 :   factory SDKIPCMessage.fromIPCMessage(String base64EncodedMessage) {</span></a>
-<a name="17"><span class="lineNum">      17 </span><span class="lineNoCov">          0 :     final json = utf8.decode(base64Url.decode(base64EncodedMessage));</span></a>
-<a name="18"><span class="lineNum">      18 </span><span class="lineNoCov">          0 :     final jsonMap = jsonDecode(json);</span></a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          1 :   factory SDKIPCMessage.fromIPCMessage(String base64EncodedMessage) {</span></a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">          2 :     final json = utf8.decode(base64Url.decode(base64EncodedMessage));</span></a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineCov">          1 :     final jsonMap = jsonDecode(json);</span></a>
 <a name="19"><span class="lineNum">      19 </span>            : </a>
-<a name="20"><span class="lineNum">      20 </span><span class="lineNoCov">          0 :     return SDKIPCMessage(jsonMap['action'].toString(),</span></a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineNoCov">          0 :         jsonMap['json'].toString(), jsonMap['sender'].toString());</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          3 :     return SDKIPCMessage(jsonMap['action'].toString(),</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          4 :         jsonMap['json'].toString(), jsonMap['sender'].toString());</span></a>
 <a name="22"><span class="lineNum">      22 </span>            :   }</a>
 <a name="23"><span class="lineNum">      23 </span>            : </a>
 <a name="24"><span class="lineNum">      24 </span><span class="lineCov">          1 :   String toJson() =&gt;</span></a>
@@ -88,9 +88,9 @@
 <a name="26"><span class="lineNum">      26 </span>            : </a>
 <a name="27"><span class="lineNum">      27 </span><span class="lineCov">          4 :   String createMessage() =&gt; base64Url.encode(utf8.encode(toJson()));</span></a>
 <a name="28"><span class="lineNum">      28 </span>            : </a>
-<a name="29"><span class="lineNum">      29 </span><span class="lineNoCov">          0 :   @override</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          1 :   @override</span></a>
 <a name="30"><span class="lineNum">      30 </span>            :   String toString() {</a>
-<a name="31"><span class="lineNum">      31 </span><span class="lineNoCov">          0 :     return 'SDKIPCMessage{action: $action, json: $json, sender: $sender}';</span></a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">          4 :     return 'SDKIPCMessage{action: $action, json: $json, sender: $sender}';</span></a>
 <a name="32"><span class="lineNum">      32 </span>            :   }</a>
 <a name="33"><span class="lineNum">      33 </span>            : }</a>
 </pre>

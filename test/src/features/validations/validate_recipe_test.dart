@@ -10,7 +10,7 @@ void main(){
     var recipe = Recipe(
         cookbookID: '',
         iD: '',
-        nodeVersion: "v0.1.3",
+        nodeVersion: 'v0.1.3',
         name: "LOUD's Wooden sword lv1 buy recipe",
         description: 'this recipe is used to buy wooden sword lv1.',
         version: 'v0.1.3',
@@ -48,7 +48,7 @@ void main(){
     var recipe = Recipe(
         cookbookID: 'JawadCookBook',
         iD: '',
-        nodeVersion: "v0.1.3",
+        nodeVersion: 'v0.1.3',
         name: "LOUD's Wooden sword lv1 buy recipe",
         description: 'this recipe is used to buy wooden sword lv1.',
         version: 'v0.1.3',
@@ -88,7 +88,7 @@ void main(){
     var recipe = Recipe(
         cookbookID: 'JawadCookBook',
         iD: '12342312',
-        nodeVersion: "v0.1.3",
+        nodeVersion: 'v0.1.3',
         name: "LOUD's",
         description: 'this recipe is used to buy wooden sword lv1.',
         version: 'v0.1.3',
@@ -128,7 +128,7 @@ void main(){
     var recipe = Recipe(
         cookbookID: 'JawadCookBook',
         iD: '12342312',
-        nodeVersion: "v0.1.3",
+        nodeVersion: 'v0.1.3',
         name: "LOUD's Wooden sword lv1 buy recipe",
         description: 'this recipe ',
         version: 'v0.1.3',
@@ -167,7 +167,7 @@ void main(){
     var recipe = Recipe(
         cookbookID: 'JawadCookBook',
         iD: '12342312',
-        nodeVersion: "v0.1.3",
+        nodeVersion: 'v0.1.3',
         name: "LOUD's Wooden sword lv1 buy recipe",
         description: 'this recipe is used to buy wooden sword lv1.',
         version: 'v0.1.3',
