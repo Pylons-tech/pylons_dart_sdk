@@ -19,6 +19,7 @@ class GetRecipesHandler implements IPCHandler{
     } on  Exception catch (_){
       defaultResponse.error = 'Recipe parsing failed';
       defaultResponse.errorCode = Strings.ERR_MALFORMED_RECIPES;
+      defaultResponse.success = false;
     }
     responseCompleters[Strings.GET_RECIPES]!.complete(defaultResponse);
   }

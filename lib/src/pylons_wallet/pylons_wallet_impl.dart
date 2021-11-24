@@ -11,11 +11,15 @@ import 'dart:io';
 
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
+import 'package:pylons_sdk/src/features/validations/validate_recipe.dart';
+import 'package:pylons_sdk/src/generated/pylons/cookbook.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/item.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/payment_info.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/recipe.pb.dart';
 import 'package:pylons_sdk/src/features/ipc/ipc_handler_factory.dart';
 import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_message.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
-import 'package:pylons_sdk/src/generated/pylons/payment_info.pb.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
 
@@ -66,11 +70,9 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
   @override
-  Future<SDKIPCResponse> sendMessage(
-      SDKIPCMessage sdkipcMessage, Completer<SDKIPCResponse> completer) {
+  Future<SDKIPCResponse> sendMessage(SDKIPCMessage sdkipcMessage, Completer<SDKIPCResponse> completer) {
     final encodedMessage = sdkipcMessage.createMessage();
-    final universalLink = createLinkBasedOnOS(
-        encodedMessage: encodedMessage, isAndroid: Platform.isAndroid);
+    final universalLink = createLinkBasedOnOS(encodedMessage: encodedMessage, isAndroid: Platform.isAndroid);
     dispatchUniLink(universalLink);
     return completer.future;
   }
@@ -96,7 +98,7 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse<List<Recipe>>> getRecipes(String cookbook) async {
     return Future.sync(() async {
-      final response = await _dispatch(Strings.GET_RECIPES, jsonEncode({ Strings.COOKBOOK_ID: cookbook}));
+      final response = await _dispatch(Strings.GET_RECIPES, jsonEncode({Strings.COOKBOOK_ID: cookbook}));
       if (response is SDKIPCResponse<List<Recipe>>) {
         return response;
       }
@@ -134,6 +136,7 @@ class PylonsWalletImpl implements PylonsWallet {
 
   @override
   Future<SDKIPCResponse> txCreateRecipe(Recipe recipe) async {
+    ValidateRecipe.validate(recipe);
     return Future.sync(() async {
       return await _dispatch(Strings.TX_CREATE_RECIPE, jsonEncode(recipe.toProto3Json()));
     });
@@ -146,25 +149,19 @@ class PylonsWalletImpl implements PylonsWallet {
 
   @override
   Future<SDKIPCResponse> txEnableRecipe(String cookbookId, String recipeId, String version) async {
-    throw UnimplementedError();
+    return Future<SDKIPCResponse>.sync(() async {
+      return await _dispatch(Strings.TX_ENABLE_RECIPE, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.RECIPE_ID: recipeId, 'version': version}));
+    });
   }
 
   @override
   Future<SDKIPCResponse> txExecuteRecipe(
-      {required String cookbookId,
-      required String recipeName,
-      required List<String> itemIds,
-      required int coinInputIndex,
-      required List<PaymentInfo> paymentInfo}) async {
-
+      {required String cookbookId, required String recipeName, required List<String> itemIds, required int coinInputIndex, required List<PaymentInfo> paymentInfo}) async {
     return Future.sync(() async {
-      return await _dispatch(Strings.TX_EXECUTE_RECIPE, jsonEncode(MsgExecuteRecipe(
-          creator: '',
-          cookbookID: cookbookId,
-          recipeID: recipeName,
-          coinInputsIndex: fixnum.Int64(coinInputIndex),
-          itemIDs: itemIds,
-          paymentInfos: paymentInfo).toProto3Json()));
+      return await _dispatch(
+          Strings.TX_EXECUTE_RECIPE,
+          jsonEncode(
+              MsgExecuteRecipe(creator: '', cookbookID: cookbookId, recipeID: recipeName, coinInputsIndex: fixnum.Int64(coinInputIndex), itemIDs: itemIds, paymentInfos: paymentInfo).toProto3Json()));
     });
   }
 
@@ -184,6 +181,7 @@ class PylonsWalletImpl implements PylonsWallet {
 
   @override
   Future<SDKIPCResponse> txUpdateRecipe(Recipe recipe) async {
+    ValidateRecipe.validate(recipe);
     return Future.sync(() async {
       return await _dispatch(Strings.TX_UPDATE_RECIPE, jsonEncode(recipe.toProto3Json()));
     });
@@ -199,37 +197,14 @@ class PylonsWalletImpl implements PylonsWallet {
     });
   }
 
-  /// Encodes a message [msg] to be sent to the wallet.
-  ///
-  /// Argument is provided as a list of strings corresponding to each piece of data in the message.
-  ///
-  /// Returns a string containing the encoded base64 representation of the message.
-  String encodeMessage(List<String> msg) {
-    var encodedMessageWithComma =
-        msg.map((e) => base64Url.encode(utf8.encode(e))).join(',');
-    return base64Url.encode(utf8.encode(encodedMessageWithComma));
-  }
 
-  /// Decodes a message [msg] received from the wallet.
-  ///
-  /// Argument is provided as a Base64-encoded string.
-  ///
-  /// Returns a [List<String>] containing the data from the decoded message.
-  List<String> decodeMessage(String msg) {
-    var decoded = utf8.decode(base64Url.decode(msg));
-    return decoded
-        .split(',')
-        .map((e) => utf8.decode(base64Url.decode(e)))
-        .toList();
-  }
+
 
   /// Sends [unilink] to wallet app.
   ///
   /// Throws a [NoWalletException] if the wallet doesn't exist.
   void dispatchUniLink(String uniLink) async {
-    await canLaunch(uniLink)
-        ? await launch(uniLink)
-        : throw NoWalletException();
+    await canLaunch(uniLink) ? await launch(uniLink) : throw NoWalletException();
   }
 
   /// Create a unilink for the current OS.
@@ -237,8 +212,7 @@ class PylonsWalletImpl implements PylonsWallet {
   /// [encodedMessage] is the message to be sent to the wallet; [isAndroid] is whether or not we're running on Android.
   ///
   /// Returns a string containing the correct platform-specific unilink.
-  String createLinkBasedOnOS(
-      {required String encodedMessage, required bool isAndroid}) {
+  String createLinkBasedOnOS({required String encodedMessage, required bool isAndroid}) {
     if (isAndroid) {
       return '$BASE_UNI_LINK/$encodedMessage';
     }

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2021-11-17 17:25:53</td>
+            <td class="headerValue">2021-11-23 18:47:13</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -65,30 +65,34 @@
 <a name="3"><span class="lineNum">       3 </span>            : </a>
 <a name="4"><span class="lineNum">       4 </span>            : import 'package:pylons_sdk/src/generated/pylons/item.pb.dart';</a>
 <a name="5"><span class="lineNum">       5 </span>            : </a>
-<a name="6"><span class="lineNum">       6 </span>            : /// A user profile that exists on a Pylons blockchain.</a>
-<a name="7"><span class="lineNum">       7 </span>            : class Profile {</a>
-<a name="8"><span class="lineNum">       8 </span>            :   String address;</a>
-<a name="9"><span class="lineNum">       9 </span>            :   String name;</a>
-<a name="10"><span class="lineNum">      10 </span>            :   Map&lt;String, int&gt; coins;</a>
-<a name="11"><span class="lineNum">      11 </span>            :   List&lt;Item&gt; items;</a>
-<a name="12"><span class="lineNum">      12 </span>            : </a>
-<a name="13"><span class="lineNum">      13 </span><span class="lineCov">          1 :   Profile(</span></a>
-<a name="14"><span class="lineNum">      14 </span>            :       {required this.address,</a>
-<a name="15"><span class="lineNum">      15 </span>            :       required this.name,</a>
-<a name="16"><span class="lineNum">      16 </span>            :       required this.coins,</a>
-<a name="17"><span class="lineNum">      17 </span>            :       required this.items});</a>
-<a name="18"><span class="lineNum">      18 </span>            : </a>
-<a name="19"><span class="lineNum">      19 </span><span class="lineCov">          1 :   factory Profile.fromJson(Map&lt;String, dynamic&gt; json) {</span></a>
-<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 :     return Profile(</span></a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          2 :       coins: Map&lt;String, int&gt;.from(json['coins'] as Map),</span></a>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          1 :       address: json['address'],</span></a>
-<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          1 :       name: json['name'],</span></a>
-<a name="24"><span class="lineNum">      24 </span><span class="lineCov">          1 :       items: [</span></a>
-<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          4 :         ...List.from(json['items']).map((e) =&gt; Item.fromJson(e)).toList()</span></a>
-<a name="26"><span class="lineNum">      26 </span>            :       ],</a>
-<a name="27"><span class="lineNum">      27 </span>            :     );</a>
-<a name="28"><span class="lineNum">      28 </span>            :   }</a>
-<a name="29"><span class="lineNum">      29 </span>            : }</a>
+<a name="6"><span class="lineNum">       6 </span>            : /// Object representing a user profile that exists on a Pylons blockchain.</a>
+<a name="7"><span class="lineNum">       7 </span>            : ///</a>
+<a name="8"><span class="lineNum">       8 </span>            : /// Note that the SDK-provided profile type does not directly mirror any type that exists on chain.</a>
+<a name="9"><span class="lineNum">       9 </span>            : /// Multiple queries must be made to compose one of these objects. This is not normally relevant to</a>
+<a name="10"><span class="lineNum">      10 </span>            : /// client applications, but may matter if you're trying to do anything too low-level.</a>
+<a name="11"><span class="lineNum">      11 </span>            : class Profile {</a>
+<a name="12"><span class="lineNum">      12 </span>            :   String address;</a>
+<a name="13"><span class="lineNum">      13 </span>            :   String name;</a>
+<a name="14"><span class="lineNum">      14 </span>            :   Map&lt;String, int&gt; coins;</a>
+<a name="15"><span class="lineNum">      15 </span>            :   List&lt;Item&gt; items;</a>
+<a name="16"><span class="lineNum">      16 </span>            : </a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineCov">          1 :   Profile(</span></a>
+<a name="18"><span class="lineNum">      18 </span>            :       {required this.address,</a>
+<a name="19"><span class="lineNum">      19 </span>            :       required this.name,</a>
+<a name="20"><span class="lineNum">      20 </span>            :       required this.coins,</a>
+<a name="21"><span class="lineNum">      21 </span>            :       required this.items});</a>
+<a name="22"><span class="lineNum">      22 </span>            : </a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          1 :   factory Profile.fromJson(Map&lt;String, dynamic&gt; json) {</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">          1 :     return Profile(</span></a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          2 :       coins: Map&lt;String, int&gt;.from(json['coins'] as Map),</span></a>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          1 :       address: json['address'],</span></a>
+<a name="27"><span class="lineNum">      27 </span><span class="lineCov">          1 :       name: json['name'],</span></a>
+<a name="28"><span class="lineNum">      28 </span><span class="lineCov">          1 :       items: [</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          4 :         ...List.from(json['items']).map((e) =&gt; Item.fromJson(e)).toList()</span></a>
+<a name="30"><span class="lineNum">      30 </span>            :       ],</a>
+<a name="31"><span class="lineNum">      31 </span>            :     );</a>
+<a name="32"><span class="lineNum">      32 </span>            :   }</a>
+<a name="33"><span class="lineNum">      33 </span>            : }</a>
 </pre>
       </td>
     </tr>

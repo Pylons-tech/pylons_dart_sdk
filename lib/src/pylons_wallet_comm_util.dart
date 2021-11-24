@@ -5,7 +5,6 @@ import 'package:dartz/dartz.dart';
 import 'package:pylons_sdk/pylons_sdk.dart';
 
 import 'core/constants/strings.dart';
-import 'generated/pylons/recipe.pb.dart';
 
 /// Utilities for building/checking messages for the current message protocol.
 /// (Since this protocol is ad-hoc, specific, and strictly temporary, these may
@@ -13,46 +12,6 @@ import 'generated/pylons/recipe.pb.dart';
 class PylonsWalletCommUtil {
 
 
-  /// Verifies that all of a recipe's outputs are accessible, and that it
-  /// doesn't refer to any outputs that are not present.
-  static void validateRecipe(Recipe recipe) {
-    var found = <String>[];
-    var reFound = <String>[];
-    var orphanOutputs = <String>[];
-    var unknownOutputs = <String>[];
-    for (var output in recipe.outputs) {
-      for (var entry in output.entryIDs) {
-        if (!found.contains(entry)) found.add(entry);
-      }
-    }
-    for (var entryId in found) {
-      for (var output in recipe.entries.coinOutputs) {
-        if (found.contains(output.iD) && !reFound.contains(output.iD)) {
-          reFound.add(output.iD);
-        } else {
-          orphanOutputs.add(output.iD);
-        }
-      }
-      for (var output in recipe.entries.itemOutputs) {
-        if (found.contains(output.iD) && !reFound.contains(output.iD)) {
-          reFound.add(output.iD);
-        } else {
-          orphanOutputs.add(output.iD);
-        }
-      }
-      if (!reFound.contains(entryId)) unknownOutputs.add(entryId);
-    }
-    if (unknownOutputs.isNotEmpty || orphanOutputs.isNotEmpty) {
-      throw RecipeValidationException(
-          recipe.cookbookID,
-          recipe.name,
-          recipe.iD,
-          'Recipe validation failed\nUnknown entry ids:\n\n'
-          '${const JsonEncoder().convert(unknownOutputs)}\n\n'
-          'Orphaned entries:\n\n'
-          '${const JsonEncoder().convert(orphanOutputs)}');
-    }
-  }
 
   static bool responseIsError(String v, String key) {
     return v == 'err_$key';

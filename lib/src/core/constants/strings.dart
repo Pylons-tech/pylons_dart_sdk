@@ -34,6 +34,8 @@ class Strings {
   static const String ERR_MALFORMED_RECIPES = 'malformedRecipes';
   static const String ERR_MALFORMED_COOKBOOK = 'malformedCookbook';
   static const String COOKBOOK_ID = 'cookbookId';
+  static const String RECIPE_ID = 'recipeId';
+
 
 
 }

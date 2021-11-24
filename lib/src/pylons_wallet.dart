@@ -14,7 +14,6 @@ import 'generated/pylons/payment_info.pb.dart';
 import 'generated/pylons/recipe.pb.dart';
 import 'generated/pylons/trade.pb.dart';
 import 'features/models/sdk_ipc_response.dart';
-import 'pylons_wallet/pylons_wallet_dev.dart';
 import 'pylons_wallet/pylons_wallet_impl.dart';
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
 
@@ -23,6 +22,7 @@ enum PylonsMode { dev, prod }
 /// The PylonsWallet class is the main endpoint developers use for structured,
 /// high-level interactions with the Pylons wallet.
 abstract class PylonsWallet {
+  late PylonsMode _mode;
   static PylonsWallet? _instance;
 
   static PylonsWallet get instance {
@@ -47,16 +47,27 @@ abstract class PylonsWallet {
           'Wallet is already initialized');
     }
 
-    if (mode == PylonsMode.prod) {
-      _instance =
-          PylonsWalletImpl(host: host, uniLink: UniLinksPlatform.instance);
-      return;
-    }
+    // At present, production/dev mode makes *no* difference as far as this SDK is concerned.
+    // The wallet will use different values for its node URLs and chain ID, but that's already
+    // set per-wallet-app, and is not in our control. If, in future, any meaningful changes in
+    // functionality need to take place based on production mode, the switch statement below
+    // should be uncommented and used for that. Note, though, that the most likely case -
+    // wallets which can switch chains based on the expectations of client software -
+    // _still_ wouldn't require any deeper logic from us here. We'd just want to pass our prod/dev
+    // mode flag to the wallet.
 
-    if (mode == PylonsMode.dev) {
-      _instance = PylonsWalletDevImpl(host, UniLinksPlatform.instance);
-      return;
-    }
+    // TODO: There should be a way to inquire as to which network a (single-net) wallet uses.
+    // Once that exists, the switch statement below should be uncommented, and we should crash if
+    // the wallet is something different from what we're expecting.
+
+    // switch (mode) {
+    //   case PylonsMode.prod:
+    //     break;
+    //   case PylonsMode.dev:
+    //     break;
+    // }
+
+    _instance = PylonsWalletImpl(host: host, uniLink: UniLinksPlatform.instance).._mode = mode;
   }
 
   /// Async: Send the provided message over the IPC channel, then retrieve a

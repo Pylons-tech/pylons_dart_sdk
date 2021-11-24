@@ -13,78 +13,232 @@ import '../mocks/mock_constants.dart';
 import '../mocks/mock_uni_link.dart';
 
 void main() {
-  // group('test encodeMessage ', () {
-  //   test('should encode cook book ', () {
-  //     // Arrange
-  //     var cookBook = Cookbook.fromJson(jsonDecode(MOCK_COOKBOOK));
-  //     var key = Strings.TX_CREATE_COOKBOOK;
-  //     var dataToEncode = [key, const JsonEncoder().convert(cookBook)];
-  //     var pylonsWallet = PylonsWalletImpl(MOCK_HOST);
-  //
-  //     // Act
-  //     var encodedMessage = pylonsWallet.encodeMessage(dataToEncode);
-  //
-  //     var decodedMessage = pylonsWallet.decodeMessage(encodedMessage);
-  //
-  //     // Assert
-  //     expect(dataToEncode, decodedMessage);
-  //   });
-  // });
-  //
-  // group('cookbook', () {
-  //   test('should check if the cookbook unilink was created successfuly or not ', () {
-  //     TestWidgetsFlutterBinding.ensureInitialized();
-  //
-  //     const channel = MethodChannel('plugins.flutter.io/url_launcher');
-  //
-  //     var url = '';
-  //
-  //     channel.setMockMethodCallHandler((MethodCall methodCall) async {
-  //       url = methodCall.arguments['url'];
-  //       return true;
-  //     });
-  //
-  //     // Arrange
-  //     var cookBook = Cookbook.fromJson(jsonDecode(MOCK_COOKBOOK));
-  //     var key = Strings.TX_CREATE_COOKBOOK;
-  //     var dataToEncode = [key, const JsonEncoder().convert(cookBook)];
-  //     var pylonsWallet = PylonsWalletImpl(MOCK_HOST);
-  //
-  //     var encodedMessage = pylonsWallet.encodeMessage(dataToEncode);
-  //
-  //     pylonsWallet.sendMessage(dataToEncode);
-  //
-  //     // Assert
-  //
-  //     expect(url, '$BASE_UNI_LINK/$encodedMessage');
-  //   });
-  // });
+
 
   getHostBasedOnOsTest();
   createLinkBasedOnOS();
   getCookBookTest();
+  getProfileTest();
+  getRecipesTest();
+  createCookBookTest();
+  executeRecipeTest();
+  enableRecipeTest();
+  updateRecipeTest();
+  updateCookBookTest();
+  createRecipeTest();
+}
+
+void createRecipeTest() {
+  test('should create recipe in the wallet', () async {
+    mockChannelHandler();
+
+
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_CREATE_RECIPE);
+      responseCompleters[Strings.TX_CREATE_RECIPE]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.txCreateRecipe(MOCK_RECIPE);
+
+    expect(true, response.success);
+    expect(response.action, Strings.TX_CREATE_RECIPE);
+  });
+
+
+}
+
+void updateCookBookTest() {
+  test('should update cookbook in the wallet', () async {
+    mockChannelHandler();
+
+
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    var cookBook = Cookbook.create()..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
+
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_UPDATE_COOKBOOK);
+      responseCompleters[Strings.TX_UPDATE_COOKBOOK]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.txUpdateCookbook(cookBook);
+
+    expect(true, response.success);
+    expect(response.action, Strings.TX_UPDATE_COOKBOOK);
+  });
+
+}
+
+void updateRecipeTest() {
+  test('should update recipe in the wallet', () async {
+    mockChannelHandler();
+
+
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_UPDATE_RECIPE);
+      responseCompleters[Strings.TX_UPDATE_RECIPE]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.txUpdateRecipe(MOCK_RECIPE);
+
+    expect(true, response.success);
+    expect(response.action, Strings.TX_UPDATE_RECIPE);
+  });
+
+}
+
+void mockChannelHandler() {
+     TestWidgetsFlutterBinding.ensureInitialized();
+
+  var channel = const MethodChannel('plugins.flutter.io/url_launcher');
+
+  // Register the mock handler.
+  channel.setMockMethodCallHandler((MethodCall methodCall) async {
+    if (methodCall.method == 'canLaunch') {
+      return true;
+    }
+    return null;
+  });
+
+
+}
+
+void enableRecipeTest() {
+  test('should enable recipe in the wallet', () async {
+    mockChannelHandler();
+
+
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_ENABLE_RECIPE);
+      responseCompleters[Strings.TX_ENABLE_RECIPE]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.txEnableRecipe(MOCK_COOKBOOK_ID, MOCK_RECIPE_ID, MOCK_VERSION);
+
+    expect(true, response.success);
+    expect(response.action, Strings.TX_ENABLE_RECIPE);
+  });
+}
+
+void executeRecipeTest() {
+  test('should execute recipe in the wallet', () async {
+    mockChannelHandler();
+
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_EXECUTE_RECIPE);
+      responseCompleters[Strings.TX_EXECUTE_RECIPE]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.txExecuteRecipe( paymentInfo: [], recipeName: MOCK_RECIPE_ID, cookbookId: MOCK_COOKBOOK_ID, itemIds: [], coinInputIndex: 0);
+
+    expect(true, response.success);
+    expect(response.action, Strings.TX_EXECUTE_RECIPE);
+  });
+
+}
+
+void createCookBookTest() {
+  test('should create cookbook in the wallet', () async {
+    mockChannelHandler();
+
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    var cookBook = Cookbook.create()..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
+
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_CREATE_COOKBOOK);
+      responseCompleters[Strings.TX_CREATE_COOKBOOK]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.txCreateCookbook(cookBook);
+
+    expect(true, response.success);
+    expect(response.action, Strings.TX_CREATE_COOKBOOK);
+  });
+}
+
+void getRecipesTest() {
+  test('should get profile from the wallet', () async {
+    mockChannelHandler();
+
+
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    Future.delayed(Duration(milliseconds: 500), () {
+      final sdkResponse = SDKIPCResponse<List<Recipe>>(success: true, error: '', data: [Recipe()..createEmptyInstance(), Recipe()..createEmptyInstance()], errorCode: '', action: Strings.GET_RECIPES);
+      responseCompleters[Strings.GET_RECIPES]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.getRecipes(MOCK_COOKBOOK_ID);
+
+    expect(response.data.length, 2);
+    expect(response.action, Strings.GET_RECIPES);
+  });
+}
+
+void getProfileTest() {
+  test('should get profile from the wallet', () async {
+    mockChannelHandler();
+
+
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    Future.delayed(Duration(milliseconds: 500), () {
+      final sdkResponse = SDKIPCResponse(success: true, error: '', data: MOCK_USERNAME, errorCode: '', action: Strings.GET_PROFILE);
+      responseCompleters[Strings.GET_PROFILE]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.getProfile();
+
+    expect(response.data, MOCK_USERNAME);
+    expect(response.action, Strings.GET_PROFILE);
+  });
 }
 
 void getCookBookTest() {
   test('should get cookbook from the wallet', () async {
-    TestWidgetsFlutterBinding.ensureInitialized();
+    mockChannelHandler();
 
-
-    var channel = const MethodChannel('plugins.flutter.io/url_launcher');
-
-    // Register the mock handler.
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      if (methodCall.method == 'canLaunch') {
-        return true;
-      }
-      return null;
-    });
-
-    var host = 'new_sdk';
 
     var uniLink = MockUniLinksPlatform();
     when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
-    var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     var cookBook = Cookbook.create()..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
 
@@ -101,14 +255,13 @@ void getCookBookTest() {
 
 void createLinkBasedOnOS() {
   group('createLinkBasedOnOS', () {
-    var host = 'new_sdk';
 
     test('should return wallet link for android ', () {
       var expectedLink = '$BASE_UNI_LINK/';
 
       var uniLink = MockUniLinksPlatform();
       when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
-      var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
+      var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
       var response = pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: true);
       expect(expectedLink, response);
@@ -119,7 +272,7 @@ void createLinkBasedOnOS() {
 
       var uniLink = MockUniLinksPlatform();
       when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
-      var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
+      var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
       var response = pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: false);
       expect(expectedLink, response);
@@ -129,24 +282,24 @@ void createLinkBasedOnOS() {
 
 void getHostBasedOnOsTest() {
   group('getHostBasedOnOS', () {
-    var host = 'new_sdk';
+
 
     test('should return host as platform in android ', () {
       var uniLink = MockUniLinksPlatform();
       when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
-      var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
+      var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
       var hostBasedOnPlatform = pylonsWallet.getHostBasedOnOS(true);
-      expect(host, hostBasedOnPlatform);
+      expect(MOCK_HOST, hostBasedOnPlatform);
     });
 
     test('should return host as platform in ios ', () {
       var uniLink = MockUniLinksPlatform();
       when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
 
-      var pylonsWallet = PylonsWalletImpl(host: host, uniLink: uniLink);
+      var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
-      var expectedHost = 'pylons-$host';
+      var expectedHost = 'pylons-$MOCK_HOST';
 
       var hostBasedOnPlatform = pylonsWallet.getHostBasedOnOS(false);
       expect(expectedHost, hostBasedOnPlatform);
