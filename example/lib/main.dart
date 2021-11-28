@@ -60,8 +60,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String cookBookId = "cookbookLOUD2";
-  String recipeId = "Ticket2";
+  String cookBookId = "cookbook_cr305_1";
+  String recipeId = "recipe_1";
 
   @override
   Widget build(BuildContext context) {
@@ -278,7 +278,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void enableRecipe() async {
     var response = await PylonsWallet.instance
-        .txEnableRecipe(cookBookId, recipeId, "v1.0.5");
+        .txEnableRecipe(cookBookId, recipeId, "v1.0.3");
 
     log('From App $response', name: 'pylons_sdk');
 
@@ -293,7 +293,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void disableRecipe() async {
     var response = await PylonsWallet.instance
-        .txDisableRecipe(recipeId);
+        .txDisableRecipe(cookBookId, recipeId, "v1.0.4");
 
     log('From App $response', name: 'pylons_sdk');
 

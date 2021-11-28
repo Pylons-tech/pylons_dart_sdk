@@ -147,7 +147,7 @@ void disableRecipeTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Cr305'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(seconds: 1), () {
@@ -155,7 +155,7 @@ void disableRecipeTest() {
       responseCompleters[Strings.TX_DISABLE_RECIPE]!.complete(sdkResponse);
     });
 
-    var response = await pylonsWallet.txDisableRecipe(MOCK_RECIPE_ID);
+    var response = await pylonsWallet.txDisableRecipe(MOCK_COOKBOOK_ID, MOCK_RECIPE_ID, MOCK_VERSION);
 
     expect(true, response.success);
     expect(response.action, Strings.TX_DISABLE_RECIPE);
