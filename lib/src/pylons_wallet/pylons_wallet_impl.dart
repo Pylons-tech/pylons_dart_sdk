@@ -146,7 +146,9 @@ class PylonsWalletImpl implements PylonsWallet {
 
   @override
   Future<SDKIPCResponse> txDisableRecipe(String recipeId) async {
-    throw UnimplementedError();
+    return Future<SDKIPCResponse>.sync(() async {
+      return await _dispatch(Strings.TX_DISABLE_RECIPE, jsonEncode({Strings.RECIPE_ID: recipeId}));
+    });
   }
 
   @override
