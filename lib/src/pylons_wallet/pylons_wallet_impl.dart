@@ -80,7 +80,9 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse<Cookbook>> getCookbook(String id) {
     return Future<SDKIPCResponse<Cookbook>>.sync(() async {
-      final response = await _dispatch(Strings.GET_COOKBOOK, id);
+      final response = await _dispatch(Strings.GET_COOKBOOK, jsonEncode({
+        Strings.COOKBOOK_ID : id
+      }));
       if (response is SDKIPCResponse<Cookbook>) {
         return response;
       }

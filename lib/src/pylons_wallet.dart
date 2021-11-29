@@ -67,7 +67,7 @@ abstract class PylonsWallet {
     //     break;
     // }
 
-    _instance = PylonsWalletImpl(host: host, uniLink: UniLinksPlatform.instance).._mode = mode;
+    _instance = PylonsWalletImpl(host: host, uniLink: UniLinksPlatform.instance);
   }
 
   /// Async: Send the provided message over the IPC channel, then retrieve a

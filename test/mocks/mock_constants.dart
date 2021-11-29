@@ -51,3 +51,16 @@ const String MOCK_HOST = 'example';
 const String MOCK_ERR_ = 'example';
 const String MOCK_USERNAME = 'Jawad';
 const String MOCK_ERR_CODE = 'Something went wrong';
+
+
+Cookbook MOCK_COOK_BOOK_OBJECT = Cookbook(
+    creator: '',
+    iD: MOCK_COOKBOOK_ID,
+    name: 'Legend of the Undead Dragon',
+    nodeVersion: 'v0.1.3',
+    description: 'Cookbook for running pylons recreation of LOUD',
+    developer: 'Pylons Inc',
+    version: 'v0.0.1',
+    supportEmail: 'alex@shmeeload.xyz',
+    costPerBlock: Coin(denom: 'upylon', amount: '1000000'),
+    enabled: true);
