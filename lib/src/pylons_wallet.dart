@@ -332,22 +332,6 @@ abstract class PylonsWallet {
   /// exception will be passed directly.
   Future<SDKIPCResponse> txCreateRecipe(Recipe recipe);
 
-  /// DEPRECATED, DO NOT USE
-  ///
-  /// Use UpdateRecipe and edit the enabled/disabled field instead.
-  ///
-  /// TODO: Remove this.
-  Future<SDKIPCResponse> txDisableRecipe(
-      String cookbookId, String recipeId, String version);
-
-  /// DEPRECATED, DO NOT USE
-  ///
-  /// Use UpdateRecipe and edit the enabled/disabled field instead.
-  ///
-  /// TODO: Remove this.
-  Future<SDKIPCResponse> txEnableRecipe(
-      String cookBookId, String recipeId, String version);
-
   /// Async: Creates a transaction to execute the recipe with coordinates
   /// [cookbookId] : [recipeName] against the current profile.
   ///

@@ -22,8 +22,6 @@ void main() {
   getRecipesTest();
   createCookBookTest();
   executeRecipeTest();
-  enableRecipeTest();
-  disableRecipeTest();
   updateRecipeTest();
   updateCookBookTest();
   createRecipeTest();
@@ -117,49 +115,6 @@ void mockChannelHandler() {
   });
 
 
-}
-
-void enableRecipeTest() {
-  test('should enable recipe in the wallet', () async {
-    mockChannelHandler();
-
-
-
-    var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
-    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
-
-
-    Future.delayed(Duration(seconds: 1), () {
-      final sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_ENABLE_RECIPE);
-      responseCompleters[Strings.TX_ENABLE_RECIPE]!.complete(sdkResponse);
-    });
-
-    var response = await pylonsWallet.txEnableRecipe(MOCK_COOKBOOK_ID, MOCK_RECIPE_ID, MOCK_VERSION);
-
-    expect(true, response.success);
-    expect(response.action, Strings.TX_ENABLE_RECIPE);
-  });
-}
-
-void disableRecipeTest() {
-  test('should disable recipe in the wallet', () async {
-    mockChannelHandler();
-
-    var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Cr305'));
-    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
-
-    Future.delayed(Duration(seconds: 1), () {
-      final sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_DISABLE_RECIPE);
-      responseCompleters[Strings.TX_DISABLE_RECIPE]!.complete(sdkResponse);
-    });
-
-    var response = await pylonsWallet.txDisableRecipe(MOCK_COOKBOOK_ID, MOCK_RECIPE_ID, MOCK_VERSION);
-
-    expect(true, response.success);
-    expect(response.action, Strings.TX_DISABLE_RECIPE);
-  });
 }
 
 void executeRecipeTest() {

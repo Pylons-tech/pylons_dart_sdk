@@ -12,8 +12,6 @@ class Strings {
   static const String TX_CREATE_RECIPE = 'txCreateRecipe';
   static const String TX_UPDATE_COOKBOOK = 'txUpdateCookbook';
   static const String TX_UPDATE_RECIPE = 'txUpdateRecipe';
-  static const String TX_ENABLE_RECIPE = 'txEnableRecipe';
-  static const String TX_DISABLE_RECIPE = 'txDisableRecipe';
   static const String TX_EXECUTE_RECIPE = 'txExecuteRecipe';
   static const String TX_PLACE_FOR_SALE = 'txPlaceForSale';
   static const String ERR_NODE = 'node';
