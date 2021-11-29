@@ -60,8 +60,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String cookBookId = "cookbookLOUD1";
-  String recipeId = "Ticket2";
+  String cookBookId = "cookbook_cr305_1";
+  String recipeId = "recipe_1";
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +117,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 enableRecipe();
               },
               child: const Text('Enable Recipe'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                disableRecipe();
+              },
+              child: const Text('Disable Recipe'),
             ),
             ElevatedButton(
               onPressed: () async {
@@ -200,10 +206,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (response.success) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Receipe created")));
+          .showSnackBar(const SnackBar(content: Text("Recipe created")));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Receipe error : ${response.error}")));
+          SnackBar(content: Text("Recipe error : ${response.error}")));
     }
   }
 
@@ -263,25 +269,40 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (response.success) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Receipe updated")));
+          .showSnackBar(const SnackBar(content: Text("Recipe updated")));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Receipe update error : ${response.error}")));
+          SnackBar(content: Text("Recipe update error : ${response.error}")));
     }
   }
 
   void enableRecipe() async {
     var response = await PylonsWallet.instance
-        .txEnableRecipe(cookBookId, recipeId, "v1.0.5");
+        .txEnableRecipe(cookBookId, recipeId, "v1.0.3");
 
     log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Receipe updated")));
+          .showSnackBar(const SnackBar(content: Text("Recipe updated")));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Receipe update error : ${response.error}")));
+          SnackBar(content: Text("Recipe update error : ${response.error}")));
+    }
+  }
+
+  void disableRecipe() async {
+    var response = await PylonsWallet.instance
+        .txDisableRecipe(cookBookId, recipeId, "v1.0.4");
+
+    log('From App $response', name: 'pylons_sdk');
+
+    if (response.success) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Recipe updated")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Recipe update error : ${response.error}")));
     }
   }
 

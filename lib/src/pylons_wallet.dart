@@ -67,7 +67,8 @@ abstract class PylonsWallet {
     //     break;
     // }
 
-    _instance = PylonsWalletImpl(host: host, uniLink: UniLinksPlatform.instance);
+    _instance =
+        PylonsWalletImpl(host: host, uniLink: UniLinksPlatform.instance);
   }
 
   /// Async: Send the provided message over the IPC channel, then retrieve a
@@ -75,7 +76,8 @@ abstract class PylonsWallet {
   ///
   /// [sdkipcMessage] is the prebuilt message to be sent; [completer] is the completer which will
   /// generate the final response.
-  Future<SDKIPCResponse> sendMessage(SDKIPCMessage sdkipcMessage, Completer<SDKIPCResponse> completer);
+  Future<SDKIPCResponse> sendMessage(
+      SDKIPCMessage sdkipcMessage, Completer<SDKIPCResponse> completer);
 
   /// Async: Returns true if an IPC target exists. False otherwise.
   Future<bool> exists();
@@ -219,8 +221,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txBuyItem(
-      String tradeId, String paymentId);
+  Future<SDKIPCResponse> txBuyItem(String tradeId, String paymentId);
 
   /// Async: Creates a transaction to buy the provided number of Pylons using a
   /// third-party payment processor.
@@ -336,7 +337,8 @@ abstract class PylonsWallet {
   /// Use UpdateRecipe and edit the enabled/disabled field instead.
   ///
   /// TODO: Remove this.
-  Future<SDKIPCResponse> txDisableRecipe(String recipeId);
+  Future<SDKIPCResponse> txDisableRecipe(
+      String cookbookId, String recipeId, String version);
 
   /// DEPRECATED, DO NOT USE
   ///
