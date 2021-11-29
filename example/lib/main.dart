@@ -114,18 +114,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: () async {
-                enableRecipe();
-              },
-              child: const Text('Enable Recipe'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                disableRecipe();
-              },
-              child: const Text('Disable Recipe'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
                 getProfile();
               },
               child: const Text('Get Profile'),
@@ -264,36 +252,6 @@ class _MyHomePageState extends State<MyHomePage> {
         extraInfo: "extraInfo");
 
     var response = await PylonsWallet.instance.txUpdateRecipe(recipe);
-
-    log('From App $response', name: 'pylons_sdk');
-
-    if (response.success) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Recipe updated")));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Recipe update error : ${response.error}")));
-    }
-  }
-
-  void enableRecipe() async {
-    var response = await PylonsWallet.instance
-        .txEnableRecipe(cookBookId, recipeId, "v1.0.3");
-
-    log('From App $response', name: 'pylons_sdk');
-
-    if (response.success) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Recipe updated")));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Recipe update error : ${response.error}")));
-    }
-  }
-
-  void disableRecipe() async {
-    var response = await PylonsWallet.instance
-        .txDisableRecipe(cookBookId, recipeId, "v1.0.4");
 
     log('From App $response', name: 'pylons_sdk');
 
