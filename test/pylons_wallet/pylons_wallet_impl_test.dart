@@ -26,6 +26,29 @@ void main() {
   updateRecipeTest();
   updateCookBookTest();
   createRecipeTest();
+  getRecipeTest();
+}
+
+void getRecipeTest() {
+  test('should get recipe from the wallet', () async {
+    mockChannelHandler();
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    Future.delayed(Duration(milliseconds: 500), () {
+      final sdkResponse = SDKIPCResponse<Recipe>(success: true, error: '', data:  MOCK_RECIPE, errorCode: '', action: Strings.GET_RECIPE);
+      responseCompleters[Strings.GET_RECIPE]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.getRecipe(MOCK_COOKBOOK_ID, MOCK_RECIPE_ID);
+
+    expect(response.data.iD, MOCK_RECIPE_ID);
+    expect(response.data.cookbookID, MOCK_COOKBOOK_ID);
+    expect(response.action, Strings.GET_RECIPE);
+  });
+
 }
 
 void createRecipeTest() {

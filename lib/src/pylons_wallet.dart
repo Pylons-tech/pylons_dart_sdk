@@ -492,4 +492,10 @@ abstract class PylonsWallet {
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
   Future<SDKIPCResponse> txUpdateRecipe(Recipe recipe);
+
+  /// This method gets the recipe based on the cookbookId and the recipeId
+  /// Input : [cookbookId] the id of the cookbook which contains the recipe, [recipeId] the id of the recipe
+  /// Output: [Recipe] the recipe that we need.
+  Future<SDKIPCResponse<Recipe>> getRecipe(String cookbookId, String recipeId);
+
 }

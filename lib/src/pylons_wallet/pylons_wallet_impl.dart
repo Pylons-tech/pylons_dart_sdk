@@ -197,9 +197,6 @@ class PylonsWalletImpl implements PylonsWallet {
     });
   }
 
-
-
-
   /// Sends [unilink] to wallet app.
   ///
   /// Throws a [NoWalletException] if the wallet doesn't exist.
@@ -231,5 +228,16 @@ class PylonsWalletImpl implements PylonsWallet {
     }
 
     return 'pylons-$host';
+  }
+
+  @override
+  Future<SDKIPCResponse<Recipe>> getRecipe(String cookbookId, String recipeId) {
+    return Future.sync(() async {
+      final response = await _dispatch(Strings.GET_RECIPE, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.RECIPE_ID: recipeId}));
+      if (response is SDKIPCResponse<Recipe>) {
+        return response;
+      }
+      throw Exception('Response malformed');
+    });
   }
 }
