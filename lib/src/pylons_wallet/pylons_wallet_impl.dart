@@ -80,7 +80,9 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse<Cookbook>> getCookbook(String id) {
     return Future<SDKIPCResponse<Cookbook>>.sync(() async {
-      final response = await _dispatch(Strings.GET_COOKBOOK, id);
+      final response = await _dispatch(Strings.GET_COOKBOOK, jsonEncode({
+        Strings.COOKBOOK_ID : id
+      }));
       if (response is SDKIPCResponse<Cookbook>) {
         return response;
       }
@@ -139,18 +141,6 @@ class PylonsWalletImpl implements PylonsWallet {
     ValidateRecipe.validate(recipe);
     return Future.sync(() async {
       return await _dispatch(Strings.TX_CREATE_RECIPE, jsonEncode(recipe.toProto3Json()));
-    });
-  }
-
-  @override
-  Future<SDKIPCResponse> txDisableRecipe(String recipeId) async {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<SDKIPCResponse> txEnableRecipe(String cookbookId, String recipeId, String version) async {
-    return Future<SDKIPCResponse>.sync(() async {
-      return await _dispatch(Strings.TX_ENABLE_RECIPE, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.RECIPE_ID: recipeId, 'version': version}));
     });
   }
 
