@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2021-11-23 18:47:13</td>
+            <td class="headerValue">2021-11-30 18:11:24</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -81,16 +81,16 @@
 <a name="19"><span class="lineNum">      19 </span>            : ///</a>
 <a name="20"><span class="lineNum">      20 </span>            : /// c) So, don't create these manually. Use the [initResponseCompleter] helper function instead to</a>
 <a name="21"><span class="lineNum">      21 </span>            : ///    minimize the chance for dumb bugs to creep in.</a>
-<a name="22"><span class="lineNum">      22 </span><span class="lineCov">         12 : final Map&lt;String, Completer&lt;SDKIPCResponse&gt;&gt; responseCompleters  = {</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">         15 : final Map&lt;String, Completer&lt;SDKIPCResponse&gt;&gt; responseCompleters  = {</span></a>
 <a name="23"><span class="lineNum">      23 </span>            :   // since initResponseCompleter is always called for any given key before a valid response can be handled,</a>
 <a name="24"><span class="lineNum">      24 </span>            :   // we don't need to set them up individually here. either it'll be in the map when you look,</a>
 <a name="25"><span class="lineNum">      25 </span>            :   // or you're doing something wrong and should expect a crash regardless.</a>
 <a name="26"><span class="lineNum">      26 </span>            : };</a>
 <a name="27"><span class="lineNum">      27 </span>            : </a>
 <a name="28"><span class="lineNum">      28 </span>            : /// Initialize a response completer for [key] and return that completer.</a>
-<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          4 : Completer&lt;SDKIPCResponse&gt; initResponseCompleter (String key) {</span></a>
-<a name="30"><span class="lineNum">      30 </span><span class="lineCov">         12 :   responseCompleters[key] = Completer();</span></a>
-<a name="31"><span class="lineNum">      31 </span><span class="lineCov">          8 :   return responseCompleters[key]!;</span></a>
+<a name="29"><span class="lineNum">      29 </span><span class="lineCov">          5 : Completer&lt;SDKIPCResponse&gt; initResponseCompleter (String key) {</span></a>
+<a name="30"><span class="lineNum">      30 </span><span class="lineCov">         15 :   responseCompleters[key] = Completer();</span></a>
+<a name="31"><span class="lineNum">      31 </span><span class="lineCov">         10 :   return responseCompleters[key]!;</span></a>
 <a name="32"><span class="lineNum">      32 </span>            : }</a>
 </pre>
       </td>

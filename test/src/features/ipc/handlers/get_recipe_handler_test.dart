@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pylons_sdk/pylons_sdk.dart';
@@ -21,7 +22,7 @@ void main() {
 
   test('should complete the get  recipe future with data ', () async {
     initResponseCompleter(Strings.GET_RECIPE);
-    var sdkResponse = SDKIPCResponse(success: true, error: '', data: MOCK_RECIPE.toProto3Json(), errorCode: '', action: '');
+    var sdkResponse = SDKIPCResponse(success: true, error: '', data: jsonEncode(MOCK_RECIPE.toProto3Json()), errorCode: '', action: '');
     var handler = GetRecipeHandler();
 
     Future.delayed(Duration(seconds: 1), () {
@@ -40,9 +41,7 @@ void main() {
     var sdkResponse = SDKIPCResponse(
         success: true,
         error: '',
-        data: Recipe()
-          ..createEmptyInstance()
-          ..toProto3Json(), // Will throw parsing error
+        data: '', // Will throw parsing error
         errorCode: '',
         action: '');
     var handler = GetRecipeHandler();

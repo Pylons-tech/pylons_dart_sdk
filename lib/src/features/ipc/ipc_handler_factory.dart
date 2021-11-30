@@ -16,6 +16,7 @@ class IPCHandlerFactory {
   /// Fetches and resolves appropriate [IPCHandler] instance for [sdkIpcResponse], or completes
   /// the completer if no specific handler is set.
   static void getHandler(SDKIPCResponse sdkipcResponse) {
+    print(sdkipcResponse);
     if (!responseCompleters.containsKey(sdkipcResponse.action)) {
       throw Exception('Unexpected response for unsent message of type ${sdkipcResponse.action}');
     }
