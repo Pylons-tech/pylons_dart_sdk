@@ -31,13 +31,13 @@
             <td class="headerValue">new_lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">57</td>
+            <td class="headerCovTableEntry">58</td>
             <td class="headerCovTableEntry">81</td>
-            <td class="headerCovTableEntryLo">70.4 %</td>
+            <td class="headerCovTableEntryLo">71.6 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2021-11-23 18:47:13</td>
+            <td class="headerValue">2021-11-30 18:11:24</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -142,159 +142,157 @@
 <a name="80"><span class="lineNum">      80 </span><span class="lineCov">          1 :   @override</span></a>
 <a name="81"><span class="lineNum">      81 </span>            :   Future&lt;SDKIPCResponse&lt;Cookbook&gt;&gt; getCookbook(String id) {</a>
 <a name="82"><span class="lineNum">      82 </span><span class="lineCov">          2 :     return Future&lt;SDKIPCResponse&lt;Cookbook&gt;&gt;.sync(() async {</span></a>
-<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          2 :       final response = await _dispatch(Strings.GET_COOKBOOK, id);</span></a>
-<a name="84"><span class="lineNum">      84 </span><span class="lineCov">          1 :       if (response is SDKIPCResponse&lt;Cookbook&gt;) {</span></a>
-<a name="85"><span class="lineNum">      85 </span>            :         return response;</a>
-<a name="86"><span class="lineNum">      86 </span>            :       }</a>
-<a name="87"><span class="lineNum">      87 </span><span class="lineNoCov">          0 :       throw Exception('Response malformed');</span></a>
-<a name="88"><span class="lineNum">      88 </span>            :     });</a>
-<a name="89"><span class="lineNum">      89 </span>            :   }</a>
-<a name="90"><span class="lineNum">      90 </span>            : </a>
-<a name="91"><span class="lineNum">      91 </span>            :   @override</a>
-<a name="92"><span class="lineNum">      92 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; getProfile() async {</span></a>
-<a name="93"><span class="lineNum">      93 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
-<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          2 :       return await _dispatch(Strings.GET_PROFILE, '');</span></a>
-<a name="95"><span class="lineNum">      95 </span>            :     });</a>
-<a name="96"><span class="lineNum">      96 </span>            :   }</a>
-<a name="97"><span class="lineNum">      97 </span>            : </a>
-<a name="98"><span class="lineNum">      98 </span>            :   @override</a>
-<a name="99"><span class="lineNum">      99 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&lt;List&lt;Recipe&gt;&gt;&gt; getRecipes(String cookbook) async {</span></a>
-<a name="100"><span class="lineNum">     100 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
-<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          4 :       final response = await _dispatch(Strings.GET_RECIPES, jsonEncode({Strings.COOKBOOK_ID: cookbook}));</span></a>
-<a name="102"><span class="lineNum">     102 </span><span class="lineCov">          1 :       if (response is SDKIPCResponse&lt;List&lt;Recipe&gt;&gt;) {</span></a>
-<a name="103"><span class="lineNum">     103 </span>            :         return response;</a>
-<a name="104"><span class="lineNum">     104 </span>            :       }</a>
-<a name="105"><span class="lineNum">     105 </span><span class="lineNoCov">          0 :       throw Exception('Response malformed');</span></a>
-<a name="106"><span class="lineNum">     106 </span>            :     });</a>
-<a name="107"><span class="lineNum">     107 </span>            :   }</a>
-<a name="108"><span class="lineNum">     108 </span>            : </a>
-<a name="109"><span class="lineNum">     109 </span>            :   @override</a>
-<a name="110"><span class="lineNum">     110 </span><span class="lineNoCov">          0 :   Future&lt;SDKIPCResponse&gt; getTrades() async {</span></a>
-<a name="111"><span class="lineNum">     111 </span><span class="lineNoCov">          0 :     return Future.sync(() async {</span></a>
-<a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 :       return await _dispatch(Strings.GET_TRADES, '');</span></a>
-<a name="113"><span class="lineNum">     113 </span>            :     });</a>
-<a name="114"><span class="lineNum">     114 </span>            :   }</a>
-<a name="115"><span class="lineNum">     115 </span>            : </a>
-<a name="116"><span class="lineNum">     116 </span>            :   @override</a>
-<a name="117"><span class="lineNum">     117 </span><span class="lineNoCov">          0 :   Future&lt;SDKIPCResponse&gt; txBuyItem(String tradeId, String paymentId) async {</span></a>
-<a name="118"><span class="lineNum">     118 </span><span class="lineNoCov">          0 :     return Future.sync(() async {</span></a>
-<a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 :       return await _dispatch(Strings.TX_BUY_ITEMS, jsonEncode([tradeId, paymentId]));</span></a>
-<a name="120"><span class="lineNum">     120 </span>            :     });</a>
-<a name="121"><span class="lineNum">     121 </span>            :   }</a>
-<a name="122"><span class="lineNum">     122 </span>            : </a>
-<a name="123"><span class="lineNum">     123 </span><span class="lineNoCov">          0 :   @override</span></a>
-<a name="124"><span class="lineNum">     124 </span>            :   Future&lt;SDKIPCResponse&gt; txBuyPylons(int pylons, String paymentId) {</a>
-<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :     return Future.sync(() async {</span></a>
-<a name="126"><span class="lineNum">     126 </span><span class="lineNoCov">          0 :       return await _dispatch(Strings.TX_BUY_PYLONS, jsonEncode([pylons, paymentId]));</span></a>
-<a name="127"><span class="lineNum">     127 </span>            :     });</a>
-<a name="128"><span class="lineNum">     128 </span>            :   }</a>
-<a name="129"><span class="lineNum">     129 </span>            : </a>
-<a name="130"><span class="lineNum">     130 </span>            :   @override</a>
-<a name="131"><span class="lineNum">     131 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; txCreateCookbook(Cookbook cookbook) async {</span></a>
-<a name="132"><span class="lineNum">     132 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
-<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          4 :       return await _dispatch(Strings.TX_CREATE_COOKBOOK, jsonEncode(cookbook.toProto3Json()));</span></a>
-<a name="134"><span class="lineNum">     134 </span>            :     });</a>
-<a name="135"><span class="lineNum">     135 </span>            :   }</a>
-<a name="136"><span class="lineNum">     136 </span>            : </a>
-<a name="137"><span class="lineNum">     137 </span>            :   @override</a>
-<a name="138"><span class="lineNum">     138 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; txCreateRecipe(Recipe recipe) async {</span></a>
-<a name="139"><span class="lineNum">     139 </span><span class="lineCov">          1 :     ValidateRecipe.validate(recipe);</span></a>
-<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
-<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          4 :       return await _dispatch(Strings.TX_CREATE_RECIPE, jsonEncode(recipe.toProto3Json()));</span></a>
-<a name="142"><span class="lineNum">     142 </span>            :     });</a>
-<a name="143"><span class="lineNum">     143 </span>            :   }</a>
-<a name="144"><span class="lineNum">     144 </span>            : </a>
-<a name="145"><span class="lineNum">     145 </span>            :   @override</a>
-<a name="146"><span class="lineNum">     146 </span><span class="lineNoCov">          0 :   Future&lt;SDKIPCResponse&gt; txDisableRecipe(String recipeId) async {</span></a>
-<a name="147"><span class="lineNum">     147 </span><span class="lineNoCov">          0 :     throw UnimplementedError();</span></a>
-<a name="148"><span class="lineNum">     148 </span>            :   }</a>
-<a name="149"><span class="lineNum">     149 </span>            : </a>
-<a name="150"><span class="lineNum">     150 </span>            :   @override</a>
-<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; txEnableRecipe(String cookbookId, String recipeId, String version) async {</span></a>
-<a name="152"><span class="lineNum">     152 </span><span class="lineCov">          2 :     return Future&lt;SDKIPCResponse&gt;.sync(() async {</span></a>
-<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          4 :       return await _dispatch(Strings.TX_ENABLE_RECIPE, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.RECIPE_ID: recipeId, 'version': version}));</span></a>
-<a name="154"><span class="lineNum">     154 </span>            :     });</a>
-<a name="155"><span class="lineNum">     155 </span>            :   }</a>
-<a name="156"><span class="lineNum">     156 </span>            : </a>
-<a name="157"><span class="lineNum">     157 </span>            :   @override</a>
-<a name="158"><span class="lineNum">     158 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; txExecuteRecipe(</span></a>
-<a name="159"><span class="lineNum">     159 </span>            :       {required String cookbookId, required String recipeName, required List&lt;String&gt; itemIds, required int coinInputIndex, required List&lt;PaymentInfo&gt; paymentInfo}) async {</a>
-<a name="160"><span class="lineNum">     160 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">          2 :       return await _dispatch(</span></a>
-<a name="162"><span class="lineNum">     162 </span>            :           Strings.TX_EXECUTE_RECIPE,</a>
-<a name="163"><span class="lineNum">     163 </span><span class="lineCov">          1 :           jsonEncode(</span></a>
-<a name="164"><span class="lineNum">     164 </span><span class="lineCov">          3 :               MsgExecuteRecipe(creator: '', cookbookID: cookbookId, recipeID: recipeName, coinInputsIndex: fixnum.Int64(coinInputIndex), itemIDs: itemIds, paymentInfos: paymentInfo).toProto3Json()));</span></a>
-<a name="165"><span class="lineNum">     165 </span>            :     });</a>
-<a name="166"><span class="lineNum">     166 </span>            :   }</a>
-<a name="167"><span class="lineNum">     167 </span>            : </a>
-<a name="168"><span class="lineNum">     168 </span>            :   @override</a>
-<a name="169"><span class="lineNum">     169 </span><span class="lineNoCov">          0 :   Future&lt;SDKIPCResponse&gt; txPlaceForSale(Item item, int price) async {</span></a>
-<a name="170"><span class="lineNum">     170 </span><span class="lineNoCov">          0 :     return Future.sync(() async {</span></a>
-<a name="171"><span class="lineNum">     171 </span><span class="lineNoCov">          0 :       return await _dispatch(Strings.TX_PLACE_FOR_SALE, jsonEncode([jsonEncode(item.toProto3Json()), price]));</span></a>
-<a name="172"><span class="lineNum">     172 </span>            :     });</a>
-<a name="173"><span class="lineNum">     173 </span>            :   }</a>
-<a name="174"><span class="lineNum">     174 </span>            : </a>
-<a name="175"><span class="lineNum">     175 </span>            :   @override</a>
-<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; txUpdateCookbook(Cookbook cookbook) async {</span></a>
-<a name="177"><span class="lineNum">     177 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
-<a name="178"><span class="lineNum">     178 </span><span class="lineCov">          4 :       return await _dispatch(Strings.TX_UPDATE_COOKBOOK, jsonEncode(cookbook.toProto3Json()));</span></a>
-<a name="179"><span class="lineNum">     179 </span>            :     });</a>
-<a name="180"><span class="lineNum">     180 </span>            :   }</a>
-<a name="181"><span class="lineNum">     181 </span>            : </a>
-<a name="182"><span class="lineNum">     182 </span>            :   @override</a>
-<a name="183"><span class="lineNum">     183 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; txUpdateRecipe(Recipe recipe) async {</span></a>
-<a name="184"><span class="lineNum">     184 </span><span class="lineCov">          1 :     ValidateRecipe.validate(recipe);</span></a>
-<a name="185"><span class="lineNum">     185 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
-<a name="186"><span class="lineNum">     186 </span><span class="lineCov">          4 :       return await _dispatch(Strings.TX_UPDATE_RECIPE, jsonEncode(recipe.toProto3Json()));</span></a>
+<a name="83"><span class="lineNum">      83 </span><span class="lineCov">          4 :       final response = await _dispatch(Strings.GET_COOKBOOK, jsonEncode({</span></a>
+<a name="84"><span class="lineNum">      84 </span>            :         Strings.COOKBOOK_ID : id</a>
+<a name="85"><span class="lineNum">      85 </span>            :       }));</a>
+<a name="86"><span class="lineNum">      86 </span><span class="lineCov">          1 :       if (response is SDKIPCResponse&lt;Cookbook&gt;) {</span></a>
+<a name="87"><span class="lineNum">      87 </span>            :         return response;</a>
+<a name="88"><span class="lineNum">      88 </span>            :       }</a>
+<a name="89"><span class="lineNum">      89 </span><span class="lineNoCov">          0 :       throw Exception('Response malformed');</span></a>
+<a name="90"><span class="lineNum">      90 </span>            :     });</a>
+<a name="91"><span class="lineNum">      91 </span>            :   }</a>
+<a name="92"><span class="lineNum">      92 </span>            : </a>
+<a name="93"><span class="lineNum">      93 </span>            :   @override</a>
+<a name="94"><span class="lineNum">      94 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; getProfile() async {</span></a>
+<a name="95"><span class="lineNum">      95 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
+<a name="96"><span class="lineNum">      96 </span><span class="lineCov">          2 :       return await _dispatch(Strings.GET_PROFILE, '');</span></a>
+<a name="97"><span class="lineNum">      97 </span>            :     });</a>
+<a name="98"><span class="lineNum">      98 </span>            :   }</a>
+<a name="99"><span class="lineNum">      99 </span>            : </a>
+<a name="100"><span class="lineNum">     100 </span>            :   @override</a>
+<a name="101"><span class="lineNum">     101 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&lt;List&lt;Recipe&gt;&gt;&gt; getRecipes(String cookbook) async {</span></a>
+<a name="102"><span class="lineNum">     102 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
+<a name="103"><span class="lineNum">     103 </span><span class="lineCov">          4 :       final response = await _dispatch(Strings.GET_RECIPES, jsonEncode({Strings.COOKBOOK_ID: cookbook}));</span></a>
+<a name="104"><span class="lineNum">     104 </span><span class="lineCov">          1 :       if (response is SDKIPCResponse&lt;List&lt;Recipe&gt;&gt;) {</span></a>
+<a name="105"><span class="lineNum">     105 </span>            :         return response;</a>
+<a name="106"><span class="lineNum">     106 </span>            :       }</a>
+<a name="107"><span class="lineNum">     107 </span><span class="lineNoCov">          0 :       throw Exception('Response malformed');</span></a>
+<a name="108"><span class="lineNum">     108 </span>            :     });</a>
+<a name="109"><span class="lineNum">     109 </span>            :   }</a>
+<a name="110"><span class="lineNum">     110 </span>            : </a>
+<a name="111"><span class="lineNum">     111 </span>            :   @override</a>
+<a name="112"><span class="lineNum">     112 </span><span class="lineNoCov">          0 :   Future&lt;SDKIPCResponse&gt; getTrades() async {</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineNoCov">          0 :     return Future.sync(() async {</span></a>
+<a name="114"><span class="lineNum">     114 </span><span class="lineNoCov">          0 :       return await _dispatch(Strings.GET_TRADES, '');</span></a>
+<a name="115"><span class="lineNum">     115 </span>            :     });</a>
+<a name="116"><span class="lineNum">     116 </span>            :   }</a>
+<a name="117"><span class="lineNum">     117 </span>            : </a>
+<a name="118"><span class="lineNum">     118 </span>            :   @override</a>
+<a name="119"><span class="lineNum">     119 </span><span class="lineNoCov">          0 :   Future&lt;SDKIPCResponse&gt; txBuyItem(String tradeId, String paymentId) async {</span></a>
+<a name="120"><span class="lineNum">     120 </span><span class="lineNoCov">          0 :     return Future.sync(() async {</span></a>
+<a name="121"><span class="lineNum">     121 </span><span class="lineNoCov">          0 :       return await _dispatch(Strings.TX_BUY_ITEMS, jsonEncode([tradeId, paymentId]));</span></a>
+<a name="122"><span class="lineNum">     122 </span>            :     });</a>
+<a name="123"><span class="lineNum">     123 </span>            :   }</a>
+<a name="124"><span class="lineNum">     124 </span>            : </a>
+<a name="125"><span class="lineNum">     125 </span><span class="lineNoCov">          0 :   @override</span></a>
+<a name="126"><span class="lineNum">     126 </span>            :   Future&lt;SDKIPCResponse&gt; txBuyPylons(int pylons, String paymentId) {</a>
+<a name="127"><span class="lineNum">     127 </span><span class="lineNoCov">          0 :     return Future.sync(() async {</span></a>
+<a name="128"><span class="lineNum">     128 </span><span class="lineNoCov">          0 :       return await _dispatch(Strings.TX_BUY_PYLONS, jsonEncode([pylons, paymentId]));</span></a>
+<a name="129"><span class="lineNum">     129 </span>            :     });</a>
+<a name="130"><span class="lineNum">     130 </span>            :   }</a>
+<a name="131"><span class="lineNum">     131 </span>            : </a>
+<a name="132"><span class="lineNum">     132 </span>            :   @override</a>
+<a name="133"><span class="lineNum">     133 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; txCreateCookbook(Cookbook cookbook) async {</span></a>
+<a name="134"><span class="lineNum">     134 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
+<a name="135"><span class="lineNum">     135 </span><span class="lineCov">          4 :       return await _dispatch(Strings.TX_CREATE_COOKBOOK, jsonEncode(cookbook.toProto3Json()));</span></a>
+<a name="136"><span class="lineNum">     136 </span>            :     });</a>
+<a name="137"><span class="lineNum">     137 </span>            :   }</a>
+<a name="138"><span class="lineNum">     138 </span>            : </a>
+<a name="139"><span class="lineNum">     139 </span>            :   @override</a>
+<a name="140"><span class="lineNum">     140 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; txCreateRecipe(Recipe recipe) async {</span></a>
+<a name="141"><span class="lineNum">     141 </span><span class="lineCov">          1 :     ValidateRecipe.validate(recipe);</span></a>
+<a name="142"><span class="lineNum">     142 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
+<a name="143"><span class="lineNum">     143 </span><span class="lineCov">          4 :       return await _dispatch(Strings.TX_CREATE_RECIPE, jsonEncode(recipe.toProto3Json()));</span></a>
+<a name="144"><span class="lineNum">     144 </span>            :     });</a>
+<a name="145"><span class="lineNum">     145 </span>            :   }</a>
+<a name="146"><span class="lineNum">     146 </span>            : </a>
+<a name="147"><span class="lineNum">     147 </span>            :   @override</a>
+<a name="148"><span class="lineNum">     148 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; txExecuteRecipe(</span></a>
+<a name="149"><span class="lineNum">     149 </span>            :       {required String cookbookId, required String recipeName, required List&lt;String&gt; itemIds, required int coinInputIndex, required List&lt;PaymentInfo&gt; paymentInfo}) async {</a>
+<a name="150"><span class="lineNum">     150 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
+<a name="151"><span class="lineNum">     151 </span><span class="lineCov">          2 :       return await _dispatch(</span></a>
+<a name="152"><span class="lineNum">     152 </span>            :           Strings.TX_EXECUTE_RECIPE,</a>
+<a name="153"><span class="lineNum">     153 </span><span class="lineCov">          1 :           jsonEncode(</span></a>
+<a name="154"><span class="lineNum">     154 </span><span class="lineCov">          3 :               MsgExecuteRecipe(creator: '', cookbookID: cookbookId, recipeID: recipeName, coinInputsIndex: fixnum.Int64(coinInputIndex), itemIDs: itemIds, paymentInfos: paymentInfo).toProto3Json()));</span></a>
+<a name="155"><span class="lineNum">     155 </span>            :     });</a>
+<a name="156"><span class="lineNum">     156 </span>            :   }</a>
+<a name="157"><span class="lineNum">     157 </span>            : </a>
+<a name="158"><span class="lineNum">     158 </span>            :   @override</a>
+<a name="159"><span class="lineNum">     159 </span><span class="lineNoCov">          0 :   Future&lt;SDKIPCResponse&gt; txPlaceForSale(Item item, int price) async {</span></a>
+<a name="160"><span class="lineNum">     160 </span><span class="lineNoCov">          0 :     return Future.sync(() async {</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineNoCov">          0 :       return await _dispatch(Strings.TX_PLACE_FOR_SALE, jsonEncode([jsonEncode(item.toProto3Json()), price]));</span></a>
+<a name="162"><span class="lineNum">     162 </span>            :     });</a>
+<a name="163"><span class="lineNum">     163 </span>            :   }</a>
+<a name="164"><span class="lineNum">     164 </span>            : </a>
+<a name="165"><span class="lineNum">     165 </span>            :   @override</a>
+<a name="166"><span class="lineNum">     166 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; txUpdateCookbook(Cookbook cookbook) async {</span></a>
+<a name="167"><span class="lineNum">     167 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
+<a name="168"><span class="lineNum">     168 </span><span class="lineCov">          4 :       return await _dispatch(Strings.TX_UPDATE_COOKBOOK, jsonEncode(cookbook.toProto3Json()));</span></a>
+<a name="169"><span class="lineNum">     169 </span>            :     });</a>
+<a name="170"><span class="lineNum">     170 </span>            :   }</a>
+<a name="171"><span class="lineNum">     171 </span>            : </a>
+<a name="172"><span class="lineNum">     172 </span>            :   @override</a>
+<a name="173"><span class="lineNum">     173 </span><span class="lineCov">          1 :   Future&lt;SDKIPCResponse&gt; txUpdateRecipe(Recipe recipe) async {</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">          1 :     ValidateRecipe.validate(recipe);</span></a>
+<a name="175"><span class="lineNum">     175 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
+<a name="176"><span class="lineNum">     176 </span><span class="lineCov">          4 :       return await _dispatch(Strings.TX_UPDATE_RECIPE, jsonEncode(recipe.toProto3Json()));</span></a>
+<a name="177"><span class="lineNum">     177 </span>            :     });</a>
+<a name="178"><span class="lineNum">     178 </span>            :   }</a>
+<a name="179"><span class="lineNum">     179 </span>            : </a>
+<a name="180"><span class="lineNum">     180 </span><span class="lineNoCov">          0 :   @override</span></a>
+<a name="181"><span class="lineNum">     181 </span>            :   Future&lt;bool&gt; exists() {</a>
+<a name="182"><span class="lineNum">     182 </span><span class="lineNoCov">          0 :     return Future.sync(() {</span></a>
+<a name="183"><span class="lineNum">     183 </span><span class="lineNoCov">          0 :       if (Platform.isAndroid) {</span></a>
+<a name="184"><span class="lineNum">     184 </span><span class="lineNoCov">          0 :         return canLaunch(BASE_UNI_LINK);</span></a>
+<a name="185"><span class="lineNum">     185 </span>            :       }</a>
+<a name="186"><span class="lineNum">     186 </span><span class="lineNoCov">          0 :       return canLaunch(BASE_UNI_LINK_IOS);</span></a>
 <a name="187"><span class="lineNum">     187 </span>            :     });</a>
 <a name="188"><span class="lineNum">     188 </span>            :   }</a>
 <a name="189"><span class="lineNum">     189 </span>            : </a>
-<a name="190"><span class="lineNum">     190 </span><span class="lineNoCov">          0 :   @override</span></a>
-<a name="191"><span class="lineNum">     191 </span>            :   Future&lt;bool&gt; exists() {</a>
-<a name="192"><span class="lineNum">     192 </span><span class="lineNoCov">          0 :     return Future.sync(() {</span></a>
-<a name="193"><span class="lineNum">     193 </span><span class="lineNoCov">          0 :       if (Platform.isAndroid) {</span></a>
-<a name="194"><span class="lineNum">     194 </span><span class="lineNoCov">          0 :         return canLaunch(BASE_UNI_LINK);</span></a>
-<a name="195"><span class="lineNum">     195 </span>            :       }</a>
-<a name="196"><span class="lineNum">     196 </span><span class="lineNoCov">          0 :       return canLaunch(BASE_UNI_LINK_IOS);</span></a>
-<a name="197"><span class="lineNum">     197 </span>            :     });</a>
-<a name="198"><span class="lineNum">     198 </span>            :   }</a>
-<a name="199"><span class="lineNum">     199 </span>            : </a>
-<a name="200"><span class="lineNum">     200 </span>            : </a>
-<a name="201"><span class="lineNum">     201 </span>            : </a>
-<a name="202"><span class="lineNum">     202 </span>            : </a>
-<a name="203"><span class="lineNum">     203 </span>            :   /// Sends [unilink] to wallet app.</a>
-<a name="204"><span class="lineNum">     204 </span>            :   ///</a>
-<a name="205"><span class="lineNum">     205 </span>            :   /// Throws a [NoWalletException] if the wallet doesn't exist.</a>
-<a name="206"><span class="lineNum">     206 </span><span class="lineCov">          1 :   void dispatchUniLink(String uniLink) async {</span></a>
-<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          4 :     await canLaunch(uniLink) ? await launch(uniLink) : throw NoWalletException();</span></a>
+<a name="190"><span class="lineNum">     190 </span>            :   /// Sends [unilink] to wallet app.</a>
+<a name="191"><span class="lineNum">     191 </span>            :   ///</a>
+<a name="192"><span class="lineNum">     192 </span>            :   /// Throws a [NoWalletException] if the wallet doesn't exist.</a>
+<a name="193"><span class="lineNum">     193 </span><span class="lineCov">          1 :   void dispatchUniLink(String uniLink) async {</span></a>
+<a name="194"><span class="lineNum">     194 </span><span class="lineCov">          4 :     await canLaunch(uniLink) ? await launch(uniLink) : throw NoWalletException();</span></a>
+<a name="195"><span class="lineNum">     195 </span>            :   }</a>
+<a name="196"><span class="lineNum">     196 </span>            : </a>
+<a name="197"><span class="lineNum">     197 </span>            :   /// Create a unilink for the current OS.</a>
+<a name="198"><span class="lineNum">     198 </span>            :   ///</a>
+<a name="199"><span class="lineNum">     199 </span>            :   /// [encodedMessage] is the message to be sent to the wallet; [isAndroid] is whether or not we're running on Android.</a>
+<a name="200"><span class="lineNum">     200 </span>            :   ///</a>
+<a name="201"><span class="lineNum">     201 </span>            :   /// Returns a string containing the correct platform-specific unilink.</a>
+<a name="202"><span class="lineNum">     202 </span><span class="lineCov">          1 :   String createLinkBasedOnOS({required String encodedMessage, required bool isAndroid}) {</span></a>
+<a name="203"><span class="lineNum">     203 </span>            :     if (isAndroid) {</a>
+<a name="204"><span class="lineNum">     204 </span><span class="lineCov">          1 :       return '$BASE_UNI_LINK/$encodedMessage';</span></a>
+<a name="205"><span class="lineNum">     205 </span>            :     }</a>
+<a name="206"><span class="lineNum">     206 </span>            : </a>
+<a name="207"><span class="lineNum">     207 </span><span class="lineCov">          1 :     return '$BASE_UNI_LINK_IOS$encodedMessage';</span></a>
 <a name="208"><span class="lineNum">     208 </span>            :   }</a>
 <a name="209"><span class="lineNum">     209 </span>            : </a>
-<a name="210"><span class="lineNum">     210 </span>            :   /// Create a unilink for the current OS.</a>
+<a name="210"><span class="lineNum">     210 </span>            :   /// Get the host for the current OS.</a>
 <a name="211"><span class="lineNum">     211 </span>            :   ///</a>
-<a name="212"><span class="lineNum">     212 </span>            :   /// [encodedMessage] is the message to be sent to the wallet; [isAndroid] is whether or not we're running on Android.</a>
+<a name="212"><span class="lineNum">     212 </span>            :   /// [isAndroid] is whether or not we're running on Android.</a>
 <a name="213"><span class="lineNum">     213 </span>            :   ///</a>
-<a name="214"><span class="lineNum">     214 </span>            :   /// Returns a string containing the correct platform-specific unilink.</a>
-<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          1 :   String createLinkBasedOnOS({required String encodedMessage, required bool isAndroid}) {</span></a>
+<a name="214"><span class="lineNum">     214 </span>            :   /// Returns a string containing the correct platform-specific host.</a>
+<a name="215"><span class="lineNum">     215 </span><span class="lineCov">          1 :   String getHostBasedOnOS(bool isAndroid) {</span></a>
 <a name="216"><span class="lineNum">     216 </span>            :     if (isAndroid) {</a>
-<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          1 :       return '$BASE_UNI_LINK/$encodedMessage';</span></a>
+<a name="217"><span class="lineNum">     217 </span><span class="lineCov">          1 :       return host;</span></a>
 <a name="218"><span class="lineNum">     218 </span>            :     }</a>
 <a name="219"><span class="lineNum">     219 </span>            : </a>
-<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          1 :     return '$BASE_UNI_LINK_IOS$encodedMessage';</span></a>
+<a name="220"><span class="lineNum">     220 </span><span class="lineCov">          2 :     return 'pylons-$host';</span></a>
 <a name="221"><span class="lineNum">     221 </span>            :   }</a>
 <a name="222"><span class="lineNum">     222 </span>            : </a>
-<a name="223"><span class="lineNum">     223 </span>            :   /// Get the host for the current OS.</a>
-<a name="224"><span class="lineNum">     224 </span>            :   ///</a>
-<a name="225"><span class="lineNum">     225 </span>            :   /// [isAndroid] is whether or not we're running on Android.</a>
-<a name="226"><span class="lineNum">     226 </span>            :   ///</a>
-<a name="227"><span class="lineNum">     227 </span>            :   /// Returns a string containing the correct platform-specific host.</a>
-<a name="228"><span class="lineNum">     228 </span><span class="lineCov">          1 :   String getHostBasedOnOS(bool isAndroid) {</span></a>
-<a name="229"><span class="lineNum">     229 </span>            :     if (isAndroid) {</a>
-<a name="230"><span class="lineNum">     230 </span><span class="lineCov">          1 :       return host;</span></a>
-<a name="231"><span class="lineNum">     231 </span>            :     }</a>
-<a name="232"><span class="lineNum">     232 </span>            : </a>
-<a name="233"><span class="lineNum">     233 </span><span class="lineCov">          2 :     return 'pylons-$host';</span></a>
-<a name="234"><span class="lineNum">     234 </span>            :   }</a>
-<a name="235"><span class="lineNum">     235 </span>            : }</a>
+<a name="223"><span class="lineNum">     223 </span><span class="lineCov">          1 :   @override</span></a>
+<a name="224"><span class="lineNum">     224 </span>            :   Future&lt;SDKIPCResponse&lt;Recipe&gt;&gt; getRecipe(String cookbookId, String recipeId) {</a>
+<a name="225"><span class="lineNum">     225 </span><span class="lineCov">          2 :     return Future.sync(() async {</span></a>
+<a name="226"><span class="lineNum">     226 </span><span class="lineCov">          4 :       final response = await _dispatch(Strings.GET_RECIPE, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.RECIPE_ID: recipeId}));</span></a>
+<a name="227"><span class="lineNum">     227 </span><span class="lineCov">          1 :       if (response is SDKIPCResponse&lt;Recipe&gt;) {</span></a>
+<a name="228"><span class="lineNum">     228 </span>            :         return response;</a>
+<a name="229"><span class="lineNum">     229 </span>            :       }</a>
+<a name="230"><span class="lineNum">     230 </span><span class="lineNoCov">          0 :       throw Exception('Response malformed');</span></a>
+<a name="231"><span class="lineNum">     231 </span>            :     });</a>
+<a name="232"><span class="lineNum">     232 </span>            :   }</a>
+<a name="233"><span class="lineNum">     233 </span>            : }</a>
 </pre>
       </td>
     </tr>

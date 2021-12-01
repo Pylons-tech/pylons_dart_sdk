@@ -126,6 +126,13 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Get All recipes'),
             ),
+
+            ElevatedButton(
+              onPressed: () async {
+                getRecipe();
+              },
+              child: const Text('Get recipe'),
+            ),
           ],
         ),
       ),
@@ -304,5 +311,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void getCookbook() async {
     var sdkResponse = await PylonsWallet.instance.getCookbook(cookBookId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
+  }
+
+  void getRecipe() async {
+    var sdkResponse = await PylonsWallet.instance.getRecipe(cookBookId, recipeId);
+    log(sdkResponse.toString(), name: 'pylons_sdk');
+
   }
 }
