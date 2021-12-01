@@ -7,6 +7,7 @@ class Strings {
   static const String GET_RECIPES = 'getRecipes';
   static const String GET_RECIPE = 'getRecipe';
   static const String GET_TRADES = 'getTrades';
+  static const String GET_EXECUTION_BY_RECIPE_ID = 'getExecutionByRecipeId';
   static const String TX_BUY_ITEMS = 'txBuyItem';
   static const String TX_BUY_PYLONS = 'txBuyPylons';
   static const String TX_CREATE_COOKBOOK = 'txCreateCookbook';
@@ -32,6 +33,7 @@ class Strings {
   static const String ERR_MISSING_ITEM_INPUTS = 'missingItemInputs';
   static const String ERR_MALFORMED_RECIPES = 'malformedRecipes';
   static const String ERR_MALFORMED_RECIPE = 'malformedRecipe';
+  static const String ERR_MALFORMED_EXECUTION = 'malformedExecution';
   static const String ERR_JSON_EXPECTED = 'Json Object Expected';
   static const String ERR_MALFORMED_COOKBOOK = 'malformedCookbook';
   static const String COOKBOOK_ID = 'cookbookId';
