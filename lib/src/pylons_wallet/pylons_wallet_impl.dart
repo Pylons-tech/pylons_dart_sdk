@@ -11,6 +11,7 @@ import 'dart:io';
 
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
+import 'package:pylons_sdk/src/features/models/execution_list_by_recipe_response.dart';
 import 'package:pylons_sdk/src/features/validations/validate_recipe.dart';
 import 'package:pylons_sdk/src/generated/pylons/cookbook.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/item.pb.dart';
@@ -225,6 +226,18 @@ class PylonsWalletImpl implements PylonsWallet {
     return Future.sync(() async {
       final response = await _dispatch(Strings.GET_RECIPE, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.RECIPE_ID: recipeId}));
       if (response is SDKIPCResponse<Recipe>) {
+        return response;
+      }
+      throw Exception('Response malformed');
+    });
+  }
+
+  @override
+  Future<SDKIPCResponse<ExecutionListByRecipeResponse>> getExecutionBasedOnRecipe({required String cookbookId, required String recipeId}) {
+
+    return Future.sync(() async {
+      final response = await _dispatch(Strings.GET_EXECUTION_BY_RECIPE_ID, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.RECIPE_ID: recipeId}));
+      if (response is SDKIPCResponse<ExecutionListByRecipeResponse>) {
         return response;
       }
       throw Exception('Response malformed');

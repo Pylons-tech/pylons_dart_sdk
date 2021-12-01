@@ -6,11 +6,14 @@ import 'package:pylons_sdk/src/features/ipc/handlers/get_recipes_handler.dart';
 import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 
+import 'handlers/get_execution_by_recipe_handler.dart';
+
 class IPCHandlerFactory {
   static final Map<String, IPCHandler> handlers = {
     Strings.GET_COOKBOOK : GetCookbooksHandler(),
     Strings.GET_RECIPES : GetRecipesHandler(),
-    Strings.GET_RECIPE : GetRecipeHandler()
+    Strings.GET_RECIPE : GetRecipeHandler(),
+    Strings.GET_EXECUTION_BY_RECIPE_ID : GetExecutionByRecipeHandler(),
   };
 
   /// Fetches and resolves appropriate [IPCHandler] instance for [sdkIpcResponse], or completes

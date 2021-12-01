@@ -60,7 +60,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String cookBookId = "cookbook_cr305_1";
+  String cookBookId = "cookbook_jawad_1";
   String recipeId = "recipe_1";
 
   @override
@@ -132,6 +132,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 getRecipe();
               },
               child: const Text('Get recipe'),
+            ),
+
+
+            ElevatedButton(
+              onPressed: () async {
+                getExecutionListByRecipe();
+              },
+              child: const Text('Get execution list by recipe'),
             ),
           ],
         ),
@@ -236,7 +244,7 @@ class _MyHomePageState extends State<MyHomePage> {
         nodeVersion: "v0.1.3",
         name: "LOUD's Wooden sword lv1 buy recipe",
         description: "this recipe is used to buy wooden sword lv1.",
-        version: "v0.1.5",
+        version: "v1.0.5",
         coinInputs: [],
         itemInputs: [],
         entries: EntriesList(coinOutputs: [], itemOutputs: [
@@ -317,5 +325,10 @@ class _MyHomePageState extends State<MyHomePage> {
     var sdkResponse = await PylonsWallet.instance.getRecipe(cookBookId, recipeId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
 
+  }
+
+  void getExecutionListByRecipe() async {
+    var sdkResponse = await PylonsWallet.instance.getExecutionBasedOnRecipe(cookbookId: cookBookId, recipeId: recipeId);
+    log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 }

@@ -7,6 +7,7 @@ import 'package:pylons_sdk/pylons_sdk.dart';
 import 'package:pylons_sdk/src/core/constants/strings.dart';
 import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
 import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
+import 'package:pylons_sdk/src/features/models/execution_list_by_recipe_response.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 import 'package:pylons_sdk/src/pylons_wallet/pylons_wallet_impl.dart';
 import '../mocks/mock_constants.dart';
@@ -26,6 +27,26 @@ void main() {
   updateCookBookTest();
   createRecipeTest();
   getRecipeTest();
+  getExecutionByRecipeTest();
+}
+
+void getExecutionByRecipeTest() {
+  test('should get execution from the wallet', () async {
+    mockChannelHandler();
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    Future.delayed(Duration(milliseconds: 500), () {
+      final sdkResponse = SDKIPCResponse<ExecutionListByRecipeResponse>(success: true, error: '', data:  ExecutionListByRecipeResponse.empty(), errorCode: '', action: Strings.GET_EXECUTION_BY_RECIPE_ID);
+      responseCompleters[Strings.GET_EXECUTION_BY_RECIPE_ID]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.getExecutionBasedOnRecipe(cookbookId: MOCK_COOKBOOK_ID,recipeId: MOCK_RECIPE_ID);
+
+    expect(response.action, Strings.GET_EXECUTION_BY_RECIPE_ID);
+  });
 }
 
 void getRecipeTest() {
