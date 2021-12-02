@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2021-12-01 22:25:35</td>
+            <td class="headerValue">2021-12-02 18:20:49</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">0</td>
@@ -80,7 +80,7 @@
 <a name="18"><span class="lineNum">      18 </span>            : import 'pylons_wallet/pylons_wallet_impl.dart';</a>
 <a name="19"><span class="lineNum">      19 </span>            : import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';</a>
 <a name="20"><span class="lineNum">      20 </span>            : </a>
-<a name="21"><span class="lineNum">      21 </span><span class="lineCov">         12 : enum PylonsMode { dev, prod }</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">         13 : enum PylonsMode { dev, prod }</span></a>
 <a name="22"><span class="lineNum">      22 </span>            : </a>
 <a name="23"><span class="lineNum">      23 </span>            : /// The PylonsWallet class is the main endpoint developers use for structured,</a>
 <a name="24"><span class="lineNum">      24 </span>            : /// high-level interactions with the Pylons wallet.</a>
@@ -555,9 +555,18 @@
 <a name="493"><span class="lineNum">     493 </span>            : </a>
 <a name="494"><span class="lineNum">     494 </span>            : </a>
 <a name="495"><span class="lineNum">     495 </span>            : </a>
-<a name="496"><span class="lineNum">     496 </span>            : </a>
-<a name="497"><span class="lineNum">     497 </span>            : </a>
-<a name="498"><span class="lineNum">     498 </span>            : }</a>
+<a name="496"><span class="lineNum">     496 </span>            :   /// This method returns the get item by id</a>
+<a name="497"><span class="lineNum">     497 </span>            :   /// Input : [cookbookId] the id of the cookbook which contains the item, [itemId] the id of the item</a>
+<a name="498"><span class="lineNum">     498 </span>            :   /// Output: [Item] contains the item based on the id</a>
+<a name="499"><span class="lineNum">     499 </span>            :   Future&lt;SDKIPCResponse&lt;Item&gt;&gt; getItemById({required String cookbookId, required String itemId});</a>
+<a name="500"><span class="lineNum">     500 </span>            : </a>
+<a name="501"><span class="lineNum">     501 </span>            : </a>
+<a name="502"><span class="lineNum">     502 </span>            : </a>
+<a name="503"><span class="lineNum">     503 </span>            : </a>
+<a name="504"><span class="lineNum">     504 </span>            : </a>
+<a name="505"><span class="lineNum">     505 </span>            : </a>
+<a name="506"><span class="lineNum">     506 </span>            : </a>
+<a name="507"><span class="lineNum">     507 </span>            : }</a>
 </pre>
       </td>
     </tr>

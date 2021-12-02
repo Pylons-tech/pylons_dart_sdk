@@ -42,15 +42,6 @@ class _MyAppState extends State<MyApp> {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -62,6 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   String cookBookId = "cookbook_jawad_1";
   String recipeId = "recipe_1";
+  String itemId = "J4XcRLXK2Hm";
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -141,6 +135,17 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Get execution list by recipe'),
             ),
+
+
+
+            ElevatedButton(
+              onPressed: () async {
+                getItemById();
+              },
+              child: const Text('Get Item By Id'),
+            ),
+
+
           ],
         ),
       ),
@@ -313,7 +318,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Future getRecipes() async {
     var sdkResponse = await PylonsWallet.instance.getRecipes(cookBookId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
-    // PylonsWallet.inst
   }
 
   void getCookbook() async {
@@ -329,6 +333,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void getExecutionListByRecipe() async {
     var sdkResponse = await PylonsWallet.instance.getExecutionBasedOnRecipe(cookbookId: cookBookId, recipeId: recipeId);
+    log(sdkResponse.toString(), name: 'pylons_sdk');
+  }
+
+
+  void getItemById() async {
+    var sdkResponse = await PylonsWallet.instance.getItemById(cookbookId: cookBookId,  itemId: itemId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 }
