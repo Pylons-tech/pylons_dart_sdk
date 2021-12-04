@@ -54,6 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
   String cookBookId = "cookbook_jawad_1";
   String recipeId = "recipe_1";
   String ownerId = "pylo1u0d99clv4k4gdfzpwsdhllsl5n62u44xwacjcc";
+  String itemId = "J4XcRLXK2Hm";
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -142,6 +145,17 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Get list by owner'),
             ),
+
+
+
+            ElevatedButton(
+              onPressed: () async {
+                getItemById();
+              },
+              child: const Text('Get Item By Id'),
+            ),
+
+
           ],
         ),
       ),
@@ -314,7 +328,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Future getRecipes() async {
     var sdkResponse = await PylonsWallet.instance.getRecipes(cookBookId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
-    // PylonsWallet.inst
   }
 
   void getCookbook() async {
@@ -335,6 +348,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void getItemListByOwner() async {
     var sdkResponse = await PylonsWallet.instance.getItemListByOwner(owner: ownerId);
+    log(sdkResponse.toString(), name: 'pylons_sdk');
+  }
+
+
+  void getItemById() async {
+    var sdkResponse = await PylonsWallet.instance.getItemById(cookbookId: cookBookId,  itemId: itemId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 }

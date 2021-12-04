@@ -9,6 +9,7 @@ class Strings {
   static const String GET_TRADES = 'getTrades';
   static const String GET_EXECUTION_BY_RECIPE_ID = 'getExecutionByRecipeId';
   static const String GET_ITEMS_BY_OWNER = 'getItemsByOwner';
+  static const String GET_ITEM_BY_ID = 'getItemById';
   static const String TX_BUY_ITEMS = 'txBuyItem';
   static const String TX_BUY_PYLONS = 'txBuyPylons';
   static const String TX_CREATE_COOKBOOK = 'txCreateCookbook';
@@ -35,11 +36,13 @@ class Strings {
   static const String ERR_MALFORMED_RECIPES = 'malformedRecipes';
   static const String ERR_MALFORMED_RECIPE = 'malformedRecipe';
   static const String ERR_MALFORMED_EXECUTION = 'malformedExecution';
+  static const String ERR_MALFORMED_ITEM = 'malformedItem';
   static const String ERR_JSON_EXPECTED = 'Json Object Expected';
   static const String ERR_MALFORMED_COOKBOOK = 'malformedCookbook';
   static const String ERR_MALFORMED_ITEMS_LIST = 'malformedItemsList';
   static const String COOKBOOK_ID = 'cookbookId';
   static const String RECIPE_ID = 'recipeId';
+  static const String ITEM_ID = 'itemId';
   static const String VERSION = 'version';
   static const String OWNER_ADDRESS = 'ownerAddress';
 

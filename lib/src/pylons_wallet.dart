@@ -499,6 +499,15 @@ abstract class PylonsWallet {
 
 
 
+  /// This method returns the get item by id
+  /// Input : [cookbookId] the id of the cookbook which contains the item, [itemId] the id of the item
+  /// Output: [Item] contains the item based on the id
+  Future<SDKIPCResponse<Item>> getItemById({required String cookbookId, required String itemId});
+
+
+
+
+
 
 
 }

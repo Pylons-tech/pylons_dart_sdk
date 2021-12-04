@@ -66,3 +66,13 @@ Cookbook MOCK_COOK_BOOK_OBJECT = Cookbook(
     supportEmail: 'alex@shmeeload.xyz',
     costPerBlock: Coin(denom: 'upylon', amount: '1000000'),
     enabled: true);
+
+Item MOCK_ITEM = Item(
+  owner: '',
+  cookbookID: MOCK_COOKBOOK_ID,
+  iD: MOCK_ITEM_ID,
+  nodeVersion: 'v0.1.3',
+  doubles: [],
+  longs: [],
+  strings: [],
+);
