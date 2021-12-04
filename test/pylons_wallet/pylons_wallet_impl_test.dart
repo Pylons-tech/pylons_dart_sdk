@@ -28,6 +28,28 @@ void main() {
   createRecipeTest();
   getRecipeTest();
   getExecutionByRecipeTest();
+  getItemByIdTest();
+}
+
+void getItemByIdTest() {
+
+  test('should get item by id from the wallet', () async {
+    mockChannelHandler();
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    Future.delayed(Duration(milliseconds: 500), () {
+      var sdkResponse = SDKIPCResponse(success: true, error: '', data: MOCK_ITEM, errorCode: '', action: Strings.GET_ITEM_BY_ID);
+      responseCompleters[Strings.GET_ITEM_BY_ID]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.getItemById(cookbookId: MOCK_COOKBOOK_ID,itemId: MOCK_ITEM_ID);
+
+    expect(response.action, Strings.GET_ITEM_BY_ID);
+  });
+
 }
 
 void getExecutionByRecipeTest() {
