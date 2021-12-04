@@ -63,8 +63,8 @@ void getItemsByOwnerTest() {
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(milliseconds: 500), () {
-      final sdkResponse = SDKIPCResponse<Recipe>(success: true, error: '', data:  [MOCK_ITEM], errorCode: '', action: Strings.GET_ITEMS_BY_OWNER);
-      responseCompleters[Strings.GET_RECIPE]!.complete(sdkResponse);
+      final sdkResponse = SDKIPCResponse<List<Item>>(success: true, error: '', data:  [MOCK_ITEM], errorCode: '', action: Strings.GET_ITEMS_BY_OWNER);
+      responseCompleters[Strings.GET_ITEMS_BY_OWNER]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.getItemListByOwner(owner: MOCK_OWNER);

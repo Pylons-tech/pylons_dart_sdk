@@ -16,7 +16,7 @@ class IPCHandlerFactory {
     Strings.GET_RECIPES : GetRecipesHandler(),
     Strings.GET_RECIPE : GetRecipeHandler(),
     Strings.GET_EXECUTION_BY_RECIPE_ID : GetExecutionByRecipeHandler(),
-    Strings.GET_ITEMS_BY_OWNER : GetListItemsByHandler(),
+    Strings.GET_ITEMS_BY_OWNER : GetListItemsByOwnerHandler(),
     Strings.GET_ITEM_BY_ID : GetItemByIdHandler(),
   };
 

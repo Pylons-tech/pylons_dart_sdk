@@ -6,7 +6,7 @@ import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 import '../../../../pylons_sdk.dart';
 import '../responseCompleters.dart';
 
-class GetListItemsByHandler implements IPCHandler{
+class GetListItemsByOwnerHandler implements IPCHandler{
   @override
   void handler(SDKIPCResponse<dynamic> response) {
     final defaultResponse = SDKIPCResponse<List<Item>>(success: response.success, action: response.action, data: [], error: response.error, errorCode: response.errorCode);
