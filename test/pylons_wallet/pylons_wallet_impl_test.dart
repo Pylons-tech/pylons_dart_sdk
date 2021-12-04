@@ -28,6 +28,29 @@ void main() {
   createRecipeTest();
   getRecipeTest();
   getExecutionByRecipeTest();
+  getItemsByOwnerTest();
+}
+
+void getItemsByOwnerTest() {
+  test('should get items by owner from the wallet', () async {
+    mockChannelHandler();
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    Future.delayed(Duration(milliseconds: 500), () {
+      final sdkResponse = SDKIPCResponse<Recipe>(success: true, error: '', data:  [MOCK_ITEM], errorCode: '', action: Strings.GET_ITEMS_BY_OWNER);
+      responseCompleters[Strings.GET_RECIPE]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.getItemListByOwner(owner: MOCK_OWNER);
+
+    expect(response.data.length, 1);
+    expect(response.action, Strings.GET_ITEMS_BY_OWNER);
+  });
+
+
 }
 
 void getExecutionByRecipeTest() {
