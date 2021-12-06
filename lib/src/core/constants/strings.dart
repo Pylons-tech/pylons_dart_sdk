@@ -8,6 +8,7 @@ class Strings {
   static const String GET_RECIPE = 'getRecipe';
   static const String GET_TRADES = 'getTrades';
   static const String GET_EXECUTION_BY_RECIPE_ID = 'getExecutionByRecipeId';
+  static const String GET_EXECUTION_BY_ID = 'getExecutionById';
   static const String GET_ITEMS_BY_OWNER = 'getItemsByOwner';
   static const String GET_ITEM_BY_ID = 'getItemById';
   static const String TX_BUY_ITEMS = 'txBuyItem';
@@ -45,5 +46,6 @@ class Strings {
   static const String ITEM_ID = 'itemId';
   static const String VERSION = 'version';
   static const String OWNER_ADDRESS = 'ownerAddress';
+  static const String EXECUTION_ID = 'executionId';
 
 }

@@ -12,7 +12,6 @@ import '../../../../pylons_sdk.dart';
 class GetExecutionByRecipeHandler implements IPCHandler{
   @override
   void handler(SDKIPCResponse<dynamic> response) {
-    print(response);
     final defaultResponse = SDKIPCResponse<ExecutionListByRecipeResponse>(success: response.success, action: response.action, data: ExecutionListByRecipeResponse.empty(), error: response.error, errorCode: response.errorCode);
     try {
       if (response.success) {
