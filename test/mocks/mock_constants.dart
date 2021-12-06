@@ -42,6 +42,20 @@ var MOCK_RECIPE = Recipe(
     enabled: false,
     extraInfo: 'extraInfo');
 
+var MOCK_TRADE = Trade(
+  creator: 'pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2',
+  iD: Int64(20211205),
+  coinInputs: [],
+  itemInputs: [],
+  coinOutputs: [],
+  itemOutputs: [
+    ItemRef(cookbookID: MOCK_COOKBOOK_ID, itemID: MOCK_ITEM_ID),
+  ],
+  extraInfo: 'extraInfo',
+  receiver: '',
+  tradedItemInputs: [],
+);
+
 const String MOCK_COOKBOOK_ID = 'cookbookLOUD';
 const String MOCK_ITEM_ID = 'item_id';
 const String MOCK_RECIPE_ID = 'RecipeId';

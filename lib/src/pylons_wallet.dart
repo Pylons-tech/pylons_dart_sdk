@@ -182,7 +182,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> getTrades();
+  Future<SDKIPCResponse<List<Trade>>> getTrades();
 
   /// Async: Creates a transaction to buy an item using either Pylons or a
   /// third-party payment processor.

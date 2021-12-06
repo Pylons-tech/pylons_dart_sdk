@@ -29,6 +29,7 @@ void main() {
   getRecipeTest();
   getExecutionByRecipeTest();
   getItemByIdTest();
+  getTradesTest();
 }
 
 void getItemByIdTest() {
@@ -293,6 +294,27 @@ void getCookBookTest() {
 
     expect(response.data.iD, MOCK_COOKBOOK_ID);
   });
+}
+
+void getTradesTest() {
+
+  test('should get all current trades that exist on the chain ', () async {
+    mockChannelHandler();
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    Future.delayed(Duration(seconds: 1), () {
+      var sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.GET_TRADES);
+      responseCompleters[Strings.GET_TRADES]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.getTrades();
+
+    expect(response.action, Strings.GET_TRADES);
+  });
+
 }
 
 void createLinkBasedOnOS() {
