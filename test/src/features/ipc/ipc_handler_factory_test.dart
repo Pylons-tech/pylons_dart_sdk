@@ -16,6 +16,7 @@ void main() {
     _genericResponseTestFlow(Strings.TX_UPDATE_RECIPE);
     _genericResponseTestFlow(Strings.TX_EXECUTE_RECIPE);
     _genericResponseTestFlow(Strings.GET_PROFILE);
+    _genericResponseTestFlow(Strings.GET_ITEMS_BY_OWNER);
   });
 
 
