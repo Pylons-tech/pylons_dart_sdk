@@ -310,7 +310,7 @@ void getTradesTest() {
       responseCompleters[Strings.GET_TRADES]!.complete(sdkResponse);
     });
 
-    var response = await pylonsWallet.getTrades();
+    var response = await pylonsWallet.getTrades(MOCK_CREATOR);
 
     expect(response.action, Strings.GET_TRADES);
   });

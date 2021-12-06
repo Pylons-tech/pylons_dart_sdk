@@ -348,7 +348,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future getTrades() async {
-    var sdkResponse = await PylonsWallet.instance.getTrades();
+    var sdkResponse = await PylonsWallet.instance.getTrades('');
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 }

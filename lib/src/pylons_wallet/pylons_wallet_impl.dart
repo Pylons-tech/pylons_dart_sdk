@@ -110,9 +110,9 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
   @override
-  Future<SDKIPCResponse<List<Trade>>> getTrades() async {
+  Future<SDKIPCResponse<List<Trade>>> getTrades(String creator) async {
     return Future.sync(() async {
-      final response = await _dispatch(Strings.GET_TRADES, '');
+      final response = await _dispatch(Strings.GET_TRADES, jsonEncode({Strings.CREATOR: creator}));
       if (response is SDKIPCResponse<List<Trade>>) {
         return response;
       }

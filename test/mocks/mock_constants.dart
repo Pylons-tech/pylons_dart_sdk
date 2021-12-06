@@ -43,7 +43,7 @@ var MOCK_RECIPE = Recipe(
     extraInfo: 'extraInfo');
 
 var MOCK_TRADE = Trade(
-  creator: 'pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2',
+  creator: MOCK_CREATOR,
   iD: Int64(20211205),
   coinInputs: [],
   itemInputs: [],
@@ -61,6 +61,7 @@ const String MOCK_ITEM_ID = 'item_id';
 const String MOCK_RECIPE_ID = 'RecipeId';
 const String MOCK_RECIPE_NAME = 'recipe name';
 const String MOCK_VERSION = 'v0.0.1';
+const String MOCK_CREATOR = 'pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2';
 const String MOCK_HOST = 'example';
 const String MOCK_ERR_ = 'example';
 const String MOCK_USERNAME = 'Jawad';

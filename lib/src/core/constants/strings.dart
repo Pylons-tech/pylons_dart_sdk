@@ -39,6 +39,7 @@ class Strings {
   static const String ERR_MALFORMED_TRADES = 'malformedTrades';
   static const String ERR_JSON_EXPECTED = 'Json Object Expected';
   static const String ERR_MALFORMED_COOKBOOK = 'malformedCookbook';
+  static const String CREATOR = 'creator';
   static const String COOKBOOK_ID = 'cookbookId';
   static const String RECIPE_ID = 'recipeId';
   static const String ITEM_ID = 'itemId';
