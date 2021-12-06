@@ -21,7 +21,7 @@ class GetTradesHandler implements IPCHandler {
         }).toList();
       }
     } on Exception catch (_) {
-      defaultResponse.error = 'Recipe parsing failed';
+      defaultResponse.error = 'Trades parsing failed';
       defaultResponse.errorCode = Strings.ERR_MALFORMED_TRADES;
       defaultResponse.success = false;
     }
