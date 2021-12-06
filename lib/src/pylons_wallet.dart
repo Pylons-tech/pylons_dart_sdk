@@ -492,6 +492,12 @@ abstract class PylonsWallet {
   Future<SDKIPCResponse<ExecutionListByRecipeResponse>> getExecutionBasedOnRecipe({required String cookbookId, required String recipeId});
 
 
+  /// This method returns the list by owner
+  /// Input : [owner] the id of the whose id you want to fetch
+  /// Output: [Item] contains the list of the items by the owner
+  Future<SDKIPCResponse<List<Item>>> getItemListByOwner({required String owner});
+
+
 
   /// This method returns the get item by id
   /// Input : [cookbookId] the id of the cookbook which contains the item, [itemId] the id of the item

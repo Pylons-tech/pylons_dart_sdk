@@ -29,6 +29,7 @@ void main() {
   getRecipeTest();
   getExecutionByRecipeTest();
   getItemByIdTest();
+  getItemsByOwnerTest();
   getTradesTest();
 }
 
@@ -50,6 +51,28 @@ void getItemByIdTest() {
 
     expect(response.action, Strings.GET_ITEM_BY_ID);
   });
+
+}
+
+void getItemsByOwnerTest() {
+  test('should get items by owner from the wallet', () async {
+    mockChannelHandler();
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    Future.delayed(Duration(milliseconds: 500), () {
+      final sdkResponse = SDKIPCResponse<List<Item>>(success: true, error: '', data:  [MOCK_ITEM], errorCode: '', action: Strings.GET_ITEMS_BY_OWNER);
+      responseCompleters[Strings.GET_ITEMS_BY_OWNER]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.getItemListByOwner(owner: MOCK_OWNER);
+
+    expect(response.data.length, 1);
+    expect(response.action, Strings.GET_ITEMS_BY_OWNER);
+  });
+
 
 }
 

@@ -60,12 +60,15 @@ const String MOCK_COOKBOOK_ID = 'cookbookLOUD';
 const String MOCK_ITEM_ID = 'item_id';
 const String MOCK_RECIPE_ID = 'RecipeId';
 const String MOCK_RECIPE_NAME = 'recipe name';
+const String MOCK_OWNER = 'pyloabs8112932012asjdahk33';
 const String MOCK_VERSION = 'v0.0.1';
 const String MOCK_CREATOR = 'pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2';
 const String MOCK_HOST = 'example';
 const String MOCK_ERR_ = 'example';
 const String MOCK_USERNAME = 'Jawad';
 const String MOCK_ERR_CODE = 'Something went wrong';
+
+
 
 Cookbook MOCK_COOK_BOOK_OBJECT = Cookbook(
     creator: '',

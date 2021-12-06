@@ -248,6 +248,17 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
   @override
+  Future<SDKIPCResponse<List<Item>>> getItemListByOwner({required String owner}) {
+    return Future<SDKIPCResponse<List<Item>>>.sync(() async {
+      final response = await _dispatch(Strings.GET_ITEMS_BY_OWNER, jsonEncode({Strings.OWNER_ADDRESS: owner}));
+      if (response is SDKIPCResponse<List<Item>>) {
+        return response;
+      }
+      throw Exception('Response malformed');
+    });
+  }
+
+  @override
   Future<SDKIPCResponse<Item>> getItemById({required String cookbookId, required String itemId}) {
     return Future.sync(() async {
       final response = await _dispatch(Strings.GET_ITEM_BY_ID, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.ITEM_ID: itemId}));
