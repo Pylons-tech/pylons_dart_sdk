@@ -38,7 +38,7 @@ You need to declare the following intent filters in `android/app/src/main/Androi
 <manifest ...>
     <!-- ... other tags -->
     <queries>
-        <package android:name="tech.pylons.wallet" />
+        <package android:name="xyz.pylons.wallet" />
     </queries>
 
     <application ...>
