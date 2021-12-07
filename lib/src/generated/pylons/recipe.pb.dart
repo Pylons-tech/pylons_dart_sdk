@@ -255,7 +255,23 @@ class DoubleWeightRange extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   DoubleWeightRange._() : super();
-  factory DoubleWeightRange() => create();
+  factory DoubleWeightRange({
+    $core.String? lower,
+    $core.String? upper,
+    $fixnum.Int64? weight,
+  }) {
+    final _result = create();
+    if (lower != null) {
+      _result.lower = lower;
+    }
+    if (upper != null) {
+      _result.upper = upper;
+    }
+    if (weight != null) {
+      _result.weight = weight;
+    }
+    return _result;
+  }
   factory DoubleWeightRange.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DoubleWeightRange.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -320,7 +336,23 @@ class DoubleParam extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   DoubleParam._() : super();
-  factory DoubleParam() => create();
+  factory DoubleParam({
+    $core.String? key,
+    $core.Iterable<DoubleWeightRange>? weightRanges,
+    $core.String? program,
+  }) {
+    final _result = create();
+    if (key != null) {
+      _result.key = key;
+    }
+    if (weightRanges != null) {
+      _result.weightRanges.addAll(weightRanges);
+    }
+    if (program != null) {
+      _result.program = program;
+    }
+    return _result;
+  }
   factory DoubleParam.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DoubleParam.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -376,7 +408,23 @@ class IntWeightRange extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   IntWeightRange._() : super();
-  factory IntWeightRange() => create();
+  factory IntWeightRange({
+    $fixnum.Int64? lower,
+    $fixnum.Int64? upper,
+    $fixnum.Int64? weight,
+  }) {
+    final _result = create();
+    if (lower != null) {
+      _result.lower = lower;
+    }
+    if (upper != null) {
+      _result.upper = upper;
+    }
+    if (weight != null) {
+      _result.weight = weight;
+    }
+    return _result;
+  }
   factory IntWeightRange.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory IntWeightRange.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -441,7 +489,23 @@ class LongParam extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   LongParam._() : super();
-  factory LongParam() => create();
+  factory LongParam({
+    $core.String? key,
+    $core.Iterable<IntWeightRange>? weightRanges,
+    $core.String? program,
+  }) {
+    final _result = create();
+    if (key != null) {
+      _result.key = key;
+    }
+    if (weightRanges != null) {
+      _result.weightRanges.addAll(weightRanges);
+    }
+    if (program != null) {
+      _result.program = program;
+    }
+    return _result;
+  }
   factory LongParam.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory LongParam.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -497,7 +561,23 @@ class StringParam extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   StringParam._() : super();
-  factory StringParam() => create();
+  factory StringParam({
+    $core.String? key,
+    $core.String? value,
+    $core.String? program,
+  }) {
+    final _result = create();
+    if (key != null) {
+      _result.key = key;
+    }
+    if (value != null) {
+      _result.value = value;
+    }
+    if (program != null) {
+      _result.program = program;
+    }
+    return _result;
+  }
   factory StringParam.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory StringParam.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
@@ -1026,7 +1106,15 @@ class CoinInput extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   CoinInput._() : super();
-  factory CoinInput() => create();
+  factory CoinInput({
+    $core.Iterable<$2.Coin>? coins,
+  }) {
+    final _result = create();
+    if (coins != null) {
+      _result.coins.addAll(coins);
+    }
+    return _result;
+  }
   factory CoinInput.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CoinInput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
