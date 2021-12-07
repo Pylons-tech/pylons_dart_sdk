@@ -3,39 +3,32 @@ import 'dart:convert';
 import '../../../pylons_sdk.dart';
 
 class ValidateRecipe {
-
-
-
   /// Verifies that all of a recipe's outputs are accessible, and that it
   /// doesn't refer to any outputs that are not present.
   static void validate(Recipe recipe) {
-
-
-
     if (recipe.name.length <= 8) {
       throwError(recipe, 'Recipe name should have more than 8 characters');
     }
 
-
-    if (recipe.description.length <= 20 ) {
+    if (recipe.description.length <= 20) {
       throwError(recipe, 'Recipe description should have more than 20 characters');
     }
-
 
     if (recipe.cookbookID.isEmpty) {
       throwError(recipe, 'Invalid CookbookId');
     }
 
-
     if (recipe.iD.isEmpty) {
       throwError(recipe, 'Invalid Recipe ID');
     }
 
-    
-    if(recipe.itemInputs.where((e) => e.iD.isEmpty).toList().isNotEmpty ){
+    if (recipe.itemInputs.where((e) => e.iD.isEmpty).toList().isNotEmpty) {
       throwError(recipe, 'Invalid Item ID');
     }
 
+    if (costPerBlockIsEmpty(recipe)) {
+      throwError(recipe, 'Cost Per Block is Empty');
+    }
 
     var found = <String>[];
     var reFound = <String>[];
@@ -74,6 +67,8 @@ class ValidateRecipe {
           '${const JsonEncoder().convert(orphanOutputs)}');
     }
   }
+
+  static bool costPerBlockIsEmpty(Recipe recipe) => !(recipe.costPerBlock.hasAmount() && recipe.costPerBlock.hasDenom());
 
   static void throwError(Recipe recipe, String error) {
     throw RecipeValidationException(recipe.cookbookID, recipe.name, recipe.iD, error);
