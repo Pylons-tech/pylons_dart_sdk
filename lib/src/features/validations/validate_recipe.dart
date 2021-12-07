@@ -1,16 +1,18 @@
 import 'dart:convert';
 
+import 'package:pylons_sdk/src/core/constants/strings.dart';
+
 import '../../../pylons_sdk.dart';
 
 class ValidateRecipe {
   /// Verifies that all of a recipe's outputs are accessible, and that it
   /// doesn't refer to any outputs that are not present.
   static void validate(Recipe recipe) {
-    if (recipe.name.length <= 8) {
+    if (recipe.name.length <= kRecipeNameLength) {
       throwError(recipe, 'Recipe name should have more than 8 characters');
     }
 
-    if (recipe.description.length <= 20) {
+    if (recipe.description.length <= kRecipeDescriptionLength) {
       throwError(recipe, 'Recipe description should have more than 20 characters');
     }
 
@@ -22,7 +24,7 @@ class ValidateRecipe {
       throwError(recipe, 'Invalid Recipe ID');
     }
 
-    if (recipe.itemInputs.where((e) => e.iD.isEmpty).toList().isNotEmpty) {
+    if (recipe.itemInputs.where((recipe) => recipe.iD.isEmpty).toList().isNotEmpty) {
       throwError(recipe, 'Invalid Item ID');
     }
 

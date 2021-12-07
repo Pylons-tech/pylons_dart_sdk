@@ -49,3 +49,9 @@ class Strings {
   static const String EXECUTION_ID = 'executionId';
 
 }
+
+
+
+const kRecipeNameLength = 8;
+
+const kRecipeDescriptionLength = 20;
