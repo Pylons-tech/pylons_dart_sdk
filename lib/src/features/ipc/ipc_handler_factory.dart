@@ -1,6 +1,7 @@
 import 'package:pylons_sdk/src/core/constants/strings.dart';
 import 'package:pylons_sdk/src/features/ipc/base/ipc_handler.dart';
 import 'package:pylons_sdk/src/features/ipc/handlers/get_cookbooks_handler.dart';
+import 'package:pylons_sdk/src/features/ipc/handlers/get_execution_by_id_handler.dart';
 import 'package:pylons_sdk/src/features/ipc/handlers/get_list_items_by_owner_handler.dart';
 import 'package:pylons_sdk/src/features/ipc/handlers/get_item_by_id_handler.dart';
 import 'package:pylons_sdk/src/features/ipc/handlers/get_recipe_handler.dart';
@@ -18,6 +19,7 @@ class IPCHandlerFactory {
     Strings.GET_EXECUTION_BY_RECIPE_ID : GetExecutionByRecipeHandler(),
     Strings.GET_ITEMS_BY_OWNER : GetListItemsByOwnerHandler(),
     Strings.GET_ITEM_BY_ID : GetItemByIdHandler(),
+    Strings.GET_EXECUTION_BY_ID: GetExecutionByIdHandler()
   };
 
   /// Fetches and resolves appropriate [IPCHandler] instance for [sdkIpcResponse], or completes

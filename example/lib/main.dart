@@ -55,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String recipeId = "recipe_1";
   String ownerId = "pylo1u0d99clv4k4gdfzpwsdhllsl5n62u44xwacjcc";
   String itemId = "J4XcRLXK2Hm";
+  String executionId = "exec1213";
 
 
 
@@ -155,6 +156,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('Get Item By Id'),
             ),
 
+            ElevatedButton(
+              onPressed: () async {
+                getExecutionById();
+              },
+              child: const Text('Get Execution By Id'),
+            ),
 
           ],
         ),
@@ -352,6 +359,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void getItemById() async {
     var sdkResponse = await PylonsWallet.instance.getItemById(cookbookId: cookBookId,  itemId: itemId);
+    log(sdkResponse.toString(), name: 'pylons_sdk');
+  }
+
+  void getExecutionById() async {
+    var sdkResponse = await PylonsWallet.instance.getExecutionBasedOnId(id: executionId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 }

@@ -11,7 +11,6 @@ import '../../../../pylons_sdk.dart';
 class GetItemByIdHandler implements IPCHandler{
   @override
   void handler(SDKIPCResponse<dynamic> response) {
-    print(response);
     final defaultResponse = SDKIPCResponse<Item>(success: response.success, action: response.action, data: Item.create()..createEmptyInstance(), error: response.error, errorCode: response.errorCode);
 
 

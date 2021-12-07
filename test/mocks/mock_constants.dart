@@ -1,5 +1,6 @@
 import 'package:fixnum/fixnum.dart';
 import 'package:pylons_sdk/pylons_sdk.dart';
+import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 
 var MOCK_COOKBOOK = '''{
   "creator": "pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2",
@@ -15,11 +16,11 @@ var MOCK_COOKBOOK = '''{
 var MOCK_RECIPE = Recipe(
     cookbookID: MOCK_COOKBOOK_ID,
     iD: MOCK_RECIPE_ID,
-    nodeVersion: 'v0.1.3',
+    nodeVersion: MOCK_NODE_VERSION,
     name: "LOUD's Wooden sword lv1 buy recipe",
     description: 'this recipe is used to buy wooden sword lv1.',
-    version: 'v0.1.3',
     costPerBlock: Coin(denom: 'upylon', amount: '1000000'),
+    version: MOCK_VERSION,
     coinInputs: [],
     itemInputs: [],
     entries: EntriesList(coinOutputs: [], itemOutputs: [
@@ -51,6 +52,9 @@ const String MOCK_HOST = 'example';
 const String MOCK_ERR_ = 'example';
 const String MOCK_USERNAME = 'Jawad';
 const String MOCK_ERR_CODE = 'Something went wrong';
+const String MOCK_EXECUTION_ID = 'executionid';
+const String MOCK_RECIPE_VERSION = 'v0.1.3';
+const String MOCK_NODE_VERSION = '0.1.3';
 
 
 
@@ -68,8 +72,20 @@ Item MOCK_ITEM = Item(
   owner: '',
   cookbookID: MOCK_COOKBOOK_ID,
   iD: MOCK_ITEM_ID,
-  nodeVersion: 'v0.1.3',
+  nodeVersion: MOCK_NODE_VERSION,
   doubles: [],
   longs: [],
   strings: [],
+);
+
+
+
+Execution MOCK_EXECUTION = Execution(
+  creator: MOCK_OWNER,
+  iD: MOCK_EXECUTION_ID,
+  cookbookID: MOCK_COOKBOOK_ID,
+  recipeVersion: MOCK_RECIPE_VERSION,
+  nodeVersion: MOCK_NODE_VERSION,
+
+
 );
