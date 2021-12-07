@@ -6,6 +6,7 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
+import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 import '../pylons_sdk.dart';
 import 'features/models/execution_list_by_recipe_response.dart';
 import 'features/models/sdk_ipc_message.dart';
@@ -504,6 +505,13 @@ abstract class PylonsWallet {
   /// Output: [Item] contains the item based on the id
   Future<SDKIPCResponse<Item>> getItemById({required String cookbookId, required String itemId});
 
+
+
+
+  /// This method returns the execution based on id
+  /// Input : [id] the id of the execution
+  /// Output: [Execution] contains the execution
+  Future<SDKIPCResponse<Execution>> getExecutionBasedOnId({required String id});
 
 
 
