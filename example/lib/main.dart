@@ -163,6 +163,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('Get Execution By Id'),
             ),
 
+            ElevatedButton(
+              onPressed: () async {
+                getTrades();
+              },
+              child: const Text('Get Trades'),
+            ),
           ],
         ),
       ),
@@ -366,6 +372,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void getExecutionById() async {
     var sdkResponse = await PylonsWallet.instance.getExecutionBasedOnId(id: executionId);
+    log(sdkResponse.toString(), name: 'pylons_sdk');
+  }
+
+  Future getTrades() async {
+    var sdkResponse = await PylonsWallet.instance.getTrades('');
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 }
