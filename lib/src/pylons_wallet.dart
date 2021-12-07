@@ -162,7 +162,7 @@ abstract class PylonsWallet {
   /// exception will be passed directly.
   Future<SDKIPCResponse<List<Recipe>>> getRecipes(String cookbook);
 
-  /// Async: Retrieves all current trades that exist on the Pylons chain based on the given [creator].
+  /// Async: Retrieves all current trades that exist on the Pylons chain.
   ///
   /// Response's data field is a [List]<[Trade]> containing the retrieved trades. This will
   /// ordinarily be "successful" even if there are no trades to be retrieved,
@@ -182,7 +182,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse<List<Trade>>> getTrades(String creator);
+  Future<SDKIPCResponse> getTrades();
 
   /// Async: Creates a transaction to buy an item using either Pylons or a
   /// third-party payment processor.
