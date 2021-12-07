@@ -5,12 +5,10 @@ var MOCK_COOKBOOK = '''{
   "creator": "pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2",
   "ID": "$MOCK_COOKBOOK_ID",
   "name": "Legend of the Undead Dragon",
-  "nodeVersion": "v0.1.3",
   "description": "Cookbook for running pylons recreation of LOUD",
   "developer": "Pylons Inc",
   "version": "$MOCK_VERSION",
   "supportEmail": "alex@shmeeload.xyz",
-  "costPerBlock": {"denom":  "upylon", "amount":  "1000000"},
   "enabled": true
 }''';
 
@@ -21,6 +19,7 @@ var MOCK_RECIPE = Recipe(
     name: "LOUD's Wooden sword lv1 buy recipe",
     description: 'this recipe is used to buy wooden sword lv1.',
     version: 'v0.1.3',
+    costPerBlock: Coin(denom: 'upylon', amount: '1000000'),
     coinInputs: [],
     itemInputs: [],
     entries: EntriesList(coinOutputs: [], itemOutputs: [
