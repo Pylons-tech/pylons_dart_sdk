@@ -329,7 +329,7 @@ void getTradesTest() {
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(seconds: 1), () {
-      var sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.GET_TRADES);
+      final sdkResponse = SDKIPCResponse<List<Trade>>(success: true, error: '', data: [Trade()..createEmptyInstance(), Trade()..createEmptyInstance()], errorCode: '', action: Strings.GET_TRADES);
       responseCompleters[Strings.GET_TRADES]!.complete(sdkResponse);
     });
 
