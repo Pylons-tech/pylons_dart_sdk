@@ -9,6 +9,7 @@ import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
 import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/execution_list_by_recipe_response.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
+import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 import 'package:pylons_sdk/src/pylons_wallet/pylons_wallet_impl.dart';
 import '../mocks/mock_constants.dart';
 import '../mocks/mock_uni_link.dart';
@@ -30,7 +31,29 @@ void main() {
   getExecutionByRecipeTest();
   getItemByIdTest();
   getItemsByOwnerTest();
-  getTradesTest();
+  getExecutionByIdTest();
+
+}
+
+void getExecutionByIdTest() {
+
+
+  test('should get execution based on id from wallet', () async {
+    mockChannelHandler();
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    Future.delayed(Duration(milliseconds: 500), () {
+      final sdkResponse = SDKIPCResponse<Execution>(success: true, error: '', data:  MOCK_EXECUTION, errorCode: '', action: Strings.GET_EXECUTION_BY_ID);
+      responseCompleters[Strings.GET_EXECUTION_BY_ID]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.getExecutionBasedOnId(id: MOCK_EXECUTION_ID);
+
+    expect(response.action, Strings.GET_EXECUTION_BY_ID);
+  });
 }
 
 void getItemByIdTest() {
@@ -317,27 +340,6 @@ void getCookBookTest() {
 
     expect(response.data.iD, MOCK_COOKBOOK_ID);
   });
-}
-
-void getTradesTest() {
-
-  test('should get all current trades that exist on the chain ', () async {
-    mockChannelHandler();
-
-    var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
-    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
-
-    Future.delayed(Duration(seconds: 1), () {
-      final sdkResponse = SDKIPCResponse<List<Trade>>(success: true, error: '', data: [Trade()..createEmptyInstance(), Trade()..createEmptyInstance()], errorCode: '', action: Strings.GET_TRADES);
-      responseCompleters[Strings.GET_TRADES]!.complete(sdkResponse);
-    });
-
-    var response = await pylonsWallet.getTrades(MOCK_CREATOR);
-
-    expect(response.action, Strings.GET_TRADES);
-  });
-
 }
 
 void createLinkBasedOnOS() {

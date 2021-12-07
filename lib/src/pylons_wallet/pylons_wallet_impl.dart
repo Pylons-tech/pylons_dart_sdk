@@ -14,6 +14,7 @@ import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
 import 'package:pylons_sdk/src/features/models/execution_list_by_recipe_response.dart';
 import 'package:pylons_sdk/src/features/validations/validate_recipe.dart';
 import 'package:pylons_sdk/src/generated/pylons/cookbook.pb.dart';
+import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/item.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/payment_info.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/recipe.pb.dart';
@@ -110,13 +111,9 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
   @override
-  Future<SDKIPCResponse<List<Trade>>> getTrades(String creator) async {
+  Future<SDKIPCResponse> getTrades() async {
     return Future.sync(() async {
-      final response = await _dispatch(Strings.GET_TRADES, jsonEncode({Strings.CREATOR: creator}));
-      if (response is SDKIPCResponse<List<Trade>>) {
-        return response;
-      }
-      throw Exception('Response malformed');
+      return await _dispatch(Strings.GET_TRADES, '');
     });
   }
 
@@ -263,6 +260,17 @@ class PylonsWalletImpl implements PylonsWallet {
     return Future.sync(() async {
       final response = await _dispatch(Strings.GET_ITEM_BY_ID, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.ITEM_ID: itemId}));
       if (response is SDKIPCResponse<Item>) {
+        return response;
+      }
+      throw Exception('Response malformed');
+    });
+  }
+
+  @override
+  Future<SDKIPCResponse<Execution>> getExecutionBasedOnId({required String id}) async {
+    return Future.sync(() async {
+      final response = await _dispatch(Strings.GET_EXECUTION_BY_ID, jsonEncode({Strings.EXECUTION_ID: id}));
+      if (response is SDKIPCResponse<Execution>) {
         return response;
       }
       throw Exception('Response malformed');

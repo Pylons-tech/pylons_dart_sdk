@@ -6,6 +6,7 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
+import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 import '../pylons_sdk.dart';
 import 'features/models/execution_list_by_recipe_response.dart';
 import 'features/models/sdk_ipc_message.dart';
@@ -162,7 +163,7 @@ abstract class PylonsWallet {
   /// exception will be passed directly.
   Future<SDKIPCResponse<List<Recipe>>> getRecipes(String cookbook);
 
-  /// Async: Retrieves all current trades that exist on the Pylons chain based on the given [creator].
+  /// Async: Retrieves all current trades that exist on the Pylons chain.
   ///
   /// Response's data field is a [List]<[Trade]> containing the retrieved trades. This will
   /// ordinarily be "successful" even if there are no trades to be retrieved,
@@ -182,7 +183,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse<List<Trade>>> getTrades(String creator);
+  Future<SDKIPCResponse> getTrades();
 
   /// Async: Creates a transaction to buy an item using either Pylons or a
   /// third-party payment processor.
@@ -504,6 +505,13 @@ abstract class PylonsWallet {
   /// Output: [Item] contains the item based on the id
   Future<SDKIPCResponse<Item>> getItemById({required String cookbookId, required String itemId});
 
+
+
+
+  /// This method returns the execution based on id
+  /// Input : [id] the id of the execution
+  /// Output: [Execution] contains the execution
+  Future<SDKIPCResponse<Execution>> getExecutionBasedOnId({required String id});
 
 
 
