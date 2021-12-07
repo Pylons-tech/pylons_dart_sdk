@@ -155,12 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('Get Item By Id'),
             ),
 
-            ElevatedButton(
-              onPressed: () async {
-                getTrades();
-              },
-              child: const Text('Get Trades'),
-            ),
+
           ],
         ),
       ),
@@ -359,11 +354,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void getItemById() async {
     var sdkResponse = await PylonsWallet.instance.getItemById(cookbookId: cookBookId,  itemId: itemId);
-    log(sdkResponse.toString(), name: 'pylons_sdk');
-  }
-
-  Future getTrades() async {
-    var sdkResponse = await PylonsWallet.instance.getTrades('');
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 }
