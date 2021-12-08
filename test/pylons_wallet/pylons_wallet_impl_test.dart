@@ -32,6 +32,28 @@ void main() {
   getItemByIdTest();
   getItemsByOwnerTest();
   getExecutionByIdTest();
+  getTradesTest();
+
+}
+
+void getTradesTest() {
+
+  test('should get all current trades that exist on the chain ', () async {
+    mockChannelHandler();
+
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse<List<Trade>>(success: true, error: '', data: [Trade()..createEmptyInstance(), Trade()..createEmptyInstance()], errorCode: '', action: Strings.GET_TRADES);
+      responseCompleters[Strings.GET_TRADES]!.complete(sdkResponse);
+    });
+
+    var response = await pylonsWallet.getTrades(MOCK_CREATOR);
+
+    expect(response.action, Strings.GET_TRADES);
+  });
 
 }
 

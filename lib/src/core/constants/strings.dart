@@ -41,11 +41,13 @@ class Strings {
   static const String ERR_JSON_EXPECTED = 'Json Object Expected';
   static const String ERR_MALFORMED_COOKBOOK = 'malformedCookbook';
   static const String ERR_MALFORMED_ITEMS_LIST = 'malformedItemsList';
+  static const String ERR_MALFORMED_TRADES = 'malformedTrades';
   static const String COOKBOOK_ID = 'cookbookId';
   static const String RECIPE_ID = 'recipeId';
   static const String ITEM_ID = 'itemId';
   static const String VERSION = 'version';
   static const String OWNER_ADDRESS = 'ownerAddress';
   static const String EXECUTION_ID = 'executionId';
+  static const String CREATOR = 'creator';
 
 }
