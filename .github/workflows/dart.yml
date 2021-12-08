@@ -27,5 +27,5 @@ jobs:
       - name: Analyze Project Source
         run: dart analyze
       - name: Run unit tests
-        run: /bin/bash  /home/runner/work/pylons_dart_sdk/pylons_dart_sdk/script/test_coverage.sh
+        run: /bin/bash  ./scripts/test_coverage.sh
       
