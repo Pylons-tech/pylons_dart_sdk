@@ -22,7 +22,7 @@ jobs:
         uses: dart-lang/setup-dart@v1
 
       - name: Install Pub Dependencies
-        run: dart pub get
+        run: flutter pub get
 
       - name: Verify Formatting
         run: dart format --output=none --set-exit-if-changed .
