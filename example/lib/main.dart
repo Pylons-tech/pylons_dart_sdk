@@ -180,12 +180,10 @@ class _MyHomePageState extends State<MyHomePage> {
         creator: "",
         iD: cookBookId,
         name: "Legend of the Undead Dragon",
-        nodeVersion: "v0.1.3",
         description: "Cookbook for running pylons recreation of LOUD",
         developer: "Pylons Inc",
         version: "v0.0.1",
         supportEmail: "alex@shmeeload.xyz",
-        costPerBlock: Coin(denom: "upylon", amount: "1000000"),
         enabled: true);
 
     var response = await PylonsWallet.instance.txCreateCookbook(cookBook1);
@@ -211,6 +209,7 @@ class _MyHomePageState extends State<MyHomePage> {
         version: "v0.1.3",
         coinInputs: [],
         itemInputs: [],
+        costPerBlock: Coin(denom: "upylon", amount: "1000000"),
         entries: EntriesList(coinOutputs: [], itemOutputs: [
           ItemOutput(
             iD: "copper_sword_lv1",
@@ -275,6 +274,7 @@ class _MyHomePageState extends State<MyHomePage> {
         version: "v1.0.5",
         coinInputs: [],
         itemInputs: [],
+        costPerBlock: Coin(denom: "upylon", amount: "1000000"),
         entries: EntriesList(coinOutputs: [], itemOutputs: [
           ItemOutput(
             iD: "copper_sword_lv1",
@@ -312,12 +312,10 @@ class _MyHomePageState extends State<MyHomePage> {
         creator: "",
         iD: cookBookId,
         name: "Legend of the Undead Dianasour",
-        nodeVersion: "v0.1.3",
         description: "Cookbook for running pylons recreation of LOUD",
         developer: "Pylons Inc",
         version: "v0.0.2",
         supportEmail: "alex@shmeeload.xyz",
-        costPerBlock: Coin(denom: "upylon", amount: "1000000"),
         enabled: true);
 
     var response = await PylonsWallet.instance.txUpdateCookbook(cookBook1);

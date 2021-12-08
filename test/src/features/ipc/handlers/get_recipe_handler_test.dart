@@ -5,7 +5,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pylons_sdk/pylons_sdk.dart';
 import 'package:pylons_sdk/src/core/constants/strings.dart';
 import 'package:pylons_sdk/src/features/ipc/handlers/get_recipe_handler.dart';
-import 'package:pylons_sdk/src/features/ipc/handlers/get_recipes_handler.dart';
 import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 

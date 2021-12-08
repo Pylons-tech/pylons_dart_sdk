@@ -7,7 +7,6 @@ import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/execution_list_by_recipe_response.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 
-import '../../../../pylons_sdk.dart';
 
 class GetExecutionByRecipeHandler implements IPCHandler{
   @override

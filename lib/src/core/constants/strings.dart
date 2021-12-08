@@ -51,3 +51,9 @@ class Strings {
   static const String CREATOR = 'creator';
 
 }
+
+
+
+const kRecipeNameLength = 8;
+
+const kRecipeDescriptionLength = 20;

@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pylons_sdk/pylons_sdk.dart';
 import 'package:pylons_sdk/src/core/constants/strings.dart';
-import 'package:pylons_sdk/src/features/ipc/handlers/get_item_by_id_handler.dart';
 import 'package:pylons_sdk/src/features/ipc/handlers/get_list_items_by_owner_handler.dart';
 import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
