@@ -1,4 +1,11 @@
-language: bash
+on:
+  pull_request:
+    branches: [ main ]
 
-script:
-    - bash ./script/test_coverage.sh
+jobs:
+  build:
+    name: Dart Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run unit tests
+      run: /bin/bash  ./script/test_coverage.sh
