@@ -11,17 +11,42 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class GoogleInAppPurchaseOrder extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GoogleInAppPurchaseOrder',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GoogleInAppPurchaseOrder',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'productID', protoName: 'productID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'purchaseToken',
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'productID',
+        protoName: 'productID')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'purchaseToken',
         protoName: 'purchaseToken')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiptDataBase64',
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'receiptDataBase64',
         protoName: 'receiptDataBase64')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'signature')
     ..hasRequiredFields = false;
 
   GoogleInAppPurchaseOrder._() : super();
@@ -53,26 +78,30 @@ class GoogleInAppPurchaseOrder extends $pb.GeneratedMessage {
   factory GoogleInAppPurchaseOrder.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory GoogleInAppPurchaseOrder.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory GoogleInAppPurchaseOrder.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  GoogleInAppPurchaseOrder clone() => GoogleInAppPurchaseOrder()..mergeFromMessage(this);
+  GoogleInAppPurchaseOrder clone() =>
+      GoogleInAppPurchaseOrder()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  GoogleInAppPurchaseOrder copyWith(void Function(GoogleInAppPurchaseOrder) updates) =>
+  GoogleInAppPurchaseOrder copyWith(
+          void Function(GoogleInAppPurchaseOrder) updates) =>
       super.copyWith((message) => updates(message as GoogleInAppPurchaseOrder))
           as GoogleInAppPurchaseOrder; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static GoogleInAppPurchaseOrder create() => GoogleInAppPurchaseOrder._();
   GoogleInAppPurchaseOrder createEmptyInstance() => create();
-  static $pb.PbList<GoogleInAppPurchaseOrder> createRepeated() => $pb.PbList<GoogleInAppPurchaseOrder>();
+  static $pb.PbList<GoogleInAppPurchaseOrder> createRepeated() =>
+      $pb.PbList<GoogleInAppPurchaseOrder>();
   @$core.pragma('dart2js:noInline')
-  static GoogleInAppPurchaseOrder getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GoogleInAppPurchaseOrder>(create);
+  static GoogleInAppPurchaseOrder getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GoogleInAppPurchaseOrder>(create);
   static GoogleInAppPurchaseOrder? _defaultInstance;
 
   @$pb.TagNumber(1)

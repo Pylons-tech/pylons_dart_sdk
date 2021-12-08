@@ -8,7 +8,11 @@ class SDKIPCResponse<T> {
   String action;
 
   SDKIPCResponse(
-      {required this.success, required this.error, required this.data, required this.errorCode, required this.action});
+      {required this.success,
+      required this.error,
+      required this.data,
+      required this.errorCode,
+      required this.action});
 
   factory SDKIPCResponse.fromIPCMessage(String base64EncodedMessage) {
     final json = utf8.decode(base64Url.decode(base64EncodedMessage));
@@ -24,7 +28,12 @@ class SDKIPCResponse<T> {
 
   String toBas64Hash() => base64Url.encode(utf8.encode(toJson()));
 
-  String toJson() => jsonEncode({'success': success, 'error': error, 'data': data, 'transaction': action});
+  String toJson() => jsonEncode({
+        'success': success,
+        'error': error,
+        'data': data,
+        'transaction': action
+      });
 
   @override
   String toString() {

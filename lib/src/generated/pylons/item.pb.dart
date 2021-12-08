@@ -14,12 +14,26 @@ import '../cosmos/base/v1beta1/coin.pb.dart' as $0;
 
 class DoubleKeyValue extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DoubleKeyValue',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'DoubleKeyValue',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Key', protoName: 'Key')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Value', protoName: 'Value')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'Key',
+        protoName: 'Key')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'Value',
+        protoName: 'Value')
     ..hasRequiredFields = false;
 
   DoubleKeyValue._() : super();
@@ -36,9 +50,11 @@ class DoubleKeyValue extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory DoubleKeyValue.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory DoubleKeyValue.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory DoubleKeyValue.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory DoubleKeyValue.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -54,9 +70,11 @@ class DoubleKeyValue extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static DoubleKeyValue create() => DoubleKeyValue._();
   DoubleKeyValue createEmptyInstance() => create();
-  static $pb.PbList<DoubleKeyValue> createRepeated() => $pb.PbList<DoubleKeyValue>();
+  static $pb.PbList<DoubleKeyValue> createRepeated() =>
+      $pb.PbList<DoubleKeyValue>();
   @$core.pragma('dart2js:noInline')
-  static DoubleKeyValue getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DoubleKeyValue>(create);
+  static DoubleKeyValue getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DoubleKeyValue>(create);
   static DoubleKeyValue? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -86,12 +104,26 @@ class DoubleKeyValue extends $pb.GeneratedMessage {
 
 class LongKeyValue extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LongKeyValue',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'LongKeyValue',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Key', protoName: 'Key')
-    ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Value', protoName: 'Value')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'Key',
+        protoName: 'Key')
+    ..aInt64(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'Value',
+        protoName: 'Value')
     ..hasRequiredFields = false;
 
   LongKeyValue._() : super();
@@ -108,9 +140,11 @@ class LongKeyValue extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory LongKeyValue.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory LongKeyValue.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory LongKeyValue.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory LongKeyValue.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -120,14 +154,17 @@ class LongKeyValue extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   LongKeyValue copyWith(void Function(LongKeyValue) updates) =>
-      super.copyWith((message) => updates(message as LongKeyValue)) as LongKeyValue; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as LongKeyValue))
+          as LongKeyValue; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static LongKeyValue create() => LongKeyValue._();
   LongKeyValue createEmptyInstance() => create();
-  static $pb.PbList<LongKeyValue> createRepeated() => $pb.PbList<LongKeyValue>();
+  static $pb.PbList<LongKeyValue> createRepeated() =>
+      $pb.PbList<LongKeyValue>();
   @$core.pragma('dart2js:noInline')
-  static LongKeyValue getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LongKeyValue>(create);
+  static LongKeyValue getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<LongKeyValue>(create);
   static LongKeyValue? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -157,12 +194,26 @@ class LongKeyValue extends $pb.GeneratedMessage {
 
 class StringKeyValue extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'StringKeyValue',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'StringKeyValue',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Key', protoName: 'Key')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Value', protoName: 'Value')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'Key',
+        protoName: 'Key')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'Value',
+        protoName: 'Value')
     ..hasRequiredFields = false;
 
   StringKeyValue._() : super();
@@ -179,9 +230,11 @@ class StringKeyValue extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory StringKeyValue.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory StringKeyValue.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory StringKeyValue.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory StringKeyValue.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -197,9 +250,11 @@ class StringKeyValue extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static StringKeyValue create() => StringKeyValue._();
   StringKeyValue createEmptyInstance() => create();
-  static $pb.PbList<StringKeyValue> createRepeated() => $pb.PbList<StringKeyValue>();
+  static $pb.PbList<StringKeyValue> createRepeated() =>
+      $pb.PbList<StringKeyValue>();
   @$core.pragma('dart2js:noInline')
-  static StringKeyValue getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StringKeyValue>(create);
+  static StringKeyValue getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<StringKeyValue>(create);
   static StringKeyValue? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -229,34 +284,90 @@ class StringKeyValue extends $pb.GeneratedMessage {
 
 class Item extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Item',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'Item',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cookbookID', protoName: 'cookbookID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nodeVersion',
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'owner')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'cookbookID',
+        protoName: 'cookbookID')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        protoName: 'ID')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'nodeVersion',
         protoName: 'nodeVersion')
     ..pc<DoubleKeyValue>(
-        5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'doubles', $pb.PbFieldType.PM,
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'doubles',
+        $pb.PbFieldType.PM,
         subBuilder: DoubleKeyValue.create)
     ..pc<LongKeyValue>(
-        6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'longs', $pb.PbFieldType.PM,
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'longs',
+        $pb.PbFieldType.PM,
         subBuilder: LongKeyValue.create)
     ..pc<StringKeyValue>(
-        7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'strings', $pb.PbFieldType.PM,
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'strings',
+        $pb.PbFieldType.PM,
         subBuilder: StringKeyValue.create)
     ..pc<StringKeyValue>(
-        8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mutableStrings', $pb.PbFieldType.PM,
-        protoName: 'mutableStrings', subBuilder: StringKeyValue.create)
-    ..aOB(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tradeable')
-    ..aInt64(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastUpdate',
+        8,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'mutableStrings',
+        $pb.PbFieldType.PM,
+        protoName: 'mutableStrings',
+        subBuilder: StringKeyValue.create)
+    ..aOB(
+        9,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'tradeable')
+    ..aInt64(
+        10,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'lastUpdate',
         protoName: 'lastUpdate')
     ..pc<$0.Coin>(
-        11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'transferFee', $pb.PbFieldType.PM,
-        protoName: 'transferFee', subBuilder: $0.Coin.create)
-    ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tradePercentage',
+        11,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'transferFee',
+        $pb.PbFieldType.PM,
+        protoName: 'transferFee',
+        subBuilder: $0.Coin.create)
+    ..aOS(
+        12,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'tradePercentage',
         protoName: 'tradePercentage')
     ..hasRequiredFields = false;
 
@@ -314,9 +425,11 @@ class Item extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory Item.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Item.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Item.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Item.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -326,14 +439,16 @@ class Item extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   Item copyWith(void Function(Item) updates) =>
-      super.copyWith((message) => updates(message as Item)) as Item; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as Item))
+          as Item; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Item create() => Item._();
   Item createEmptyInstance() => create();
   static $pb.PbList<Item> createRepeated() => $pb.PbList<Item>();
   @$core.pragma('dart2js:noInline')
-  static Item getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Item>(create);
+  static Item getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Item>(create);
   static Item? _defaultInstance;
 
   @$pb.TagNumber(1)

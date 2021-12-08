@@ -19,17 +19,33 @@ class PublicKey extends $pb.GeneratedMessage {
     0: PublicKey_Sum.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PublicKey',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'PublicKey',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.crypto'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'tendermint.crypto'),
       createEmptyInstance: create)
     ..oo(0, [1, 2, 3])
     ..a<$core.List<$core.int>>(
-        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ed25519', $pb.PbFieldType.OY)
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ed25519',
+        $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(
-        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'secp256k1', $pb.PbFieldType.OY)
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'secp256k1',
+        $pb.PbFieldType.OY)
     ..a<$core.List<$core.int>>(
-        3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sr25519', $pb.PbFieldType.OY)
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'sr25519',
+        $pb.PbFieldType.OY)
     ..hasRequiredFields = false;
 
   PublicKey._() : super();
@@ -50,9 +66,11 @@ class PublicKey extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory PublicKey.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory PublicKey.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory PublicKey.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory PublicKey.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -62,14 +80,16 @@ class PublicKey extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   PublicKey copyWith(void Function(PublicKey) updates) =>
-      super.copyWith((message) => updates(message as PublicKey)) as PublicKey; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as PublicKey))
+          as PublicKey; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static PublicKey create() => PublicKey._();
   PublicKey createEmptyInstance() => create();
   static $pb.PbList<PublicKey> createRepeated() => $pb.PbList<PublicKey>();
   @$core.pragma('dart2js:noInline')
-  static PublicKey getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PublicKey>(create);
+  static PublicKey getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PublicKey>(create);
   static PublicKey? _defaultInstance;
 
   PublicKey_Sum whichSum() => _PublicKey_SumByTag[$_whichOneof(0)]!;

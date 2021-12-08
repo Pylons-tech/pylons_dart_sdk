@@ -8,7 +8,8 @@ class CookbookAlreadyExistsException implements Exception {
   final String cookbookSender;
   final String errMsg;
 
-  CookbookAlreadyExistsException(this.cookbook, this.cookbookSender, this.errMsg);
+  CookbookAlreadyExistsException(
+      this.cookbook, this.cookbookSender, this.errMsg);
 }
 
 /// Exception thrown by TX-emitting API calls when a cookbook does not exist on
@@ -56,7 +57,8 @@ class NotAnAddressException implements Exception {
   final String address;
   final String errMsg;
 
-  NotAnAddressException(this.address, {this.errMsg = 'Supplied address is not an address'});
+  NotAnAddressException(this.address,
+      {this.errMsg = 'Supplied address is not an address'});
 }
 
 /// Exception thrown by API calls when the wallet doesn't exist.
@@ -80,7 +82,8 @@ class ProfileDoesNotExistException implements Exception {
   final String address;
   final String errMsg;
 
-  ProfileDoesNotExistException(this.address, {this.errMsg = 'The account does not exist on the chain.'});
+  ProfileDoesNotExistException(this.address,
+      {this.errMsg = 'The account does not exist on the chain.'});
 }
 
 /// Exception thrown by TX-emitting API calls when a profile is not in a valid
@@ -142,7 +145,8 @@ class RecipeNotOwnedException implements Exception {
   final String recipeSender;
   final String errMsg;
 
-  RecipeNotOwnedException(this.cookbook, this.recipeName, this.recipeId, this.recipeSender, this.errMsg);
+  RecipeNotOwnedException(this.cookbook, this.recipeName, this.recipeId,
+      this.recipeSender, this.errMsg);
 }
 
 /// Exception thrown by TX-emitting API calls when a recipe is not in a valid
@@ -153,7 +157,8 @@ class RecipeStateException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeStateException(this.cookbook, this.recipeName, this.recipeId, this.errMsg);
+  RecipeStateException(
+      this.cookbook, this.recipeName, this.recipeId, this.errMsg);
 }
 
 /// Exception thrown by TX-emitting API calls when a recipe fails the sanity
@@ -164,7 +169,8 @@ class RecipeValidationException implements Exception {
   final String recipeId;
   final String errMsg;
 
-  RecipeValidationException(this.cookbook, this.recipeName, this.recipeId, this.errMsg);
+  RecipeValidationException(
+      this.cookbook, this.recipeName, this.recipeId, this.errMsg);
 
   @override
   String toString() {

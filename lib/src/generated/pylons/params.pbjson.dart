@@ -13,20 +13,49 @@ import 'dart:typed_data' as $typed_data;
 const GoogleInAppPurchasePackage$json = const {
   '1': 'GoogleInAppPurchasePackage',
   '2': const [
-    const {'1': 'packageName', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'packageName'},
-    const {'1': 'productID', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'productID'},
-    const {'1': 'amount', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'amount'},
+    const {
+      '1': 'packageName',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'packageName'
+    },
+    const {
+      '1': 'productID',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'productID'
+    },
+    const {
+      '1': 'amount',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'amount'
+    },
   ],
 };
 
 /// Descriptor for `GoogleInAppPurchasePackage`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List googleInAppPurchasePackageDescriptor = $convert.base64Decode(
-    'ChpHb29nbGVJbkFwcFB1cmNoYXNlUGFja2FnZRI5CgtwYWNrYWdlTmFtZRgBIAEoCUIX8t4fE3lhbWw6InBhY2thZ2VfbmFtZSJSC3BhY2thZ2VOYW1lEjMKCXByb2R1Y3RJRBgCIAEoCUIV8t4fEXlhbWw6InByb2R1Y3RfaWQiUglwcm9kdWN0SUQSVwoGYW1vdW50GAMgASgJQj/I3h8A8t4fDXlhbWw6ImFtb3VudCLa3h8mZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay90eXBlcy5JbnRSBmFtb3VudA==');
+final $typed_data.Uint8List googleInAppPurchasePackageDescriptor =
+    $convert.base64Decode(
+        'ChpHb29nbGVJbkFwcFB1cmNoYXNlUGFja2FnZRI5CgtwYWNrYWdlTmFtZRgBIAEoCUIX8t4fE3lhbWw6InBhY2thZ2VfbmFtZSJSC3BhY2thZ2VOYW1lEjMKCXByb2R1Y3RJRBgCIAEoCUIV8t4fEXlhbWw6InByb2R1Y3RfaWQiUglwcm9kdWN0SUQSVwoGYW1vdW50GAMgASgJQj/I3h8A8t4fDXlhbWw6ImFtb3VudCLa3h8mZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay90eXBlcy5JbnRSBmFtb3VudA==');
 @$core.Deprecated('Use coinIssuerDescriptor instead')
 const CoinIssuer$json = const {
   '1': 'CoinIssuer',
   '2': const [
-    const {'1': 'coinDenom', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'coinDenom'},
+    const {
+      '1': 'coinDenom',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'coinDenom'
+    },
     const {
       '1': 'packages',
       '3': 2,
@@ -36,7 +65,14 @@ const CoinIssuer$json = const {
       '8': const {},
       '10': 'packages'
     },
-    const {'1': 'googleInAppPurchasePubKey', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'googleInAppPurchasePubKey'},
+    const {
+      '1': 'googleInAppPurchasePubKey',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'googleInAppPurchasePubKey'
+    },
     const {'1': 'entityName', '3': 4, '4': 1, '5': 9, '10': 'entityName'},
   ],
 };
@@ -48,10 +84,38 @@ final $typed_data.Uint8List coinIssuerDescriptor = $convert.base64Decode(
 const PaymentProcessor$json = const {
   '1': 'PaymentProcessor',
   '2': const [
-    const {'1': 'CoinDenom', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'CoinDenom'},
-    const {'1': 'pubKey', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'pubKey'},
-    const {'1': 'processorPercentage', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'processorPercentage'},
-    const {'1': 'validatorsPercentage', '3': 4, '4': 1, '5': 9, '8': const {}, '10': 'validatorsPercentage'},
+    const {
+      '1': 'CoinDenom',
+      '3': 1,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'CoinDenom'
+    },
+    const {
+      '1': 'pubKey',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'pubKey'
+    },
+    const {
+      '1': 'processorPercentage',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'processorPercentage'
+    },
+    const {
+      '1': 'validatorsPercentage',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'validatorsPercentage'
+    },
     const {'1': 'name', '3': 5, '4': 1, '5': 9, '10': 'name'},
   ],
 };
@@ -63,8 +127,22 @@ final $typed_data.Uint8List paymentProcessorDescriptor = $convert.base64Decode(
 const Params$json = const {
   '1': 'Params',
   '2': const [
-    const {'1': 'minNameFieldLength', '3': 1, '4': 1, '5': 4, '8': const {}, '10': 'minNameFieldLength'},
-    const {'1': 'minDescriptionFieldLength', '3': 2, '4': 1, '5': 4, '8': const {}, '10': 'minDescriptionFieldLength'},
+    const {
+      '1': 'minNameFieldLength',
+      '3': 1,
+      '4': 1,
+      '5': 4,
+      '8': const {},
+      '10': 'minNameFieldLength'
+    },
+    const {
+      '1': 'minDescriptionFieldLength',
+      '3': 2,
+      '4': 1,
+      '5': 4,
+      '8': const {},
+      '10': 'minDescriptionFieldLength'
+    },
     const {
       '1': 'coinIssuers',
       '3': 3,
@@ -83,8 +161,22 @@ const Params$json = const {
       '8': const {},
       '10': 'paymentProcessors'
     },
-    const {'1': 'recipeFeePercentage', '3': 5, '4': 1, '5': 9, '8': const {}, '10': 'recipeFeePercentage'},
-    const {'1': 'itemTransferFeePercentage', '3': 6, '4': 1, '5': 9, '8': const {}, '10': 'itemTransferFeePercentage'},
+    const {
+      '1': 'recipeFeePercentage',
+      '3': 5,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'recipeFeePercentage'
+    },
+    const {
+      '1': 'itemTransferFeePercentage',
+      '3': 6,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'itemTransferFeePercentage'
+    },
     const {
       '1': 'updateItemStringFee',
       '3': 7,
@@ -94,8 +186,22 @@ const Params$json = const {
       '8': const {},
       '10': 'updateItemStringFee'
     },
-    const {'1': 'minTransferFee', '3': 8, '4': 1, '5': 9, '8': const {}, '10': 'minTransferFee'},
-    const {'1': 'maxTransferFee', '3': 9, '4': 1, '5': 9, '8': const {}, '10': 'maxTransferFee'},
+    const {
+      '1': 'minTransferFee',
+      '3': 8,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'minTransferFee'
+    },
+    const {
+      '1': 'maxTransferFee',
+      '3': 9,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'maxTransferFee'
+    },
     const {
       '1': 'updateUsernameFee',
       '3': 10,

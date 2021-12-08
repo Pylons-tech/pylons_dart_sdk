@@ -19,8 +19,8 @@ const ItemRef$json = const {
 };
 
 /// Descriptor for `ItemRef`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List itemRefDescriptor =
-    $convert.base64Decode('CgdJdGVtUmVmEh4KCmNvb2tib29rSUQYASABKAlSCmNvb2tib29rSUQSFgoGaXRlbUlEGAIgASgJUgZpdGVtSUQ=');
+final $typed_data.Uint8List itemRefDescriptor = $convert.base64Decode(
+    'CgdJdGVtUmVmEh4KCmNvb2tib29rSUQYASABKAlSCmNvb2tib29rSUQSFgoGaXRlbUlEGAIgASgJUgZpdGVtSUQ=');
 @$core.Deprecated('Use tradeDescriptor instead')
 const Trade$json = const {
   '1': 'Trade',

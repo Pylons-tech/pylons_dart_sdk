@@ -33,7 +33,8 @@ void main() {
         enabled: false,
         extraInfo: 'extraInfo');
 
-    expect(() => ValidateRecipe.validate(recipe), throwsA(isA<RecipeValidationException>()));
+    expect(() => ValidateRecipe.validate(recipe),
+        throwsA(isA<RecipeValidationException>()));
   });
 
   test('should throw error on empty recipe id ', () {
@@ -65,7 +66,8 @@ void main() {
         enabled: false,
         extraInfo: 'extraInfo');
 
-    expect(() => ValidateRecipe.validate(recipe), throwsA(isA<RecipeValidationException>()));
+    expect(() => ValidateRecipe.validate(recipe),
+        throwsA(isA<RecipeValidationException>()));
   });
 
   test('should throw error on short recipe name ', () {
@@ -97,7 +99,8 @@ void main() {
         enabled: false,
         extraInfo: 'extraInfo');
 
-    expect(() => ValidateRecipe.validate(recipe), throwsA(isA<RecipeValidationException>()));
+    expect(() => ValidateRecipe.validate(recipe),
+        throwsA(isA<RecipeValidationException>()));
   });
 
   test('should throw error on short recipe description ', () {
@@ -129,7 +132,8 @@ void main() {
         enabled: false,
         extraInfo: 'extraInfo');
 
-    expect(() => ValidateRecipe.validate(recipe), throwsA(isA<RecipeValidationException>()));
+    expect(() => ValidateRecipe.validate(recipe),
+        throwsA(isA<RecipeValidationException>()));
   });
 
   test('should throw error on empty item inputs', () {
@@ -161,6 +165,7 @@ void main() {
         enabled: false,
         extraInfo: 'extraInfo');
 
-    expect(() => ValidateRecipe.validate(recipe), throwsA(isA<RecipeValidationException>()));
+    expect(() => ValidateRecipe.validate(recipe),
+        throwsA(isA<RecipeValidationException>()));
   });
 }

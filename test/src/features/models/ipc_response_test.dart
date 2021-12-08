@@ -16,7 +16,8 @@ void main() {
     expect(MOCK_USERNAME, sdkMessage.data);
     expect(true, sdkMessage.errorCode.isEmpty);
     expect(true, sdkMessage.error.isEmpty);
-    expect('SDKIPCResponse{success: true, errorCode: , error: , data: $MOCK_USERNAME, action: ${Strings.GET_PROFILE}}',
+    expect(
+        'SDKIPCResponse{success: true, errorCode: , error: , data: $MOCK_USERNAME, action: ${Strings.GET_PROFILE}}',
         sdkMessage.toString());
   });
 

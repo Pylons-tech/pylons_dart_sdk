@@ -16,6 +16,7 @@ void main() {
   });
 
   test('should throw error when amount is greater than Max', () {
-    expect(() => DecString.doubleFromDecString('9999999999999999999'), throwsA(isA<Exception>()));
+    expect(() => DecString.doubleFromDecString('9999999999999999999'),
+        throwsA(isA<Exception>()));
   });
 }

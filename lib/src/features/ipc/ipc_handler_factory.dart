@@ -29,7 +29,8 @@ class IPCHandlerFactory {
   static void getHandler(SDKIPCResponse sdkipcResponse) {
     print(sdkipcResponse);
     if (!responseCompleters.containsKey(sdkipcResponse.action)) {
-      throw Exception('Unexpected response for unsent message of type ${sdkipcResponse.action}');
+      throw Exception(
+          'Unexpected response for unsent message of type ${sdkipcResponse.action}');
     }
     if (handlers.containsKey(sdkipcResponse.action)) {
       handlers[sdkipcResponse.action]!.handler(sdkipcResponse);

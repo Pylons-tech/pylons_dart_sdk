@@ -11,24 +11,57 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class PaymentInfo extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PaymentInfo',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'PaymentInfo',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'purchaseID', protoName: 'purchaseID')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'processorName',
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'purchaseID',
+        protoName: 'purchaseID')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'processorName',
         protoName: 'processorName')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payerAddr', protoName: 'payerAddr')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'productID', protoName: 'productID')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'payerAddr',
+        protoName: 'payerAddr')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'amount')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'productID',
+        protoName: 'productID')
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'signature')
     ..hasRequiredFields = false;
 
   PaymentInfo._() : super();
   factory PaymentInfo() => create();
-  factory PaymentInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory PaymentInfo.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory PaymentInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory PaymentInfo.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -43,7 +76,8 @@ class PaymentInfo extends $pb.GeneratedMessage {
   PaymentInfo createEmptyInstance() => create();
   static $pb.PbList<PaymentInfo> createRepeated() => $pb.PbList<PaymentInfo>();
   @$core.pragma('dart2js:noInline')
-  static PaymentInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PaymentInfo>(create);
+  static PaymentInfo getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<PaymentInfo>(create);
   static PaymentInfo? _defaultInstance;
 
   @$pb.TagNumber(1)

@@ -13,8 +13,22 @@ const DoubleInputParam$json = const {
   '1': 'DoubleInputParam',
   '2': const [
     const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'minValue', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'minValue'},
-    const {'1': 'maxValue', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'maxValue'},
+    const {
+      '1': 'minValue',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'minValue'
+    },
+    const {
+      '1': 'maxValue',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'maxValue'
+    },
   ],
 };
 
@@ -134,7 +148,15 @@ const CoinOutput$json = const {
   '1': 'CoinOutput',
   '2': const [
     const {'1': 'ID', '3': 1, '4': 1, '5': 9, '10': 'ID'},
-    const {'1': 'coin', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'coin'},
+    const {
+      '1': 'coin',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '8': const {},
+      '10': 'coin'
+    },
     const {'1': 'program', '3': 3, '4': 1, '5': 9, '10': 'program'},
   ],
 };
@@ -188,7 +210,14 @@ const ItemOutput$json = const {
       '8': const {},
       '10': 'transferFee'
     },
-    const {'1': 'tradePercentage', '3': 7, '4': 1, '5': 9, '8': const {}, '10': 'tradePercentage'},
+    const {
+      '1': 'tradePercentage',
+      '3': 7,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'tradePercentage'
+    },
     const {'1': 'quantity', '3': 8, '4': 1, '5': 4, '10': 'quantity'},
     const {'1': 'amountMinted', '3': 9, '4': 1, '5': 4, '10': 'amountMinted'},
     const {'1': 'tradeable', '3': 10, '4': 1, '5': 8, '10': 'tradeable'},
@@ -245,7 +274,14 @@ const ItemModifyOutput$json = const {
       '8': const {},
       '10': 'transferFee'
     },
-    const {'1': 'tradePercentage', '3': 8, '4': 1, '5': 9, '8': const {}, '10': 'tradePercentage'},
+    const {
+      '1': 'tradePercentage',
+      '3': 8,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'tradePercentage'
+    },
     const {'1': 'quantity', '3': 9, '4': 1, '5': 4, '10': 'quantity'},
     const {'1': 'amountMinted', '3': 10, '4': 1, '5': 4, '10': 'amountMinted'},
     const {'1': 'tradeable', '3': 11, '4': 1, '5': 8, '10': 'tradeable'},
@@ -288,7 +324,14 @@ const EntriesList$json = const {
 const WeightedOutputs$json = const {
   '1': 'WeightedOutputs',
   '2': const [
-    const {'1': 'entryIDs', '3': 1, '4': 3, '5': 9, '8': const {}, '10': 'entryIDs'},
+    const {
+      '1': 'entryIDs',
+      '3': 1,
+      '4': 3,
+      '5': 9,
+      '8': const {},
+      '10': 'entryIDs'
+    },
     const {'1': 'weight', '3': 2, '4': 1, '5': 4, '10': 'weight'},
   ],
 };
@@ -296,7 +339,15 @@ const WeightedOutputs$json = const {
 const CoinInput$json = const {
   '1': 'CoinInput',
   '2': const [
-    const {'1': 'coins', '3': 1, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'coins'},
+    const {
+      '1': 'coins',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '8': const {},
+      '10': 'coins'
+    },
   ],
 };
 
@@ -345,7 +396,13 @@ const Recipe$json = const {
       '8': const {},
       '10': 'outputs'
     },
-    const {'1': 'blockInterval', '3': 11, '4': 1, '5': 3, '10': 'blockInterval'},
+    const {
+      '1': 'blockInterval',
+      '3': 11,
+      '4': 1,
+      '5': 3,
+      '10': 'blockInterval'
+    },
     const {
       '1': 'costPerBlock',
       '3': 12,

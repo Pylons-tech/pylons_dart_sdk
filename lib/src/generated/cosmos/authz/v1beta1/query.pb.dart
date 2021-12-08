@@ -15,14 +15,34 @@ import 'authz.pb.dart' as $3;
 
 class QueryGrantsRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryGrantsRequest',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'QueryGrantsRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.authz.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.authz.v1beta1'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'granter')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'grantee')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'msgTypeUrl')
-    ..aOM<$2.PageRequest>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination',
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'granter')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'grantee')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'msgTypeUrl')
+    ..aOM<$2.PageRequest>(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'pagination',
         subBuilder: $2.PageRequest.create)
     ..hasRequiredFields = false;
 
@@ -51,7 +71,8 @@ class QueryGrantsRequest extends $pb.GeneratedMessage {
   factory QueryGrantsRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory QueryGrantsRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory QueryGrantsRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -67,10 +88,11 @@ class QueryGrantsRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static QueryGrantsRequest create() => QueryGrantsRequest._();
   QueryGrantsRequest createEmptyInstance() => create();
-  static $pb.PbList<QueryGrantsRequest> createRepeated() => $pb.PbList<QueryGrantsRequest>();
+  static $pb.PbList<QueryGrantsRequest> createRepeated() =>
+      $pb.PbList<QueryGrantsRequest>();
   @$core.pragma('dart2js:noInline')
-  static QueryGrantsRequest getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryGrantsRequest>(create);
+  static QueryGrantsRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<QueryGrantsRequest>(create);
   static QueryGrantsRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -126,13 +148,26 @@ class QueryGrantsRequest extends $pb.GeneratedMessage {
 
 class QueryGrantsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryGrantsResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'QueryGrantsResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.authz.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.authz.v1beta1'),
       createEmptyInstance: create)
-    ..pc<$3.Grant>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'grants', $pb.PbFieldType.PM,
+    ..pc<$3.Grant>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'grants',
+        $pb.PbFieldType.PM,
         subBuilder: $3.Grant.create)
-    ..aOM<$2.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination',
+    ..aOM<$2.PageResponse>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'pagination',
         subBuilder: $2.PageResponse.create)
     ..hasRequiredFields = false;
 
@@ -153,7 +188,8 @@ class QueryGrantsResponse extends $pb.GeneratedMessage {
   factory QueryGrantsResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory QueryGrantsResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory QueryGrantsResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -169,10 +205,11 @@ class QueryGrantsResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static QueryGrantsResponse create() => QueryGrantsResponse._();
   QueryGrantsResponse createEmptyInstance() => create();
-  static $pb.PbList<QueryGrantsResponse> createRepeated() => $pb.PbList<QueryGrantsResponse>();
+  static $pb.PbList<QueryGrantsResponse> createRepeated() =>
+      $pb.PbList<QueryGrantsResponse>();
   @$core.pragma('dart2js:noInline')
-  static QueryGrantsResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryGrantsResponse>(create);
+  static QueryGrantsResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<QueryGrantsResponse>(create);
   static QueryGrantsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -197,8 +234,10 @@ class QueryApi {
   $pb.RpcClient _client;
   QueryApi(this._client);
 
-  $async.Future<QueryGrantsResponse> grants($pb.ClientContext? ctx, QueryGrantsRequest request) {
+  $async.Future<QueryGrantsResponse> grants(
+      $pb.ClientContext? ctx, QueryGrantsRequest request) {
     var emptyResponse = QueryGrantsResponse();
-    return _client.invoke<QueryGrantsResponse>(ctx, 'Query', 'Grants', request, emptyResponse);
+    return _client.invoke<QueryGrantsResponse>(
+        ctx, 'Query', 'Grants', request, emptyResponse);
   }
 }

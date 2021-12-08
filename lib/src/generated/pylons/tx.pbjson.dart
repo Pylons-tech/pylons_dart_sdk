@@ -54,7 +54,13 @@ const MsgFulfillTrade$json = const {
   '2': const [
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
     const {'1': 'ID', '3': 2, '4': 1, '5': 4, '10': 'ID'},
-    const {'1': 'coinInputsIndex', '3': 3, '4': 1, '5': 4, '10': 'coinInputsIndex'},
+    const {
+      '1': 'coinInputsIndex',
+      '3': 3,
+      '4': 1,
+      '5': 4,
+      '10': 'coinInputsIndex'
+    },
     const {
       '1': 'items',
       '3': 4,
@@ -177,7 +183,13 @@ const MsgGoogleInAppPurchaseGetCoins$json = const {
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
     const {'1': 'productID', '3': 2, '4': 1, '5': 9, '10': 'productID'},
     const {'1': 'purchaseToken', '3': 3, '4': 1, '5': 9, '10': 'purchaseToken'},
-    const {'1': 'receiptDataBase64', '3': 4, '4': 1, '5': 9, '10': 'receiptDataBase64'},
+    const {
+      '1': 'receiptDataBase64',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'receiptDataBase64'
+    },
     const {'1': 'signature', '3': 5, '4': 1, '5': 9, '10': 'signature'},
   ],
 };
@@ -213,8 +225,21 @@ const MsgExecuteRecipe$json = const {
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
     const {'1': 'cookbookID', '3': 2, '4': 1, '5': 9, '10': 'cookbookID'},
     const {'1': 'recipeID', '3': 3, '4': 1, '5': 9, '10': 'recipeID'},
-    const {'1': 'coinInputsIndex', '3': 4, '4': 1, '5': 4, '10': 'coinInputsIndex'},
-    const {'1': 'itemIDs', '3': 5, '4': 3, '5': 9, '8': const {}, '10': 'itemIDs'},
+    const {
+      '1': 'coinInputsIndex',
+      '3': 4,
+      '4': 1,
+      '5': 4,
+      '10': 'coinInputsIndex'
+    },
+    const {
+      '1': 'itemIDs',
+      '3': 5,
+      '4': 3,
+      '5': 9,
+      '8': const {},
+      '10': 'itemIDs'
+    },
     const {
       '1': 'paymentInfos',
       '3': 6,
@@ -294,7 +319,13 @@ const MsgCreateRecipe$json = const {
       '8': const {},
       '10': 'outputs'
     },
-    const {'1': 'blockInterval', '3': 11, '4': 1, '5': 3, '10': 'blockInterval'},
+    const {
+      '1': 'blockInterval',
+      '3': 11,
+      '4': 1,
+      '5': 3,
+      '10': 'blockInterval'
+    },
     const {
       '1': 'costPerBlock',
       '3': 12,
@@ -358,7 +389,13 @@ const MsgUpdateRecipe$json = const {
       '8': const {},
       '10': 'outputs'
     },
-    const {'1': 'blockInterval', '3': 11, '4': 1, '5': 3, '10': 'blockInterval'},
+    const {
+      '1': 'blockInterval',
+      '3': 11,
+      '4': 1,
+      '5': 3,
+      '10': 'blockInterval'
+    },
     const {
       '1': 'costPerBlock',
       '3': 12,

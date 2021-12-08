@@ -5,7 +5,8 @@ import '../../../../mocks/mock_constants.dart';
 
 void main() {
   test('should create cookbook not owned exception ', () {
-    var cookbookNotOwnedException = CookbookNotOwnedException(MOCK_COOKBOOK_ID, MOCK_RECIPE_ID, MOCK_ERR_CODE);
+    var cookbookNotOwnedException = CookbookNotOwnedException(
+        MOCK_COOKBOOK_ID, MOCK_RECIPE_ID, MOCK_ERR_CODE);
     expect(MOCK_COOKBOOK_ID, cookbookNotOwnedException.cookbook);
     expect(MOCK_RECIPE_ID, cookbookNotOwnedException.cbSender);
     expect(MOCK_ERR_CODE, cookbookNotOwnedException.errMsg);
@@ -21,7 +22,8 @@ void main() {
   });
 
   test('should create recipe doesnt exists exception ', () {
-    var recipeDoesntExists = RecipeDoesNotExistException(MOCK_COOKBOOK_ID, MOCK_RECIPE_NAME, MOCK_ERR_CODE);
+    var recipeDoesntExists = RecipeDoesNotExistException(
+        MOCK_COOKBOOK_ID, MOCK_RECIPE_NAME, MOCK_ERR_CODE);
     expect(MOCK_COOKBOOK_ID, recipeDoesntExists.cookbook);
     expect(MOCK_RECIPE_NAME, recipeDoesntExists.recipeName);
     expect(true, recipeDoesntExists.recipeId.isEmpty);
@@ -29,7 +31,8 @@ void main() {
   });
 
   test('should create recipe state exception exception ', () {
-    var recipeDoesntExists = RecipeStateException(MOCK_COOKBOOK_ID, MOCK_RECIPE_NAME, MOCK_RECIPE_ID, MOCK_ERR_CODE);
+    var recipeDoesntExists = RecipeStateException(
+        MOCK_COOKBOOK_ID, MOCK_RECIPE_NAME, MOCK_RECIPE_ID, MOCK_ERR_CODE);
     expect(MOCK_COOKBOOK_ID, recipeDoesntExists.cookbook);
     expect(MOCK_RECIPE_NAME, recipeDoesntExists.recipeName);
     expect(MOCK_RECIPE_ID, recipeDoesntExists.recipeId);

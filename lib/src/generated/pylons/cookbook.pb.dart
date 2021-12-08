@@ -14,22 +14,64 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 
 class Cookbook extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Cookbook',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'Cookbook',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        protoName: 'ID')
     ..a<$fixnum.Int64>(
-        3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nodeVersion', $pb.PbFieldType.OU6,
-        protoName: 'nodeVersion', defaultOrMaker: $fixnum.Int64.ZERO)
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'developer')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportEmail',
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'nodeVersion',
+        $pb.PbFieldType.OU6,
+        protoName: 'nodeVersion',
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'name')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'description')
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'developer')
+    ..aOS(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'version')
+    ..aOS(
+        8,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'supportEmail',
         protoName: 'supportEmail')
-    ..aOB(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enabled')
+    ..aOB(
+        9,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'enabled')
     ..hasRequiredFields = false;
   Cookbook._() : super();
   factory Cookbook({
@@ -71,9 +113,11 @@ class Cookbook extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory Cookbook.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Cookbook.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Cookbook.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Cookbook.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -83,14 +127,16 @@ class Cookbook extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   Cookbook copyWith(void Function(Cookbook) updates) =>
-      super.copyWith((message) => updates(message as Cookbook)) as Cookbook; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as Cookbook))
+          as Cookbook; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Cookbook create() => Cookbook._();
   Cookbook createEmptyInstance() => create();
   static $pb.PbList<Cookbook> createRepeated() => $pb.PbList<Cookbook>();
   @$core.pragma('dart2js:noInline')
-  static Cookbook getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Cookbook>(create);
+  static Cookbook getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Cookbook>(create);
   static Cookbook? _defaultInstance;
 
   @$pb.TagNumber(1)

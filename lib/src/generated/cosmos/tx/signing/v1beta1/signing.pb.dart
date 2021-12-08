@@ -19,12 +19,20 @@ export 'signing.pbenum.dart';
 
 class SignatureDescriptors extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SignatureDescriptors',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'SignatureDescriptors',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.signing.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.tx.signing.v1beta1'),
       createEmptyInstance: create)
     ..pc<SignatureDescriptor>(
-        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signatures', $pb.PbFieldType.PM,
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'signatures',
+        $pb.PbFieldType.PM,
         subBuilder: SignatureDescriptor.create)
     ..hasRequiredFields = false;
 
@@ -41,12 +49,14 @@ class SignatureDescriptors extends $pb.GeneratedMessage {
   factory SignatureDescriptors.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory SignatureDescriptors.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory SignatureDescriptors.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  SignatureDescriptors clone() => SignatureDescriptors()..mergeFromMessage(this);
+  SignatureDescriptors clone() =>
+      SignatureDescriptors()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -57,10 +67,11 @@ class SignatureDescriptors extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static SignatureDescriptors create() => SignatureDescriptors._();
   SignatureDescriptors createEmptyInstance() => create();
-  static $pb.PbList<SignatureDescriptors> createRepeated() => $pb.PbList<SignatureDescriptors>();
+  static $pb.PbList<SignatureDescriptors> createRepeated() =>
+      $pb.PbList<SignatureDescriptors>();
   @$core.pragma('dart2js:noInline')
-  static SignatureDescriptors getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SignatureDescriptors>(create);
+  static SignatureDescriptors getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SignatureDescriptors>(create);
   static SignatureDescriptors? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -69,14 +80,29 @@ class SignatureDescriptors extends $pb.GeneratedMessage {
 
 class SignatureDescriptor_Data_Single extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SignatureDescriptor.Data.Single',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'SignatureDescriptor.Data.Single',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.signing.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.tx.signing.v1beta1'),
       createEmptyInstance: create)
-    ..e<SignMode>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mode', $pb.PbFieldType.OE,
-        defaultOrMaker: SignMode.SIGN_MODE_UNSPECIFIED, valueOf: SignMode.valueOf, enumValues: SignMode.values)
+    ..e<SignMode>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'mode',
+        $pb.PbFieldType.OE,
+        defaultOrMaker: SignMode.SIGN_MODE_UNSPECIFIED,
+        valueOf: SignMode.valueOf,
+        enumValues: SignMode.values)
     ..a<$core.List<$core.int>>(
-        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature', $pb.PbFieldType.OY)
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'signature',
+        $pb.PbFieldType.OY)
     ..hasRequiredFields = false;
 
   SignatureDescriptor_Data_Single._() : super();
@@ -102,21 +128,27 @@ class SignatureDescriptor_Data_Single extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  SignatureDescriptor_Data_Single clone() => SignatureDescriptor_Data_Single()..mergeFromMessage(this);
+  SignatureDescriptor_Data_Single clone() =>
+      SignatureDescriptor_Data_Single()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  SignatureDescriptor_Data_Single copyWith(void Function(SignatureDescriptor_Data_Single) updates) =>
-      super.copyWith((message) => updates(message as SignatureDescriptor_Data_Single))
+  SignatureDescriptor_Data_Single copyWith(
+          void Function(SignatureDescriptor_Data_Single) updates) =>
+      super.copyWith(
+              (message) => updates(message as SignatureDescriptor_Data_Single))
           as SignatureDescriptor_Data_Single; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static SignatureDescriptor_Data_Single create() => SignatureDescriptor_Data_Single._();
+  static SignatureDescriptor_Data_Single create() =>
+      SignatureDescriptor_Data_Single._();
   SignatureDescriptor_Data_Single createEmptyInstance() => create();
-  static $pb.PbList<SignatureDescriptor_Data_Single> createRepeated() => $pb.PbList<SignatureDescriptor_Data_Single>();
+  static $pb.PbList<SignatureDescriptor_Data_Single> createRepeated() =>
+      $pb.PbList<SignatureDescriptor_Data_Single>();
   @$core.pragma('dart2js:noInline')
-  static SignatureDescriptor_Data_Single getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SignatureDescriptor_Data_Single>(create);
+  static SignatureDescriptor_Data_Single getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SignatureDescriptor_Data_Single>(
+          create);
   static SignatureDescriptor_Data_Single? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -146,14 +178,26 @@ class SignatureDescriptor_Data_Single extends $pb.GeneratedMessage {
 
 class SignatureDescriptor_Data_Multi extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SignatureDescriptor.Data.Multi',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'SignatureDescriptor.Data.Multi',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.signing.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.tx.signing.v1beta1'),
       createEmptyInstance: create)
-    ..aOM<$1.CompactBitArray>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bitarray',
+    ..aOM<$1.CompactBitArray>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'bitarray',
         subBuilder: $1.CompactBitArray.create)
     ..pc<SignatureDescriptor_Data>(
-        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signatures', $pb.PbFieldType.PM,
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'signatures',
+        $pb.PbFieldType.PM,
         subBuilder: SignatureDescriptor_Data.create)
     ..hasRequiredFields = false;
 
@@ -180,21 +224,26 @@ class SignatureDescriptor_Data_Multi extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  SignatureDescriptor_Data_Multi clone() => SignatureDescriptor_Data_Multi()..mergeFromMessage(this);
+  SignatureDescriptor_Data_Multi clone() =>
+      SignatureDescriptor_Data_Multi()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  SignatureDescriptor_Data_Multi copyWith(void Function(SignatureDescriptor_Data_Multi) updates) =>
-      super.copyWith((message) => updates(message as SignatureDescriptor_Data_Multi))
+  SignatureDescriptor_Data_Multi copyWith(
+          void Function(SignatureDescriptor_Data_Multi) updates) =>
+      super.copyWith(
+              (message) => updates(message as SignatureDescriptor_Data_Multi))
           as SignatureDescriptor_Data_Multi; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static SignatureDescriptor_Data_Multi create() => SignatureDescriptor_Data_Multi._();
+  static SignatureDescriptor_Data_Multi create() =>
+      SignatureDescriptor_Data_Multi._();
   SignatureDescriptor_Data_Multi createEmptyInstance() => create();
-  static $pb.PbList<SignatureDescriptor_Data_Multi> createRepeated() => $pb.PbList<SignatureDescriptor_Data_Multi>();
+  static $pb.PbList<SignatureDescriptor_Data_Multi> createRepeated() =>
+      $pb.PbList<SignatureDescriptor_Data_Multi>();
   @$core.pragma('dart2js:noInline')
-  static SignatureDescriptor_Data_Multi getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SignatureDescriptor_Data_Multi>(create);
+  static SignatureDescriptor_Data_Multi getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SignatureDescriptor_Data_Multi>(create);
   static SignatureDescriptor_Data_Multi? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -218,22 +267,33 @@ class SignatureDescriptor_Data_Multi extends $pb.GeneratedMessage {
 enum SignatureDescriptor_Data_Sum { single, multi, notSet }
 
 class SignatureDescriptor_Data extends $pb.GeneratedMessage {
-  static const $core.Map<$core.int, SignatureDescriptor_Data_Sum> _SignatureDescriptor_Data_SumByTag = {
+  static const $core.Map<$core.int, SignatureDescriptor_Data_Sum>
+      _SignatureDescriptor_Data_SumByTag = {
     1: SignatureDescriptor_Data_Sum.single,
     2: SignatureDescriptor_Data_Sum.multi,
     0: SignatureDescriptor_Data_Sum.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SignatureDescriptor.Data',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'SignatureDescriptor.Data',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.signing.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.tx.signing.v1beta1'),
       createEmptyInstance: create)
     ..oo(0, [1, 2])
     ..aOM<SignatureDescriptor_Data_Single>(
-        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'single',
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'single',
         subBuilder: SignatureDescriptor_Data_Single.create)
     ..aOM<SignatureDescriptor_Data_Multi>(
-        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'multi',
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'multi',
         subBuilder: SignatureDescriptor_Data_Multi.create)
     ..hasRequiredFields = false;
 
@@ -254,29 +314,34 @@ class SignatureDescriptor_Data extends $pb.GeneratedMessage {
   factory SignatureDescriptor_Data.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory SignatureDescriptor_Data.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory SignatureDescriptor_Data.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  SignatureDescriptor_Data clone() => SignatureDescriptor_Data()..mergeFromMessage(this);
+  SignatureDescriptor_Data clone() =>
+      SignatureDescriptor_Data()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  SignatureDescriptor_Data copyWith(void Function(SignatureDescriptor_Data) updates) =>
+  SignatureDescriptor_Data copyWith(
+          void Function(SignatureDescriptor_Data) updates) =>
       super.copyWith((message) => updates(message as SignatureDescriptor_Data))
           as SignatureDescriptor_Data; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static SignatureDescriptor_Data create() => SignatureDescriptor_Data._();
   SignatureDescriptor_Data createEmptyInstance() => create();
-  static $pb.PbList<SignatureDescriptor_Data> createRepeated() => $pb.PbList<SignatureDescriptor_Data>();
+  static $pb.PbList<SignatureDescriptor_Data> createRepeated() =>
+      $pb.PbList<SignatureDescriptor_Data>();
   @$core.pragma('dart2js:noInline')
-  static SignatureDescriptor_Data getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SignatureDescriptor_Data>(create);
+  static SignatureDescriptor_Data getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SignatureDescriptor_Data>(create);
   static SignatureDescriptor_Data? _defaultInstance;
 
-  SignatureDescriptor_Data_Sum whichSum() => _SignatureDescriptor_Data_SumByTag[$_whichOneof(0)]!;
+  SignatureDescriptor_Data_Sum whichSum() =>
+      _SignatureDescriptor_Data_SumByTag[$_whichOneof(0)]!;
   void clearSum() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
@@ -310,16 +375,32 @@ class SignatureDescriptor_Data extends $pb.GeneratedMessage {
 
 class SignatureDescriptor extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SignatureDescriptor',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'SignatureDescriptor',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.signing.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.tx.signing.v1beta1'),
       createEmptyInstance: create)
-    ..aOM<$0.Any>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicKey',
+    ..aOM<$0.Any>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'publicKey',
         subBuilder: $0.Any.create)
-    ..aOM<SignatureDescriptor_Data>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data',
+    ..aOM<SignatureDescriptor_Data>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'data',
         subBuilder: SignatureDescriptor_Data.create)
     ..a<$fixnum.Int64>(
-        3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sequence', $pb.PbFieldType.OU6,
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'sequence',
+        $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
@@ -344,7 +425,8 @@ class SignatureDescriptor extends $pb.GeneratedMessage {
   factory SignatureDescriptor.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory SignatureDescriptor.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory SignatureDescriptor.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -360,10 +442,11 @@ class SignatureDescriptor extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static SignatureDescriptor create() => SignatureDescriptor._();
   SignatureDescriptor createEmptyInstance() => create();
-  static $pb.PbList<SignatureDescriptor> createRepeated() => $pb.PbList<SignatureDescriptor>();
+  static $pb.PbList<SignatureDescriptor> createRepeated() =>
+      $pb.PbList<SignatureDescriptor>();
   @$core.pragma('dart2js:noInline')
-  static SignatureDescriptor getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SignatureDescriptor>(create);
+  static SignatureDescriptor getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SignatureDescriptor>(create);
   static SignatureDescriptor? _defaultInstance;
 
   @$pb.TagNumber(1)

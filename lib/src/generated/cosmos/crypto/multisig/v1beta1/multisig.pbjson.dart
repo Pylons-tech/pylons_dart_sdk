@@ -19,13 +19,19 @@ const MultiSignature$json = const {
 };
 
 /// Descriptor for `MultiSignature`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List multiSignatureDescriptor =
-    $convert.base64Decode('Cg5NdWx0aVNpZ25hdHVyZRIeCgpzaWduYXR1cmVzGAEgAygMUgpzaWduYXR1cmVzOgTQoR8B');
+final $typed_data.Uint8List multiSignatureDescriptor = $convert.base64Decode(
+    'Cg5NdWx0aVNpZ25hdHVyZRIeCgpzaWduYXR1cmVzGAEgAygMUgpzaWduYXR1cmVzOgTQoR8B');
 @$core.Deprecated('Use compactBitArrayDescriptor instead')
 const CompactBitArray$json = const {
   '1': 'CompactBitArray',
   '2': const [
-    const {'1': 'extra_bits_stored', '3': 1, '4': 1, '5': 13, '10': 'extraBitsStored'},
+    const {
+      '1': 'extra_bits_stored',
+      '3': 1,
+      '4': 1,
+      '5': 13,
+      '10': 'extraBitsStored'
+    },
     const {'1': 'elems', '3': 2, '4': 1, '5': 12, '10': 'elems'},
   ],
   '7': const {},

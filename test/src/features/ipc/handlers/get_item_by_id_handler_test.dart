@@ -12,7 +12,8 @@ import '../../../../mocks/mock_constants.dart';
 void main() {
   test('should complete the get item by id handler future', () {
     initResponseCompleter(Strings.GET_ITEM_BY_ID);
-    var sdkResponse = SDKIPCResponse(success: false, error: '', data: '', errorCode: '', action: '');
+    var sdkResponse = SDKIPCResponse(
+        success: false, error: '', data: '', errorCode: '', action: '');
     var handler = GetItemByIdHandler();
     handler.handler(sdkResponse);
     expect(true, responseCompleters[Strings.GET_ITEM_BY_ID]!.isCompleted);
@@ -20,8 +21,12 @@ void main() {
 
   test('should complete the get item by id with data ', () async {
     initResponseCompleter(Strings.GET_ITEM_BY_ID);
-    var sdkResponse =
-        SDKIPCResponse(success: true, error: '', data: jsonEncode(MOCK_ITEM.toProto3Json()), errorCode: '', action: '');
+    var sdkResponse = SDKIPCResponse(
+        success: true,
+        error: '',
+        data: jsonEncode(MOCK_ITEM.toProto3Json()),
+        errorCode: '',
+        action: '');
     var handler = GetItemByIdHandler();
 
     Future.delayed(Duration(seconds: 1), () {

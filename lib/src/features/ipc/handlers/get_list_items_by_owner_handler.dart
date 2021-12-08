@@ -18,7 +18,9 @@ class GetListItemsByOwnerHandler implements IPCHandler {
     try {
       if (response.success) {
         defaultResponse.data = [
-          ...List.from(jsonDecode(response.data)).map((item) => Item.create()..mergeFromProto3Json(item)).toList()
+          ...List.from(jsonDecode(response.data))
+              .map((item) => Item.create()..mergeFromProto3Json(item))
+              .toList()
         ];
       }
     } on Exception catch (_) {

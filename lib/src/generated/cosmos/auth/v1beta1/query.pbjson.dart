@@ -34,7 +34,15 @@ final $typed_data.Uint8List queryAccountsRequestDescriptor = $convert.base64Deco
 const QueryAccountsResponse$json = const {
   '1': 'QueryAccountsResponse',
   '2': const [
-    const {'1': 'accounts', '3': 1, '4': 3, '5': 11, '6': '.google.protobuf.Any', '8': const {}, '10': 'accounts'},
+    const {
+      '1': 'accounts',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.google.protobuf.Any',
+      '8': const {},
+      '10': 'accounts'
+    },
     const {
       '1': 'pagination',
       '3': 2,
@@ -59,13 +67,21 @@ const QueryAccountRequest$json = const {
 };
 
 /// Descriptor for `QueryAccountRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List queryAccountRequestDescriptor =
-    $convert.base64Decode('ChNRdWVyeUFjY291bnRSZXF1ZXN0EhgKB2FkZHJlc3MYASABKAlSB2FkZHJlc3M6COigHwCIoB8A');
+final $typed_data.Uint8List queryAccountRequestDescriptor = $convert.base64Decode(
+    'ChNRdWVyeUFjY291bnRSZXF1ZXN0EhgKB2FkZHJlc3MYASABKAlSB2FkZHJlc3M6COigHwCIoB8A');
 @$core.Deprecated('Use queryAccountResponseDescriptor instead')
 const QueryAccountResponse$json = const {
   '1': 'QueryAccountResponse',
   '2': const [
-    const {'1': 'account', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Any', '8': const {}, '10': 'account'},
+    const {
+      '1': 'account',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Any',
+      '8': const {},
+      '10': 'account'
+    },
   ],
 };
 
@@ -78,12 +94,21 @@ const QueryParamsRequest$json = const {
 };
 
 /// Descriptor for `QueryParamsRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List queryParamsRequestDescriptor = $convert.base64Decode('ChJRdWVyeVBhcmFtc1JlcXVlc3Q=');
+final $typed_data.Uint8List queryParamsRequestDescriptor =
+    $convert.base64Decode('ChJRdWVyeVBhcmFtc1JlcXVlc3Q=');
 @$core.Deprecated('Use queryParamsResponseDescriptor instead')
 const QueryParamsResponse$json = const {
   '1': 'QueryParamsResponse',
   '2': const [
-    const {'1': 'params', '3': 1, '4': 1, '5': 11, '6': '.cosmos.auth.v1beta1.Params', '8': const {}, '10': 'params'},
+    const {
+      '1': 'params',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.auth.v1beta1.Params',
+      '8': const {},
+      '10': 'params'
+    },
   ],
 };
 
@@ -115,7 +140,8 @@ const $core.Map<$core.String, $core.dynamic> QueryServiceBase$json = const {
 };
 
 @$core.Deprecated('Use queryServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> QueryServiceBase$messageJson = const {
+const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
+    QueryServiceBase$messageJson = const {
   '.cosmos.auth.v1beta1.QueryAccountsRequest': QueryAccountsRequest$json,
   '.cosmos.base.query.v1beta1.PageRequest': $2.PageRequest$json,
   '.cosmos.auth.v1beta1.QueryAccountsResponse': QueryAccountsResponse$json,

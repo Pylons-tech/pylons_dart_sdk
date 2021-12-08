@@ -5,7 +5,8 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:uni_links_platform_interface/uni_links_platform_interface.dart' as _i2;
+import 'package:uni_links_platform_interface/uni_links_platform_interface.dart'
+    as _i2;
 
 // ignore_for_file: avoid_redundant_argument_values
 // ignore_for_file: avoid_setters_without_getters
@@ -26,11 +27,12 @@ class MockUniLinksPlatform extends _i1.Mock implements _i2.UniLinksPlatform {
 
   @override
   _i3.Stream<String?> get linkStream =>
-      (super.noSuchMethod(Invocation.getter(#linkStream), returnValue: Stream<String?>.empty()) as _i3.Stream<String?>);
+      (super.noSuchMethod(Invocation.getter(#linkStream),
+          returnValue: Stream<String?>.empty()) as _i3.Stream<String?>);
   @override
   _i3.Future<String?> getInitialLink() =>
-      (super.noSuchMethod(Invocation.method(#getInitialLink, []), returnValue: Future<String?>.value())
-          as _i3.Future<String?>);
+      (super.noSuchMethod(Invocation.method(#getInitialLink, []),
+          returnValue: Future<String?>.value()) as _i3.Future<String?>);
   @override
   String toString() => super.toString();
 }

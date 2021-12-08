@@ -15,13 +15,29 @@ import '../../../google/protobuf/any.pb.dart' as $0;
 
 class MsgGrant extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgGrant',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgGrant',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.authz.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.authz.v1beta1'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'granter')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'grantee')
-    ..aOM<$3.Grant>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'grant',
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'granter')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'grantee')
+    ..aOM<$3.Grant>(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'grant',
         subBuilder: $3.Grant.create)
     ..hasRequiredFields = false;
 
@@ -43,9 +59,11 @@ class MsgGrant extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory MsgGrant.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgGrant.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgGrant.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgGrant.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -55,14 +73,16 @@ class MsgGrant extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   MsgGrant copyWith(void Function(MsgGrant) updates) =>
-      super.copyWith((message) => updates(message as MsgGrant)) as MsgGrant; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as MsgGrant))
+          as MsgGrant; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static MsgGrant create() => MsgGrant._();
   MsgGrant createEmptyInstance() => create();
   static $pb.PbList<MsgGrant> createRepeated() => $pb.PbList<MsgGrant>();
   @$core.pragma('dart2js:noInline')
-  static MsgGrant getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgGrant>(create);
+  static MsgGrant getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgGrant>(create);
   static MsgGrant? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -106,12 +126,20 @@ class MsgGrant extends $pb.GeneratedMessage {
 
 class MsgExecResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgExecResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgExecResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.authz.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.authz.v1beta1'),
       createEmptyInstance: create)
     ..p<$core.List<$core.int>>(
-        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'results', $pb.PbFieldType.PY)
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'results',
+        $pb.PbFieldType.PY)
     ..hasRequiredFields = false;
 
   MsgExecResponse._() : super();
@@ -127,7 +155,8 @@ class MsgExecResponse extends $pb.GeneratedMessage {
   factory MsgExecResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgExecResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgExecResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -143,10 +172,11 @@ class MsgExecResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgExecResponse create() => MsgExecResponse._();
   MsgExecResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgExecResponse> createRepeated() => $pb.PbList<MsgExecResponse>();
+  static $pb.PbList<MsgExecResponse> createRepeated() =>
+      $pb.PbList<MsgExecResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgExecResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgExecResponse>(create);
+  static MsgExecResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgExecResponse>(create);
   static MsgExecResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -155,12 +185,25 @@ class MsgExecResponse extends $pb.GeneratedMessage {
 
 class MsgExec extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgExec',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgExec',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.authz.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.authz.v1beta1'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'grantee')
-    ..pc<$0.Any>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'msgs', $pb.PbFieldType.PM,
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'grantee')
+    ..pc<$0.Any>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'msgs',
+        $pb.PbFieldType.PM,
         subBuilder: $0.Any.create)
     ..hasRequiredFields = false;
 
@@ -178,9 +221,11 @@ class MsgExec extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory MsgExec.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgExec.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgExec.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgExec.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -190,14 +235,16 @@ class MsgExec extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   MsgExec copyWith(void Function(MsgExec) updates) =>
-      super.copyWith((message) => updates(message as MsgExec)) as MsgExec; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as MsgExec))
+          as MsgExec; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static MsgExec create() => MsgExec._();
   MsgExec createEmptyInstance() => create();
   static $pb.PbList<MsgExec> createRepeated() => $pb.PbList<MsgExec>();
   @$core.pragma('dart2js:noInline')
-  static MsgExec getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgExec>(create);
+  static MsgExec getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgExec>(create);
   static MsgExec? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -218,9 +265,13 @@ class MsgExec extends $pb.GeneratedMessage {
 
 class MsgGrantResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgGrantResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgGrantResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.authz.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.authz.v1beta1'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -229,7 +280,8 @@ class MsgGrantResponse extends $pb.GeneratedMessage {
   factory MsgGrantResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgGrantResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgGrantResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -245,22 +297,39 @@ class MsgGrantResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgGrantResponse create() => MsgGrantResponse._();
   MsgGrantResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgGrantResponse> createRepeated() => $pb.PbList<MsgGrantResponse>();
+  static $pb.PbList<MsgGrantResponse> createRepeated() =>
+      $pb.PbList<MsgGrantResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgGrantResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgGrantResponse>(create);
+  static MsgGrantResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgGrantResponse>(create);
   static MsgGrantResponse? _defaultInstance;
 }
 
 class MsgRevoke extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgRevoke',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgRevoke',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.authz.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.authz.v1beta1'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'granter')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'grantee')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'msgTypeUrl')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'granter')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'grantee')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'msgTypeUrl')
     ..hasRequiredFields = false;
 
   MsgRevoke._() : super();
@@ -281,9 +350,11 @@ class MsgRevoke extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory MsgRevoke.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgRevoke.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgRevoke.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgRevoke.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -293,14 +364,16 @@ class MsgRevoke extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   MsgRevoke copyWith(void Function(MsgRevoke) updates) =>
-      super.copyWith((message) => updates(message as MsgRevoke)) as MsgRevoke; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as MsgRevoke))
+          as MsgRevoke; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static MsgRevoke create() => MsgRevoke._();
   MsgRevoke createEmptyInstance() => create();
   static $pb.PbList<MsgRevoke> createRepeated() => $pb.PbList<MsgRevoke>();
   @$core.pragma('dart2js:noInline')
-  static MsgRevoke getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgRevoke>(create);
+  static MsgRevoke getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgRevoke>(create);
   static MsgRevoke? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -342,9 +415,13 @@ class MsgRevoke extends $pb.GeneratedMessage {
 
 class MsgRevokeResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgRevokeResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgRevokeResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.authz.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'cosmos.authz.v1beta1'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -353,7 +430,8 @@ class MsgRevokeResponse extends $pb.GeneratedMessage {
   factory MsgRevokeResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgRevokeResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgRevokeResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -369,10 +447,11 @@ class MsgRevokeResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgRevokeResponse create() => MsgRevokeResponse._();
   MsgRevokeResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgRevokeResponse> createRepeated() => $pb.PbList<MsgRevokeResponse>();
+  static $pb.PbList<MsgRevokeResponse> createRepeated() =>
+      $pb.PbList<MsgRevokeResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgRevokeResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgRevokeResponse>(create);
+  static MsgRevokeResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgRevokeResponse>(create);
   static MsgRevokeResponse? _defaultInstance;
 }
 
@@ -380,18 +459,23 @@ class MsgApi {
   $pb.RpcClient _client;
   MsgApi(this._client);
 
-  $async.Future<MsgGrantResponse> grant($pb.ClientContext? ctx, MsgGrant request) {
+  $async.Future<MsgGrantResponse> grant(
+      $pb.ClientContext? ctx, MsgGrant request) {
     var emptyResponse = MsgGrantResponse();
-    return _client.invoke<MsgGrantResponse>(ctx, 'Msg', 'Grant', request, emptyResponse);
+    return _client.invoke<MsgGrantResponse>(
+        ctx, 'Msg', 'Grant', request, emptyResponse);
   }
 
   $async.Future<MsgExecResponse> exec($pb.ClientContext? ctx, MsgExec request) {
     var emptyResponse = MsgExecResponse();
-    return _client.invoke<MsgExecResponse>(ctx, 'Msg', 'Exec', request, emptyResponse);
+    return _client.invoke<MsgExecResponse>(
+        ctx, 'Msg', 'Exec', request, emptyResponse);
   }
 
-  $async.Future<MsgRevokeResponse> revoke($pb.ClientContext? ctx, MsgRevoke request) {
+  $async.Future<MsgRevokeResponse> revoke(
+      $pb.ClientContext? ctx, MsgRevoke request) {
     var emptyResponse = MsgRevokeResponse();
-    return _client.invoke<MsgRevokeResponse>(ctx, 'Msg', 'Revoke', request, emptyResponse);
+    return _client.invoke<MsgRevokeResponse>(
+        ctx, 'Msg', 'Revoke', request, emptyResponse);
   }
 }

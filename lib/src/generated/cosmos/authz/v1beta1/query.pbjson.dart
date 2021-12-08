@@ -38,7 +38,14 @@ final $typed_data.Uint8List queryGrantsRequestDescriptor = $convert.base64Decode
 const QueryGrantsResponse$json = const {
   '1': 'QueryGrantsResponse',
   '2': const [
-    const {'1': 'grants', '3': 1, '4': 3, '5': 11, '6': '.cosmos.authz.v1beta1.Grant', '10': 'grants'},
+    const {
+      '1': 'grants',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.cosmos.authz.v1beta1.Grant',
+      '10': 'grants'
+    },
     const {
       '1': 'pagination',
       '3': 2,
@@ -66,7 +73,8 @@ const $core.Map<$core.String, $core.dynamic> QueryServiceBase$json = const {
 };
 
 @$core.Deprecated('Use queryServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> QueryServiceBase$messageJson = const {
+const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
+    QueryServiceBase$messageJson = const {
   '.cosmos.authz.v1beta1.QueryGrantsRequest': QueryGrantsRequest$json,
   '.cosmos.base.query.v1beta1.PageRequest': $2.PageRequest$json,
   '.cosmos.authz.v1beta1.QueryGrantsResponse': QueryGrantsResponse$json,

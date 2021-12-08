@@ -13,7 +13,8 @@ class ValidateRecipe {
     }
 
     if (recipe.description.length <= kRecipeDescriptionLength) {
-      throwError(recipe, 'Recipe description should have more than 20 characters');
+      throwError(
+          recipe, 'Recipe description should have more than 20 characters');
     }
 
     if (recipe.cookbookID.isEmpty) {
@@ -24,7 +25,10 @@ class ValidateRecipe {
       throwError(recipe, 'Invalid Recipe ID');
     }
 
-    if (recipe.itemInputs.where((recipe) => recipe.iD.isEmpty).toList().isNotEmpty) {
+    if (recipe.itemInputs
+        .where((recipe) => recipe.iD.isEmpty)
+        .toList()
+        .isNotEmpty) {
       throwError(recipe, 'Invalid Item ID');
     }
 
@@ -74,6 +78,7 @@ class ValidateRecipe {
       !(recipe.costPerBlock.hasAmount() && recipe.costPerBlock.hasDenom());
 
   static void throwError(Recipe recipe, String error) {
-    throw RecipeValidationException(recipe.cookbookID, recipe.name, recipe.iD, error);
+    throw RecipeValidationException(
+        recipe.cookbookID, recipe.name, recipe.iD, error);
   }
 }

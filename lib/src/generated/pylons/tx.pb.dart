@@ -18,13 +18,26 @@ import '../cosmos/base/v1beta1/coin.pb.dart' as $2;
 
 class MsgBurnDebtToken extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgBurnDebtToken',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgBurnDebtToken',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOM<$5.RedeemInfo>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'redeemInfo',
-        protoName: 'redeemInfo', subBuilder: $5.RedeemInfo.create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOM<$5.RedeemInfo>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'redeemInfo',
+        protoName: 'redeemInfo',
+        subBuilder: $5.RedeemInfo.create)
     ..hasRequiredFields = false;
 
   MsgBurnDebtToken._() : super();
@@ -32,7 +45,8 @@ class MsgBurnDebtToken extends $pb.GeneratedMessage {
   factory MsgBurnDebtToken.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgBurnDebtToken.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgBurnDebtToken.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -45,10 +59,11 @@ class MsgBurnDebtToken extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgBurnDebtToken create() => MsgBurnDebtToken._();
   MsgBurnDebtToken createEmptyInstance() => create();
-  static $pb.PbList<MsgBurnDebtToken> createRepeated() => $pb.PbList<MsgBurnDebtToken>();
+  static $pb.PbList<MsgBurnDebtToken> createRepeated() =>
+      $pb.PbList<MsgBurnDebtToken>();
   @$core.pragma('dart2js:noInline')
-  static MsgBurnDebtToken getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgBurnDebtToken>(create);
+  static MsgBurnDebtToken getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgBurnDebtToken>(create);
   static MsgBurnDebtToken? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -80,9 +95,13 @@ class MsgBurnDebtToken extends $pb.GeneratedMessage {
 
 class MsgBurnDebtTokenResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgBurnDebtTokenResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgBurnDebtTokenResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -91,12 +110,14 @@ class MsgBurnDebtTokenResponse extends $pb.GeneratedMessage {
   factory MsgBurnDebtTokenResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgBurnDebtTokenResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgBurnDebtTokenResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgBurnDebtTokenResponse clone() => MsgBurnDebtTokenResponse()..mergeFromMessage(this);
+  MsgBurnDebtTokenResponse clone() =>
+      MsgBurnDebtTokenResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -104,21 +125,34 @@ class MsgBurnDebtTokenResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgBurnDebtTokenResponse create() => MsgBurnDebtTokenResponse._();
   MsgBurnDebtTokenResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgBurnDebtTokenResponse> createRepeated() => $pb.PbList<MsgBurnDebtTokenResponse>();
+  static $pb.PbList<MsgBurnDebtTokenResponse> createRepeated() =>
+      $pb.PbList<MsgBurnDebtTokenResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgBurnDebtTokenResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgBurnDebtTokenResponse>(create);
+  static MsgBurnDebtTokenResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgBurnDebtTokenResponse>(create);
   static MsgBurnDebtTokenResponse? _defaultInstance;
 }
 
 class MsgUpdateAccount extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgUpdateAccount',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgUpdateAccount',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'username')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'username')
     ..hasRequiredFields = false;
 
   MsgUpdateAccount._() : super();
@@ -126,7 +160,8 @@ class MsgUpdateAccount extends $pb.GeneratedMessage {
   factory MsgUpdateAccount.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgUpdateAccount.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgUpdateAccount.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -139,10 +174,11 @@ class MsgUpdateAccount extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgUpdateAccount create() => MsgUpdateAccount._();
   MsgUpdateAccount createEmptyInstance() => create();
-  static $pb.PbList<MsgUpdateAccount> createRepeated() => $pb.PbList<MsgUpdateAccount>();
+  static $pb.PbList<MsgUpdateAccount> createRepeated() =>
+      $pb.PbList<MsgUpdateAccount>();
   @$core.pragma('dart2js:noInline')
-  static MsgUpdateAccount getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgUpdateAccount>(create);
+  static MsgUpdateAccount getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgUpdateAccount>(create);
   static MsgUpdateAccount? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -172,9 +208,13 @@ class MsgUpdateAccount extends $pb.GeneratedMessage {
 
 class MsgUpdateAccountResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgUpdateAccountResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgUpdateAccountResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -183,12 +223,14 @@ class MsgUpdateAccountResponse extends $pb.GeneratedMessage {
   factory MsgUpdateAccountResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgUpdateAccountResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgUpdateAccountResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgUpdateAccountResponse clone() => MsgUpdateAccountResponse()..mergeFromMessage(this);
+  MsgUpdateAccountResponse clone() =>
+      MsgUpdateAccountResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -196,21 +238,34 @@ class MsgUpdateAccountResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgUpdateAccountResponse create() => MsgUpdateAccountResponse._();
   MsgUpdateAccountResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgUpdateAccountResponse> createRepeated() => $pb.PbList<MsgUpdateAccountResponse>();
+  static $pb.PbList<MsgUpdateAccountResponse> createRepeated() =>
+      $pb.PbList<MsgUpdateAccountResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgUpdateAccountResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgUpdateAccountResponse>(create);
+  static MsgUpdateAccountResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgUpdateAccountResponse>(create);
   static MsgUpdateAccountResponse? _defaultInstance;
 }
 
 class MsgCreateAccount extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateAccount',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCreateAccount',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'username')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'username')
     ..hasRequiredFields = false;
 
   MsgCreateAccount._() : super();
@@ -218,7 +273,8 @@ class MsgCreateAccount extends $pb.GeneratedMessage {
   factory MsgCreateAccount.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgCreateAccount.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCreateAccount.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -231,10 +287,11 @@ class MsgCreateAccount extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgCreateAccount create() => MsgCreateAccount._();
   MsgCreateAccount createEmptyInstance() => create();
-  static $pb.PbList<MsgCreateAccount> createRepeated() => $pb.PbList<MsgCreateAccount>();
+  static $pb.PbList<MsgCreateAccount> createRepeated() =>
+      $pb.PbList<MsgCreateAccount>();
   @$core.pragma('dart2js:noInline')
-  static MsgCreateAccount getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCreateAccount>(create);
+  static MsgCreateAccount getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCreateAccount>(create);
   static MsgCreateAccount? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -264,9 +321,13 @@ class MsgCreateAccount extends $pb.GeneratedMessage {
 
 class MsgCreateAccountResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateAccountResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCreateAccountResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -275,12 +336,14 @@ class MsgCreateAccountResponse extends $pb.GeneratedMessage {
   factory MsgCreateAccountResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgCreateAccountResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCreateAccountResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgCreateAccountResponse clone() => MsgCreateAccountResponse()..mergeFromMessage(this);
+  MsgCreateAccountResponse clone() =>
+      MsgCreateAccountResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -288,32 +351,60 @@ class MsgCreateAccountResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgCreateAccountResponse create() => MsgCreateAccountResponse._();
   MsgCreateAccountResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgCreateAccountResponse> createRepeated() => $pb.PbList<MsgCreateAccountResponse>();
+  static $pb.PbList<MsgCreateAccountResponse> createRepeated() =>
+      $pb.PbList<MsgCreateAccountResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgCreateAccountResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCreateAccountResponse>(create);
+  static MsgCreateAccountResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCreateAccountResponse>(create);
   static MsgCreateAccountResponse? _defaultInstance;
 }
 
 class MsgFulfillTrade extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgFulfillTrade',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgFulfillTrade',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
     ..a<$fixnum.Int64>(
-        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', $pb.PbFieldType.OU6,
-        protoName: 'ID', defaultOrMaker: $fixnum.Int64.ZERO)
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        $pb.PbFieldType.OU6,
+        protoName: 'ID',
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$fixnum.Int64>(
-        3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'coinInputsIndex', $pb.PbFieldType.OU6,
-        protoName: 'coinInputsIndex', defaultOrMaker: $fixnum.Int64.ZERO)
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'coinInputsIndex',
+        $pb.PbFieldType.OU6,
+        protoName: 'coinInputsIndex',
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..pc<$8.ItemRef>(
-        4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM,
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'items',
+        $pb.PbFieldType.PM,
         subBuilder: $8.ItemRef.create)
     ..pc<$7.PaymentInfo>(
-        5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'paymentInfos', $pb.PbFieldType.PM,
-        protoName: 'paymentInfos', subBuilder: $7.PaymentInfo.create)
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'paymentInfos',
+        $pb.PbFieldType.PM,
+        protoName: 'paymentInfos',
+        subBuilder: $7.PaymentInfo.create)
     ..hasRequiredFields = false;
 
   MsgFulfillTrade._() : super();
@@ -321,7 +412,8 @@ class MsgFulfillTrade extends $pb.GeneratedMessage {
   factory MsgFulfillTrade.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgFulfillTrade.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgFulfillTrade.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -334,10 +426,11 @@ class MsgFulfillTrade extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgFulfillTrade create() => MsgFulfillTrade._();
   MsgFulfillTrade createEmptyInstance() => create();
-  static $pb.PbList<MsgFulfillTrade> createRepeated() => $pb.PbList<MsgFulfillTrade>();
+  static $pb.PbList<MsgFulfillTrade> createRepeated() =>
+      $pb.PbList<MsgFulfillTrade>();
   @$core.pragma('dart2js:noInline')
-  static MsgFulfillTrade getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgFulfillTrade>(create);
+  static MsgFulfillTrade getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgFulfillTrade>(create);
   static MsgFulfillTrade? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -385,9 +478,13 @@ class MsgFulfillTrade extends $pb.GeneratedMessage {
 
 class MsgFulfillTradeResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgFulfillTradeResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgFulfillTradeResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -396,12 +493,14 @@ class MsgFulfillTradeResponse extends $pb.GeneratedMessage {
   factory MsgFulfillTradeResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgFulfillTradeResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgFulfillTradeResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgFulfillTradeResponse clone() => MsgFulfillTradeResponse()..mergeFromMessage(this);
+  MsgFulfillTradeResponse clone() =>
+      MsgFulfillTradeResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -409,40 +508,76 @@ class MsgFulfillTradeResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgFulfillTradeResponse create() => MsgFulfillTradeResponse._();
   MsgFulfillTradeResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgFulfillTradeResponse> createRepeated() => $pb.PbList<MsgFulfillTradeResponse>();
+  static $pb.PbList<MsgFulfillTradeResponse> createRepeated() =>
+      $pb.PbList<MsgFulfillTradeResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgFulfillTradeResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgFulfillTradeResponse>(create);
+  static MsgFulfillTradeResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgFulfillTradeResponse>(create);
   static MsgFulfillTradeResponse? _defaultInstance;
 }
 
 class MsgCreateTrade extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateTrade',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCreateTrade',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
     ..pc<$4.CoinInput>(
-        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'coinInputs', $pb.PbFieldType.PM,
-        protoName: 'coinInputs', subBuilder: $4.CoinInput.create)
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'coinInputs',
+        $pb.PbFieldType.PM,
+        protoName: 'coinInputs',
+        subBuilder: $4.CoinInput.create)
     ..pc<$4.ItemInput>(
-        3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemInputs', $pb.PbFieldType.PM,
-        protoName: 'itemInputs', subBuilder: $4.ItemInput.create)
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'itemInputs',
+        $pb.PbFieldType.PM,
+        protoName: 'itemInputs',
+        subBuilder: $4.ItemInput.create)
     ..pc<$2.Coin>(
-        4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'coinOutputs', $pb.PbFieldType.PM,
-        protoName: 'coinOutputs', subBuilder: $2.Coin.create)
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'coinOutputs',
+        $pb.PbFieldType.PM,
+        protoName: 'coinOutputs',
+        subBuilder: $2.Coin.create)
     ..pc<$8.ItemRef>(
-        5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemOutputs', $pb.PbFieldType.PM,
-        protoName: 'itemOutputs', subBuilder: $8.ItemRef.create)
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'extraInfo', protoName: 'extraInfo')
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'itemOutputs',
+        $pb.PbFieldType.PM,
+        protoName: 'itemOutputs',
+        subBuilder: $8.ItemRef.create)
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'extraInfo',
+        protoName: 'extraInfo')
     ..hasRequiredFields = false;
 
   MsgCreateTrade._() : super();
   factory MsgCreateTrade() => create();
-  factory MsgCreateTrade.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCreateTrade.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgCreateTrade.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCreateTrade.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -455,9 +590,11 @@ class MsgCreateTrade extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgCreateTrade create() => MsgCreateTrade._();
   MsgCreateTrade createEmptyInstance() => create();
-  static $pb.PbList<MsgCreateTrade> createRepeated() => $pb.PbList<MsgCreateTrade>();
+  static $pb.PbList<MsgCreateTrade> createRepeated() =>
+      $pb.PbList<MsgCreateTrade>();
   @$core.pragma('dart2js:noInline')
-  static MsgCreateTrade getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCreateTrade>(create);
+  static MsgCreateTrade getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCreateTrade>(create);
   static MsgCreateTrade? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -499,13 +636,22 @@ class MsgCreateTrade extends $pb.GeneratedMessage {
 
 class MsgCreateTradeResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateTradeResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCreateTradeResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..a<$fixnum.Int64>(
-        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', $pb.PbFieldType.OU6,
-        protoName: 'ID', defaultOrMaker: $fixnum.Int64.ZERO)
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        $pb.PbFieldType.OU6,
+        protoName: 'ID',
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
   MsgCreateTradeResponse._() : super();
@@ -513,12 +659,14 @@ class MsgCreateTradeResponse extends $pb.GeneratedMessage {
   factory MsgCreateTradeResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgCreateTradeResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCreateTradeResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgCreateTradeResponse clone() => MsgCreateTradeResponse()..mergeFromMessage(this);
+  MsgCreateTradeResponse clone() =>
+      MsgCreateTradeResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -526,10 +674,11 @@ class MsgCreateTradeResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgCreateTradeResponse create() => MsgCreateTradeResponse._();
   MsgCreateTradeResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgCreateTradeResponse> createRepeated() => $pb.PbList<MsgCreateTradeResponse>();
+  static $pb.PbList<MsgCreateTradeResponse> createRepeated() =>
+      $pb.PbList<MsgCreateTradeResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgCreateTradeResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCreateTradeResponse>(create);
+  static MsgCreateTradeResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCreateTradeResponse>(create);
   static MsgCreateTradeResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -547,21 +696,36 @@ class MsgCreateTradeResponse extends $pb.GeneratedMessage {
 
 class MsgCancelTrade extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCancelTrade',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCancelTrade',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
     ..a<$fixnum.Int64>(
-        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', $pb.PbFieldType.OU6,
-        protoName: 'ID', defaultOrMaker: $fixnum.Int64.ZERO)
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        $pb.PbFieldType.OU6,
+        protoName: 'ID',
+        defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
   MsgCancelTrade._() : super();
   factory MsgCancelTrade() => create();
-  factory MsgCancelTrade.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCancelTrade.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgCancelTrade.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCancelTrade.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -574,9 +738,11 @@ class MsgCancelTrade extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgCancelTrade create() => MsgCancelTrade._();
   MsgCancelTrade createEmptyInstance() => create();
-  static $pb.PbList<MsgCancelTrade> createRepeated() => $pb.PbList<MsgCancelTrade>();
+  static $pb.PbList<MsgCancelTrade> createRepeated() =>
+      $pb.PbList<MsgCancelTrade>();
   @$core.pragma('dart2js:noInline')
-  static MsgCancelTrade getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCancelTrade>(create);
+  static MsgCancelTrade getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCancelTrade>(create);
   static MsgCancelTrade? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -606,9 +772,13 @@ class MsgCancelTrade extends $pb.GeneratedMessage {
 
 class MsgCancelTradeResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCancelTradeResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCancelTradeResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -617,12 +787,14 @@ class MsgCancelTradeResponse extends $pb.GeneratedMessage {
   factory MsgCancelTradeResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgCancelTradeResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCancelTradeResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgCancelTradeResponse clone() => MsgCancelTradeResponse()..mergeFromMessage(this);
+  MsgCancelTradeResponse clone() =>
+      MsgCancelTradeResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -630,21 +802,35 @@ class MsgCancelTradeResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgCancelTradeResponse create() => MsgCancelTradeResponse._();
   MsgCancelTradeResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgCancelTradeResponse> createRepeated() => $pb.PbList<MsgCancelTradeResponse>();
+  static $pb.PbList<MsgCancelTradeResponse> createRepeated() =>
+      $pb.PbList<MsgCancelTradeResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgCancelTradeResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCancelTradeResponse>(create);
+  static MsgCancelTradeResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCancelTradeResponse>(create);
   static MsgCancelTradeResponse? _defaultInstance;
 }
 
 class MsgCompleteExecutionEarly extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCompleteExecutionEarly',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCompleteExecutionEarly',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        protoName: 'ID')
     ..hasRequiredFields = false;
 
   MsgCompleteExecutionEarly._() : super();
@@ -652,12 +838,14 @@ class MsgCompleteExecutionEarly extends $pb.GeneratedMessage {
   factory MsgCompleteExecutionEarly.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgCompleteExecutionEarly.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCompleteExecutionEarly.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgCompleteExecutionEarly clone() => MsgCompleteExecutionEarly()..mergeFromMessage(this);
+  MsgCompleteExecutionEarly clone() =>
+      MsgCompleteExecutionEarly()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -665,10 +853,11 @@ class MsgCompleteExecutionEarly extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgCompleteExecutionEarly create() => MsgCompleteExecutionEarly._();
   MsgCompleteExecutionEarly createEmptyInstance() => create();
-  static $pb.PbList<MsgCompleteExecutionEarly> createRepeated() => $pb.PbList<MsgCompleteExecutionEarly>();
+  static $pb.PbList<MsgCompleteExecutionEarly> createRepeated() =>
+      $pb.PbList<MsgCompleteExecutionEarly>();
   @$core.pragma('dart2js:noInline')
-  static MsgCompleteExecutionEarly getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCompleteExecutionEarly>(create);
+  static MsgCompleteExecutionEarly getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCompleteExecutionEarly>(create);
   static MsgCompleteExecutionEarly? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -698,11 +887,20 @@ class MsgCompleteExecutionEarly extends $pb.GeneratedMessage {
 
 class MsgCompleteExecutionEarlyResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCompleteExecutionEarlyResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCompleteExecutionEarlyResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        protoName: 'ID')
     ..hasRequiredFields = false;
 
   MsgCompleteExecutionEarlyResponse._() : super();
@@ -716,19 +914,22 @@ class MsgCompleteExecutionEarlyResponse extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgCompleteExecutionEarlyResponse clone() => MsgCompleteExecutionEarlyResponse()..mergeFromMessage(this);
+  MsgCompleteExecutionEarlyResponse clone() =>
+      MsgCompleteExecutionEarlyResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static MsgCompleteExecutionEarlyResponse create() => MsgCompleteExecutionEarlyResponse._();
+  static MsgCompleteExecutionEarlyResponse create() =>
+      MsgCompleteExecutionEarlyResponse._();
   MsgCompleteExecutionEarlyResponse createEmptyInstance() => create();
   static $pb.PbList<MsgCompleteExecutionEarlyResponse> createRepeated() =>
       $pb.PbList<MsgCompleteExecutionEarlyResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgCompleteExecutionEarlyResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCompleteExecutionEarlyResponse>(create);
+  static MsgCompleteExecutionEarlyResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCompleteExecutionEarlyResponse>(
+          create);
   static MsgCompleteExecutionEarlyResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -746,13 +947,30 @@ class MsgCompleteExecutionEarlyResponse extends $pb.GeneratedMessage {
 
 class MsgTransferCookbook extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgTransferCookbook',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgTransferCookbook',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recipient')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        protoName: 'ID')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'recipient')
     ..hasRequiredFields = false;
 
   MsgTransferCookbook._() : super();
@@ -760,7 +978,8 @@ class MsgTransferCookbook extends $pb.GeneratedMessage {
   factory MsgTransferCookbook.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgTransferCookbook.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgTransferCookbook.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -773,10 +992,11 @@ class MsgTransferCookbook extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgTransferCookbook create() => MsgTransferCookbook._();
   MsgTransferCookbook createEmptyInstance() => create();
-  static $pb.PbList<MsgTransferCookbook> createRepeated() => $pb.PbList<MsgTransferCookbook>();
+  static $pb.PbList<MsgTransferCookbook> createRepeated() =>
+      $pb.PbList<MsgTransferCookbook>();
   @$core.pragma('dart2js:noInline')
-  static MsgTransferCookbook getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgTransferCookbook>(create);
+  static MsgTransferCookbook getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgTransferCookbook>(create);
   static MsgTransferCookbook? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -818,9 +1038,13 @@ class MsgTransferCookbook extends $pb.GeneratedMessage {
 
 class MsgTransferCookbookResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgTransferCookbookResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgTransferCookbookResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -835,34 +1059,62 @@ class MsgTransferCookbookResponse extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgTransferCookbookResponse clone() => MsgTransferCookbookResponse()..mergeFromMessage(this);
+  MsgTransferCookbookResponse clone() =>
+      MsgTransferCookbookResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static MsgTransferCookbookResponse create() => MsgTransferCookbookResponse._();
+  static MsgTransferCookbookResponse create() =>
+      MsgTransferCookbookResponse._();
   MsgTransferCookbookResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgTransferCookbookResponse> createRepeated() => $pb.PbList<MsgTransferCookbookResponse>();
+  static $pb.PbList<MsgTransferCookbookResponse> createRepeated() =>
+      $pb.PbList<MsgTransferCookbookResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgTransferCookbookResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgTransferCookbookResponse>(create);
+  static MsgTransferCookbookResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgTransferCookbookResponse>(create);
   static MsgTransferCookbookResponse? _defaultInstance;
 }
 
 class MsgGoogleInAppPurchaseGetCoins extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgGoogleInAppPurchaseGetCoins',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgGoogleInAppPurchaseGetCoins',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'productID', protoName: 'productID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'purchaseToken',
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'productID',
+        protoName: 'productID')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'purchaseToken',
         protoName: 'purchaseToken')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiptDataBase64',
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'receiptDataBase64',
         protoName: 'receiptDataBase64')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'signature')
     ..hasRequiredFields = false;
 
   MsgGoogleInAppPurchaseGetCoins._() : super();
@@ -876,18 +1128,21 @@ class MsgGoogleInAppPurchaseGetCoins extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgGoogleInAppPurchaseGetCoins clone() => MsgGoogleInAppPurchaseGetCoins()..mergeFromMessage(this);
+  MsgGoogleInAppPurchaseGetCoins clone() =>
+      MsgGoogleInAppPurchaseGetCoins()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static MsgGoogleInAppPurchaseGetCoins create() => MsgGoogleInAppPurchaseGetCoins._();
+  static MsgGoogleInAppPurchaseGetCoins create() =>
+      MsgGoogleInAppPurchaseGetCoins._();
   MsgGoogleInAppPurchaseGetCoins createEmptyInstance() => create();
-  static $pb.PbList<MsgGoogleInAppPurchaseGetCoins> createRepeated() => $pb.PbList<MsgGoogleInAppPurchaseGetCoins>();
+  static $pb.PbList<MsgGoogleInAppPurchaseGetCoins> createRepeated() =>
+      $pb.PbList<MsgGoogleInAppPurchaseGetCoins>();
   @$core.pragma('dart2js:noInline')
-  static MsgGoogleInAppPurchaseGetCoins getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgGoogleInAppPurchaseGetCoins>(create);
+  static MsgGoogleInAppPurchaseGetCoins getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgGoogleInAppPurchaseGetCoins>(create);
   static MsgGoogleInAppPurchaseGetCoins? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -953,15 +1208,20 @@ class MsgGoogleInAppPurchaseGetCoins extends $pb.GeneratedMessage {
 
 class MsgGoogleInAppPurchaseGetCoinsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgGoogleInAppPurchaseGetCoinsResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgGoogleInAppPurchaseGetCoinsResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
   MsgGoogleInAppPurchaseGetCoinsResponse._() : super();
   factory MsgGoogleInAppPurchaseGetCoinsResponse() => create();
-  factory MsgGoogleInAppPurchaseGetCoinsResponse.fromBuffer($core.List<$core.int> i,
+  factory MsgGoogleInAppPurchaseGetCoinsResponse.fromBuffer(
+          $core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory MsgGoogleInAppPurchaseGetCoinsResponse.fromJson($core.String i,
@@ -970,40 +1230,61 @@ class MsgGoogleInAppPurchaseGetCoinsResponse extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgGoogleInAppPurchaseGetCoinsResponse clone() => MsgGoogleInAppPurchaseGetCoinsResponse()..mergeFromMessage(this);
+  MsgGoogleInAppPurchaseGetCoinsResponse clone() =>
+      MsgGoogleInAppPurchaseGetCoinsResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static MsgGoogleInAppPurchaseGetCoinsResponse create() => MsgGoogleInAppPurchaseGetCoinsResponse._();
+  static MsgGoogleInAppPurchaseGetCoinsResponse create() =>
+      MsgGoogleInAppPurchaseGetCoinsResponse._();
   MsgGoogleInAppPurchaseGetCoinsResponse createEmptyInstance() => create();
   static $pb.PbList<MsgGoogleInAppPurchaseGetCoinsResponse> createRepeated() =>
       $pb.PbList<MsgGoogleInAppPurchaseGetCoinsResponse>();
   @$core.pragma('dart2js:noInline')
   static MsgGoogleInAppPurchaseGetCoinsResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgGoogleInAppPurchaseGetCoinsResponse>(create);
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
+          MsgGoogleInAppPurchaseGetCoinsResponse>(create);
   static MsgGoogleInAppPurchaseGetCoinsResponse? _defaultInstance;
 }
 
 class MsgSendItems extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgSendItems',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgSendItems',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiver')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'receiver')
     ..pc<$8.ItemRef>(
-        3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM,
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'items',
+        $pb.PbFieldType.PM,
         subBuilder: $8.ItemRef.create)
     ..hasRequiredFields = false;
 
   MsgSendItems._() : super();
   factory MsgSendItems() => create();
-  factory MsgSendItems.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgSendItems.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgSendItems.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgSendItems.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1016,9 +1297,11 @@ class MsgSendItems extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgSendItems create() => MsgSendItems._();
   MsgSendItems createEmptyInstance() => create();
-  static $pb.PbList<MsgSendItems> createRepeated() => $pb.PbList<MsgSendItems>();
+  static $pb.PbList<MsgSendItems> createRepeated() =>
+      $pb.PbList<MsgSendItems>();
   @$core.pragma('dart2js:noInline')
-  static MsgSendItems getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgSendItems>(create);
+  static MsgSendItems getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgSendItems>(create);
   static MsgSendItems? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1051,9 +1334,13 @@ class MsgSendItems extends $pb.GeneratedMessage {
 
 class MsgSendItemsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgSendItemsResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgSendItemsResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -1062,12 +1349,14 @@ class MsgSendItemsResponse extends $pb.GeneratedMessage {
   factory MsgSendItemsResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgSendItemsResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgSendItemsResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgSendItemsResponse clone() => MsgSendItemsResponse()..mergeFromMessage(this);
+  MsgSendItemsResponse clone() =>
+      MsgSendItemsResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -1075,29 +1364,63 @@ class MsgSendItemsResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgSendItemsResponse create() => MsgSendItemsResponse._();
   MsgSendItemsResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgSendItemsResponse> createRepeated() => $pb.PbList<MsgSendItemsResponse>();
+  static $pb.PbList<MsgSendItemsResponse> createRepeated() =>
+      $pb.PbList<MsgSendItemsResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgSendItemsResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgSendItemsResponse>(create);
+  static MsgSendItemsResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgSendItemsResponse>(create);
   static MsgSendItemsResponse? _defaultInstance;
 }
 
 class MsgExecuteRecipe extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgExecuteRecipe',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgExecuteRecipe',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cookbookID', protoName: 'cookbookID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recipeID', protoName: 'recipeID')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'cookbookID',
+        protoName: 'cookbookID')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'recipeID',
+        protoName: 'recipeID')
     ..a<$fixnum.Int64>(
-        4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'coinInputsIndex', $pb.PbFieldType.OU6,
-        protoName: 'coinInputsIndex', defaultOrMaker: $fixnum.Int64.ZERO)
-    ..pPS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemIDs', protoName: 'itemIDs')
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'coinInputsIndex',
+        $pb.PbFieldType.OU6,
+        protoName: 'coinInputsIndex',
+        defaultOrMaker: $fixnum.Int64.ZERO)
+    ..pPS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'itemIDs',
+        protoName: 'itemIDs')
     ..pc<$7.PaymentInfo>(
-        6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'paymentInfos', $pb.PbFieldType.PM,
-        protoName: 'paymentInfos', subBuilder: $7.PaymentInfo.create)
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'paymentInfos',
+        $pb.PbFieldType.PM,
+        protoName: 'paymentInfos',
+        subBuilder: $7.PaymentInfo.create)
     ..hasRequiredFields = false;
 
   MsgExecuteRecipe._() : super();
@@ -1133,7 +1456,8 @@ class MsgExecuteRecipe extends $pb.GeneratedMessage {
   factory MsgExecuteRecipe.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgExecuteRecipe.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgExecuteRecipe.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1146,10 +1470,11 @@ class MsgExecuteRecipe extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgExecuteRecipe create() => MsgExecuteRecipe._();
   MsgExecuteRecipe createEmptyInstance() => create();
-  static $pb.PbList<MsgExecuteRecipe> createRepeated() => $pb.PbList<MsgExecuteRecipe>();
+  static $pb.PbList<MsgExecuteRecipe> createRepeated() =>
+      $pb.PbList<MsgExecuteRecipe>();
   @$core.pragma('dart2js:noInline')
-  static MsgExecuteRecipe getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgExecuteRecipe>(create);
+  static MsgExecuteRecipe getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgExecuteRecipe>(create);
   static MsgExecuteRecipe? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1209,11 +1534,20 @@ class MsgExecuteRecipe extends $pb.GeneratedMessage {
 
 class MsgExecuteRecipeResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgExecuteRecipeResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgExecuteRecipeResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        protoName: 'ID')
     ..hasRequiredFields = false;
 
   MsgExecuteRecipeResponse._() : super();
@@ -1221,12 +1555,14 @@ class MsgExecuteRecipeResponse extends $pb.GeneratedMessage {
   factory MsgExecuteRecipeResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgExecuteRecipeResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgExecuteRecipeResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgExecuteRecipeResponse clone() => MsgExecuteRecipeResponse()..mergeFromMessage(this);
+  MsgExecuteRecipeResponse clone() =>
+      MsgExecuteRecipeResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -1234,10 +1570,11 @@ class MsgExecuteRecipeResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgExecuteRecipeResponse create() => MsgExecuteRecipeResponse._();
   MsgExecuteRecipeResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgExecuteRecipeResponse> createRepeated() => $pb.PbList<MsgExecuteRecipeResponse>();
+  static $pb.PbList<MsgExecuteRecipeResponse> createRepeated() =>
+      $pb.PbList<MsgExecuteRecipeResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgExecuteRecipeResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgExecuteRecipeResponse>(create);
+  static MsgExecuteRecipeResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgExecuteRecipeResponse>(create);
   static MsgExecuteRecipeResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1255,15 +1592,41 @@ class MsgExecuteRecipeResponse extends $pb.GeneratedMessage {
 
 class MsgSetItemString extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgSetItemString',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgSetItemString',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cookbookID', protoName: 'cookbookID')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'field')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'value')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'cookbookID',
+        protoName: 'cookbookID')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        protoName: 'ID')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'field')
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'value')
     ..hasRequiredFields = false;
 
   MsgSetItemString._() : super();
@@ -1271,7 +1634,8 @@ class MsgSetItemString extends $pb.GeneratedMessage {
   factory MsgSetItemString.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgSetItemString.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgSetItemString.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1284,10 +1648,11 @@ class MsgSetItemString extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgSetItemString create() => MsgSetItemString._();
   MsgSetItemString createEmptyInstance() => create();
-  static $pb.PbList<MsgSetItemString> createRepeated() => $pb.PbList<MsgSetItemString>();
+  static $pb.PbList<MsgSetItemString> createRepeated() =>
+      $pb.PbList<MsgSetItemString>();
   @$core.pragma('dart2js:noInline')
-  static MsgSetItemString getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgSetItemString>(create);
+  static MsgSetItemString getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgSetItemString>(create);
   static MsgSetItemString? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1353,9 +1718,13 @@ class MsgSetItemString extends $pb.GeneratedMessage {
 
 class MsgSetItemStringResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgSetItemStringResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgSetItemStringResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -1364,12 +1733,14 @@ class MsgSetItemStringResponse extends $pb.GeneratedMessage {
   factory MsgSetItemStringResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgSetItemStringResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgSetItemStringResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgSetItemStringResponse clone() => MsgSetItemStringResponse()..mergeFromMessage(this);
+  MsgSetItemStringResponse clone() =>
+      MsgSetItemStringResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -1377,42 +1748,109 @@ class MsgSetItemStringResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgSetItemStringResponse create() => MsgSetItemStringResponse._();
   MsgSetItemStringResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgSetItemStringResponse> createRepeated() => $pb.PbList<MsgSetItemStringResponse>();
+  static $pb.PbList<MsgSetItemStringResponse> createRepeated() =>
+      $pb.PbList<MsgSetItemStringResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgSetItemStringResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgSetItemStringResponse>(create);
+  static MsgSetItemStringResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgSetItemStringResponse>(create);
   static MsgSetItemStringResponse? _defaultInstance;
 }
 
 class MsgCreateRecipe extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateRecipe',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCreateRecipe',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cookbookID', protoName: 'cookbookID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'cookbookID',
+        protoName: 'cookbookID')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        protoName: 'ID')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'name')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'description')
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'version')
     ..pc<$4.CoinInput>(
-        7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'coinInputs', $pb.PbFieldType.PM,
-        protoName: 'coinInputs', subBuilder: $4.CoinInput.create)
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'coinInputs',
+        $pb.PbFieldType.PM,
+        protoName: 'coinInputs',
+        subBuilder: $4.CoinInput.create)
     ..pc<$4.ItemInput>(
-        8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemInputs', $pb.PbFieldType.PM,
-        protoName: 'itemInputs', subBuilder: $4.ItemInput.create)
-    ..aOM<$4.EntriesList>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'entries',
+        8,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'itemInputs',
+        $pb.PbFieldType.PM,
+        protoName: 'itemInputs',
+        subBuilder: $4.ItemInput.create)
+    ..aOM<$4.EntriesList>(
+        9,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'entries',
         subBuilder: $4.EntriesList.create)
     ..pc<$4.WeightedOutputs>(
-        10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'outputs', $pb.PbFieldType.PM,
+        10,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'outputs',
+        $pb.PbFieldType.PM,
         subBuilder: $4.WeightedOutputs.create)
-    ..aInt64(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'blockInterval',
+    ..aInt64(
+        11,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'blockInterval',
         protoName: 'blockInterval')
-    ..aOM<$2.Coin>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'costPerBlock',
-        protoName: 'costPerBlock', subBuilder: $2.Coin.create)
-    ..aOB(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enabled')
-    ..aOS(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'extraInfo', protoName: 'extraInfo')
+    ..aOM<$2.Coin>(
+        12,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'costPerBlock',
+        protoName: 'costPerBlock',
+        subBuilder: $2.Coin.create)
+    ..aOB(
+        13,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'enabled')
+    ..aOS(
+        14,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'extraInfo',
+        protoName: 'extraInfo')
     ..hasRequiredFields = false;
 
   MsgCreateRecipe._() : super();
@@ -1420,7 +1858,8 @@ class MsgCreateRecipe extends $pb.GeneratedMessage {
   factory MsgCreateRecipe.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgCreateRecipe.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCreateRecipe.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1433,10 +1872,11 @@ class MsgCreateRecipe extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgCreateRecipe create() => MsgCreateRecipe._();
   MsgCreateRecipe createEmptyInstance() => create();
-  static $pb.PbList<MsgCreateRecipe> createRepeated() => $pb.PbList<MsgCreateRecipe>();
+  static $pb.PbList<MsgCreateRecipe> createRepeated() =>
+      $pb.PbList<MsgCreateRecipe>();
   @$core.pragma('dart2js:noInline')
-  static MsgCreateRecipe getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCreateRecipe>(create);
+  static MsgCreateRecipe getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCreateRecipe>(create);
   static MsgCreateRecipe? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1587,9 +2027,13 @@ class MsgCreateRecipe extends $pb.GeneratedMessage {
 
 class MsgCreateRecipeResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateRecipeResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCreateRecipeResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -1598,12 +2042,14 @@ class MsgCreateRecipeResponse extends $pb.GeneratedMessage {
   factory MsgCreateRecipeResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgCreateRecipeResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCreateRecipeResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgCreateRecipeResponse clone() => MsgCreateRecipeResponse()..mergeFromMessage(this);
+  MsgCreateRecipeResponse clone() =>
+      MsgCreateRecipeResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -1611,42 +2057,109 @@ class MsgCreateRecipeResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgCreateRecipeResponse create() => MsgCreateRecipeResponse._();
   MsgCreateRecipeResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgCreateRecipeResponse> createRepeated() => $pb.PbList<MsgCreateRecipeResponse>();
+  static $pb.PbList<MsgCreateRecipeResponse> createRepeated() =>
+      $pb.PbList<MsgCreateRecipeResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgCreateRecipeResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCreateRecipeResponse>(create);
+  static MsgCreateRecipeResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCreateRecipeResponse>(create);
   static MsgCreateRecipeResponse? _defaultInstance;
 }
 
 class MsgUpdateRecipe extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgUpdateRecipe',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgUpdateRecipe',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cookbookID', protoName: 'cookbookID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'cookbookID',
+        protoName: 'cookbookID')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        protoName: 'ID')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'name')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'description')
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'version')
     ..pc<$4.CoinInput>(
-        7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'coinInputs', $pb.PbFieldType.PM,
-        protoName: 'coinInputs', subBuilder: $4.CoinInput.create)
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'coinInputs',
+        $pb.PbFieldType.PM,
+        protoName: 'coinInputs',
+        subBuilder: $4.CoinInput.create)
     ..pc<$4.ItemInput>(
-        8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemInputs', $pb.PbFieldType.PM,
-        protoName: 'itemInputs', subBuilder: $4.ItemInput.create)
-    ..aOM<$4.EntriesList>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'entries',
+        8,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'itemInputs',
+        $pb.PbFieldType.PM,
+        protoName: 'itemInputs',
+        subBuilder: $4.ItemInput.create)
+    ..aOM<$4.EntriesList>(
+        9,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'entries',
         subBuilder: $4.EntriesList.create)
     ..pc<$4.WeightedOutputs>(
-        10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'outputs', $pb.PbFieldType.PM,
+        10,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'outputs',
+        $pb.PbFieldType.PM,
         subBuilder: $4.WeightedOutputs.create)
-    ..aInt64(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'blockInterval',
+    ..aInt64(
+        11,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'blockInterval',
         protoName: 'blockInterval')
-    ..aOM<$2.Coin>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'costPerBlock',
-        protoName: 'costPerBlock', subBuilder: $2.Coin.create)
-    ..aOB(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enabled')
-    ..aOS(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'extraInfo', protoName: 'extraInfo')
+    ..aOM<$2.Coin>(
+        12,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'costPerBlock',
+        protoName: 'costPerBlock',
+        subBuilder: $2.Coin.create)
+    ..aOB(
+        13,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'enabled')
+    ..aOS(
+        14,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'extraInfo',
+        protoName: 'extraInfo')
     ..hasRequiredFields = false;
 
   MsgUpdateRecipe._() : super();
@@ -1654,7 +2167,8 @@ class MsgUpdateRecipe extends $pb.GeneratedMessage {
   factory MsgUpdateRecipe.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgUpdateRecipe.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgUpdateRecipe.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1667,10 +2181,11 @@ class MsgUpdateRecipe extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgUpdateRecipe create() => MsgUpdateRecipe._();
   MsgUpdateRecipe createEmptyInstance() => create();
-  static $pb.PbList<MsgUpdateRecipe> createRepeated() => $pb.PbList<MsgUpdateRecipe>();
+  static $pb.PbList<MsgUpdateRecipe> createRepeated() =>
+      $pb.PbList<MsgUpdateRecipe>();
   @$core.pragma('dart2js:noInline')
-  static MsgUpdateRecipe getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgUpdateRecipe>(create);
+  static MsgUpdateRecipe getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgUpdateRecipe>(create);
   static MsgUpdateRecipe? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1821,9 +2336,13 @@ class MsgUpdateRecipe extends $pb.GeneratedMessage {
 
 class MsgUpdateRecipeResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgUpdateRecipeResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgUpdateRecipeResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -1832,12 +2351,14 @@ class MsgUpdateRecipeResponse extends $pb.GeneratedMessage {
   factory MsgUpdateRecipeResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgUpdateRecipeResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgUpdateRecipeResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgUpdateRecipeResponse clone() => MsgUpdateRecipeResponse()..mergeFromMessage(this);
+  MsgUpdateRecipeResponse clone() =>
+      MsgUpdateRecipeResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -1845,28 +2366,66 @@ class MsgUpdateRecipeResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgUpdateRecipeResponse create() => MsgUpdateRecipeResponse._();
   MsgUpdateRecipeResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgUpdateRecipeResponse> createRepeated() => $pb.PbList<MsgUpdateRecipeResponse>();
+  static $pb.PbList<MsgUpdateRecipeResponse> createRepeated() =>
+      $pb.PbList<MsgUpdateRecipeResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgUpdateRecipeResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgUpdateRecipeResponse>(create);
+  static MsgUpdateRecipeResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgUpdateRecipeResponse>(create);
   static MsgUpdateRecipeResponse? _defaultInstance;
 }
 
 class MsgCreateCookbook extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateCookbook',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCreateCookbook',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'developer')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportEmail',
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        protoName: 'ID')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'name')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'description')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'developer')
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'version')
+    ..aOS(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'supportEmail',
         protoName: 'supportEmail')
-    ..aOB(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enabled')
+    ..aOB(
+        8,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'enabled')
     ..hasRequiredFields = false;
 
   MsgCreateCookbook._() : super();
@@ -1874,7 +2433,8 @@ class MsgCreateCookbook extends $pb.GeneratedMessage {
   factory MsgCreateCookbook.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgCreateCookbook.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCreateCookbook.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1887,10 +2447,11 @@ class MsgCreateCookbook extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgCreateCookbook create() => MsgCreateCookbook._();
   MsgCreateCookbook createEmptyInstance() => create();
-  static $pb.PbList<MsgCreateCookbook> createRepeated() => $pb.PbList<MsgCreateCookbook>();
+  static $pb.PbList<MsgCreateCookbook> createRepeated() =>
+      $pb.PbList<MsgCreateCookbook>();
   @$core.pragma('dart2js:noInline')
-  static MsgCreateCookbook getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCreateCookbook>(create);
+  static MsgCreateCookbook getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCreateCookbook>(create);
   static MsgCreateCookbook? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1992,9 +2553,13 @@ class MsgCreateCookbook extends $pb.GeneratedMessage {
 
 class MsgCreateCookbookResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateCookbookResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgCreateCookbookResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -2003,12 +2568,14 @@ class MsgCreateCookbookResponse extends $pb.GeneratedMessage {
   factory MsgCreateCookbookResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgCreateCookbookResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgCreateCookbookResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgCreateCookbookResponse clone() => MsgCreateCookbookResponse()..mergeFromMessage(this);
+  MsgCreateCookbookResponse clone() =>
+      MsgCreateCookbookResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -2016,28 +2583,66 @@ class MsgCreateCookbookResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgCreateCookbookResponse create() => MsgCreateCookbookResponse._();
   MsgCreateCookbookResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgCreateCookbookResponse> createRepeated() => $pb.PbList<MsgCreateCookbookResponse>();
+  static $pb.PbList<MsgCreateCookbookResponse> createRepeated() =>
+      $pb.PbList<MsgCreateCookbookResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgCreateCookbookResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgCreateCookbookResponse>(create);
+  static MsgCreateCookbookResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgCreateCookbookResponse>(create);
   static MsgCreateCookbookResponse? _defaultInstance;
 }
 
 class MsgUpdateCookbook extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgUpdateCookbook',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgUpdateCookbook',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'description')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'developer')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'version')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportEmail',
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'creator')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ID',
+        protoName: 'ID')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'name')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'description')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'developer')
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'version')
+    ..aOS(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'supportEmail',
         protoName: 'supportEmail')
-    ..aOB(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enabled')
+    ..aOB(
+        8,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'enabled')
     ..hasRequiredFields = false;
 
   MsgUpdateCookbook._() : super();
@@ -2045,7 +2650,8 @@ class MsgUpdateCookbook extends $pb.GeneratedMessage {
   factory MsgUpdateCookbook.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgUpdateCookbook.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgUpdateCookbook.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -2058,10 +2664,11 @@ class MsgUpdateCookbook extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgUpdateCookbook create() => MsgUpdateCookbook._();
   MsgUpdateCookbook createEmptyInstance() => create();
-  static $pb.PbList<MsgUpdateCookbook> createRepeated() => $pb.PbList<MsgUpdateCookbook>();
+  static $pb.PbList<MsgUpdateCookbook> createRepeated() =>
+      $pb.PbList<MsgUpdateCookbook>();
   @$core.pragma('dart2js:noInline')
-  static MsgUpdateCookbook getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgUpdateCookbook>(create);
+  static MsgUpdateCookbook getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgUpdateCookbook>(create);
   static MsgUpdateCookbook? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -2163,9 +2770,13 @@ class MsgUpdateCookbook extends $pb.GeneratedMessage {
 
 class MsgUpdateCookbookResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgUpdateCookbookResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'MsgUpdateCookbookResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -2174,12 +2785,14 @@ class MsgUpdateCookbookResponse extends $pb.GeneratedMessage {
   factory MsgUpdateCookbookResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MsgUpdateCookbookResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MsgUpdateCookbookResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  MsgUpdateCookbookResponse clone() => MsgUpdateCookbookResponse()..mergeFromMessage(this);
+  MsgUpdateCookbookResponse clone() =>
+      MsgUpdateCookbookResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -2187,9 +2800,10 @@ class MsgUpdateCookbookResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgUpdateCookbookResponse create() => MsgUpdateCookbookResponse._();
   MsgUpdateCookbookResponse createEmptyInstance() => create();
-  static $pb.PbList<MsgUpdateCookbookResponse> createRepeated() => $pb.PbList<MsgUpdateCookbookResponse>();
+  static $pb.PbList<MsgUpdateCookbookResponse> createRepeated() =>
+      $pb.PbList<MsgUpdateCookbookResponse>();
   @$core.pragma('dart2js:noInline')
-  static MsgUpdateCookbookResponse getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgUpdateCookbookResponse>(create);
+  static MsgUpdateCookbookResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<MsgUpdateCookbookResponse>(create);
   static MsgUpdateCookbookResponse? _defaultInstance;
 }

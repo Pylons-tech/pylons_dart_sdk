@@ -5,7 +5,8 @@ import 'package:pylons_sdk/pylons_sdk.dart';
 
 void main() {
   test('Test Profile input from Json Variable', () async {
-    var jsonRaw = '{"address": "testAddress","name": "testName","coins": {},"items": []}';
+    var jsonRaw =
+        '{"address": "testAddress","name": "testName","coins": {},"items": []}';
     Map<String, dynamic> jsonData = jsonDecode(jsonRaw);
     var testProfileFromJson = Profile.fromJson((jsonData));
     expect(testProfileFromJson.runtimeType, equals(Profile));

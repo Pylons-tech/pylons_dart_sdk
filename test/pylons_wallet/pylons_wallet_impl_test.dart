@@ -38,14 +38,18 @@ void getTradesTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(seconds: 1), () {
       final sdkResponse = SDKIPCResponse<List<Trade>>(
           success: true,
           error: '',
-          data: [Trade()..createEmptyInstance(), Trade()..createEmptyInstance()],
+          data: [
+            Trade()..createEmptyInstance(),
+            Trade()..createEmptyInstance()
+          ],
           errorCode: '',
           action: Strings.GET_TRADES);
       responseCompleters[Strings.GET_TRADES]!.complete(sdkResponse);
@@ -62,16 +66,22 @@ void getExecutionByIdTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(milliseconds: 500), () {
       final sdkResponse = SDKIPCResponse<Execution>(
-          success: true, error: '', data: MOCK_EXECUTION, errorCode: '', action: Strings.GET_EXECUTION_BY_ID);
+          success: true,
+          error: '',
+          data: MOCK_EXECUTION,
+          errorCode: '',
+          action: Strings.GET_EXECUTION_BY_ID);
       responseCompleters[Strings.GET_EXECUTION_BY_ID]!.complete(sdkResponse);
     });
 
-    var response = await pylonsWallet.getExecutionBasedOnId(id: MOCK_EXECUTION_ID);
+    var response =
+        await pylonsWallet.getExecutionBasedOnId(id: MOCK_EXECUTION_ID);
 
     expect(response.action, Strings.GET_EXECUTION_BY_ID);
   });
@@ -82,16 +92,22 @@ void getItemByIdTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(milliseconds: 500), () {
-      var sdkResponse =
-          SDKIPCResponse(success: true, error: '', data: MOCK_ITEM, errorCode: '', action: Strings.GET_ITEM_BY_ID);
+      var sdkResponse = SDKIPCResponse(
+          success: true,
+          error: '',
+          data: MOCK_ITEM,
+          errorCode: '',
+          action: Strings.GET_ITEM_BY_ID);
       responseCompleters[Strings.GET_ITEM_BY_ID]!.complete(sdkResponse);
     });
 
-    var response = await pylonsWallet.getItemById(cookbookId: MOCK_COOKBOOK_ID, itemId: MOCK_ITEM_ID);
+    var response = await pylonsWallet.getItemById(
+        cookbookId: MOCK_COOKBOOK_ID, itemId: MOCK_ITEM_ID);
 
     expect(response.action, Strings.GET_ITEM_BY_ID);
   });
@@ -102,12 +118,17 @@ void getItemsByOwnerTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(milliseconds: 500), () {
       final sdkResponse = SDKIPCResponse<List<Item>>(
-          success: true, error: '', data: [MOCK_ITEM], errorCode: '', action: Strings.GET_ITEMS_BY_OWNER);
+          success: true,
+          error: '',
+          data: [MOCK_ITEM],
+          errorCode: '',
+          action: Strings.GET_ITEMS_BY_OWNER);
       responseCompleters[Strings.GET_ITEMS_BY_OWNER]!.complete(sdkResponse);
     });
 
@@ -123,7 +144,8 @@ void getExecutionByRecipeTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(milliseconds: 500), () {
@@ -133,10 +155,12 @@ void getExecutionByRecipeTest() {
           data: ExecutionListByRecipeResponse.empty(),
           errorCode: '',
           action: Strings.GET_EXECUTION_BY_RECIPE_ID);
-      responseCompleters[Strings.GET_EXECUTION_BY_RECIPE_ID]!.complete(sdkResponse);
+      responseCompleters[Strings.GET_EXECUTION_BY_RECIPE_ID]!
+          .complete(sdkResponse);
     });
 
-    var response = await pylonsWallet.getExecutionBasedOnRecipe(cookbookId: MOCK_COOKBOOK_ID, recipeId: MOCK_RECIPE_ID);
+    var response = await pylonsWallet.getExecutionBasedOnRecipe(
+        cookbookId: MOCK_COOKBOOK_ID, recipeId: MOCK_RECIPE_ID);
 
     expect(response.action, Strings.GET_EXECUTION_BY_RECIPE_ID);
   });
@@ -147,16 +171,22 @@ void getRecipeTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(milliseconds: 500), () {
       final sdkResponse = SDKIPCResponse<Recipe>(
-          success: true, error: '', data: MOCK_RECIPE, errorCode: '', action: Strings.GET_RECIPE);
+          success: true,
+          error: '',
+          data: MOCK_RECIPE,
+          errorCode: '',
+          action: Strings.GET_RECIPE);
       responseCompleters[Strings.GET_RECIPE]!.complete(sdkResponse);
     });
 
-    var response = await pylonsWallet.getRecipe(MOCK_COOKBOOK_ID, MOCK_RECIPE_ID);
+    var response =
+        await pylonsWallet.getRecipe(MOCK_COOKBOOK_ID, MOCK_RECIPE_ID);
 
     expect(response.data.iD, MOCK_RECIPE_ID);
     expect(response.data.cookbookID, MOCK_COOKBOOK_ID);
@@ -169,12 +199,17 @@ void createRecipeTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(seconds: 1), () {
-      final sdkResponse =
-          SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_CREATE_RECIPE);
+      final sdkResponse = SDKIPCResponse(
+          success: true,
+          error: '',
+          data: '',
+          errorCode: '',
+          action: Strings.TX_CREATE_RECIPE);
       responseCompleters[Strings.TX_CREATE_RECIPE]!.complete(sdkResponse);
     });
 
@@ -190,14 +225,20 @@ void updateCookBookTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
-    var cookBook = Cookbook.create()..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
+    var cookBook = Cookbook.create()
+      ..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
 
     Future.delayed(Duration(seconds: 1), () {
-      final sdkResponse =
-          SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_UPDATE_COOKBOOK);
+      final sdkResponse = SDKIPCResponse(
+          success: true,
+          error: '',
+          data: '',
+          errorCode: '',
+          action: Strings.TX_UPDATE_COOKBOOK);
       responseCompleters[Strings.TX_UPDATE_COOKBOOK]!.complete(sdkResponse);
     });
 
@@ -213,12 +254,17 @@ void updateRecipeTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(seconds: 1), () {
-      final sdkResponse =
-          SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_UPDATE_RECIPE);
+      final sdkResponse = SDKIPCResponse(
+          success: true,
+          error: '',
+          data: '',
+          errorCode: '',
+          action: Strings.TX_UPDATE_RECIPE);
       responseCompleters[Strings.TX_UPDATE_RECIPE]!.complete(sdkResponse);
     });
 
@@ -248,17 +294,26 @@ void executeRecipeTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(seconds: 1), () {
-      final sdkResponse =
-          SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_EXECUTE_RECIPE);
+      final sdkResponse = SDKIPCResponse(
+          success: true,
+          error: '',
+          data: '',
+          errorCode: '',
+          action: Strings.TX_EXECUTE_RECIPE);
       responseCompleters[Strings.TX_EXECUTE_RECIPE]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.txExecuteRecipe(
-        paymentInfo: [], recipeName: MOCK_RECIPE_ID, cookbookId: MOCK_COOKBOOK_ID, itemIds: [], coinInputIndex: 0);
+        paymentInfo: [],
+        recipeName: MOCK_RECIPE_ID,
+        cookbookId: MOCK_COOKBOOK_ID,
+        itemIds: [],
+        coinInputIndex: 0);
 
     expect(true, response.success);
     expect(response.action, Strings.TX_EXECUTE_RECIPE);
@@ -270,14 +325,20 @@ void createCookBookTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
-    var cookBook = Cookbook.create()..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
+    var cookBook = Cookbook.create()
+      ..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
 
     Future.delayed(Duration(seconds: 1), () {
-      final sdkResponse =
-          SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: Strings.TX_CREATE_COOKBOOK);
+      final sdkResponse = SDKIPCResponse(
+          success: true,
+          error: '',
+          data: '',
+          errorCode: '',
+          action: Strings.TX_CREATE_COOKBOOK);
       responseCompleters[Strings.TX_CREATE_COOKBOOK]!.complete(sdkResponse);
     });
 
@@ -293,14 +354,18 @@ void getRecipesTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(milliseconds: 500), () {
       final sdkResponse = SDKIPCResponse<List<Recipe>>(
           success: true,
           error: '',
-          data: [Recipe()..createEmptyInstance(), Recipe()..createEmptyInstance()],
+          data: [
+            Recipe()..createEmptyInstance(),
+            Recipe()..createEmptyInstance()
+          ],
           errorCode: '',
           action: Strings.GET_RECIPES);
       responseCompleters[Strings.GET_RECIPES]!.complete(sdkResponse);
@@ -318,12 +383,17 @@ void getProfileTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(milliseconds: 500), () {
-      final sdkResponse =
-          SDKIPCResponse(success: true, error: '', data: MOCK_USERNAME, errorCode: '', action: Strings.GET_PROFILE);
+      final sdkResponse = SDKIPCResponse(
+          success: true,
+          error: '',
+          data: MOCK_USERNAME,
+          errorCode: '',
+          action: Strings.GET_PROFILE);
       responseCompleters[Strings.GET_PROFILE]!.complete(sdkResponse);
     });
 
@@ -339,14 +409,20 @@ void getCookBookTest() {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
-    var cookBook = Cookbook.create()..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
+    var cookBook = Cookbook.create()
+      ..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
 
     Future.delayed(Duration(seconds: 1), () {
       final sdkResponse = SDKIPCResponse<Cookbook>(
-          success: true, error: '', data: cookBook, errorCode: '', action: Strings.GET_COOKBOOK);
+          success: true,
+          error: '',
+          data: cookBook,
+          errorCode: '',
+          action: Strings.GET_COOKBOOK);
       responseCompleters[Strings.GET_COOKBOOK]!.complete(sdkResponse);
     });
 
@@ -362,10 +438,12 @@ void createLinkBasedOnOS() {
       var expectedLink = '$BASE_UNI_LINK/';
 
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
-      var response = pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: true);
+      var response =
+          pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: true);
       expect(expectedLink, response);
     });
 
@@ -373,10 +451,12 @@ void createLinkBasedOnOS() {
       var expectedLink = '$BASE_UNI_LINK_IOS';
 
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
-      var response = pylonsWallet.createLinkBasedOnOS(encodedMessage: '', isAndroid: false);
+      var response = pylonsWallet.createLinkBasedOnOS(
+          encodedMessage: '', isAndroid: false);
       expect(expectedLink, response);
     });
   });
@@ -386,7 +466,8 @@ void getHostBasedOnOsTest() {
   group('getHostBasedOnOS', () {
     test('should return host as platform in android ', () {
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
       var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
       var hostBasedOnPlatform = pylonsWallet.getHostBasedOnOS(true);
@@ -395,7 +476,8 @@ void getHostBasedOnOsTest() {
 
     test('should return host as platform in ios ', () {
       var uniLink = MockUniLinksPlatform();
-      when(uniLink.linkStream).thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+      when(uniLink.linkStream)
+          .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
 
       var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 

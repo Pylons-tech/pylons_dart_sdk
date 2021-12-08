@@ -19,8 +19,8 @@ const UserMap$json = const {
 };
 
 /// Descriptor for `UserMap`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List userMapDescriptor = $convert
-    .base64Decode('CgdVc2VyTWFwEiAKC2FjY291bnRBZGRyGAEgASgJUgthY2NvdW50QWRkchIaCgh1c2VybmFtZRgCIAEoCVIIdXNlcm5hbWU=');
+final $typed_data.Uint8List userMapDescriptor = $convert.base64Decode(
+    'CgdVc2VyTWFwEiAKC2FjY291bnRBZGRyGAEgASgJUgthY2NvdW50QWRkchIaCgh1c2VybmFtZRgCIAEoCVIIdXNlcm5hbWU=');
 @$core.Deprecated('Use usernameDescriptor instead')
 const Username$json = const {
   '1': 'Username',
@@ -30,7 +30,8 @@ const Username$json = const {
 };
 
 /// Descriptor for `Username`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List usernameDescriptor = $convert.base64Decode('CghVc2VybmFtZRIUCgV2YWx1ZRgBIAEoCVIFdmFsdWU=');
+final $typed_data.Uint8List usernameDescriptor =
+    $convert.base64Decode('CghVc2VybmFtZRIUCgV2YWx1ZRgBIAEoCVIFdmFsdWU=');
 @$core.Deprecated('Use accountAddrDescriptor instead')
 const AccountAddr$json = const {
   '1': 'AccountAddr',

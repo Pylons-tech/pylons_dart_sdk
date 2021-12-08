@@ -31,8 +31,8 @@ const LongKeyValue$json = const {
 };
 
 /// Descriptor for `LongKeyValue`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List longKeyValueDescriptor =
-    $convert.base64Decode('CgxMb25nS2V5VmFsdWUSEAoDS2V5GAEgASgJUgNLZXkSFAoFVmFsdWUYAiABKANSBVZhbHVl');
+final $typed_data.Uint8List longKeyValueDescriptor = $convert.base64Decode(
+    'CgxMb25nS2V5VmFsdWUSEAoDS2V5GAEgASgJUgNLZXkSFAoFVmFsdWUYAiABKANSBVZhbHVl');
 @$core.Deprecated('Use stringKeyValueDescriptor instead')
 const StringKeyValue$json = const {
   '1': 'StringKeyValue',
@@ -43,8 +43,8 @@ const StringKeyValue$json = const {
 };
 
 /// Descriptor for `StringKeyValue`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List stringKeyValueDescriptor =
-    $convert.base64Decode('Cg5TdHJpbmdLZXlWYWx1ZRIQCgNLZXkYASABKAlSA0tleRIUCgVWYWx1ZRgCIAEoCVIFVmFsdWU=');
+final $typed_data.Uint8List stringKeyValueDescriptor = $convert.base64Decode(
+    'Cg5TdHJpbmdLZXlWYWx1ZRIQCgNLZXkYASABKAlSA0tleRIUCgVWYWx1ZRgCIAEoCVIFVmFsdWU=');
 @$core.Deprecated('Use itemDescriptor instead')
 const Item$json = const {
   '1': 'Item',
@@ -100,7 +100,14 @@ const Item$json = const {
       '8': const {},
       '10': 'transferFee'
     },
-    const {'1': 'tradePercentage', '3': 12, '4': 1, '5': 9, '8': const {}, '10': 'tradePercentage'},
+    const {
+      '1': 'tradePercentage',
+      '3': 12,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'tradePercentage'
+    },
   ],
 };
 

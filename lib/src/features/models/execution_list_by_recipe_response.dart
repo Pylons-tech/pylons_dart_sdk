@@ -4,23 +4,31 @@ class ExecutionListByRecipeResponse {
   final List<Execution> completedExecutions;
   final List<Execution> pendingExecutions;
 
-  ExecutionListByRecipeResponse({required this.completedExecutions, required this.pendingExecutions});
+  ExecutionListByRecipeResponse(
+      {required this.completedExecutions, required this.pendingExecutions});
   factory ExecutionListByRecipeResponse.empty() {
-    return ExecutionListByRecipeResponse(pendingExecutions: [], completedExecutions: []);
+    return ExecutionListByRecipeResponse(
+        pendingExecutions: [], completedExecutions: []);
   }
 
   Map<String, dynamic> toJson() => {
-        'completedExecutions': completedExecutions.map((execution) => execution.toProto3Json()).toList(),
-        'pendingExecutions': pendingExecutions.map((execution) => execution.toProto3Json()).toList()
+        'completedExecutions': completedExecutions
+            .map((execution) => execution.toProto3Json())
+            .toList(),
+        'pendingExecutions': pendingExecutions
+            .map((execution) => execution.toProto3Json())
+            .toList()
       };
 
   factory ExecutionListByRecipeResponse.fromJson(Map<String, dynamic> json) {
     return ExecutionListByRecipeResponse(
         pendingExecutions: List.from(json['pendingExecutions'])
-            .map((execution) => Execution.create()..mergeFromProto3Json(execution))
+            .map((execution) =>
+                Execution.create()..mergeFromProto3Json(execution))
             .toList(),
         completedExecutions: List.from(json['completedExecutions'])
-            .map((execution) => Execution.create()..mergeFromProto3Json(execution))
+            .map((execution) =>
+                Execution.create()..mergeFromProto3Json(execution))
             .toList());
   }
 

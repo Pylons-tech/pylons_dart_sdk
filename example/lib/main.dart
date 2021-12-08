@@ -175,9 +175,11 @@ class _MyHomePageState extends State<MyHomePage> {
     log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Cookbook created")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Cookbook created")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Cookbook error : ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Cookbook error : ${response.error}")));
     }
   }
 
@@ -216,22 +218,30 @@ class _MyHomePageState extends State<MyHomePage> {
     log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Recipe created")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Recipe created")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Recipe error : ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Recipe error : ${response.error}")));
     }
   }
 
   void executeRecipe() async {
-    var response = await PylonsWallet.instance
-        .txExecuteRecipe(cookbookId: cookBookId, recipeName: recipeId, coinInputIndex: 0, itemIds: [], paymentInfo: []);
+    var response = await PylonsWallet.instance.txExecuteRecipe(
+        cookbookId: cookBookId,
+        recipeName: recipeId,
+        coinInputIndex: 0,
+        itemIds: [],
+        paymentInfo: []);
 
     log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Recipe  executed")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Recipe  executed")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Recipe  error : ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Recipe  error : ${response.error}")));
     }
   }
 
@@ -270,9 +280,11 @@ class _MyHomePageState extends State<MyHomePage> {
     log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Recipe updated")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Recipe updated")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Recipe update error : ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Recipe update error : ${response.error}")));
     }
   }
 
@@ -292,14 +304,17 @@ class _MyHomePageState extends State<MyHomePage> {
     log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Cookbook updated")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Cookbook updated")));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Cookbook update error: ${response.error}")));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Cookbook update error: ${response.error}")));
     }
   }
 
   void getProfile() async {
-    log((await PylonsWallet.instance.getProfile()).toString(), name: "Pylons sdk");
+    log((await PylonsWallet.instance.getProfile()).toString(),
+        name: "Pylons sdk");
   }
 
   Future getRecipes() async {
@@ -313,27 +328,32 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void getRecipe() async {
-    var sdkResponse = await PylonsWallet.instance.getRecipe(cookBookId, recipeId);
+    var sdkResponse =
+        await PylonsWallet.instance.getRecipe(cookBookId, recipeId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 
   void getExecutionListByRecipe() async {
-    var sdkResponse = await PylonsWallet.instance.getExecutionBasedOnRecipe(cookbookId: cookBookId, recipeId: recipeId);
+    var sdkResponse = await PylonsWallet.instance
+        .getExecutionBasedOnRecipe(cookbookId: cookBookId, recipeId: recipeId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 
   void getItemListByOwner() async {
-    var sdkResponse = await PylonsWallet.instance.getItemListByOwner(owner: ownerId);
+    var sdkResponse =
+        await PylonsWallet.instance.getItemListByOwner(owner: ownerId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 
   void getItemById() async {
-    var sdkResponse = await PylonsWallet.instance.getItemById(cookbookId: cookBookId, itemId: itemId);
+    var sdkResponse = await PylonsWallet.instance
+        .getItemById(cookbookId: cookBookId, itemId: itemId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 
   void getExecutionById() async {
-    var sdkResponse = await PylonsWallet.instance.getExecutionBasedOnId(id: executionId);
+    var sdkResponse =
+        await PylonsWallet.instance.getExecutionBasedOnId(id: executionId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 

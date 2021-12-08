@@ -17,7 +17,8 @@ class GetCookbooksHandler implements IPCHandler {
         errorCode: response.errorCode);
     try {
       if (response.success) {
-        defaultResponse.data = Cookbook.create()..mergeFromProto3Json(jsonDecode(response.data));
+        defaultResponse.data = Cookbook.create()
+          ..mergeFromProto3Json(jsonDecode(response.data));
       }
     } on Exception catch (_) {
       defaultResponse.success = false;

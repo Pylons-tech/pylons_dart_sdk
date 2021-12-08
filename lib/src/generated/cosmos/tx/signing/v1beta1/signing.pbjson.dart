@@ -45,7 +45,14 @@ final $typed_data.Uint8List signatureDescriptorsDescriptor = $convert.base64Deco
 const SignatureDescriptor$json = const {
   '1': 'SignatureDescriptor',
   '2': const [
-    const {'1': 'public_key', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Any', '10': 'publicKey'},
+    const {
+      '1': 'public_key',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Any',
+      '10': 'publicKey'
+    },
     const {
       '1': 'data',
       '3': 2,
@@ -82,7 +89,10 @@ const SignatureDescriptor_Data$json = const {
       '10': 'multi'
     },
   ],
-  '3': const [SignatureDescriptor_Data_Single$json, SignatureDescriptor_Data_Multi$json],
+  '3': const [
+    SignatureDescriptor_Data_Single$json,
+    SignatureDescriptor_Data_Multi$json
+  ],
   '8': const [
     const {'1': 'sum'},
   ],
@@ -92,7 +102,14 @@ const SignatureDescriptor_Data$json = const {
 const SignatureDescriptor_Data_Single$json = const {
   '1': 'Single',
   '2': const [
-    const {'1': 'mode', '3': 1, '4': 1, '5': 14, '6': '.cosmos.tx.signing.v1beta1.SignMode', '10': 'mode'},
+    const {
+      '1': 'mode',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.cosmos.tx.signing.v1beta1.SignMode',
+      '10': 'mode'
+    },
     const {'1': 'signature', '3': 2, '4': 1, '5': 12, '10': 'signature'},
   ],
 };

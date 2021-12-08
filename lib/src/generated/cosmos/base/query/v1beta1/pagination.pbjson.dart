@@ -34,5 +34,5 @@ const PageResponse$json = const {
 };
 
 /// Descriptor for `PageResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List pageResponseDescriptor =
-    $convert.base64Decode('CgxQYWdlUmVzcG9uc2USGQoIbmV4dF9rZXkYASABKAxSB25leHRLZXkSFAoFdG90YWwYAiABKARSBXRvdGFs');
+final $typed_data.Uint8List pageResponseDescriptor = $convert.base64Decode(
+    'CgxQYWdlUmVzcG9uc2USGQoIbmV4dF9rZXkYASABKAxSB25leHRLZXkSFAoFdG90YWwYAiABKARSBXRvdGFs');

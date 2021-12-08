@@ -19,7 +19,8 @@ class GetItemByIdHandler implements IPCHandler {
 
     try {
       if (response.success) {
-        defaultResponse.data = Item.create()..mergeFromProto3Json(jsonDecode(response.data));
+        defaultResponse.data = Item.create()
+          ..mergeFromProto3Json(jsonDecode(response.data));
       }
     } on FormatException catch (_) {
       defaultResponse.error = _.message;

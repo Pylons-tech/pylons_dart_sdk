@@ -16,9 +16,12 @@ import 'query.pbjson.dart';
 export 'query.pb.dart';
 
 abstract class QueryServiceBase extends $pb.GeneratedService {
-  $async.Future<$3.QueryAccountsResponse> accounts($pb.ServerContext ctx, $3.QueryAccountsRequest request);
-  $async.Future<$3.QueryAccountResponse> account($pb.ServerContext ctx, $3.QueryAccountRequest request);
-  $async.Future<$3.QueryParamsResponse> params($pb.ServerContext ctx, $3.QueryParamsRequest request);
+  $async.Future<$3.QueryAccountsResponse> accounts(
+      $pb.ServerContext ctx, $3.QueryAccountsRequest request);
+  $async.Future<$3.QueryAccountResponse> account(
+      $pb.ServerContext ctx, $3.QueryAccountRequest request);
+  $async.Future<$3.QueryParamsResponse> params(
+      $pb.ServerContext ctx, $3.QueryParamsRequest request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
@@ -33,8 +36,8 @@ abstract class QueryServiceBase extends $pb.GeneratedService {
     }
   }
 
-  $async.Future<$pb.GeneratedMessage> handleCall(
-      $pb.ServerContext ctx, $core.String method, $pb.GeneratedMessage request) {
+  $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx,
+      $core.String method, $pb.GeneratedMessage request) {
     switch (method) {
       case 'Accounts':
         return this.accounts(ctx, request as $3.QueryAccountsRequest);
@@ -48,5 +51,6 @@ abstract class QueryServiceBase extends $pb.GeneratedService {
   }
 
   $core.Map<$core.String, $core.dynamic> get $json => QueryServiceBase$json;
-  $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> get $messageJson => QueryServiceBase$messageJson;
+  $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
+      get $messageJson => QueryServiceBase$messageJson;
 }

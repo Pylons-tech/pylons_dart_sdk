@@ -231,7 +231,15 @@ const QueryGetTradeRequest$json = const {
 const QueryGetTradeResponse$json = const {
   '1': 'QueryGetTradeResponse',
   '2': const [
-    const {'1': 'Trade', '3': 1, '4': 1, '5': 11, '6': '.Pylonstech.pylons.pylons.Trade', '8': const {}, '10': 'Trade'},
+    const {
+      '1': 'Trade',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.Trade',
+      '8': const {},
+      '10': 'Trade'
+    },
   ],
 };
 
@@ -253,7 +261,15 @@ const QueryListItemByOwnerRequest$json = const {
 const QueryListItemByOwnerResponse$json = const {
   '1': 'QueryListItemByOwnerResponse',
   '2': const [
-    const {'1': 'Items', '3': 1, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.Item', '8': const {}, '10': 'Items'},
+    const {
+      '1': 'Items',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.Item',
+      '8': const {},
+      '10': 'Items'
+    },
     const {
       '1': 'pagination',
       '3': 2,
@@ -458,7 +474,15 @@ const QueryGetItemRequest$json = const {
 const QueryGetItemResponse$json = const {
   '1': 'QueryGetItemResponse',
   '2': const [
-    const {'1': 'Item', '3': 1, '4': 1, '5': 11, '6': '.Pylonstech.pylons.pylons.Item', '8': const {}, '10': 'Item'},
+    const {
+      '1': 'Item',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.Item',
+      '8': const {},
+      '10': 'Item'
+    },
   ],
 };
 

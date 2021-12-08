@@ -18,7 +18,15 @@ const MsgGrant$json = const {
   '2': const [
     const {'1': 'granter', '3': 1, '4': 1, '5': 9, '10': 'granter'},
     const {'1': 'grantee', '3': 2, '4': 1, '5': 9, '10': 'grantee'},
-    const {'1': 'grant', '3': 3, '4': 1, '5': 11, '6': '.cosmos.authz.v1beta1.Grant', '8': const {}, '10': 'grant'},
+    const {
+      '1': 'grant',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.authz.v1beta1.Grant',
+      '8': const {},
+      '10': 'grant'
+    },
   ],
 };
 
@@ -34,14 +42,22 @@ const MsgExecResponse$json = const {
 };
 
 /// Descriptor for `MsgExecResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgExecResponseDescriptor =
-    $convert.base64Decode('Cg9Nc2dFeGVjUmVzcG9uc2USGAoHcmVzdWx0cxgBIAMoDFIHcmVzdWx0cw==');
+final $typed_data.Uint8List msgExecResponseDescriptor = $convert.base64Decode(
+    'Cg9Nc2dFeGVjUmVzcG9uc2USGAoHcmVzdWx0cxgBIAMoDFIHcmVzdWx0cw==');
 @$core.Deprecated('Use msgExecDescriptor instead')
 const MsgExec$json = const {
   '1': 'MsgExec',
   '2': const [
     const {'1': 'grantee', '3': 1, '4': 1, '5': 9, '10': 'grantee'},
-    const {'1': 'msgs', '3': 2, '4': 3, '5': 11, '6': '.google.protobuf.Any', '8': const {}, '10': 'msgs'},
+    const {
+      '1': 'msgs',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.google.protobuf.Any',
+      '8': const {},
+      '10': 'msgs'
+    },
   ],
 };
 
@@ -54,7 +70,8 @@ const MsgGrantResponse$json = const {
 };
 
 /// Descriptor for `MsgGrantResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgGrantResponseDescriptor = $convert.base64Decode('ChBNc2dHcmFudFJlc3BvbnNl');
+final $typed_data.Uint8List msgGrantResponseDescriptor =
+    $convert.base64Decode('ChBNc2dHcmFudFJlc3BvbnNl');
 @$core.Deprecated('Use msgRevokeDescriptor instead')
 const MsgRevoke$json = const {
   '1': 'MsgRevoke',
@@ -74,18 +91,32 @@ const MsgRevokeResponse$json = const {
 };
 
 /// Descriptor for `MsgRevokeResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgRevokeResponseDescriptor = $convert.base64Decode('ChFNc2dSZXZva2VSZXNwb25zZQ==');
+final $typed_data.Uint8List msgRevokeResponseDescriptor =
+    $convert.base64Decode('ChFNc2dSZXZva2VSZXNwb25zZQ==');
 const $core.Map<$core.String, $core.dynamic> MsgServiceBase$json = const {
   '1': 'Msg',
   '2': const [
-    const {'1': 'Grant', '2': '.cosmos.authz.v1beta1.MsgGrant', '3': '.cosmos.authz.v1beta1.MsgGrantResponse'},
-    const {'1': 'Exec', '2': '.cosmos.authz.v1beta1.MsgExec', '3': '.cosmos.authz.v1beta1.MsgExecResponse'},
-    const {'1': 'Revoke', '2': '.cosmos.authz.v1beta1.MsgRevoke', '3': '.cosmos.authz.v1beta1.MsgRevokeResponse'},
+    const {
+      '1': 'Grant',
+      '2': '.cosmos.authz.v1beta1.MsgGrant',
+      '3': '.cosmos.authz.v1beta1.MsgGrantResponse'
+    },
+    const {
+      '1': 'Exec',
+      '2': '.cosmos.authz.v1beta1.MsgExec',
+      '3': '.cosmos.authz.v1beta1.MsgExecResponse'
+    },
+    const {
+      '1': 'Revoke',
+      '2': '.cosmos.authz.v1beta1.MsgRevoke',
+      '3': '.cosmos.authz.v1beta1.MsgRevokeResponse'
+    },
   ],
 };
 
 @$core.Deprecated('Use msgServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> MsgServiceBase$messageJson = const {
+const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
+    MsgServiceBase$messageJson = const {
   '.cosmos.authz.v1beta1.MsgGrant': MsgGrant$json,
   '.cosmos.authz.v1beta1.Grant': $3.Grant$json,
   '.google.protobuf.Any': $0.Any$json,

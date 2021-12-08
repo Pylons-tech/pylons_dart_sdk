@@ -15,7 +15,14 @@ const RedeemInfo$json = const {
     const {'1': 'ID', '3': 1, '4': 1, '5': 9, '10': 'ID'},
     const {'1': 'processorName', '3': 2, '4': 1, '5': 9, '10': 'processorName'},
     const {'1': 'address', '3': 3, '4': 1, '5': 9, '10': 'address'},
-    const {'1': 'amount', '3': 4, '4': 1, '5': 9, '8': const {}, '10': 'amount'},
+    const {
+      '1': 'amount',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'amount'
+    },
     const {'1': 'signature', '3': 5, '4': 1, '5': 9, '10': 'signature'},
   ],
 };

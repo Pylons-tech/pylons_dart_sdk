@@ -62,8 +62,8 @@ const EventCreateCookbook$json = const {
 };
 
 /// Descriptor for `EventCreateCookbook`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventCreateCookbookDescriptor =
-    $convert.base64Decode('ChNFdmVudENyZWF0ZUNvb2tib29rEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCSUQYAiABKAlSAklE');
+final $typed_data.Uint8List eventCreateCookbookDescriptor = $convert.base64Decode(
+    'ChNFdmVudENyZWF0ZUNvb2tib29rEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCSUQYAiABKAlSAklE');
 @$core.Deprecated('Use eventUpdateCookbookDescriptor instead')
 const EventUpdateCookbook$json = const {
   '1': 'EventUpdateCookbook',
@@ -164,7 +164,15 @@ const EventCompleteExecution$json = const {
       '8': const {},
       '10': 'burnCoins'
     },
-    const {'1': 'payCoins', '3': 4, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'payCoins'},
+    const {
+      '1': 'payCoins',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '8': const {},
+      '10': 'payCoins'
+    },
     const {
       '1': 'transferCoins',
       '3': 5,
@@ -174,7 +182,15 @@ const EventCompleteExecution$json = const {
       '8': const {},
       '10': 'transferCoins'
     },
-    const {'1': 'feeCoins', '3': 6, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'feeCoins'},
+    const {
+      '1': 'feeCoins',
+      '3': 6,
+      '4': 3,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '8': const {},
+      '10': 'feeCoins'
+    },
     const {
       '1': 'coinOutputs',
       '3': 7,
@@ -206,8 +222,9 @@ const EventCompleteExecution$json = const {
 };
 
 /// Descriptor for `EventCompleteExecution`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventCompleteExecutionDescriptor = $convert.base64Decode(
-    'ChZFdmVudENvbXBsZXRlRXhlY3V0aW9uEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCSUQYAiABKAlSAklEEmkKCWJ1cm5Db2lucxgDIAMoCzIZLmNvc21vcy5iYXNlLnYxYmV0YTEuQ29pbkIwyN4fAKrfHyhnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3R5cGVzLkNvaW5zUglidXJuQ29pbnMSZwoIcGF5Q29pbnMYBCADKAsyGS5jb3Ntb3MuYmFzZS52MWJldGExLkNvaW5CMMjeHwCq3x8oZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay90eXBlcy5Db2luc1IIcGF5Q29pbnMScQoNdHJhbnNmZXJDb2lucxgFIAMoCzIZLmNvc21vcy5iYXNlLnYxYmV0YTEuQ29pbkIwyN4fAKrfHyhnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3R5cGVzLkNvaW5zUg10cmFuc2ZlckNvaW5zEmcKCGZlZUNvaW5zGAYgAygLMhkuY29zbW9zLmJhc2UudjFiZXRhMS5Db2luQjDI3h8Aqt8fKGdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvdHlwZXMuQ29pbnNSCGZlZUNvaW5zEm0KC2NvaW5PdXRwdXRzGAcgAygLMhkuY29zbW9zLmJhc2UudjFiZXRhMS5Db2luQjDI3h8Aqt8fKGdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvdHlwZXMuQ29pbnNSC2NvaW5PdXRwdXRzEkIKCW1pbnRJdGVtcxgIIAMoCzIeLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5JdGVtQgTI3h8AUgltaW50SXRlbXMSRgoLbW9kaWZ5SXRlbXMYCSADKAsyHi5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuSXRlbUIEyN4fAFILbW9kaWZ5SXRlbXM=');
+final $typed_data.Uint8List eventCompleteExecutionDescriptor =
+    $convert.base64Decode(
+        'ChZFdmVudENvbXBsZXRlRXhlY3V0aW9uEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCSUQYAiABKAlSAklEEmkKCWJ1cm5Db2lucxgDIAMoCzIZLmNvc21vcy5iYXNlLnYxYmV0YTEuQ29pbkIwyN4fAKrfHyhnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3R5cGVzLkNvaW5zUglidXJuQ29pbnMSZwoIcGF5Q29pbnMYBCADKAsyGS5jb3Ntb3MuYmFzZS52MWJldGExLkNvaW5CMMjeHwCq3x8oZ2l0aHViLmNvbS9jb3Ntb3MvY29zbW9zLXNkay90eXBlcy5Db2luc1IIcGF5Q29pbnMScQoNdHJhbnNmZXJDb2lucxgFIAMoCzIZLmNvc21vcy5iYXNlLnYxYmV0YTEuQ29pbkIwyN4fAKrfHyhnaXRodWIuY29tL2Nvc21vcy9jb3Ntb3Mtc2RrL3R5cGVzLkNvaW5zUg10cmFuc2ZlckNvaW5zEmcKCGZlZUNvaW5zGAYgAygLMhkuY29zbW9zLmJhc2UudjFiZXRhMS5Db2luQjDI3h8Aqt8fKGdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvdHlwZXMuQ29pbnNSCGZlZUNvaW5zEm0KC2NvaW5PdXRwdXRzGAcgAygLMhkuY29zbW9zLmJhc2UudjFiZXRhMS5Db2luQjDI3h8Aqt8fKGdpdGh1Yi5jb20vY29zbW9zL2Nvc21vcy1zZGsvdHlwZXMuQ29pbnNSC2NvaW5PdXRwdXRzEkIKCW1pbnRJdGVtcxgIIAMoCzIeLlB5bG9uc3RlY2gucHlsb25zLnB5bG9ucy5JdGVtQgTI3h8AUgltaW50SXRlbXMSRgoLbW9kaWZ5SXRlbXMYCSADKAsyHi5QeWxvbnN0ZWNoLnB5bG9ucy5weWxvbnMuSXRlbUIEyN4fAFILbW9kaWZ5SXRlbXM=');
 @$core.Deprecated('Use eventDropExecutionDescriptor instead')
 const EventDropExecution$json = const {
   '1': 'EventDropExecution',
@@ -218,8 +235,8 @@ const EventDropExecution$json = const {
 };
 
 /// Descriptor for `EventDropExecution`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventDropExecutionDescriptor =
-    $convert.base64Decode('ChJFdmVudERyb3BFeGVjdXRpb24SGAoHY3JlYXRvchgBIAEoCVIHY3JlYXRvchIOCgJJRBgCIAEoCVICSUQ=');
+final $typed_data.Uint8List eventDropExecutionDescriptor = $convert.base64Decode(
+    'ChJFdmVudERyb3BFeGVjdXRpb24SGAoHY3JlYXRvchgBIAEoCVIHY3JlYXRvchIOCgJJRBgCIAEoCVICSUQ=');
 @$core.Deprecated('Use eventCompleteExecutionEarlyDescriptor instead')
 const EventCompleteExecutionEarly$json = const {
   '1': 'EventCompleteExecutionEarly',
@@ -230,8 +247,9 @@ const EventCompleteExecutionEarly$json = const {
 };
 
 /// Descriptor for `EventCompleteExecutionEarly`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventCompleteExecutionEarlyDescriptor = $convert
-    .base64Decode('ChtFdmVudENvbXBsZXRlRXhlY3V0aW9uRWFybHkSGAoHY3JlYXRvchgBIAEoCVIHY3JlYXRvchIOCgJJRBgCIAEoCVICSUQ=');
+final $typed_data.Uint8List eventCompleteExecutionEarlyDescriptor =
+    $convert.base64Decode(
+        'ChtFdmVudENvbXBsZXRlRXhlY3V0aW9uRWFybHkSGAoHY3JlYXRvchgBIAEoCVIHY3JlYXRvchIOCgJJRBgCIAEoCVICSUQ=');
 @$core.Deprecated('Use eventSendItemsDescriptor instead')
 const EventSendItems$json = const {
   '1': 'EventSendItems',
@@ -285,8 +303,8 @@ const EventCreateTrade$json = const {
 };
 
 /// Descriptor for `EventCreateTrade`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventCreateTradeDescriptor =
-    $convert.base64Decode('ChBFdmVudENyZWF0ZVRyYWRlEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCSUQYAiABKARSAklE');
+final $typed_data.Uint8List eventCreateTradeDescriptor = $convert.base64Decode(
+    'ChBFdmVudENyZWF0ZVRyYWRlEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCSUQYAiABKARSAklE');
 @$core.Deprecated('Use eventCancelTradeDescriptor instead')
 const EventCancelTrade$json = const {
   '1': 'EventCancelTrade',
@@ -297,8 +315,8 @@ const EventCancelTrade$json = const {
 };
 
 /// Descriptor for `EventCancelTrade`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventCancelTradeDescriptor =
-    $convert.base64Decode('ChBFdmVudENhbmNlbFRyYWRlEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCSUQYAiABKARSAklE');
+final $typed_data.Uint8List eventCancelTradeDescriptor = $convert.base64Decode(
+    'ChBFdmVudENhbmNlbFRyYWRlEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCSUQYAiABKARSAklE');
 @$core.Deprecated('Use eventFulfillTradeDescriptor instead')
 const EventFulfillTrade$json = const {
   '1': 'EventFulfillTrade',
@@ -364,7 +382,13 @@ const EventGooglePurchase$json = const {
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
     const {'1': 'productID', '3': 2, '4': 1, '5': 9, '10': 'productID'},
     const {'1': 'purchaseToken', '3': 3, '4': 1, '5': 9, '10': 'purchaseToken'},
-    const {'1': 'receiptDataBase64', '3': 4, '4': 1, '5': 9, '10': 'receiptDataBase64'},
+    const {
+      '1': 'receiptDataBase64',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'receiptDataBase64'
+    },
     const {'1': 'signature', '3': 5, '4': 1, '5': 9, '10': 'signature'},
   ],
 };
@@ -382,5 +406,5 @@ const EventStripePurchase$json = const {
 };
 
 /// Descriptor for `EventStripePurchase`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventStripePurchaseDescriptor =
-    $convert.base64Decode('ChNFdmVudFN0cmlwZVB1cmNoYXNlEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCSUQYAiABKAlSAklE');
+final $typed_data.Uint8List eventStripePurchaseDescriptor = $convert.base64Decode(
+    'ChNFdmVudFN0cmlwZVB1cmNoYXNlEhgKB2NyZWF0b3IYASABKAlSB2NyZWF0b3ISDgoCSUQYAiABKAlSAklE');

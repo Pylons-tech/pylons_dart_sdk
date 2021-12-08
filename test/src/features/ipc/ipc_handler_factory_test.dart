@@ -22,22 +22,32 @@ void main() {
     initResponseCompleter(Strings.GET_RECIPES);
     expect(false, responseCompleters[Strings.GET_RECIPES]!.isCompleted);
     var sdkResponse = SDKIPCResponse(
-        success: true, error: '', data: [MOCK_RECIPE.toProto3Json()], errorCode: '', action: Strings.GET_RECIPES);
+        success: true,
+        error: '',
+        data: [MOCK_RECIPE.toProto3Json()],
+        errorCode: '',
+        action: Strings.GET_RECIPES);
     IPCHandlerFactory.getHandler(sdkResponse);
     expect(true, responseCompleters[Strings.GET_RECIPES]!.isCompleted);
   });
 
   test('should throw error if unknown key is found', () {
     var sdkResponse = SDKIPCResponse(
-        success: true, error: '', data: [MOCK_RECIPE.toProto3Json()], errorCode: '', action: MOCK_USERNAME);
-    expect(() => IPCHandlerFactory.getHandler(sdkResponse), throwsA(isA<Exception>()));
+        success: true,
+        error: '',
+        data: [MOCK_RECIPE.toProto3Json()],
+        errorCode: '',
+        action: MOCK_USERNAME);
+    expect(() => IPCHandlerFactory.getHandler(sdkResponse),
+        throwsA(isA<Exception>()));
   });
 }
 
 void _genericResponseTestFlow(String key) {
   initResponseCompleter(key);
   expect(false, responseCompleters[key]!.isCompleted);
-  var sdkResponse = SDKIPCResponse(success: true, error: '', data: '', errorCode: '', action: key);
+  var sdkResponse = SDKIPCResponse(
+      success: true, error: '', data: '', errorCode: '', action: key);
   IPCHandlerFactory.getHandler(sdkResponse);
   expect(true, responseCompleters[key]!.isCompleted);
 }

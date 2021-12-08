@@ -17,13 +17,15 @@ class GetExecutionByRecipeHandler implements IPCHandler {
         errorCode: response.errorCode);
     try {
       if (response.success) {
-        defaultResponse.data = ExecutionListByRecipeResponse.fromJson(jsonDecode(response.data));
+        defaultResponse.data =
+            ExecutionListByRecipeResponse.fromJson(jsonDecode(response.data));
       }
     } on FormatException catch (_) {
       defaultResponse.error = _.message;
       defaultResponse.errorCode = Strings.ERR_MALFORMED_EXECUTION;
       defaultResponse.success = false;
     }
-    responseCompleters[Strings.GET_EXECUTION_BY_RECIPE_ID]!.complete(defaultResponse);
+    responseCompleters[Strings.GET_EXECUTION_BY_RECIPE_ID]!
+        .complete(defaultResponse);
   }
 }
