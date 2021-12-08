@@ -26,6 +26,6 @@ jobs:
         run: flutter pub get
       - name: Analyze Project Source
         run: dart analyze
-      - name: Run unit tests
-        run: arch -x86_64 flutter test --coverage
+      - name: Flutter test 
+        run: flutter test --coverage
       
