@@ -28,11 +28,9 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable' # 'dev', 'alpha', default to: 'stable'
-          # flutter-version: '1.12.x' # you can also specify exact version of flutter
 
       - name: Install Pub Dependencies
         run: flutter pub get
-
 
       - name: Analyze Project Source
         run: dart analyze
