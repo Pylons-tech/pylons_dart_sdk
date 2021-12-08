@@ -27,8 +27,8 @@ const OrderBy$json = const {
 };
 
 /// Descriptor for `OrderBy`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List orderByDescriptor = $convert.base64Decode(
-    'CgdPcmRlckJ5EhgKFE9SREVSX0JZX1VOU1BFQ0lGSUVEEAASEAoMT1JERVJfQllfQVNDEAESEQoNT1JERVJfQllfREVTQxAC');
+final $typed_data.Uint8List orderByDescriptor = $convert
+    .base64Decode('CgdPcmRlckJ5EhgKFE9SREVSX0JZX1VOU1BFQ0lGSUVEEAASEAoMT1JERVJfQllfQVNDEAESEQoNT1JERVJfQllfREVTQxAC');
 @$core.Deprecated('Use broadcastModeDescriptor instead')
 const BroadcastMode$json = const {
   '1': 'BroadcastMode',
@@ -56,14 +56,7 @@ const GetTxsEventRequest$json = const {
       '6': '.cosmos.base.query.v1beta1.PageRequest',
       '10': 'pagination'
     },
-    const {
-      '1': 'order_by',
-      '3': 3,
-      '4': 1,
-      '5': 14,
-      '6': '.cosmos.tx.v1beta1.OrderBy',
-      '10': 'orderBy'
-    },
+    const {'1': 'order_by', '3': 3, '4': 1, '5': 14, '6': '.cosmos.tx.v1beta1.OrderBy', '10': 'orderBy'},
   ],
 };
 
@@ -74,14 +67,7 @@ final $typed_data.Uint8List getTxsEventRequestDescriptor = $convert.base64Decode
 const GetTxsEventResponse$json = const {
   '1': 'GetTxsEventResponse',
   '2': const [
-    const {
-      '1': 'txs',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.cosmos.tx.v1beta1.Tx',
-      '10': 'txs'
-    },
+    const {'1': 'txs', '3': 1, '4': 3, '5': 11, '6': '.cosmos.tx.v1beta1.Tx', '10': 'txs'},
     const {
       '1': 'tx_responses',
       '3': 2,
@@ -109,14 +95,7 @@ const BroadcastTxRequest$json = const {
   '1': 'BroadcastTxRequest',
   '2': const [
     const {'1': 'tx_bytes', '3': 1, '4': 1, '5': 12, '10': 'txBytes'},
-    const {
-      '1': 'mode',
-      '3': 2,
-      '4': 1,
-      '5': 14,
-      '6': '.cosmos.tx.v1beta1.BroadcastMode',
-      '10': 'mode'
-    },
+    const {'1': 'mode', '3': 2, '4': 1, '5': 14, '6': '.cosmos.tx.v1beta1.BroadcastMode', '10': 'mode'},
   ],
 };
 
@@ -165,22 +144,8 @@ final $typed_data.Uint8List simulateRequestDescriptor = $convert.base64Decode(
 const SimulateResponse$json = const {
   '1': 'SimulateResponse',
   '2': const [
-    const {
-      '1': 'gas_info',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.cosmos.base.abci.v1beta1.GasInfo',
-      '10': 'gasInfo'
-    },
-    const {
-      '1': 'result',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.cosmos.base.abci.v1beta1.Result',
-      '10': 'result'
-    },
+    const {'1': 'gas_info', '3': 1, '4': 1, '5': 11, '6': '.cosmos.base.abci.v1beta1.GasInfo', '10': 'gasInfo'},
+    const {'1': 'result', '3': 2, '4': 1, '5': 11, '6': '.cosmos.base.abci.v1beta1.Result', '10': 'result'},
   ],
 };
 
@@ -202,14 +167,7 @@ final $typed_data.Uint8List getTxRequestDescriptor =
 const GetTxResponse$json = const {
   '1': 'GetTxResponse',
   '2': const [
-    const {
-      '1': 'tx',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.cosmos.tx.v1beta1.Tx',
-      '10': 'tx'
-    },
+    const {'1': 'tx', '3': 1, '4': 1, '5': 11, '6': '.cosmos.tx.v1beta1.Tx', '10': 'tx'},
     const {
       '1': 'tx_response',
       '3': 2,
@@ -255,8 +213,7 @@ const $core.Map<$core.String, $core.dynamic> ServiceBase$json = const {
 };
 
 @$core.Deprecated('Use serviceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
-    ServiceBase$messageJson = const {
+const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> ServiceBase$messageJson = const {
   '.cosmos.tx.v1beta1.SimulateRequest': SimulateRequest$json,
   '.cosmos.tx.v1beta1.Tx': $5.Tx$json,
   '.cosmos.tx.v1beta1.TxBody': $5.TxBody$json,

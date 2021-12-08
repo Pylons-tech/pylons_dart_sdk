@@ -70,7 +70,8 @@ class ValidateRecipe {
     }
   }
 
-  static bool costPerBlockIsEmpty(Recipe recipe) => !(recipe.costPerBlock.hasAmount() && recipe.costPerBlock.hasDenom());
+  static bool costPerBlockIsEmpty(Recipe recipe) =>
+      !(recipe.costPerBlock.hasAmount() && recipe.costPerBlock.hasDenom());
 
   static void throwError(Recipe recipe, String error) {
     throw RecipeValidationException(recipe.cookbookID, recipe.name, recipe.iD, error);

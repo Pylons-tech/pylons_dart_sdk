@@ -15,26 +15,12 @@ import '../cosmos/base/v1beta1/coin.pb.dart' as $0;
 
 class ItemRef extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ItemRef',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ItemRef',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'cookbookID',
-        protoName: 'cookbookID')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'itemID',
-        protoName: 'itemID')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cookbookID', protoName: 'cookbookID')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemID', protoName: 'itemID')
     ..hasRequiredFields = false;
 
   ItemRef._() : super();
@@ -51,11 +37,9 @@ class ItemRef extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory ItemRef.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory ItemRef.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory ItemRef.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory ItemRef.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -65,16 +49,14 @@ class ItemRef extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   ItemRef copyWith(void Function(ItemRef) updates) =>
-      super.copyWith((message) => updates(message as ItemRef))
-          as ItemRef; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as ItemRef)) as ItemRef; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ItemRef create() => ItemRef._();
   ItemRef createEmptyInstance() => create();
   static $pb.PbList<ItemRef> createRepeated() => $pb.PbList<ItemRef>();
   @$core.pragma('dart2js:noInline')
-  static ItemRef getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ItemRef>(create);
+  static ItemRef getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ItemRef>(create);
   static ItemRef? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -104,78 +86,31 @@ class ItemRef extends $pb.GeneratedMessage {
 
 class Trade extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'Trade',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Trade',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'creator')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
     ..a<$fixnum.Int64>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'ID',
-        $pb.PbFieldType.OU6,
-        protoName: 'ID',
-        defaultOrMaker: $fixnum.Int64.ZERO)
+        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', $pb.PbFieldType.OU6,
+        protoName: 'ID', defaultOrMaker: $fixnum.Int64.ZERO)
     ..pc<$2.CoinInput>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'coinInputs',
-        $pb.PbFieldType.PM,
-        protoName: 'coinInputs',
-        subBuilder: $2.CoinInput.create)
+        3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'coinInputs', $pb.PbFieldType.PM,
+        protoName: 'coinInputs', subBuilder: $2.CoinInput.create)
     ..pc<$2.ItemInput>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'itemInputs',
-        $pb.PbFieldType.PM,
-        protoName: 'itemInputs',
-        subBuilder: $2.ItemInput.create)
+        4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemInputs', $pb.PbFieldType.PM,
+        protoName: 'itemInputs', subBuilder: $2.ItemInput.create)
     ..pc<$0.Coin>(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'coinOutputs',
-        $pb.PbFieldType.PM,
-        protoName: 'coinOutputs',
-        subBuilder: $0.Coin.create)
+        5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'coinOutputs', $pb.PbFieldType.PM,
+        protoName: 'coinOutputs', subBuilder: $0.Coin.create)
     ..pc<ItemRef>(
-        6,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'itemOutputs',
-        $pb.PbFieldType.PM,
-        protoName: 'itemOutputs',
-        subBuilder: ItemRef.create)
-    ..aOS(
-        7,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'extraInfo',
-        protoName: 'extraInfo')
-    ..aOS(
-        8,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'receiver')
+        6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemOutputs', $pb.PbFieldType.PM,
+        protoName: 'itemOutputs', subBuilder: ItemRef.create)
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'extraInfo', protoName: 'extraInfo')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiver')
     ..pc<ItemRef>(
-        9,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'tradedItemInputs',
-        $pb.PbFieldType.PM,
-        protoName: 'tradedItemInputs',
-        subBuilder: ItemRef.create)
+        9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tradedItemInputs', $pb.PbFieldType.PM,
+        protoName: 'tradedItemInputs', subBuilder: ItemRef.create)
     ..hasRequiredFields = false;
 
   Trade._() : super();
@@ -220,11 +155,9 @@ class Trade extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory Trade.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Trade.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Trade.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Trade.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -234,16 +167,14 @@ class Trade extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   Trade copyWith(void Function(Trade) updates) =>
-      super.copyWith((message) => updates(message as Trade))
-          as Trade; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as Trade)) as Trade; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Trade create() => Trade._();
   Trade createEmptyInstance() => create();
   static $pb.PbList<Trade> createRepeated() => $pb.PbList<Trade>();
   @$core.pragma('dart2js:noInline')
-  static Trade getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Trade>(create);
+  static Trade getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Trade>(create);
   static Trade? _defaultInstance;
 
   @$pb.TagNumber(1)

@@ -28,4 +28,3 @@ const CreatePaymentAccount$json = const {
     const {'1': 'signature', '3': 3, '4': 1, '5': 9, '10': 'signature'},
   ],
 };
-

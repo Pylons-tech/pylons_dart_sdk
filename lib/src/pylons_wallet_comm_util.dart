@@ -10,9 +10,6 @@ import 'core/constants/strings.dart';
 /// (Since this protocol is ad-hoc, specific, and strictly temporary, these may
 /// be weird or fiddly or otherwise awkward to work with.)
 class PylonsWalletCommUtil {
-
-
-
   static bool responseIsError(String v, String key) {
     return v == 'err_$key';
   }
@@ -21,11 +18,9 @@ class PylonsWalletCommUtil {
   ///
   /// Throws a [ResponseException] if the response does not contain a value associated
   /// with the key, or the value associated with the key is an error.
-  static void validateResponseMatchesKey(
-      String key, Tuple2<String, List<String>> response) {
+  static void validateResponseMatchesKey(String key, Tuple2<String, List<String>> response) {
     if ((response.value1 != 'response_$key' && response.value1 != 'err_$key')) {
-      throw ResponseException(
-          const JsonEncoder().convert(response), 'Bad response: $response');
+      throw ResponseException(const JsonEncoder().convert(response), 'Bad response: $response');
     }
   }
 
@@ -36,8 +31,7 @@ class PylonsWalletCommUtil {
   ///
   /// This function assumes that the provided response is an error, so call it
   /// only after verifying that.
-  static void handleErrors(
-      Tuple2<String, List<String>> response, List<String> errors) {
+  static void handleErrors(Tuple2<String, List<String>> response, List<String> errors) {
     if (errors.contains(response.value2[0])) {
       switch (response.value1) {
         case Strings.ERR_NODE:
@@ -46,36 +40,29 @@ class PylonsWalletCommUtil {
                 Strings.ERR_NODE,
                 response,
                 NodeInternalErrorException(
-                    int.parse(response.value2[1]),
-                    response.value2[2],
-                    'Node threw an unexpected error! Debug this!'));
+                    int.parse(response.value2[1]), response.value2[2], 'Node threw an unexpected error! Debug this!'));
             break;
           }
         case Strings.ERR_PROFILE_DOES_NOT_EXIST:
           {
-            checkError(Strings.ERR_PROFILE_DOES_NOT_EXIST, response,
-                ProfileDoesNotExistException(response.value2[1]));
+            checkError(Strings.ERR_PROFILE_DOES_NOT_EXIST, response, ProfileDoesNotExistException(response.value2[1]));
             break;
           }
         case Strings.ERR_PAYMENT_NOT_VALID:
           {
-            checkError(Strings.ERR_PAYMENT_NOT_VALID, response,
-                PaymentNotValidException(response.value2[1], 'Bad payment'));
+            checkError(
+                Strings.ERR_PAYMENT_NOT_VALID, response, PaymentNotValidException(response.value2[1], 'Bad payment'));
             break;
           }
         case Strings.ERR_INSUFFICIENT_FUNDS:
           {
-            checkError(Strings.ERR_INSUFFICIENT_FUNDS, response,
-                ProfileStateException('Insufficient funds'));
+            checkError(Strings.ERR_INSUFFICIENT_FUNDS, response, ProfileStateException('Insufficient funds'));
             break;
           }
         case Strings.ERR_COOKBOOK_ALREADY_EXISTS:
           {
-            checkError(
-                Strings.ERR_COOKBOOK_ALREADY_EXISTS,
-                response,
-                CookbookAlreadyExistsException(response.value2[1],
-                    response.value2[2], 'Cookbook already exists'));
+            checkError(Strings.ERR_COOKBOOK_ALREADY_EXISTS, response,
+                CookbookAlreadyExistsException(response.value2[1], response.value2[2], 'Cookbook already exists'));
             break;
           }
         case Strings.ERR_COOKBOOK_DOES_NOT_EXIST:
@@ -83,8 +70,7 @@ class PylonsWalletCommUtil {
             checkError(
               Strings.ERR_COOKBOOK_DOES_NOT_EXIST,
               response,
-              CookbookDoesNotExistException(
-                  response.value2[1], 'Cookbook does not exist'),
+              CookbookDoesNotExistException(response.value2[1], 'Cookbook does not exist'),
             );
             break;
           }
@@ -93,8 +79,7 @@ class PylonsWalletCommUtil {
             checkError(
               Strings.ERR_COOKBOOK_NOT_OWNED,
               response,
-              CookbookNotOwnedException(
-                  response.value2[1], response.value2[2], 'Cookbook not owned'),
+              CookbookNotOwnedException(response.value2[1], response.value2[2], 'Cookbook not owned'),
             );
             break;
           }
@@ -103,8 +88,7 @@ class PylonsWalletCommUtil {
             checkError(
               Strings.ERR_RECIPE_ALREADY_EXISTS,
               response,
-              RecipeAlreadyExistsException(response.value2[1],
-                  response.value2[2], 'Recipe already exists'),
+              RecipeAlreadyExistsException(response.value2[1], response.value2[2], 'Recipe already exists'),
             );
             break;
           }
@@ -113,8 +97,8 @@ class PylonsWalletCommUtil {
             checkError(
               Strings.ERR_RECIPE_ALREADY_DISABLED,
               response,
-              RecipeStateException(response.value2[1], response.value2[2],
-                  response.value2[3], 'Recipe already disabled'),
+              RecipeStateException(
+                  response.value2[1], response.value2[2], response.value2[3], 'Recipe already disabled'),
             );
             break;
           }
@@ -123,15 +107,14 @@ class PylonsWalletCommUtil {
             checkError(
               Strings.ERR_RECIPE_ALREADY_ENABLED,
               response,
-              RecipeStateException(response.value2[1], response.value2[2],
-                  response.value2[3], 'Recipe already enabled'),
+              RecipeStateException(
+                  response.value2[1], response.value2[2], response.value2[3], 'Recipe already enabled'),
             );
             break;
           }
       }
     } else {
-      throw UnhandledErrorException(
-          response.value1, 'Unknown error passed: ${response.value2}');
+      throw UnhandledErrorException(response.value1, 'Unknown error passed: ${response.value2}');
     }
   }
 
@@ -140,13 +123,11 @@ class PylonsWalletCommUtil {
   ///
   /// Alternatively, throws an [UnhandledErrorException] if an error other than
   /// that expected is found.
-  static void checkError(
-      String err, Tuple2<String, List<String>> response, Exception exception) {
+  static void checkError(String err, Tuple2<String, List<String>> response, Exception exception) {
     if (response.value2[0] == err) {
       throw exception;
     } else {
-      throw UnhandledErrorException(
-          err, 'Bad error passed: ${response.value2}');
+      throw UnhandledErrorException(err, 'Bad error passed: ${response.value2}');
     }
   }
 

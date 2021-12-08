@@ -19,8 +19,7 @@ const PubKey$json = const {
 };
 
 /// Descriptor for `PubKey`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List pubKeyDescriptor =
-    $convert.base64Decode('CgZQdWJLZXkSEAoDa2V5GAEgASgMUgNrZXk6BJigHwA=');
+final $typed_data.Uint8List pubKeyDescriptor = $convert.base64Decode('CgZQdWJLZXkSEAoDa2V5GAEgASgMUgNrZXk6BJigHwA=');
 @$core.Deprecated('Use privKeyDescriptor instead')
 const PrivKey$json = const {
   '1': 'PrivKey',
@@ -30,5 +29,4 @@ const PrivKey$json = const {
 };
 
 /// Descriptor for `PrivKey`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List privKeyDescriptor =
-    $convert.base64Decode('CgdQcml2S2V5EhAKA2tleRgBIAEoDFIDa2V5');
+final $typed_data.Uint8List privKeyDescriptor = $convert.base64Decode('CgdQcml2S2V5EhAKA2tleRgBIAEoDFIDa2V5');

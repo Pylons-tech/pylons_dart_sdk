@@ -19,8 +19,8 @@ const GenericAuthorization$json = const {
 };
 
 /// Descriptor for `GenericAuthorization`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List genericAuthorizationDescriptor = $convert.base64Decode(
-    'ChRHZW5lcmljQXV0aG9yaXphdGlvbhIQCgNtc2cYASABKAlSA21zZzoRyrQtDUF1dGhvcml6YXRpb24=');
+final $typed_data.Uint8List genericAuthorizationDescriptor =
+    $convert.base64Decode('ChRHZW5lcmljQXV0aG9yaXphdGlvbhIQCgNtc2cYASABKAlSA21zZzoRyrQtDUF1dGhvcml6YXRpb24=');
 @$core.Deprecated('Use grantDescriptor instead')
 const Grant$json = const {
   '1': 'Grant',

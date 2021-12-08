@@ -12,27 +12,15 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class Consensus extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'Consensus',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Consensus',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'tendermint.version'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.version'),
       createEmptyInstance: create)
     ..a<$fixnum.Int64>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'block',
-        $pb.PbFieldType.OU6,
+        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'block', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..a<$fixnum.Int64>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'app',
-        $pb.PbFieldType.OU6,
+        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'app', $pb.PbFieldType.OU6,
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false;
 
@@ -50,11 +38,9 @@ class Consensus extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory Consensus.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Consensus.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Consensus.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Consensus.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -64,16 +50,14 @@ class Consensus extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   Consensus copyWith(void Function(Consensus) updates) =>
-      super.copyWith((message) => updates(message as Consensus))
-          as Consensus; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as Consensus)) as Consensus; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Consensus create() => Consensus._();
   Consensus createEmptyInstance() => create();
   static $pb.PbList<Consensus> createRepeated() => $pb.PbList<Consensus>();
   @$core.pragma('dart2js:noInline')
-  static Consensus getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Consensus>(create);
+  static Consensus getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Consensus>(create);
   static Consensus? _defaultInstance;
 
   @$pb.TagNumber(1)

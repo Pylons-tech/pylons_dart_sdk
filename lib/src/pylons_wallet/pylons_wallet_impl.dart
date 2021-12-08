@@ -82,9 +82,7 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse<Cookbook>> getCookbook(String id) {
     return Future<SDKIPCResponse<Cookbook>>.sync(() async {
-      final response = await _dispatch(Strings.GET_COOKBOOK, jsonEncode({
-        Strings.COOKBOOK_ID : id
-      }));
+      final response = await _dispatch(Strings.GET_COOKBOOK, jsonEncode({Strings.COOKBOOK_ID: id}));
       if (response is SDKIPCResponse<Cookbook>) {
         return response;
       }
@@ -152,12 +150,22 @@ class PylonsWalletImpl implements PylonsWallet {
 
   @override
   Future<SDKIPCResponse> txExecuteRecipe(
-      {required String cookbookId, required String recipeName, required List<String> itemIds, required int coinInputIndex, required List<PaymentInfo> paymentInfo}) async {
+      {required String cookbookId,
+      required String recipeName,
+      required List<String> itemIds,
+      required int coinInputIndex,
+      required List<PaymentInfo> paymentInfo}) async {
     return Future.sync(() async {
       return await _dispatch(
           Strings.TX_EXECUTE_RECIPE,
-          jsonEncode(
-              MsgExecuteRecipe(creator: '', cookbookID: cookbookId, recipeID: recipeName, coinInputsIndex: fixnum.Int64(coinInputIndex), itemIDs: itemIds, paymentInfos: paymentInfo).toProto3Json()));
+          jsonEncode(MsgExecuteRecipe(
+                  creator: '',
+                  cookbookID: cookbookId,
+                  recipeID: recipeName,
+                  coinInputsIndex: fixnum.Int64(coinInputIndex),
+                  itemIDs: itemIds,
+                  paymentInfos: paymentInfo)
+              .toProto3Json()));
     });
   }
 
@@ -229,7 +237,8 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse<Recipe>> getRecipe(String cookbookId, String recipeId) {
     return Future.sync(() async {
-      final response = await _dispatch(Strings.GET_RECIPE, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.RECIPE_ID: recipeId}));
+      final response = await _dispatch(
+          Strings.GET_RECIPE, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.RECIPE_ID: recipeId}));
       if (response is SDKIPCResponse<Recipe>) {
         return response;
       }
@@ -238,9 +247,11 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
   @override
-  Future<SDKIPCResponse<ExecutionListByRecipeResponse>> getExecutionBasedOnRecipe({required String cookbookId, required String recipeId}) {
+  Future<SDKIPCResponse<ExecutionListByRecipeResponse>> getExecutionBasedOnRecipe(
+      {required String cookbookId, required String recipeId}) {
     return Future.sync(() async {
-      final response = await _dispatch(Strings.GET_EXECUTION_BY_RECIPE_ID, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.RECIPE_ID: recipeId}));
+      final response = await _dispatch(Strings.GET_EXECUTION_BY_RECIPE_ID,
+          jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.RECIPE_ID: recipeId}));
       if (response is SDKIPCResponse<ExecutionListByRecipeResponse>) {
         return response;
       }
@@ -262,7 +273,8 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse<Item>> getItemById({required String cookbookId, required String itemId}) {
     return Future.sync(() async {
-      final response = await _dispatch(Strings.GET_ITEM_BY_ID, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.ITEM_ID: itemId}));
+      final response = await _dispatch(
+          Strings.GET_ITEM_BY_ID, jsonEncode({Strings.COOKBOOK_ID: cookbookId, Strings.ITEM_ID: itemId}));
       if (response is SDKIPCResponse<Item>) {
         return response;
       }
@@ -280,6 +292,4 @@ class PylonsWalletImpl implements PylonsWallet {
       throw Exception('Response malformed');
     });
   }
-
-
 }

@@ -14,32 +14,16 @@ import '../crypto/keys.pb.dart' as $0;
 
 class ValidatorSet extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ValidatorSet',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ValidatorSet',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'tendermint.types'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.types'),
       createEmptyInstance: create)
     ..pc<Validator>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'validators',
-        $pb.PbFieldType.PM,
+        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'validators', $pb.PbFieldType.PM,
         subBuilder: Validator.create)
-    ..aOM<Validator>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'proposer',
+    ..aOM<Validator>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'proposer',
         subBuilder: Validator.create)
-    ..aInt64(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'totalVotingPower')
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalVotingPower')
     ..hasRequiredFields = false;
 
   ValidatorSet._() : super();
@@ -60,11 +44,9 @@ class ValidatorSet extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory ValidatorSet.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory ValidatorSet.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory ValidatorSet.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory ValidatorSet.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -74,17 +56,14 @@ class ValidatorSet extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   ValidatorSet copyWith(void Function(ValidatorSet) updates) =>
-      super.copyWith((message) => updates(message as ValidatorSet))
-          as ValidatorSet; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as ValidatorSet)) as ValidatorSet; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ValidatorSet create() => ValidatorSet._();
   ValidatorSet createEmptyInstance() => create();
-  static $pb.PbList<ValidatorSet> createRepeated() =>
-      $pb.PbList<ValidatorSet>();
+  static $pb.PbList<ValidatorSet> createRepeated() => $pb.PbList<ValidatorSet>();
   @$core.pragma('dart2js:noInline')
-  static ValidatorSet getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<ValidatorSet>(create);
+  static ValidatorSet getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ValidatorSet>(create);
   static ValidatorSet? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -119,36 +98,16 @@ class ValidatorSet extends $pb.GeneratedMessage {
 
 class Validator extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'Validator',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Validator',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'tendermint.types'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.types'),
       createEmptyInstance: create)
     ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'address',
-        $pb.PbFieldType.OY)
-    ..aOM<$0.PublicKey>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'pubKey',
+        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address', $pb.PbFieldType.OY)
+    ..aOM<$0.PublicKey>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubKey',
         subBuilder: $0.PublicKey.create)
-    ..aInt64(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'votingPower')
-    ..aInt64(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'proposerPriority')
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'votingPower')
+    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'proposerPriority')
     ..hasRequiredFields = false;
 
   Validator._() : super();
@@ -173,11 +132,9 @@ class Validator extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory Validator.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Validator.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Validator.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Validator.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -187,16 +144,14 @@ class Validator extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   Validator copyWith(void Function(Validator) updates) =>
-      super.copyWith((message) => updates(message as Validator))
-          as Validator; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as Validator)) as Validator; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Validator create() => Validator._();
   Validator createEmptyInstance() => create();
   static $pb.PbList<Validator> createRepeated() => $pb.PbList<Validator>();
   @$core.pragma('dart2js:noInline')
-  static Validator getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Validator>(create);
+  static Validator getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Validator>(create);
   static Validator? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -252,25 +207,13 @@ class Validator extends $pb.GeneratedMessage {
 
 class SimpleValidator extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'SimpleValidator',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SimpleValidator',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'tendermint.types'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'tendermint.types'),
       createEmptyInstance: create)
-    ..aOM<$0.PublicKey>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'pubKey',
+    ..aOM<$0.PublicKey>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubKey',
         subBuilder: $0.PublicKey.create)
-    ..aInt64(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'votingPower')
+    ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'votingPower')
     ..hasRequiredFields = false;
 
   SimpleValidator._() : super();
@@ -290,8 +233,7 @@ class SimpleValidator extends $pb.GeneratedMessage {
   factory SimpleValidator.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory SimpleValidator.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory SimpleValidator.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -307,11 +249,10 @@ class SimpleValidator extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static SimpleValidator create() => SimpleValidator._();
   SimpleValidator createEmptyInstance() => create();
-  static $pb.PbList<SimpleValidator> createRepeated() =>
-      $pb.PbList<SimpleValidator>();
+  static $pb.PbList<SimpleValidator> createRepeated() => $pb.PbList<SimpleValidator>();
   @$core.pragma('dart2js:noInline')
-  static SimpleValidator getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<SimpleValidator>(create);
+  static SimpleValidator getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SimpleValidator>(create);
   static SimpleValidator? _defaultInstance;
 
   @$pb.TagNumber(1)

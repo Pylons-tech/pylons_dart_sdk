@@ -69,13 +69,7 @@ const GenesisState$json = const {
       '8': const {},
       '10': 'googleInAppPurchaseOrderList'
     },
-    const {
-      '1': 'googleIAPOrderCount',
-      '3': 9,
-      '4': 1,
-      '5': 4,
-      '10': 'googleIAPOrderCount'
-    },
+    const {'1': 'googleIAPOrderCount', '3': 9, '4': 1, '5': 4, '10': 'googleIAPOrderCount'},
     const {
       '1': 'executionList',
       '3': 7,
@@ -85,13 +79,7 @@ const GenesisState$json = const {
       '8': const {},
       '10': 'executionList'
     },
-    const {
-      '1': 'executionCount',
-      '3': 6,
-      '4': 1,
-      '5': 4,
-      '10': 'executionCount'
-    },
+    const {'1': 'executionCount', '3': 6, '4': 1, '5': 4, '10': 'executionCount'},
     const {
       '1': 'pendingExecutionList',
       '3': 5,
@@ -101,13 +89,7 @@ const GenesisState$json = const {
       '8': const {},
       '10': 'pendingExecutionList'
     },
-    const {
-      '1': 'pendingExecutionCount',
-      '3': 4,
-      '4': 1,
-      '5': 4,
-      '10': 'pendingExecutionCount'
-    },
+    const {'1': 'pendingExecutionCount', '3': 4, '4': 1, '5': 4, '10': 'pendingExecutionCount'},
     const {
       '1': 'itemList',
       '3': 3,

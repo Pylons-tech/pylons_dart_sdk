@@ -11,20 +11,12 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class MultiSignature extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'MultiSignature',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MultiSignature',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.crypto.multisig.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.crypto.multisig.v1beta1'),
       createEmptyInstance: create)
     ..p<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'signatures',
-        $pb.PbFieldType.PY)
+        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signatures', $pb.PbFieldType.PY)
     ..hasRequiredFields = false;
 
   MultiSignature._() : super();
@@ -37,11 +29,9 @@ class MultiSignature extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory MultiSignature.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MultiSignature.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory MultiSignature.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory MultiSignature.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -57,11 +47,9 @@ class MultiSignature extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MultiSignature create() => MultiSignature._();
   MultiSignature createEmptyInstance() => create();
-  static $pb.PbList<MultiSignature> createRepeated() =>
-      $pb.PbList<MultiSignature>();
+  static $pb.PbList<MultiSignature> createRepeated() => $pb.PbList<MultiSignature>();
   @$core.pragma('dart2js:noInline')
-  static MultiSignature getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<MultiSignature>(create);
+  static MultiSignature getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MultiSignature>(create);
   static MultiSignature? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -70,26 +58,14 @@ class MultiSignature extends $pb.GeneratedMessage {
 
 class CompactBitArray extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'CompactBitArray',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CompactBitArray',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.crypto.multisig.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.crypto.multisig.v1beta1'),
       createEmptyInstance: create)
     ..a<$core.int>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'extraBitsStored',
-        $pb.PbFieldType.OU3)
+        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'extraBitsStored', $pb.PbFieldType.OU3)
     ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'elems',
-        $pb.PbFieldType.OY)
+        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'elems', $pb.PbFieldType.OY)
     ..hasRequiredFields = false;
 
   CompactBitArray._() : super();
@@ -109,8 +85,7 @@ class CompactBitArray extends $pb.GeneratedMessage {
   factory CompactBitArray.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory CompactBitArray.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory CompactBitArray.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -126,11 +101,10 @@ class CompactBitArray extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static CompactBitArray create() => CompactBitArray._();
   CompactBitArray createEmptyInstance() => create();
-  static $pb.PbList<CompactBitArray> createRepeated() =>
-      $pb.PbList<CompactBitArray>();
+  static $pb.PbList<CompactBitArray> createRepeated() => $pb.PbList<CompactBitArray>();
   @$core.pragma('dart2js:noInline')
-  static CompactBitArray getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CompactBitArray>(create);
+  static CompactBitArray getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CompactBitArray>(create);
   static CompactBitArray? _defaultInstance;
 
   @$pb.TagNumber(1)

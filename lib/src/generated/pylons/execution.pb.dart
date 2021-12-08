@@ -15,40 +15,19 @@ import '../cosmos/base/v1beta1/coin.pb.dart' as $0;
 
 class ItemRecord extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'ItemRecord',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ItemRecord',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'ID',
-        protoName: 'ID')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
     ..pc<$1.DoubleKeyValue>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'doubles',
-        $pb.PbFieldType.PM,
+        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'doubles', $pb.PbFieldType.PM,
         subBuilder: $1.DoubleKeyValue.create)
     ..pc<$1.LongKeyValue>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'longs',
-        $pb.PbFieldType.PM,
+        3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'longs', $pb.PbFieldType.PM,
         subBuilder: $1.LongKeyValue.create)
     ..pc<$1.StringKeyValue>(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'strings',
-        $pb.PbFieldType.PM,
+        4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'strings', $pb.PbFieldType.PM,
         subBuilder: $1.StringKeyValue.create)
     ..hasRequiredFields = false;
 
@@ -74,11 +53,9 @@ class ItemRecord extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory ItemRecord.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory ItemRecord.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory ItemRecord.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory ItemRecord.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -88,16 +65,14 @@ class ItemRecord extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   ItemRecord copyWith(void Function(ItemRecord) updates) =>
-      super.copyWith((message) => updates(message as ItemRecord))
-          as ItemRecord; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as ItemRecord)) as ItemRecord; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ItemRecord create() => ItemRecord._();
   ItemRecord createEmptyInstance() => create();
   static $pb.PbList<ItemRecord> createRepeated() => $pb.PbList<ItemRecord>();
   @$core.pragma('dart2js:noInline')
-  static ItemRecord getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<ItemRecord>(create);
+  static ItemRecord getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ItemRecord>(create);
   static ItemRecord? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -124,90 +99,32 @@ class ItemRecord extends $pb.GeneratedMessage {
 
 class Execution extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'Execution',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Execution',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'Pylonstech.pylons.pylons'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Pylonstech.pylons.pylons'),
       createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'creator')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'ID',
-        protoName: 'ID')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'recipeID',
-        protoName: 'recipeID')
-    ..aOS(
-        4,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'cookbookID',
-        protoName: 'cookbookID')
-    ..aOS(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'recipeVersion',
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creator')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recipeID', protoName: 'recipeID')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cookbookID', protoName: 'cookbookID')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recipeVersion',
         protoName: 'recipeVersion')
-    ..aOS(
-        6,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'nodeVersion',
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nodeVersion',
         protoName: 'nodeVersion')
-    ..aInt64(
-        7,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'blockHeight',
+    ..aInt64(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'blockHeight',
         protoName: 'blockHeight')
     ..pc<ItemRecord>(
-        8,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'itemInputs',
-        $pb.PbFieldType.PM,
-        protoName: 'itemInputs',
-        subBuilder: ItemRecord.create)
+        8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemInputs', $pb.PbFieldType.PM,
+        protoName: 'itemInputs', subBuilder: ItemRecord.create)
     ..pc<$0.Coin>(
-        9,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'coinInputs',
-        $pb.PbFieldType.PM,
-        protoName: 'coinInputs',
-        subBuilder: $0.Coin.create)
+        9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'coinInputs', $pb.PbFieldType.PM,
+        protoName: 'coinInputs', subBuilder: $0.Coin.create)
     ..pc<$0.Coin>(
-        10,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'coinOutputs',
-        $pb.PbFieldType.PM,
-        protoName: 'coinOutputs',
-        subBuilder: $0.Coin.create)
-    ..pPS(
-        11,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'itemOutputIDs',
+        10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'coinOutputs', $pb.PbFieldType.PM,
+        protoName: 'coinOutputs', subBuilder: $0.Coin.create)
+    ..pPS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemOutputIDs',
         protoName: 'itemOutputIDs')
-    ..pPS(
-        12,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'itemModifyOutputIDs',
+    ..pPS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'itemModifyOutputIDs',
         protoName: 'itemModifyOutputIDs')
     ..hasRequiredFields = false;
 
@@ -265,11 +182,9 @@ class Execution extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory Execution.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Execution.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Execution.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Execution.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -279,16 +194,14 @@ class Execution extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   Execution copyWith(void Function(Execution) updates) =>
-      super.copyWith((message) => updates(message as Execution))
-          as Execution; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as Execution)) as Execution; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Execution create() => Execution._();
   Execution createEmptyInstance() => create();
   static $pb.PbList<Execution> createRepeated() => $pb.PbList<Execution>();
   @$core.pragma('dart2js:noInline')
-  static Execution getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Execution>(create);
+  static Execution getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Execution>(create);
   static Execution? _defaultInstance;
 
   @$pb.TagNumber(1)

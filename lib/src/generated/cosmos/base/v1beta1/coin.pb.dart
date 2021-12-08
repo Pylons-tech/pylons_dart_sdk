@@ -11,24 +11,12 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class Coin extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'Coin',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Coin',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.base.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.base.v1beta1'),
       createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'denom')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'amount')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'denom')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount')
     ..hasRequiredFields = false;
 
   Coin._() : super();
@@ -45,11 +33,9 @@ class Coin extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory Coin.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Coin.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Coin.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Coin.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -59,16 +45,14 @@ class Coin extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   Coin copyWith(void Function(Coin) updates) =>
-      super.copyWith((message) => updates(message as Coin))
-          as Coin; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as Coin)) as Coin; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Coin create() => Coin._();
   Coin createEmptyInstance() => create();
   static $pb.PbList<Coin> createRepeated() => $pb.PbList<Coin>();
   @$core.pragma('dart2js:noInline')
-  static Coin getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Coin>(create);
+  static Coin getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Coin>(create);
   static Coin? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -98,24 +82,12 @@ class Coin extends $pb.GeneratedMessage {
 
 class DecCoin extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'DecCoin',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DecCoin',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.base.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.base.v1beta1'),
       createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'denom')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'amount')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'denom')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount')
     ..hasRequiredFields = false;
 
   DecCoin._() : super();
@@ -132,11 +104,9 @@ class DecCoin extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory DecCoin.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory DecCoin.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory DecCoin.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory DecCoin.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -146,16 +116,14 @@ class DecCoin extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   DecCoin copyWith(void Function(DecCoin) updates) =>
-      super.copyWith((message) => updates(message as DecCoin))
-          as DecCoin; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as DecCoin)) as DecCoin; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static DecCoin create() => DecCoin._();
   DecCoin createEmptyInstance() => create();
   static $pb.PbList<DecCoin> createRepeated() => $pb.PbList<DecCoin>();
   @$core.pragma('dart2js:noInline')
-  static DecCoin getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DecCoin>(create);
+  static DecCoin getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DecCoin>(create);
   static DecCoin? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -185,19 +153,11 @@ class DecCoin extends $pb.GeneratedMessage {
 
 class IntProto extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'IntProto',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IntProto',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.base.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.base.v1beta1'),
       createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'int')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'int')
     ..hasRequiredFields = false;
 
   IntProto._() : super();
@@ -210,11 +170,9 @@ class IntProto extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory IntProto.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory IntProto.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory IntProto.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory IntProto.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -224,16 +182,14 @@ class IntProto extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   IntProto copyWith(void Function(IntProto) updates) =>
-      super.copyWith((message) => updates(message as IntProto))
-          as IntProto; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as IntProto)) as IntProto; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static IntProto create() => IntProto._();
   IntProto createEmptyInstance() => create();
   static $pb.PbList<IntProto> createRepeated() => $pb.PbList<IntProto>();
   @$core.pragma('dart2js:noInline')
-  static IntProto getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IntProto>(create);
+  static IntProto getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IntProto>(create);
   static IntProto? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -251,19 +207,11 @@ class IntProto extends $pb.GeneratedMessage {
 
 class DecProto extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'DecProto',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DecProto',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.base.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.base.v1beta1'),
       createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'dec')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dec')
     ..hasRequiredFields = false;
 
   DecProto._() : super();
@@ -276,11 +224,9 @@ class DecProto extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory DecProto.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory DecProto.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory DecProto.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory DecProto.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -290,16 +236,14 @@ class DecProto extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   DecProto copyWith(void Function(DecProto) updates) =>
-      super.copyWith((message) => updates(message as DecProto))
-          as DecProto; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as DecProto)) as DecProto; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static DecProto create() => DecProto._();
   DecProto createEmptyInstance() => create();
   static $pb.PbList<DecProto> createRepeated() => $pb.PbList<DecProto>();
   @$core.pragma('dart2js:noInline')
-  static DecProto getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DecProto>(create);
+  static DecProto getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DecProto>(create);
   static DecProto? _defaultInstance;
 
   @$pb.TagNumber(1)

@@ -16,19 +16,11 @@ import 'auth.pb.dart' as $1;
 
 class QueryAccountsRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'QueryAccountsRequest',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryAccountsRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.auth.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.auth.v1beta1'),
       createEmptyInstance: create)
-    ..aOM<$2.PageRequest>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'pagination',
+    ..aOM<$2.PageRequest>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination',
         subBuilder: $2.PageRequest.create)
     ..hasRequiredFields = false;
 
@@ -45,14 +37,12 @@ class QueryAccountsRequest extends $pb.GeneratedMessage {
   factory QueryAccountsRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory QueryAccountsRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory QueryAccountsRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  QueryAccountsRequest clone() =>
-      QueryAccountsRequest()..mergeFromMessage(this);
+  QueryAccountsRequest clone() => QueryAccountsRequest()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -63,11 +53,10 @@ class QueryAccountsRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static QueryAccountsRequest create() => QueryAccountsRequest._();
   QueryAccountsRequest createEmptyInstance() => create();
-  static $pb.PbList<QueryAccountsRequest> createRepeated() =>
-      $pb.PbList<QueryAccountsRequest>();
+  static $pb.PbList<QueryAccountsRequest> createRepeated() => $pb.PbList<QueryAccountsRequest>();
   @$core.pragma('dart2js:noInline')
-  static QueryAccountsRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<QueryAccountsRequest>(create);
+  static QueryAccountsRequest getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryAccountsRequest>(create);
   static QueryAccountsRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -87,26 +76,13 @@ class QueryAccountsRequest extends $pb.GeneratedMessage {
 
 class QueryAccountsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'QueryAccountsResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryAccountsResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.auth.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.auth.v1beta1'),
       createEmptyInstance: create)
-    ..pc<$0.Any>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'accounts',
-        $pb.PbFieldType.PM,
+    ..pc<$0.Any>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'accounts', $pb.PbFieldType.PM,
         subBuilder: $0.Any.create)
-    ..aOM<$2.PageResponse>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'pagination',
+    ..aOM<$2.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination',
         subBuilder: $2.PageResponse.create)
     ..hasRequiredFields = false;
 
@@ -127,30 +103,26 @@ class QueryAccountsResponse extends $pb.GeneratedMessage {
   factory QueryAccountsResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory QueryAccountsResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory QueryAccountsResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  QueryAccountsResponse clone() =>
-      QueryAccountsResponse()..mergeFromMessage(this);
+  QueryAccountsResponse clone() => QueryAccountsResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  QueryAccountsResponse copyWith(
-          void Function(QueryAccountsResponse) updates) =>
+  QueryAccountsResponse copyWith(void Function(QueryAccountsResponse) updates) =>
       super.copyWith((message) => updates(message as QueryAccountsResponse))
           as QueryAccountsResponse; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static QueryAccountsResponse create() => QueryAccountsResponse._();
   QueryAccountsResponse createEmptyInstance() => create();
-  static $pb.PbList<QueryAccountsResponse> createRepeated() =>
-      $pb.PbList<QueryAccountsResponse>();
+  static $pb.PbList<QueryAccountsResponse> createRepeated() => $pb.PbList<QueryAccountsResponse>();
   @$core.pragma('dart2js:noInline')
-  static QueryAccountsResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<QueryAccountsResponse>(create);
+  static QueryAccountsResponse getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryAccountsResponse>(create);
   static QueryAccountsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -173,19 +145,11 @@ class QueryAccountsResponse extends $pb.GeneratedMessage {
 
 class QueryAccountRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'QueryAccountRequest',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryAccountRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.auth.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.auth.v1beta1'),
       createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'address')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
     ..hasRequiredFields = false;
 
   QueryAccountRequest._() : super();
@@ -201,8 +165,7 @@ class QueryAccountRequest extends $pb.GeneratedMessage {
   factory QueryAccountRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory QueryAccountRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory QueryAccountRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -218,11 +181,10 @@ class QueryAccountRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static QueryAccountRequest create() => QueryAccountRequest._();
   QueryAccountRequest createEmptyInstance() => create();
-  static $pb.PbList<QueryAccountRequest> createRepeated() =>
-      $pb.PbList<QueryAccountRequest>();
+  static $pb.PbList<QueryAccountRequest> createRepeated() => $pb.PbList<QueryAccountRequest>();
   @$core.pragma('dart2js:noInline')
-  static QueryAccountRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<QueryAccountRequest>(create);
+  static QueryAccountRequest getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryAccountRequest>(create);
   static QueryAccountRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -240,19 +202,11 @@ class QueryAccountRequest extends $pb.GeneratedMessage {
 
 class QueryAccountResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'QueryAccountResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryAccountResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.auth.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.auth.v1beta1'),
       createEmptyInstance: create)
-    ..aOM<$0.Any>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'account',
+    ..aOM<$0.Any>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'account',
         subBuilder: $0.Any.create)
     ..hasRequiredFields = false;
 
@@ -269,14 +223,12 @@ class QueryAccountResponse extends $pb.GeneratedMessage {
   factory QueryAccountResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory QueryAccountResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory QueryAccountResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  QueryAccountResponse clone() =>
-      QueryAccountResponse()..mergeFromMessage(this);
+  QueryAccountResponse clone() => QueryAccountResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
@@ -287,11 +239,10 @@ class QueryAccountResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static QueryAccountResponse create() => QueryAccountResponse._();
   QueryAccountResponse createEmptyInstance() => create();
-  static $pb.PbList<QueryAccountResponse> createRepeated() =>
-      $pb.PbList<QueryAccountResponse>();
+  static $pb.PbList<QueryAccountResponse> createRepeated() => $pb.PbList<QueryAccountResponse>();
   @$core.pragma('dart2js:noInline')
-  static QueryAccountResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<QueryAccountResponse>(create);
+  static QueryAccountResponse getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryAccountResponse>(create);
   static QueryAccountResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -311,13 +262,9 @@ class QueryAccountResponse extends $pb.GeneratedMessage {
 
 class QueryParamsRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'QueryParamsRequest',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryParamsRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.auth.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.auth.v1beta1'),
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
@@ -326,8 +273,7 @@ class QueryParamsRequest extends $pb.GeneratedMessage {
   factory QueryParamsRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory QueryParamsRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory QueryParamsRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -343,29 +289,20 @@ class QueryParamsRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static QueryParamsRequest create() => QueryParamsRequest._();
   QueryParamsRequest createEmptyInstance() => create();
-  static $pb.PbList<QueryParamsRequest> createRepeated() =>
-      $pb.PbList<QueryParamsRequest>();
+  static $pb.PbList<QueryParamsRequest> createRepeated() => $pb.PbList<QueryParamsRequest>();
   @$core.pragma('dart2js:noInline')
-  static QueryParamsRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<QueryParamsRequest>(create);
+  static QueryParamsRequest getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryParamsRequest>(create);
   static QueryParamsRequest? _defaultInstance;
 }
 
 class QueryParamsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'QueryParamsResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'QueryParamsResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.auth.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.auth.v1beta1'),
       createEmptyInstance: create)
-    ..aOM<$1.Params>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'params',
+    ..aOM<$1.Params>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'params',
         subBuilder: $1.Params.create)
     ..hasRequiredFields = false;
 
@@ -382,8 +319,7 @@ class QueryParamsResponse extends $pb.GeneratedMessage {
   factory QueryParamsResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory QueryParamsResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory QueryParamsResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -399,11 +335,10 @@ class QueryParamsResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static QueryParamsResponse create() => QueryParamsResponse._();
   QueryParamsResponse createEmptyInstance() => create();
-  static $pb.PbList<QueryParamsResponse> createRepeated() =>
-      $pb.PbList<QueryParamsResponse>();
+  static $pb.PbList<QueryParamsResponse> createRepeated() => $pb.PbList<QueryParamsResponse>();
   @$core.pragma('dart2js:noInline')
-  static QueryParamsResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<QueryParamsResponse>(create);
+  static QueryParamsResponse getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<QueryParamsResponse>(create);
   static QueryParamsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -425,24 +360,18 @@ class QueryApi {
   $pb.RpcClient _client;
   QueryApi(this._client);
 
-  $async.Future<QueryAccountsResponse> accounts(
-      $pb.ClientContext? ctx, QueryAccountsRequest request) {
+  $async.Future<QueryAccountsResponse> accounts($pb.ClientContext? ctx, QueryAccountsRequest request) {
     var emptyResponse = QueryAccountsResponse();
-    return _client.invoke<QueryAccountsResponse>(
-        ctx, 'Query', 'Accounts', request, emptyResponse);
+    return _client.invoke<QueryAccountsResponse>(ctx, 'Query', 'Accounts', request, emptyResponse);
   }
 
-  $async.Future<QueryAccountResponse> account(
-      $pb.ClientContext? ctx, QueryAccountRequest request) {
+  $async.Future<QueryAccountResponse> account($pb.ClientContext? ctx, QueryAccountRequest request) {
     var emptyResponse = QueryAccountResponse();
-    return _client.invoke<QueryAccountResponse>(
-        ctx, 'Query', 'Account', request, emptyResponse);
+    return _client.invoke<QueryAccountResponse>(ctx, 'Query', 'Account', request, emptyResponse);
   }
 
-  $async.Future<QueryParamsResponse> params(
-      $pb.ClientContext? ctx, QueryParamsRequest request) {
+  $async.Future<QueryParamsResponse> params($pb.ClientContext? ctx, QueryParamsRequest request) {
     var emptyResponse = QueryParamsResponse();
-    return _client.invoke<QueryParamsResponse>(
-        ctx, 'Query', 'Params', request, emptyResponse);
+    return _client.invoke<QueryParamsResponse>(ctx, 'Query', 'Params', request, emptyResponse);
   }
 }

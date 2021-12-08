@@ -13,29 +13,9 @@ import 'dart:typed_data' as $typed_data;
 const ValidatorSet$json = const {
   '1': 'ValidatorSet',
   '2': const [
-    const {
-      '1': 'validators',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.tendermint.types.Validator',
-      '10': 'validators'
-    },
-    const {
-      '1': 'proposer',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.tendermint.types.Validator',
-      '10': 'proposer'
-    },
-    const {
-      '1': 'total_voting_power',
-      '3': 3,
-      '4': 1,
-      '5': 3,
-      '10': 'totalVotingPower'
-    },
+    const {'1': 'validators', '3': 1, '4': 3, '5': 11, '6': '.tendermint.types.Validator', '10': 'validators'},
+    const {'1': 'proposer', '3': 2, '4': 1, '5': 11, '6': '.tendermint.types.Validator', '10': 'proposer'},
+    const {'1': 'total_voting_power', '3': 3, '4': 1, '5': 3, '10': 'totalVotingPower'},
   ],
 };
 
@@ -47,23 +27,9 @@ const Validator$json = const {
   '1': 'Validator',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 12, '10': 'address'},
-    const {
-      '1': 'pub_key',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.tendermint.crypto.PublicKey',
-      '8': const {},
-      '10': 'pubKey'
-    },
+    const {'1': 'pub_key', '3': 2, '4': 1, '5': 11, '6': '.tendermint.crypto.PublicKey', '8': const {}, '10': 'pubKey'},
     const {'1': 'voting_power', '3': 3, '4': 1, '5': 3, '10': 'votingPower'},
-    const {
-      '1': 'proposer_priority',
-      '3': 4,
-      '4': 1,
-      '5': 3,
-      '10': 'proposerPriority'
-    },
+    const {'1': 'proposer_priority', '3': 4, '4': 1, '5': 3, '10': 'proposerPriority'},
   ],
 };
 
@@ -74,14 +40,7 @@ final $typed_data.Uint8List validatorDescriptor = $convert.base64Decode(
 const SimpleValidator$json = const {
   '1': 'SimpleValidator',
   '2': const [
-    const {
-      '1': 'pub_key',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.tendermint.crypto.PublicKey',
-      '10': 'pubKey'
-    },
+    const {'1': 'pub_key', '3': 1, '4': 1, '5': 11, '6': '.tendermint.crypto.PublicKey', '10': 'pubKey'},
     const {'1': 'voting_power', '3': 2, '4': 1, '5': 3, '10': 'votingPower'},
   ],
 };

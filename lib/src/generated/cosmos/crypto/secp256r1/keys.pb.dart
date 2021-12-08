@@ -11,20 +11,12 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class PubKey extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'PubKey',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PubKey',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.crypto.secp256r1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.crypto.secp256r1'),
       createEmptyInstance: create)
     ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'key',
-        $pb.PbFieldType.OY)
+        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'key', $pb.PbFieldType.OY)
     ..hasRequiredFields = false;
 
   PubKey._() : super();
@@ -37,11 +29,9 @@ class PubKey extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory PubKey.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory PubKey.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory PubKey.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory PubKey.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -51,16 +41,14 @@ class PubKey extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   PubKey copyWith(void Function(PubKey) updates) =>
-      super.copyWith((message) => updates(message as PubKey))
-          as PubKey; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as PubKey)) as PubKey; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static PubKey create() => PubKey._();
   PubKey createEmptyInstance() => create();
   static $pb.PbList<PubKey> createRepeated() => $pb.PbList<PubKey>();
   @$core.pragma('dart2js:noInline')
-  static PubKey getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PubKey>(create);
+  static PubKey getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PubKey>(create);
   static PubKey? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -78,20 +66,12 @@ class PubKey extends $pb.GeneratedMessage {
 
 class PrivKey extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'PrivKey',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PrivKey',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.crypto.secp256r1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.crypto.secp256r1'),
       createEmptyInstance: create)
     ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'secret',
-        $pb.PbFieldType.OY)
+        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'secret', $pb.PbFieldType.OY)
     ..hasRequiredFields = false;
 
   PrivKey._() : super();
@@ -104,11 +84,9 @@ class PrivKey extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory PrivKey.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory PrivKey.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory PrivKey.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory PrivKey.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -118,16 +96,14 @@ class PrivKey extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   PrivKey copyWith(void Function(PrivKey) updates) =>
-      super.copyWith((message) => updates(message as PrivKey))
-          as PrivKey; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as PrivKey)) as PrivKey; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static PrivKey create() => PrivKey._();
   PrivKey createEmptyInstance() => create();
   static $pb.PbList<PrivKey> createRepeated() => $pb.PbList<PrivKey>();
   @$core.pragma('dart2js:noInline')
-  static PrivKey getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PrivKey>(create);
+  static PrivKey getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PrivKey>(create);
   static PrivKey? _defaultInstance;
 
   @$pb.TagNumber(1)

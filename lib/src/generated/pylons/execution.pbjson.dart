@@ -85,22 +85,8 @@ const Execution$json = const {
       '8': const {},
       '10': 'coinOutputs'
     },
-    const {
-      '1': 'itemOutputIDs',
-      '3': 11,
-      '4': 3,
-      '5': 9,
-      '8': const {},
-      '10': 'itemOutputIDs'
-    },
-    const {
-      '1': 'itemModifyOutputIDs',
-      '3': 12,
-      '4': 3,
-      '5': 9,
-      '8': const {},
-      '10': 'itemModifyOutputIDs'
-    },
+    const {'1': 'itemOutputIDs', '3': 11, '4': 3, '5': 9, '8': const {}, '10': 'itemOutputIDs'},
+    const {'1': 'itemModifyOutputIDs', '3': 12, '4': 3, '5': 9, '8': const {}, '10': 'itemModifyOutputIDs'},
   ],
 };
 

@@ -13,27 +13,15 @@ import 'package:protobuf/src/protobuf/mixins/well_known.dart' as $mixin;
 
 class Any extends $pb.GeneratedMessage with $mixin.AnyMixin {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'Any',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Any',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'google.protobuf'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'google.protobuf'),
       createEmptyInstance: create,
       toProto3Json: $mixin.AnyMixin.toProto3JsonHelper,
       fromProto3Json: $mixin.AnyMixin.fromProto3JsonHelper)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'typeUrl')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'typeUrl')
     ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'value',
-        $pb.PbFieldType.OY)
+        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'value', $pb.PbFieldType.OY)
     ..hasRequiredFields = false;
 
   Any._() : super();
@@ -50,11 +38,9 @@ class Any extends $pb.GeneratedMessage with $mixin.AnyMixin {
     }
     return _result;
   }
-  factory Any.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Any.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory Any.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Any.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -64,16 +50,14 @@ class Any extends $pb.GeneratedMessage with $mixin.AnyMixin {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   Any copyWith(void Function(Any) updates) =>
-      super.copyWith((message) => updates(message as Any))
-          as Any; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as Any)) as Any; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Any create() => Any._();
   Any createEmptyInstance() => create();
   static $pb.PbList<Any> createRepeated() => $pb.PbList<Any>();
   @$core.pragma('dart2js:noInline')
-  static Any getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Any>(create);
+  static Any getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Any>(create);
   static Any? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -104,8 +88,7 @@ class Any extends $pb.GeneratedMessage with $mixin.AnyMixin {
   ///
   /// The [typeUrl] will be [typeUrlPrefix]/`fullName` where `fullName` is
   /// the fully qualified name of the type of [message].
-  static Any pack($pb.GeneratedMessage message,
-      {$core.String typeUrlPrefix = 'type.googleapis.com'}) {
+  static Any pack($pb.GeneratedMessage message, {$core.String typeUrlPrefix = 'type.googleapis.com'}) {
     final result = create();
     $mixin.AnyMixin.packIntoAny(result, message, typeUrlPrefix: typeUrlPrefix);
     return result;

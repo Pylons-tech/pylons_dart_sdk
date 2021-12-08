@@ -9,8 +9,6 @@ import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
-
-
 const PaymentInfo$json = const {
   '1': 'PaymentInfo',
   '2': const [
@@ -22,4 +20,3 @@ const PaymentInfo$json = const {
     const {'1': 'signature', '3': 6, '4': 1, '5': 9, '10': 'signature'},
   ],
 };
-

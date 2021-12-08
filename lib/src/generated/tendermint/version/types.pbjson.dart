@@ -20,5 +20,5 @@ const Consensus$json = const {
 };
 
 /// Descriptor for `Consensus`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List consensusDescriptor = $convert.base64Decode(
-    'CglDb25zZW5zdXMSFAoFYmxvY2sYASABKARSBWJsb2NrEhAKA2FwcBgCIAEoBFIDYXBwOgTooB8B');
+final $typed_data.Uint8List consensusDescriptor =
+    $convert.base64Decode('CglDb25zZW5zdXMSFAoFYmxvY2sYASABKARSBWJsb2NrEhAKA2FwcBgCIAEoBFIDYXBwOgTooB8B');

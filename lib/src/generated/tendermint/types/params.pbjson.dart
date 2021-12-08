@@ -13,38 +13,10 @@ import 'dart:typed_data' as $typed_data;
 const ConsensusParams$json = const {
   '1': 'ConsensusParams',
   '2': const [
-    const {
-      '1': 'block',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.tendermint.types.BlockParams',
-      '10': 'block'
-    },
-    const {
-      '1': 'evidence',
-      '3': 2,
-      '4': 1,
-      '5': 11,
-      '6': '.tendermint.types.EvidenceParams',
-      '10': 'evidence'
-    },
-    const {
-      '1': 'validator',
-      '3': 3,
-      '4': 1,
-      '5': 11,
-      '6': '.tendermint.types.ValidatorParams',
-      '10': 'validator'
-    },
-    const {
-      '1': 'version',
-      '3': 4,
-      '4': 1,
-      '5': 11,
-      '6': '.tendermint.types.VersionParams',
-      '10': 'version'
-    },
+    const {'1': 'block', '3': 1, '4': 1, '5': 11, '6': '.tendermint.types.BlockParams', '10': 'block'},
+    const {'1': 'evidence', '3': 2, '4': 1, '5': 11, '6': '.tendermint.types.EvidenceParams', '10': 'evidence'},
+    const {'1': 'validator', '3': 3, '4': 1, '5': 11, '6': '.tendermint.types.ValidatorParams', '10': 'validator'},
+    const {'1': 'version', '3': 4, '4': 1, '5': 11, '6': '.tendermint.types.VersionParams', '10': 'version'},
   ],
 };
 
@@ -61,19 +33,13 @@ const BlockParams$json = const {
 };
 
 /// Descriptor for `BlockParams`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List blockParamsDescriptor = $convert.base64Decode(
-    'CgtCbG9ja1BhcmFtcxIbCgltYXhfYnl0ZXMYASABKANSCG1heEJ5dGVzEhcKB21heF9nYXMYAiABKANSBm1heEdhcw==');
+final $typed_data.Uint8List blockParamsDescriptor = $convert
+    .base64Decode('CgtCbG9ja1BhcmFtcxIbCgltYXhfYnl0ZXMYASABKANSCG1heEJ5dGVzEhcKB21heF9nYXMYAiABKANSBm1heEdhcw==');
 @$core.Deprecated('Use evidenceParamsDescriptor instead')
 const EvidenceParams$json = const {
   '1': 'EvidenceParams',
   '2': const [
-    const {
-      '1': 'max_age_num_blocks',
-      '3': 1,
-      '4': 1,
-      '5': 3,
-      '10': 'maxAgeNumBlocks'
-    },
+    const {'1': 'max_age_num_blocks', '3': 1, '4': 1, '5': 3, '10': 'maxAgeNumBlocks'},
     const {
       '1': 'max_age_duration',
       '3': 2,
@@ -99,8 +65,8 @@ const ValidatorParams$json = const {
 };
 
 /// Descriptor for `ValidatorParams`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List validatorParamsDescriptor = $convert.base64Decode(
-    'Cg9WYWxpZGF0b3JQYXJhbXMSIgoNcHViX2tleV90eXBlcxgBIAMoCVILcHViS2V5VHlwZXM=');
+final $typed_data.Uint8List validatorParamsDescriptor =
+    $convert.base64Decode('Cg9WYWxpZGF0b3JQYXJhbXMSIgoNcHViX2tleV90eXBlcxgBIAMoCVILcHViS2V5VHlwZXM=');
 @$core.Deprecated('Use versionParamsDescriptor instead')
 const VersionParams$json = const {
   '1': 'VersionParams',
@@ -110,19 +76,13 @@ const VersionParams$json = const {
 };
 
 /// Descriptor for `VersionParams`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List versionParamsDescriptor = $convert.base64Decode(
-    'Cg1WZXJzaW9uUGFyYW1zEh8KC2FwcF92ZXJzaW9uGAEgASgEUgphcHBWZXJzaW9u');
+final $typed_data.Uint8List versionParamsDescriptor =
+    $convert.base64Decode('Cg1WZXJzaW9uUGFyYW1zEh8KC2FwcF92ZXJzaW9uGAEgASgEUgphcHBWZXJzaW9u');
 @$core.Deprecated('Use hashedParamsDescriptor instead')
 const HashedParams$json = const {
   '1': 'HashedParams',
   '2': const [
-    const {
-      '1': 'block_max_bytes',
-      '3': 1,
-      '4': 1,
-      '5': 3,
-      '10': 'blockMaxBytes'
-    },
+    const {'1': 'block_max_bytes', '3': 1, '4': 1, '5': 3, '10': 'blockMaxBytes'},
     const {'1': 'block_max_gas', '3': 2, '4': 1, '5': 3, '10': 'blockMaxGas'},
   ],
 };

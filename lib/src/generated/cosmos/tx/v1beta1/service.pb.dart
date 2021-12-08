@@ -20,34 +20,15 @@ export 'service.pbenum.dart';
 
 class GetTxsEventRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'GetTxsEventRequest',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetTxsEventRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.tx.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.v1beta1'),
       createEmptyInstance: create)
-    ..pPS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'events')
-    ..aOM<$4.PageRequest>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'pagination',
+    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'events')
+    ..aOM<$4.PageRequest>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination',
         subBuilder: $4.PageRequest.create)
-    ..e<OrderBy>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'orderBy',
-        $pb.PbFieldType.OE,
-        defaultOrMaker: OrderBy.ORDER_BY_UNSPECIFIED,
-        valueOf: OrderBy.valueOf,
-        enumValues: OrderBy.values)
+    ..e<OrderBy>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'orderBy', $pb.PbFieldType.OE,
+        defaultOrMaker: OrderBy.ORDER_BY_UNSPECIFIED, valueOf: OrderBy.valueOf, enumValues: OrderBy.values)
     ..hasRequiredFields = false;
 
   GetTxsEventRequest._() : super();
@@ -71,8 +52,7 @@ class GetTxsEventRequest extends $pb.GeneratedMessage {
   factory GetTxsEventRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory GetTxsEventRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory GetTxsEventRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -88,11 +68,10 @@ class GetTxsEventRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static GetTxsEventRequest create() => GetTxsEventRequest._();
   GetTxsEventRequest createEmptyInstance() => create();
-  static $pb.PbList<GetTxsEventRequest> createRepeated() =>
-      $pb.PbList<GetTxsEventRequest>();
+  static $pb.PbList<GetTxsEventRequest> createRepeated() => $pb.PbList<GetTxsEventRequest>();
   @$core.pragma('dart2js:noInline')
-  static GetTxsEventRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<GetTxsEventRequest>(create);
+  static GetTxsEventRequest getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetTxsEventRequest>(create);
   static GetTxsEventRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -127,33 +106,16 @@ class GetTxsEventRequest extends $pb.GeneratedMessage {
 
 class GetTxsEventResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'GetTxsEventResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetTxsEventResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.tx.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.v1beta1'),
       createEmptyInstance: create)
-    ..pc<$5.Tx>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'txs',
-        $pb.PbFieldType.PM,
+    ..pc<$5.Tx>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txs', $pb.PbFieldType.PM,
         subBuilder: $5.Tx.create)
     ..pc<$6.TxResponse>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'txResponses',
-        $pb.PbFieldType.PM,
+        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txResponses', $pb.PbFieldType.PM,
         subBuilder: $6.TxResponse.create)
-    ..aOM<$4.PageResponse>(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'pagination',
+    ..aOM<$4.PageResponse>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pagination',
         subBuilder: $4.PageResponse.create)
     ..hasRequiredFields = false;
 
@@ -178,8 +140,7 @@ class GetTxsEventResponse extends $pb.GeneratedMessage {
   factory GetTxsEventResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory GetTxsEventResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory GetTxsEventResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -195,11 +156,10 @@ class GetTxsEventResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static GetTxsEventResponse create() => GetTxsEventResponse._();
   GetTxsEventResponse createEmptyInstance() => create();
-  static $pb.PbList<GetTxsEventResponse> createRepeated() =>
-      $pb.PbList<GetTxsEventResponse>();
+  static $pb.PbList<GetTxsEventResponse> createRepeated() => $pb.PbList<GetTxsEventResponse>();
   @$core.pragma('dart2js:noInline')
-  static GetTxsEventResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<GetTxsEventResponse>(create);
+  static GetTxsEventResponse getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetTxsEventResponse>(create);
   static GetTxsEventResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -225,26 +185,14 @@ class GetTxsEventResponse extends $pb.GeneratedMessage {
 
 class BroadcastTxRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'BroadcastTxRequest',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BroadcastTxRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.tx.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.v1beta1'),
       createEmptyInstance: create)
     ..a<$core.List<$core.int>>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'txBytes',
-        $pb.PbFieldType.OY)
+        1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txBytes', $pb.PbFieldType.OY)
     ..e<BroadcastMode>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'mode',
-        $pb.PbFieldType.OE,
+        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mode', $pb.PbFieldType.OE,
         defaultOrMaker: BroadcastMode.BROADCAST_MODE_UNSPECIFIED,
         valueOf: BroadcastMode.valueOf,
         enumValues: BroadcastMode.values)
@@ -267,8 +215,7 @@ class BroadcastTxRequest extends $pb.GeneratedMessage {
   factory BroadcastTxRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory BroadcastTxRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory BroadcastTxRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -284,11 +231,10 @@ class BroadcastTxRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static BroadcastTxRequest create() => BroadcastTxRequest._();
   BroadcastTxRequest createEmptyInstance() => create();
-  static $pb.PbList<BroadcastTxRequest> createRepeated() =>
-      $pb.PbList<BroadcastTxRequest>();
+  static $pb.PbList<BroadcastTxRequest> createRepeated() => $pb.PbList<BroadcastTxRequest>();
   @$core.pragma('dart2js:noInline')
-  static BroadcastTxRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<BroadcastTxRequest>(create);
+  static BroadcastTxRequest getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BroadcastTxRequest>(create);
   static BroadcastTxRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -318,19 +264,11 @@ class BroadcastTxRequest extends $pb.GeneratedMessage {
 
 class BroadcastTxResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'BroadcastTxResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BroadcastTxResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.tx.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.v1beta1'),
       createEmptyInstance: create)
-    ..aOM<$6.TxResponse>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'txResponse',
+    ..aOM<$6.TxResponse>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txResponse',
         subBuilder: $6.TxResponse.create)
     ..hasRequiredFields = false;
 
@@ -347,8 +285,7 @@ class BroadcastTxResponse extends $pb.GeneratedMessage {
   factory BroadcastTxResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory BroadcastTxResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory BroadcastTxResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -364,11 +301,10 @@ class BroadcastTxResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static BroadcastTxResponse create() => BroadcastTxResponse._();
   BroadcastTxResponse createEmptyInstance() => create();
-  static $pb.PbList<BroadcastTxResponse> createRepeated() =>
-      $pb.PbList<BroadcastTxResponse>();
+  static $pb.PbList<BroadcastTxResponse> createRepeated() => $pb.PbList<BroadcastTxResponse>();
   @$core.pragma('dart2js:noInline')
-  static BroadcastTxResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<BroadcastTxResponse>(create);
+  static BroadcastTxResponse getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BroadcastTxResponse>(create);
   static BroadcastTxResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -388,26 +324,13 @@ class BroadcastTxResponse extends $pb.GeneratedMessage {
 
 class SimulateRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'SimulateRequest',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SimulateRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.tx.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.v1beta1'),
       createEmptyInstance: create)
-    ..aOM<$5.Tx>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'tx',
-        subBuilder: $5.Tx.create)
+    ..aOM<$5.Tx>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tx', subBuilder: $5.Tx.create)
     ..a<$core.List<$core.int>>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'txBytes',
-        $pb.PbFieldType.OY)
+        2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txBytes', $pb.PbFieldType.OY)
     ..hasRequiredFields = false;
 
   SimulateRequest._() : super();
@@ -428,8 +351,7 @@ class SimulateRequest extends $pb.GeneratedMessage {
   factory SimulateRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory SimulateRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory SimulateRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -445,11 +367,10 @@ class SimulateRequest extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static SimulateRequest create() => SimulateRequest._();
   SimulateRequest createEmptyInstance() => create();
-  static $pb.PbList<SimulateRequest> createRepeated() =>
-      $pb.PbList<SimulateRequest>();
+  static $pb.PbList<SimulateRequest> createRepeated() => $pb.PbList<SimulateRequest>();
   @$core.pragma('dart2js:noInline')
-  static SimulateRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<SimulateRequest>(create);
+  static SimulateRequest getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SimulateRequest>(create);
   static SimulateRequest? _defaultInstance;
 
   @$core.Deprecated('This field is deprecated.')
@@ -486,25 +407,13 @@ class SimulateRequest extends $pb.GeneratedMessage {
 
 class SimulateResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'SimulateResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SimulateResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.tx.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.v1beta1'),
       createEmptyInstance: create)
-    ..aOM<$6.GasInfo>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'gasInfo',
+    ..aOM<$6.GasInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gasInfo',
         subBuilder: $6.GasInfo.create)
-    ..aOM<$6.Result>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'result',
+    ..aOM<$6.Result>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'result',
         subBuilder: $6.Result.create)
     ..hasRequiredFields = false;
 
@@ -525,8 +434,7 @@ class SimulateResponse extends $pb.GeneratedMessage {
   factory SimulateResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory SimulateResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory SimulateResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -542,11 +450,10 @@ class SimulateResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static SimulateResponse create() => SimulateResponse._();
   SimulateResponse createEmptyInstance() => create();
-  static $pb.PbList<SimulateResponse> createRepeated() =>
-      $pb.PbList<SimulateResponse>();
+  static $pb.PbList<SimulateResponse> createRepeated() => $pb.PbList<SimulateResponse>();
   @$core.pragma('dart2js:noInline')
-  static SimulateResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<SimulateResponse>(create);
+  static SimulateResponse getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SimulateResponse>(create);
   static SimulateResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -580,19 +487,11 @@ class SimulateResponse extends $pb.GeneratedMessage {
 
 class GetTxRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'GetTxRequest',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetTxRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.tx.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.v1beta1'),
       createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'hash')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
     ..hasRequiredFields = false;
 
   GetTxRequest._() : super();
@@ -605,11 +504,9 @@ class GetTxRequest extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory GetTxRequest.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory GetTxRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory GetTxRequest.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory GetTxRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -619,17 +516,14 @@ class GetTxRequest extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   GetTxRequest copyWith(void Function(GetTxRequest) updates) =>
-      super.copyWith((message) => updates(message as GetTxRequest))
-          as GetTxRequest; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as GetTxRequest)) as GetTxRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static GetTxRequest create() => GetTxRequest._();
   GetTxRequest createEmptyInstance() => create();
-  static $pb.PbList<GetTxRequest> createRepeated() =>
-      $pb.PbList<GetTxRequest>();
+  static $pb.PbList<GetTxRequest> createRepeated() => $pb.PbList<GetTxRequest>();
   @$core.pragma('dart2js:noInline')
-  static GetTxRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<GetTxRequest>(create);
+  static GetTxRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetTxRequest>(create);
   static GetTxRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -647,25 +541,12 @@ class GetTxRequest extends $pb.GeneratedMessage {
 
 class GetTxResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'GetTxResponse',
+      const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetTxResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
-              ? ''
-              : 'cosmos.tx.v1beta1'),
+          const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'cosmos.tx.v1beta1'),
       createEmptyInstance: create)
-    ..aOM<$5.Tx>(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'tx',
-        subBuilder: $5.Tx.create)
-    ..aOM<$6.TxResponse>(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'txResponse',
+    ..aOM<$5.Tx>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tx', subBuilder: $5.Tx.create)
+    ..aOM<$6.TxResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txResponse',
         subBuilder: $6.TxResponse.create)
     ..hasRequiredFields = false;
 
@@ -683,11 +564,9 @@ class GetTxResponse extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory GetTxResponse.fromBuffer($core.List<$core.int> i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory GetTxResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory GetTxResponse.fromJson($core.String i,
-          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+  factory GetTxResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -697,17 +576,14 @@ class GetTxResponse extends $pb.GeneratedMessage {
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
   GetTxResponse copyWith(void Function(GetTxResponse) updates) =>
-      super.copyWith((message) => updates(message as GetTxResponse))
-          as GetTxResponse; // ignore: deprecated_member_use
+      super.copyWith((message) => updates(message as GetTxResponse)) as GetTxResponse; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static GetTxResponse create() => GetTxResponse._();
   GetTxResponse createEmptyInstance() => create();
-  static $pb.PbList<GetTxResponse> createRepeated() =>
-      $pb.PbList<GetTxResponse>();
+  static $pb.PbList<GetTxResponse> createRepeated() => $pb.PbList<GetTxResponse>();
   @$core.pragma('dart2js:noInline')
-  static GetTxResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<GetTxResponse>(create);
+  static GetTxResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetTxResponse>(create);
   static GetTxResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -743,31 +619,23 @@ class ServiceApi {
   $pb.RpcClient _client;
   ServiceApi(this._client);
 
-  $async.Future<SimulateResponse> simulate(
-      $pb.ClientContext? ctx, SimulateRequest request) {
+  $async.Future<SimulateResponse> simulate($pb.ClientContext? ctx, SimulateRequest request) {
     var emptyResponse = SimulateResponse();
-    return _client.invoke<SimulateResponse>(
-        ctx, 'Service', 'Simulate', request, emptyResponse);
+    return _client.invoke<SimulateResponse>(ctx, 'Service', 'Simulate', request, emptyResponse);
   }
 
-  $async.Future<GetTxResponse> getTx(
-      $pb.ClientContext? ctx, GetTxRequest request) {
+  $async.Future<GetTxResponse> getTx($pb.ClientContext? ctx, GetTxRequest request) {
     var emptyResponse = GetTxResponse();
-    return _client.invoke<GetTxResponse>(
-        ctx, 'Service', 'GetTx', request, emptyResponse);
+    return _client.invoke<GetTxResponse>(ctx, 'Service', 'GetTx', request, emptyResponse);
   }
 
-  $async.Future<BroadcastTxResponse> broadcastTx(
-      $pb.ClientContext? ctx, BroadcastTxRequest request) {
+  $async.Future<BroadcastTxResponse> broadcastTx($pb.ClientContext? ctx, BroadcastTxRequest request) {
     var emptyResponse = BroadcastTxResponse();
-    return _client.invoke<BroadcastTxResponse>(
-        ctx, 'Service', 'BroadcastTx', request, emptyResponse);
+    return _client.invoke<BroadcastTxResponse>(ctx, 'Service', 'BroadcastTx', request, emptyResponse);
   }
 
-  $async.Future<GetTxsEventResponse> getTxsEvent(
-      $pb.ClientContext? ctx, GetTxsEventRequest request) {
+  $async.Future<GetTxsEventResponse> getTxsEvent($pb.ClientContext? ctx, GetTxsEventRequest request) {
     var emptyResponse = GetTxsEventResponse();
-    return _client.invoke<GetTxsEventResponse>(
-        ctx, 'Service', 'GetTxsEvent', request, emptyResponse);
+    return _client.invoke<GetTxsEventResponse>(ctx, 'Service', 'GetTxsEvent', request, emptyResponse);
   }
 }

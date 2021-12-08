@@ -21,7 +21,8 @@ void main() {
 
   test('should complete the get  recipe future with data ', () async {
     initResponseCompleter(Strings.GET_RECIPE);
-    var sdkResponse = SDKIPCResponse(success: true, error: '', data: jsonEncode(MOCK_RECIPE.toProto3Json()), errorCode: '', action: '');
+    var sdkResponse = SDKIPCResponse(
+        success: true, error: '', data: jsonEncode(MOCK_RECIPE.toProto3Json()), errorCode: '', action: '');
     var handler = GetRecipeHandler();
 
     Future.delayed(Duration(seconds: 1), () {

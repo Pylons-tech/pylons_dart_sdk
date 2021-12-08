@@ -9,7 +9,15 @@ const MsgBurnDebtToken$json = const {
   '1': 'MsgBurnDebtToken',
   '2': const [
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
-    const {'1': 'redeemInfo', '3': 2, '4': 1, '5': 11, '6': '.Pylonstech.pylons.pylons.RedeemInfo', '8': const {}, '10': 'redeemInfo'},
+    const {
+      '1': 'redeemInfo',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.RedeemInfo',
+      '8': const {},
+      '10': 'redeemInfo'
+    },
   ],
 };
 
@@ -47,8 +55,24 @@ const MsgFulfillTrade$json = const {
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
     const {'1': 'ID', '3': 2, '4': 1, '5': 4, '10': 'ID'},
     const {'1': 'coinInputsIndex', '3': 3, '4': 1, '5': 4, '10': 'coinInputsIndex'},
-    const {'1': 'items', '3': 4, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.ItemRef', '8': const {}, '10': 'items'},
-    const {'1': 'paymentInfos', '3': 5, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.PaymentInfo', '8': const {}, '10': 'paymentInfos'},
+    const {
+      '1': 'items',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.ItemRef',
+      '8': const {},
+      '10': 'items'
+    },
+    const {
+      '1': 'paymentInfos',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.PaymentInfo',
+      '8': const {},
+      '10': 'paymentInfos'
+    },
   ],
 };
 
@@ -60,10 +84,42 @@ const MsgCreateTrade$json = const {
   '1': 'MsgCreateTrade',
   '2': const [
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
-    const {'1': 'coinInputs', '3': 2, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.CoinInput', '8': const {}, '10': 'coinInputs'},
-    const {'1': 'itemInputs', '3': 3, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.ItemInput', '8': const {}, '10': 'itemInputs'},
-    const {'1': 'coinOutputs', '3': 4, '4': 3, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'coinOutputs'},
-    const {'1': 'itemOutputs', '3': 5, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.ItemRef', '8': const {}, '10': 'itemOutputs'},
+    const {
+      '1': 'coinInputs',
+      '3': 2,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.CoinInput',
+      '8': const {},
+      '10': 'coinInputs'
+    },
+    const {
+      '1': 'itemInputs',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.ItemInput',
+      '8': const {},
+      '10': 'itemInputs'
+    },
+    const {
+      '1': 'coinOutputs',
+      '3': 4,
+      '4': 3,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '8': const {},
+      '10': 'coinOutputs'
+    },
+    const {
+      '1': 'itemOutputs',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.ItemRef',
+      '8': const {},
+      '10': 'itemOutputs'
+    },
     const {'1': 'extraInfo', '3': 6, '4': 1, '5': 9, '10': 'extraInfo'},
   ],
 };
@@ -135,7 +191,15 @@ const MsgSendItems$json = const {
   '2': const [
     const {'1': 'creator', '3': 1, '4': 1, '5': 9, '10': 'creator'},
     const {'1': 'receiver', '3': 2, '4': 1, '5': 9, '10': 'receiver'},
-    const {'1': 'items', '3': 3, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.ItemRef', '8': const {}, '10': 'items'},
+    const {
+      '1': 'items',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.ItemRef',
+      '8': const {},
+      '10': 'items'
+    },
   ],
 };
 
@@ -151,7 +215,15 @@ const MsgExecuteRecipe$json = const {
     const {'1': 'recipeID', '3': 3, '4': 1, '5': 9, '10': 'recipeID'},
     const {'1': 'coinInputsIndex', '3': 4, '4': 1, '5': 4, '10': 'coinInputsIndex'},
     const {'1': 'itemIDs', '3': 5, '4': 3, '5': 9, '8': const {}, '10': 'itemIDs'},
-    const {'1': 'paymentInfos', '3': 6, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.PaymentInfo', '8': const {}, '10': 'paymentInfos'},
+    const {
+      '1': 'paymentInfos',
+      '3': 6,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.PaymentInfo',
+      '8': const {},
+      '10': 'paymentInfos'
+    },
   ],
 };
 
@@ -186,12 +258,52 @@ const MsgCreateRecipe$json = const {
     const {'1': 'name', '3': 4, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'description', '3': 5, '4': 1, '5': 9, '10': 'description'},
     const {'1': 'version', '3': 6, '4': 1, '5': 9, '10': 'version'},
-    const {'1': 'coinInputs', '3': 7, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.CoinInput', '8': const {}, '10': 'coinInputs'},
-    const {'1': 'itemInputs', '3': 8, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.ItemInput', '8': const {}, '10': 'itemInputs'},
-    const {'1': 'entries', '3': 9, '4': 1, '5': 11, '6': '.Pylonstech.pylons.pylons.EntriesList', '8': const {}, '10': 'entries'},
-    const {'1': 'outputs', '3': 10, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.WeightedOutputs', '8': const {}, '10': 'outputs'},
+    const {
+      '1': 'coinInputs',
+      '3': 7,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.CoinInput',
+      '8': const {},
+      '10': 'coinInputs'
+    },
+    const {
+      '1': 'itemInputs',
+      '3': 8,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.ItemInput',
+      '8': const {},
+      '10': 'itemInputs'
+    },
+    const {
+      '1': 'entries',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.EntriesList',
+      '8': const {},
+      '10': 'entries'
+    },
+    const {
+      '1': 'outputs',
+      '3': 10,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.WeightedOutputs',
+      '8': const {},
+      '10': 'outputs'
+    },
     const {'1': 'blockInterval', '3': 11, '4': 1, '5': 3, '10': 'blockInterval'},
-    const {'1': 'costPerBlock', '3': 12, '4': 1, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'costPerBlock'},
+    const {
+      '1': 'costPerBlock',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '8': const {},
+      '10': 'costPerBlock'
+    },
     const {'1': 'enabled', '3': 13, '4': 1, '5': 8, '10': 'enabled'},
     const {'1': 'extraInfo', '3': 14, '4': 1, '5': 9, '10': 'extraInfo'},
   ],
@@ -210,12 +322,52 @@ const MsgUpdateRecipe$json = const {
     const {'1': 'name', '3': 4, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'description', '3': 5, '4': 1, '5': 9, '10': 'description'},
     const {'1': 'version', '3': 6, '4': 1, '5': 9, '10': 'version'},
-    const {'1': 'coinInputs', '3': 7, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.CoinInput', '8': const {}, '10': 'coinInputs'},
-    const {'1': 'itemInputs', '3': 8, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.ItemInput', '8': const {}, '10': 'itemInputs'},
-    const {'1': 'entries', '3': 9, '4': 1, '5': 11, '6': '.Pylonstech.pylons.pylons.EntriesList', '8': const {}, '10': 'entries'},
-    const {'1': 'outputs', '3': 10, '4': 3, '5': 11, '6': '.Pylonstech.pylons.pylons.WeightedOutputs', '8': const {}, '10': 'outputs'},
+    const {
+      '1': 'coinInputs',
+      '3': 7,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.CoinInput',
+      '8': const {},
+      '10': 'coinInputs'
+    },
+    const {
+      '1': 'itemInputs',
+      '3': 8,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.ItemInput',
+      '8': const {},
+      '10': 'itemInputs'
+    },
+    const {
+      '1': 'entries',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.EntriesList',
+      '8': const {},
+      '10': 'entries'
+    },
+    const {
+      '1': 'outputs',
+      '3': 10,
+      '4': 3,
+      '5': 11,
+      '6': '.Pylonstech.pylons.pylons.WeightedOutputs',
+      '8': const {},
+      '10': 'outputs'
+    },
     const {'1': 'blockInterval', '3': 11, '4': 1, '5': 3, '10': 'blockInterval'},
-    const {'1': 'costPerBlock', '3': 12, '4': 1, '5': 11, '6': '.cosmos.base.v1beta1.Coin', '8': const {}, '10': 'costPerBlock'},
+    const {
+      '1': 'costPerBlock',
+      '3': 12,
+      '4': 1,
+      '5': 11,
+      '6': '.cosmos.base.v1beta1.Coin',
+      '8': const {},
+      '10': 'costPerBlock'
+    },
     const {'1': 'enabled', '3': 13, '4': 1, '5': 8, '10': 'enabled'},
     const {'1': 'extraInfo', '3': 14, '4': 1, '5': 9, '10': 'extraInfo'},
   ],
@@ -260,4 +412,3 @@ const MsgUpdateCookbook$json = const {
 const MsgUpdateCookbookResponse$json = const {
   '1': 'MsgUpdateCookbookResponse',
 };
-

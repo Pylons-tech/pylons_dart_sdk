@@ -19,7 +19,8 @@ void main() {
 
   test('should complete the get  execution by id   with data ', () async {
     initResponseCompleter(Strings.GET_EXECUTION_BY_ID);
-    var sdkResponse = SDKIPCResponse(success: true, error: '', data: jsonEncode(MOCK_EXECUTION.toProto3Json()), errorCode: '', action: '');
+    var sdkResponse = SDKIPCResponse(
+        success: true, error: '', data: jsonEncode(MOCK_EXECUTION.toProto3Json()), errorCode: '', action: '');
     var handler = GetExecutionByIdHandler();
 
     Future.delayed(Duration(seconds: 1), () {
@@ -30,8 +31,6 @@ void main() {
     var response = await responseCompleters[Strings.GET_EXECUTION_BY_ID]!.future;
 
     expect(true, response.success);
-    expect(MOCK_EXECUTION, response.data );
+    expect(MOCK_EXECUTION, response.data);
   });
-
-
 }
