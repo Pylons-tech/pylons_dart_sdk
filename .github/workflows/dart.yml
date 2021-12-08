@@ -34,9 +34,7 @@ jobs:
 
       - name: Analyze Project Source
         run: dart analyze
-      
-      - name: Run tests
-        run: dart test
+
       - name: Run unit tests
         run: /bin/bash  ./script/test_coverage.sh
       
