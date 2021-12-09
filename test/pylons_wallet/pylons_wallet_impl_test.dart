@@ -38,11 +38,12 @@ void placeForSaleTest() {
   test('should place the given item for sale', () async {
     mockChannelHandler();
     var uniLink = MockUniLinksPlatform();
-    when(uniLink.linkStream).thenAnswer((realInvocation) =>
-    Stream<String?>.value('Jawad'));
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
     Future.delayed(Duration(seconds: 1), () {
-      final sdkResponse = SDKIPCResponse(success: true,
+      final sdkResponse = SDKIPCResponse(
+          success: true,
           error: '',
           data: '',
           errorCode: '',
