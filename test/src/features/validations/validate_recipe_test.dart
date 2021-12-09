@@ -168,4 +168,36 @@ void main() {
     expect(() => ValidateRecipe.validate(recipe),
         throwsA(isA<RecipeValidationException>()));
   });
+
+  test('should add the cost per block as zero if its not there.', () {
+    var recipe = Recipe(
+        cookbookID: 'JawadCookBook',
+        iD: '12342312',
+        nodeVersion: 'v0.1.3',
+        name: "LOUD's Wooden sword lv1 buy recipe",
+        description: 'this recipe is used to buy wooden sword lv1.',
+        version: 'v1.0.5',
+        coinInputs: [],
+        itemInputs: [],
+        entries: EntriesList(coinOutputs: [], itemOutputs: [
+          ItemOutput(
+            iD: 'copper_sword_lv1',
+            doubles: [],
+            longs: [],
+            strings: [],
+            mutableStrings: [],
+            transferFee: [],
+            tradePercentage: DecString.decStringFromDouble(0.2),
+            tradeable: true,
+          ),
+        ], itemModifyOutputs: []),
+        outputs: [
+          WeightedOutputs(entryIDs: ['copper_sword_lv1'], weight: Int64(1))
+        ],
+        blockInterval: Int64(0),
+        enabled: true,
+        extraInfo: 'extraInfo');
+
+    ValidateRecipe.validate(recipe);
+  });
 }

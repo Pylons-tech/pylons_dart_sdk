@@ -1774,7 +1774,10 @@ class Recipe extends $pb.GeneratedMessage {
 
     if (costPerBlock != null) {
       _result.costPerBlock = costPerBlock;
+    } else {
+      _result.costPerBlock = $2.Coin(denom: 'upylon', amount: '0');
     }
+
     return _result;
   }
 

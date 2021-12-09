@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -45,7 +43,7 @@ void main() {
   });
 
   test('Test Coin Input from Json', () async {
-    var jsonRaw = '{"coin": "pylons", "count": 2}';
+    // var jsonRaw = '{"coin": "pylons", "count": 2}';
     //Map<String, dynamic> jsonMap = jsonDecode(jsonRaw);
     //var testCoinInputFromJson = CoinInput.fromJson(jsonMap);
     //expect(testCoinInputFromJson.coin, equals('pylons'));
@@ -53,9 +51,9 @@ void main() {
   });
 
   test('Test Item Input', () async {
-    var jsonRaw =
-        '{"id": "testItem", "conditions": {"doubles": {}, "longs":{}, "strings": {}}, "doubles": {}, "longs":{}, "strings": {}, "transferFee":{}}';
-    var jsonMap = Map<String, dynamic>.from(json.decode(jsonRaw));
+    // var jsonRaw =
+    //     '{"id": "testItem", "conditions": {"doubles": {}, "longs":{}, "strings": {}}, "doubles": {}, "longs":{}, "strings": {}, "transferFee":{}}';
+    // var jsonMap = Map<String, dynamic>.from(json.decode(jsonRaw));
     //var testItemInputFromJson = await ItemInput.fromJson(jsonMap);
     //expect(testItemInputFromJson.id, equals('testItem'));
     //expect(testItemInputFromJson.conditions.runtimeType, equals(ConditionList));

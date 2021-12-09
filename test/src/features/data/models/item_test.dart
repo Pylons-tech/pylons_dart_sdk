@@ -1,13 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final jsonRaw =
-      '{"nodeVersion": "1.0", "cookbookId":"notARealCookbook001", "sender":"","ownerRecipeId":"n/a","ownerTradeId":"n/a", "tradable":true,"lastUpdate":1,"transferFee":1,"doubles":{},"longs": {},"strings":{}}';
+  // final jsonRaw =
+  //     '{"nodeVersion": "1.0", "cookbookId":"notARealCookbook001", "sender":"","ownerRecipeId":"n/a","ownerTradeId":"n/a", "tradable":true,"lastUpdate":1,"transferFee":1,"doubles":{},"longs": {},"strings":{}}';
 
   test('Test Item from Json', () async {
-    Map<String, dynamic> jsonData = jsonDecode(jsonRaw);
+    // Map<String, dynamic> jsonData = jsonDecode(jsonRaw);
     //final testItemFromJson = Item.fromJson((jsonData));
     //expect(testItemFromJson.runtimeType, equals(Item));
     //expect(testItemFromJson.nodeVersion, equals('1.0'));
