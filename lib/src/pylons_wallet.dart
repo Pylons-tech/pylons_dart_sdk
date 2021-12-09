@@ -10,11 +10,7 @@ import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 import '../pylons_sdk.dart';
 import 'features/models/execution_list_by_recipe_response.dart';
 import 'features/models/sdk_ipc_message.dart';
-import 'generated/pylons/cookbook.pb.dart';
-import 'generated/pylons/item.pb.dart';
 import 'generated/pylons/payment_info.pb.dart';
-import 'generated/pylons/recipe.pb.dart';
-import 'generated/pylons/trade.pb.dart';
 import 'features/models/sdk_ipc_response.dart';
 import 'pylons_wallet/pylons_wallet_impl.dart';
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
@@ -24,7 +20,7 @@ enum PylonsMode { dev, prod }
 /// The PylonsWallet class is the main endpoint developers use for structured,
 /// high-level interactions with the Pylons wallet.
 abstract class PylonsWallet {
-  late PylonsMode _mode;
+
   static PylonsWallet? _instance;
 
   static PylonsWallet get instance {
