@@ -49,10 +49,7 @@ class Strings {
   static const String OWNER_ADDRESS = 'ownerAddress';
   static const String EXECUTION_ID = 'executionId';
   static const String CREATOR = 'creator';
-
 }
-
-
 
 const kRecipeNameLength = 8;
 

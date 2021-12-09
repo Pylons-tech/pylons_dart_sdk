@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class SDKIPCResponse<T>{
+class SDKIPCResponse<T> {
   bool success;
   String errorCode;
   String error;

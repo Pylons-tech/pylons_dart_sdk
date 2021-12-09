@@ -14,12 +14,12 @@ import 'handlers/get_execution_by_recipe_handler.dart';
 
 class IPCHandlerFactory {
   static final Map<String, IPCHandler> handlers = {
-    Strings.GET_COOKBOOK : GetCookbooksHandler(),
-    Strings.GET_RECIPES : GetRecipesHandler(),
-    Strings.GET_RECIPE : GetRecipeHandler(),
-    Strings.GET_EXECUTION_BY_RECIPE_ID : GetExecutionByRecipeHandler(),
-    Strings.GET_ITEMS_BY_OWNER : GetListItemsByOwnerHandler(),
-    Strings.GET_ITEM_BY_ID : GetItemByIdHandler(),
+    Strings.GET_COOKBOOK: GetCookbooksHandler(),
+    Strings.GET_RECIPES: GetRecipesHandler(),
+    Strings.GET_RECIPE: GetRecipeHandler(),
+    Strings.GET_EXECUTION_BY_RECIPE_ID: GetExecutionByRecipeHandler(),
+    Strings.GET_ITEMS_BY_OWNER: GetListItemsByOwnerHandler(),
+    Strings.GET_ITEM_BY_ID: GetItemByIdHandler(),
     Strings.GET_EXECUTION_BY_ID: GetExecutionByIdHandler(),
     Strings.GET_TRADES: GetTradesHandler(),
   };
@@ -29,12 +29,12 @@ class IPCHandlerFactory {
   static void getHandler(SDKIPCResponse sdkipcResponse) {
     print(sdkipcResponse);
     if (!responseCompleters.containsKey(sdkipcResponse.action)) {
-      throw Exception('Unexpected response for unsent message of type ${sdkipcResponse.action}');
+      throw Exception(
+          'Unexpected response for unsent message of type ${sdkipcResponse.action}');
     }
     if (handlers.containsKey(sdkipcResponse.action)) {
       handlers[sdkipcResponse.action]!.handler(sdkipcResponse);
-    }
-    else {
+    } else {
       responseCompleters[sdkipcResponse.action]!.complete(sdkipcResponse);
     }
     return;

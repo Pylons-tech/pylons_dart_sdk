@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -13,7 +12,12 @@ import '../../../../mocks/mock_constants.dart';
 void main() {
   test('should complete the get item by owner handler future', () {
     initResponseCompleter(Strings.GET_ITEMS_BY_OWNER);
-    var sdkResponse = SDKIPCResponse(success: false, error: '', data: [MOCK_ITEM..toProto3Json()], errorCode: '', action: '');
+    var sdkResponse = SDKIPCResponse(
+        success: false,
+        error: '',
+        data: [MOCK_ITEM..toProto3Json()],
+        errorCode: '',
+        action: '');
     var handler = GetListItemsByOwnerHandler();
     handler.handler(sdkResponse);
     expect(true, responseCompleters[Strings.GET_ITEMS_BY_OWNER]!.isCompleted);
@@ -21,7 +25,12 @@ void main() {
 
   test('should complete the get item by owner with data ', () async {
     initResponseCompleter(Strings.GET_ITEMS_BY_OWNER);
-    var sdkResponse = SDKIPCResponse(success: true, error: '', data: jsonEncode([MOCK_ITEM.toProto3Json()]), errorCode: '', action: '');
+    var sdkResponse = SDKIPCResponse(
+        success: true,
+        error: '',
+        data: jsonEncode([MOCK_ITEM.toProto3Json()]),
+        errorCode: '',
+        action: '');
     var handler = GetListItemsByOwnerHandler();
 
     Future.delayed(Duration(seconds: 1), () {
@@ -34,6 +43,4 @@ void main() {
     expect(true, response.success);
     expect(true, response.data is List<Item>);
   });
-
-
 }

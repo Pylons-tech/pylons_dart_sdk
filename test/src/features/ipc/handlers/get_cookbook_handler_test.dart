@@ -9,9 +9,14 @@ import '../../../../mocks/mock_constants.dart';
 void main() {
   test('should complete the getCookBook Future ', () async {
     initResponseCompleter(Strings.GET_COOKBOOK);
-    final sdkResponse = SDKIPCResponse(success: true, error: '', data: MOCK_COOKBOOK, errorCode: '', action: Strings.GET_COOKBOOK);
+    final sdkResponse = SDKIPCResponse(
+        success: true,
+        error: '',
+        data: MOCK_COOKBOOK,
+        errorCode: '',
+        action: Strings.GET_COOKBOOK);
     final handler = GetCookbooksHandler();
-    Future.delayed(Duration(seconds: 1), (){
+    Future.delayed(Duration(seconds: 1), () {
       handler.handler(sdkResponse);
     });
     final response = await responseCompleters[Strings.GET_COOKBOOK]!.future;

@@ -57,8 +57,6 @@ class _MyHomePageState extends State<MyHomePage> {
   String itemId = "J4XcRLXK2Hm";
   String executionId = "exec1213";
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Get Cookbook'),
             ),
-
             ElevatedButton(
               onPressed: () async {
                 createRecipe();
@@ -114,55 +111,42 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Get Profile'),
             ),
-
-
             ElevatedButton(
               onPressed: () async {
                 getRecipes();
               },
               child: const Text('Get All recipes'),
             ),
-
             ElevatedButton(
               onPressed: () async {
                 getRecipe();
               },
               child: const Text('Get recipe'),
             ),
-
-
             ElevatedButton(
               onPressed: () async {
                 getExecutionListByRecipe();
               },
               child: const Text('Get execution list by recipe'),
             ),
-
-
-
             ElevatedButton(
               onPressed: () async {
                 getItemListByOwner();
               },
               child: const Text('Get list by owner'),
             ),
-
-
-
             ElevatedButton(
               onPressed: () async {
                 getItemById();
               },
               child: const Text('Get Item By Id'),
             ),
-
             ElevatedButton(
               onPressed: () async {
                 getExecutionById();
               },
               child: const Text('Get Execution By Id'),
             ),
-
             ElevatedButton(
               onPressed: () async {
                 getTrades();
@@ -231,7 +215,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
     var response = await PylonsWallet.instance.txCreateRecipe(recipe);
 
-
     log('From App $response', name: 'pylons_sdk');
 
     if (response.success) {
@@ -251,9 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
         itemIds: [],
         paymentInfo: []);
 
-
     log('From App $response', name: 'pylons_sdk');
-
 
     if (response.success) {
       ScaffoldMessenger.of(context)
@@ -347,29 +328,32 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void getRecipe() async {
-    var sdkResponse = await PylonsWallet.instance.getRecipe(cookBookId, recipeId);
+    var sdkResponse =
+        await PylonsWallet.instance.getRecipe(cookBookId, recipeId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
-
   }
 
   void getExecutionListByRecipe() async {
-    var sdkResponse = await PylonsWallet.instance.getExecutionBasedOnRecipe(cookbookId: cookBookId, recipeId: recipeId);
+    var sdkResponse = await PylonsWallet.instance
+        .getExecutionBasedOnRecipe(cookbookId: cookBookId, recipeId: recipeId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 
   void getItemListByOwner() async {
-    var sdkResponse = await PylonsWallet.instance.getItemListByOwner(owner: ownerId);
+    var sdkResponse =
+        await PylonsWallet.instance.getItemListByOwner(owner: ownerId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 
-
   void getItemById() async {
-    var sdkResponse = await PylonsWallet.instance.getItemById(cookbookId: cookBookId,  itemId: itemId);
+    var sdkResponse = await PylonsWallet.instance
+        .getItemById(cookbookId: cookBookId, itemId: itemId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 
   void getExecutionById() async {
-    var sdkResponse = await PylonsWallet.instance.getExecutionBasedOnId(id: executionId);
+    var sdkResponse =
+        await PylonsWallet.instance.getExecutionBasedOnId(id: executionId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 

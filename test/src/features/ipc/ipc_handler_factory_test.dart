@@ -7,8 +7,6 @@ import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 import '../../../mocks/mock_constants.dart';
 
 void main() {
-
-
   test('Should complete completers when appropriate response arrives', () {
     _genericResponseTestFlow(Strings.TX_CREATE_COOKBOOK);
     _genericResponseTestFlow(Strings.TX_UPDATE_COOKBOOK);
@@ -18,16 +16,13 @@ void main() {
     _genericResponseTestFlow(Strings.GET_PROFILE);
     _genericResponseTestFlow(Strings.GET_EXECUTION_BY_ID);
     _genericResponseTestFlow(Strings.GET_ITEMS_BY_OWNER);
-
   });
 
-
-
-
-  test('should complete completer that needs handler', (){
+  test('should complete completer that needs handler', () {
     initResponseCompleter(Strings.GET_RECIPES);
     expect(false, responseCompleters[Strings.GET_RECIPES]!.isCompleted);
-    var sdkResponse = SDKIPCResponse(success: true,
+    var sdkResponse = SDKIPCResponse(
+        success: true,
         error: '',
         data: [MOCK_RECIPE.toProto3Json()],
         errorCode: '',
@@ -36,26 +31,23 @@ void main() {
     expect(true, responseCompleters[Strings.GET_RECIPES]!.isCompleted);
   });
 
-
-  test('should throw error if unknown key is found', (){
-
-    var sdkResponse = SDKIPCResponse(success: true,
+  test('should throw error if unknown key is found', () {
+    var sdkResponse = SDKIPCResponse(
+        success: true,
         error: '',
         data: [MOCK_RECIPE.toProto3Json()],
         errorCode: '',
         action: MOCK_USERNAME);
-    expect( () => IPCHandlerFactory.getHandler(sdkResponse), throwsA(isA<Exception>()) );
+    expect(() => IPCHandlerFactory.getHandler(sdkResponse),
+        throwsA(isA<Exception>()));
   });
-
 }
+
 void _genericResponseTestFlow(String key) {
   initResponseCompleter(key);
   expect(false, responseCompleters[key]!.isCompleted);
-  var sdkResponse = SDKIPCResponse(success: true,
-      error: '',
-      data: '',
-      errorCode: '',
-      action: key);
+  var sdkResponse = SDKIPCResponse(
+      success: true, error: '', data: '', errorCode: '', action: key);
   IPCHandlerFactory.getHandler(sdkResponse);
   expect(true, responseCompleters[key]!.isCompleted);
 }

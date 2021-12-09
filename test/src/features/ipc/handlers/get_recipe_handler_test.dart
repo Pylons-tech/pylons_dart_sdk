@@ -12,7 +12,8 @@ import '../../../../mocks/mock_constants.dart';
 void main() {
   test('should complete the get  recipe future', () {
     initResponseCompleter(Strings.GET_RECIPE);
-    var sdkResponse = SDKIPCResponse(success: false, error: '', data: '', errorCode: '', action: '');
+    var sdkResponse = SDKIPCResponse(
+        success: false, error: '', data: '', errorCode: '', action: '');
     var handler = GetRecipeHandler();
     handler.handler(sdkResponse);
     expect(true, responseCompleters[Strings.GET_RECIPE]!.isCompleted);
@@ -20,7 +21,12 @@ void main() {
 
   test('should complete the get  recipe future with data ', () async {
     initResponseCompleter(Strings.GET_RECIPE);
-    var sdkResponse = SDKIPCResponse(success: true, error: '', data: jsonEncode(MOCK_RECIPE.toProto3Json()), errorCode: '', action: '');
+    var sdkResponse = SDKIPCResponse(
+        success: true,
+        error: '',
+        data: jsonEncode(MOCK_RECIPE.toProto3Json()),
+        errorCode: '',
+        action: '');
     var handler = GetRecipeHandler();
 
     Future.delayed(Duration(seconds: 1), () {
