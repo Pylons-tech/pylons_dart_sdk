@@ -20,7 +20,6 @@ enum PylonsMode { dev, prod }
 /// The PylonsWallet class is the main endpoint developers use for structured,
 /// high-level interactions with the Pylons wallet.
 abstract class PylonsWallet {
-
   static PylonsWallet? _instance;
 
   static PylonsWallet get instance {

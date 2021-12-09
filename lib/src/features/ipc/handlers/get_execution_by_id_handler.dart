@@ -6,7 +6,6 @@ import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 
-
 class GetExecutionByIdHandler implements IPCHandler {
   @override
   void handler(SDKIPCResponse<dynamic> response) {

@@ -169,11 +169,7 @@ void main() {
         throwsA(isA<RecipeValidationException>()));
   });
 
-
-
-
-
-  test('should add the cost per block as zero if its not there.', (){
+  test('should add the cost per block as zero if its not there.', () {
     var recipe = Recipe(
         cookbookID: 'JawadCookBook',
         iD: '12342312',
@@ -202,17 +198,6 @@ void main() {
         enabled: true,
         extraInfo: 'extraInfo');
 
-
     ValidateRecipe.validate(recipe);
-
-
-
-
-
   });
-
-
-
-
-
 }
