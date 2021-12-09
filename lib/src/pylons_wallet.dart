@@ -486,36 +486,27 @@ abstract class PylonsWallet {
   /// Output: [Recipe] the recipe that we need.
   Future<SDKIPCResponse<Recipe>> getRecipe(String cookbookId, String recipeId);
 
-
   /// This method returns the execution list based on the recipe
   /// Input : [cookbookId] the id of the cookbook which contains the recipe, [recipeId] the id of the recipe
   /// Output: [ExecutionListByRecipeResponse] contains execution list by recipe
-  Future<SDKIPCResponse<ExecutionListByRecipeResponse>> getExecutionBasedOnRecipe({required String cookbookId, required String recipeId});
-
+  Future<SDKIPCResponse<ExecutionListByRecipeResponse>>
+      getExecutionBasedOnRecipe(
+          {required String cookbookId, required String recipeId});
 
   /// This method returns the list by owner
   /// Input : [owner] the id of the whose id you want to fetch
   /// Output: [Item] contains the list of the items by the owner
-  Future<SDKIPCResponse<List<Item>>> getItemListByOwner({required String owner});
-
-
+  Future<SDKIPCResponse<List<Item>>> getItemListByOwner(
+      {required String owner});
 
   /// This method returns the get item by id
   /// Input : [cookbookId] the id of the cookbook which contains the item, [itemId] the id of the item
   /// Output: [Item] contains the item based on the id
-  Future<SDKIPCResponse<Item>> getItemById({required String cookbookId, required String itemId});
-
-
-
+  Future<SDKIPCResponse<Item>> getItemById(
+      {required String cookbookId, required String itemId});
 
   /// This method returns the execution based on id
   /// Input : [id] the id of the execution
   /// Output: [Execution] contains the execution
   Future<SDKIPCResponse<Execution>> getExecutionBasedOnId({required String id});
-
-
-
-
-
-
 }

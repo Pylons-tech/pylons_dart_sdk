@@ -3,10 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pylons_sdk/pylons_sdk.dart';
 import 'package:pylons_sdk/src/features/validations/validate_recipe.dart';
 
-void main(){
-
-
-  test('should throw error on empty cookbook name ', (){
+void main() {
+  test('should throw error on empty cookbook name ', () {
     var recipe = Recipe(
         cookbookID: '',
         iD: '',
@@ -35,16 +33,11 @@ void main(){
         enabled: false,
         extraInfo: 'extraInfo');
 
-
-
-    expect(() => ValidateRecipe.validate(recipe), throwsA(isA<RecipeValidationException>()) );
-
-
-
+    expect(() => ValidateRecipe.validate(recipe),
+        throwsA(isA<RecipeValidationException>()));
   });
 
-
-  test('should throw error on empty recipe id ', (){
+  test('should throw error on empty recipe id ', () {
     var recipe = Recipe(
         cookbookID: 'JawadCookBook',
         iD: '',
@@ -73,18 +66,11 @@ void main(){
         enabled: false,
         extraInfo: 'extraInfo');
 
-
-
-    expect(() => ValidateRecipe.validate(recipe), throwsA(isA<RecipeValidationException>()) );
-
-
-
+    expect(() => ValidateRecipe.validate(recipe),
+        throwsA(isA<RecipeValidationException>()));
   });
 
-
-
-
-  test('should throw error on short recipe name ', (){
+  test('should throw error on short recipe name ', () {
     var recipe = Recipe(
         cookbookID: 'JawadCookBook',
         iD: '12342312',
@@ -113,18 +99,11 @@ void main(){
         enabled: false,
         extraInfo: 'extraInfo');
 
-
-
-    expect(() => ValidateRecipe.validate(recipe), throwsA(isA<RecipeValidationException>()) );
-
-
-
+    expect(() => ValidateRecipe.validate(recipe),
+        throwsA(isA<RecipeValidationException>()));
   });
 
-
-
-
-  test('should throw error on short recipe description ', (){
+  test('should throw error on short recipe description ', () {
     var recipe = Recipe(
         cookbookID: 'JawadCookBook',
         iD: '12342312',
@@ -153,17 +132,11 @@ void main(){
         enabled: false,
         extraInfo: 'extraInfo');
 
-
-
-    expect(() => ValidateRecipe.validate(recipe), throwsA(isA<RecipeValidationException>()) );
-
-
-
+    expect(() => ValidateRecipe.validate(recipe),
+        throwsA(isA<RecipeValidationException>()));
   });
 
-
-
-  test('should throw error on empty item inputs', (){
+  test('should throw error on empty item inputs', () {
     var recipe = Recipe(
         cookbookID: 'JawadCookBook',
         iD: '12342312',
@@ -192,17 +165,7 @@ void main(){
         enabled: false,
         extraInfo: 'extraInfo');
 
-
-
-    expect(() => ValidateRecipe.validate(recipe), throwsA(isA<RecipeValidationException>()) );
-
-
-
+    expect(() => ValidateRecipe.validate(recipe),
+        throwsA(isA<RecipeValidationException>()));
   });
-
-
-
-
-
-
 }

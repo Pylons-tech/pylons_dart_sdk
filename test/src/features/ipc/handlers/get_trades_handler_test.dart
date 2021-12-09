@@ -12,7 +12,8 @@ import '../../../../mocks/mock_constants.dart';
 void main() {
   test('should complete the get trades future', () {
     initResponseCompleter(Strings.GET_TRADES);
-    var sdkResponse = SDKIPCResponse(success: false, error: '', data: '', errorCode: '', action: '');
+    var sdkResponse = SDKIPCResponse(
+        success: false, error: '', data: '', errorCode: '', action: '');
     var handler = GetTradesHandler();
     handler.handler(sdkResponse);
     expect(true, responseCompleters[Strings.GET_TRADES]!.isCompleted);
@@ -23,14 +24,12 @@ void main() {
     var sdkResponse = SDKIPCResponse(
         success: true,
         error: '',
-        data: [
-          MOCK_TRADE.toProto3Json()
-        ],
+        data: [MOCK_TRADE.toProto3Json()],
         errorCode: '',
         action: '');
     var handler = GetTradesHandler();
 
-    Future.delayed(Duration(seconds: 1), (){
+    Future.delayed(Duration(seconds: 1), () {
       handler.handler(sdkResponse);
       expect(true, responseCompleters[Strings.GET_TRADES]!.isCompleted);
     });
@@ -41,7 +40,6 @@ void main() {
     expect(1, List<Trade>.from(response.data).length);
   });
 
-
   test('should complete the get trades future with error ', () async {
     initResponseCompleter(Strings.GET_TRADES);
     var sdkResponse = SDKIPCResponse(
@@ -49,13 +47,15 @@ void main() {
         error: '',
         data: [
           // Will throw parsing error
-          Trade()..createEmptyInstance()..toProto3Json()
+          Trade()
+            ..createEmptyInstance()
+            ..toProto3Json()
         ],
         errorCode: '',
         action: '');
     var handler = GetTradesHandler();
 
-    Future.delayed(Duration(seconds: 1), (){
+    Future.delayed(Duration(seconds: 1), () {
       handler.handler(sdkResponse);
       expect(true, responseCompleters[Strings.GET_TRADES]!.isCompleted);
     });

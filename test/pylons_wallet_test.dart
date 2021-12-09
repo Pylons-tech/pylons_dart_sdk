@@ -1,4 +1,3 @@
-
 /// TODO: doc wallet_test
 void main() {
   // group('Wallet.exists', () {

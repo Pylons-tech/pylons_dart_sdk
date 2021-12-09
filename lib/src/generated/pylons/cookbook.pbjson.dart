@@ -23,6 +23,3 @@ const Cookbook$json = const {
     const {'1': 'enabled', '3': 9, '4': 1, '5': 8, '10': 'enabled'},
   ],
 };
-
-
-

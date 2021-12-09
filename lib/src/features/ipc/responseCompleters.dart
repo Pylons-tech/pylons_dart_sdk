@@ -19,14 +19,14 @@ import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 ///
 /// c) So, don't create these manually. Use the [initResponseCompleter] helper function instead to
 ///    minimize the chance for dumb bugs to creep in.
-final Map<String, Completer<SDKIPCResponse>> responseCompleters  = {
+final Map<String, Completer<SDKIPCResponse>> responseCompleters = {
   // since initResponseCompleter is always called for any given key before a valid response can be handled,
   // we don't need to set them up individually here. either it'll be in the map when you look,
   // or you're doing something wrong and should expect a crash regardless.
 };
 
 /// Initialize a response completer for [key] and return that completer.
-Completer<SDKIPCResponse> initResponseCompleter (String key) {
+Completer<SDKIPCResponse> initResponseCompleter(String key) {
   responseCompleters[key] = Completer();
   return responseCompleters[key]!;
 }

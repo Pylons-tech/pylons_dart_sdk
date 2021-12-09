@@ -10,9 +10,6 @@ import 'core/constants/strings.dart';
 /// (Since this protocol is ad-hoc, specific, and strictly temporary, these may
 /// be weird or fiddly or otherwise awkward to work with.)
 class PylonsWalletCommUtil {
-
-
-
   static bool responseIsError(String v, String key) {
     return v == 'err_$key';
   }

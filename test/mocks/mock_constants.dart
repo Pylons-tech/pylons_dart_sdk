@@ -71,8 +71,6 @@ const String MOCK_RECIPE_VERSION = 'v0.1.3';
 const String MOCK_NODE_VERSION = '0.1.3';
 const String MOCK_CREATOR = 'pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2';
 
-
-
 Cookbook MOCK_COOK_BOOK_OBJECT = Cookbook(
     creator: '',
     iD: MOCK_COOKBOOK_ID,
@@ -93,14 +91,10 @@ Item MOCK_ITEM = Item(
   strings: [],
 );
 
-
-
 Execution MOCK_EXECUTION = Execution(
   creator: MOCK_OWNER,
   iD: MOCK_EXECUTION_ID,
   cookbookID: MOCK_COOKBOOK_ID,
   recipeVersion: MOCK_RECIPE_VERSION,
   nodeVersion: MOCK_NODE_VERSION,
-
-
 );
