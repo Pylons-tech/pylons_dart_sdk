@@ -153,7 +153,6 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Get Trades'),
             ),
-
             ElevatedButton(
               onPressed: () async {
                 placeForSale();
