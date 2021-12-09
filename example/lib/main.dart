@@ -153,6 +153,13 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Get Trades'),
             ),
+
+            ElevatedButton(
+              onPressed: () async {
+                placeForSale();
+              },
+              child: const Text('Place for sale'),
+            ),
           ],
         ),
       ),
@@ -359,6 +366,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future getTrades() async {
     var sdkResponse = await PylonsWallet.instance.getTrades('');
+    log(sdkResponse.toString(), name: 'pylons_sdk');
+  }
+
+  void placeForSale() async {
+    var item = ItemRef(
+      cookbookID: cookBookId,
+      itemID: itemId,
+    );
+    var sdkResponse = await PylonsWallet.instance.txPlaceForSale(item, 100);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 }

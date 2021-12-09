@@ -70,6 +70,7 @@ const String MOCK_EXECUTION_ID = 'executionid';
 const String MOCK_RECIPE_VERSION = 'v0.1.3';
 const String MOCK_NODE_VERSION = '0.1.3';
 const String MOCK_CREATOR = 'pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2';
+const int MOCK_PRICE = 10000;
 
 Cookbook MOCK_COOK_BOOK_OBJECT = Cookbook(
     creator: '',
@@ -89,6 +90,11 @@ Item MOCK_ITEM = Item(
   doubles: [],
   longs: [],
   strings: [],
+);
+
+ItemRef MOCK_ITEM_REF = ItemRef(
+  cookbookID: MOCK_COOKBOOK_ID,
+  itemID: MOCK_ITEM_ID,
 );
 
 Execution MOCK_EXECUTION = Execution(

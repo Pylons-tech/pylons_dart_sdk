@@ -398,7 +398,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txPlaceForSale(Item item, int price);
+  Future<SDKIPCResponse> txPlaceForSale(ItemRef item, int price);
 
   /// Async: Creates a transaction to updates the provided [Cookbook] on the
   /// Pylons chain to match that provided against the current profile.

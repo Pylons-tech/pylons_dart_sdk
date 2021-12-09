@@ -31,6 +31,28 @@ void main() {
   getItemsByOwnerTest();
   getExecutionByIdTest();
   getTradesTest();
+  placeForSaleTest();
+}
+
+void placeForSaleTest() {
+  test('should place the given item for sale', () async {
+    mockChannelHandler();
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream).thenAnswer((realInvocation) =>
+    Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse(success: true,
+          error: '',
+          data: '',
+          errorCode: '',
+          action: Strings.TX_PLACE_FOR_SALE);
+      responseCompleters[Strings.TX_PLACE_FOR_SALE]!.complete(sdkResponse);
+    });
+    var response = await pylonsWallet.txPlaceForSale(MOCK_ITEM_REF, MOCK_PRICE);
+    expect(true, response.success);
+    expect(response.action, Strings.TX_PLACE_FOR_SALE);
+  });
 }
 
 void getTradesTest() {
