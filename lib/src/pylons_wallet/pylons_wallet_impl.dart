@@ -177,7 +177,7 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
   @override
-  Future<SDKIPCResponse> txPlaceForSale(Item item, int price) async {
+  Future<SDKIPCResponse> txPlaceForSale(ItemRef item, int price) async {
     return Future.sync(() async {
       return await _dispatch(Strings.TX_PLACE_FOR_SALE,
           jsonEncode([jsonEncode(item.toProto3Json()), price]));
