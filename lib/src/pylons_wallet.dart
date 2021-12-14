@@ -183,14 +183,13 @@ abstract class PylonsWallet {
   /// Async: Creates a transaction to buy an item using either Pylons or a
   /// third-party payment processor.
   ///
-  /// TODO: Comprehensive list of processors and what they use paymentId for.
+  /// If the item is available for purchase using Stripe, the item will be purchased using Stripe, and the
+  /// wallet will need to handle the Stripe transaction and generate a payment ID.
   ///
-  /// TODO: This has been ported as it is in the Kotlin implementation, but
-  /// it's worth noting that placeForSale doesn't expose a way to list an item
-  /// for purchase using Stripe or anything like that. So is paymentId ever
-  /// actually used here, or is it just an artifact of the fulfill-trade TX
-  /// having that field? If the latter, we should eliminate paymentId from this
-  /// call.
+  /// Otherwise, it'll use the account's Pylons balance.
+  ///
+  /// If the trade isn't a simple Pylons-for-item or Stripe-for-item listing, no
+  /// transaction will ge generated.
   ///
   /// Upon successful resolution of the transaction, response's data field is
   /// the state of the [Profile] after buying the item.
@@ -218,7 +217,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txBuyItem(String tradeId, String paymentId);
+  Future<SDKIPCResponse> txBuyItem(String tradeId);
 
   /// Async: Creates a transaction to buy the provided number of Pylons using a
   /// third-party payment processor.
@@ -250,7 +249,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txBuyPylons(int pylons, String paymentId);
+  Future<SDKIPCResponse> txBuyPylons(int pylons);
 
   /// Async: Creates a transaction to create the provided [Cookbook] on the
   /// Pylons chain against the current profile.

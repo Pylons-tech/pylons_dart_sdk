@@ -123,18 +123,18 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
   @override
-  Future<SDKIPCResponse> txBuyItem(String tradeId, String paymentId) async {
+  Future<SDKIPCResponse> txBuyItem(String tradeId) async {
     return Future.sync(() async {
       return await _dispatch(
-          Strings.TX_BUY_ITEMS, jsonEncode([tradeId, paymentId]));
+          Strings.TX_BUY_ITEMS, jsonEncode([tradeId]));
     });
   }
 
   @override
-  Future<SDKIPCResponse> txBuyPylons(int pylons, String paymentId) {
+  Future<SDKIPCResponse> txBuyPylons(int pylons) {
     return Future.sync(() async {
       return await _dispatch(
-          Strings.TX_BUY_PYLONS, jsonEncode([pylons, paymentId]));
+          Strings.TX_BUY_PYLONS, jsonEncode([pylons]));
     });
   }
 
