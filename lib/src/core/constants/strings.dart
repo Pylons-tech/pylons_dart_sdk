@@ -54,3 +54,7 @@ class Strings {
 const kRecipeNameLength = 8;
 
 const kRecipeDescriptionLength = 20;
+
+const kPlayStoreUrl = 'https://play.google.com/store/apps/details?id=tech.pylons.wallet';
+//TODO set apple appstore url here
+const kAppStoreUrl = 'https://';
