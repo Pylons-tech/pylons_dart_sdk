@@ -32,6 +32,18 @@ void main() {
   getExecutionByIdTest();
   getTradesTest();
   placeForSaleTest();
+  goToInstallTest();
+}
+
+void goToInstallTest() {
+  test('should redirect to the Store page where the Pylons app can be downloaded', () async {
+    mockChannelHandler();
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+    pylonsWallet.goToInstall();
+  });
 }
 
 void placeForSaleTest() {
