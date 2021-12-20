@@ -36,7 +36,9 @@ void main() {
 }
 
 void goToInstallTest() {
-  test('should redirect to the Store page where the Pylons app can be downloaded', () async {
+  test(
+      'should redirect to the Store page where the Pylons app can be downloaded',
+      () async {
     mockChannelHandler();
     var uniLink = MockUniLinksPlatform();
     when(uniLink.linkStream)
