@@ -57,5 +57,4 @@ const kRecipeDescriptionLength = 20;
 
 const kPlayStoreUrl =
     'https://play.google.com/store/apps/details?id=tech.pylons.wallet';
-const kAppStoreUrl =
-    'https://apps.apple.com/app/1598732789';
+const kAppStoreUrl = 'https://apps.apple.com/app/1598732789';
