@@ -211,6 +211,17 @@ class PylonsWalletImpl implements PylonsWallet {
     });
   }
 
+  @override
+  void goToInstall() async {
+    var _url = '';
+    if (Platform.isAndroid) {
+      _url = kPlayStoreUrl;
+    } else {
+      _url = kAppStoreUrl;
+    }
+    await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
+  }
+
   /// Sends [unilink] to wallet app.
   ///
   /// Throws a [NoWalletException] if the wallet doesn't exist.

@@ -159,6 +159,12 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Place for sale'),
             ),
+            ElevatedButton(
+              onPressed: () async {
+                goToInstall();
+              },
+              child: const Text('Go to Install'),
+            ),
           ],
         ),
       ),
@@ -375,5 +381,14 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     var sdkResponse = await PylonsWallet.instance.txPlaceForSale(item, 100);
     log(sdkResponse.toString(), name: 'pylons_sdk');
+  }
+
+  void goToInstall() async {
+    final isAlreadyInstalled = await PylonsWallet.instance.exists();
+    if (isAlreadyInstalled) {
+      log("Pylons Wallet already installed.", name: 'pylons_sdk');
+    } else {
+      PylonsWallet.instance.goToInstall();
+    }
   }
 }

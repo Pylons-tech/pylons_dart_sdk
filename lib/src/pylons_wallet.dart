@@ -79,6 +79,9 @@ abstract class PylonsWallet {
   /// Async: Returns true if an IPC target exists. False otherwise.
   Future<bool> exists();
 
+  /// Redirects user to the Pylons Wallet page on the Store.
+  void goToInstall();
+
   /// Async: Retrieves the cookbook with provided ID [id].
   ///
   /// Response's data field is the retrieved [Cookbook].
