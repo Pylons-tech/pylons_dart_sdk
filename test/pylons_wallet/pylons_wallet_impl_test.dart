@@ -33,18 +33,66 @@ void main() {
   getTradesTest();
   placeForSaleTest();
   goToInstallTest();
+  buyItemTest();
+  buyPylonsTest();
 }
 
 void goToInstallTest() {
   test(
       'should redirect to the Store page where the Pylons app can be downloaded',
-      () async {
+          () async {
+        mockChannelHandler();
+        var uniLink = MockUniLinksPlatform();
+        when(uniLink.linkStream)
+            .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+        var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+        pylonsWallet.goToInstall();
+      });
+}
+
+void buyItemTest() {
+  test('should buy the item', () async {
     mockChannelHandler();
     var uniLink = MockUniLinksPlatform();
     when(uniLink.linkStream)
         .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
     pylonsWallet.goToInstall();
+
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse(
+          success: true,
+          error: '',
+          data: '',
+          errorCode: '',
+          action: Strings.TX_BUY_ITEMS);
+      responseCompleters[Strings.TX_BUY_ITEMS]!.complete(sdkResponse);
+    });
+    var response = await pylonsWallet.txBuyItem(MOCK_TRADE_ID);
+    expect(true, response.success);
+    expect(response.action, Strings.TX_BUY_ITEMS);
+  });
+}
+
+void buyPylonsTest() {
+  test('should buy the pylons', () async {
+    mockChannelHandler();
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse(
+          success: true,
+          error: '',
+          data: '',
+          errorCode: '',
+          action: Strings.TX_BUY_PYLONS);
+      responseCompleters[Strings.TX_BUY_PYLONS]!.complete(sdkResponse);
+    });
+    var response = await pylonsWallet.txBuyPylons(42);
+    expect(true, response.success);
+    expect(response.action, Strings.TX_BUY_PYLONS);
   });
 }
 

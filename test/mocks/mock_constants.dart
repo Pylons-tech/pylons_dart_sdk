@@ -60,6 +60,7 @@ const String MOCK_COOKBOOK_ID = 'cookbookLOUD';
 const String MOCK_ITEM_ID = 'item_id';
 const String MOCK_RECIPE_ID = 'RecipeId';
 const String MOCK_RECIPE_NAME = 'recipe name';
+const String MOCK_TRADE_ID = 'trade_id';
 const String MOCK_OWNER = 'pyloabs8112932012asjdahk33';
 const String MOCK_VERSION = 'v0.0.1';
 const String MOCK_HOST = 'example';

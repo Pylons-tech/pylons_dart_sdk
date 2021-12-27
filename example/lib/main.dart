@@ -56,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String ownerId = "pylo1u0d99clv4k4gdfzpwsdhllsl5n62u44xwacjcc";
   String itemId = "J4XcRLXK2Hm";
   String executionId = "exec1213";
+  String tradeId = "not_a_real_trade";
 
   @override
   Widget build(BuildContext context) {
@@ -165,10 +166,51 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Go to Install'),
             ),
+            ElevatedButton(
+              onPressed: () async {
+                buyPylons();
+              },
+              child: const Text('Buy Pylons'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                buyItem();
+              },
+              child: const Text('Buy item'),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  void buyItem() async {
+    var response = await PylonsWallet.instance.txBuyItem(tradeId);
+
+    log('From App $response', name: 'pylons_sdk');
+
+    if (response.success) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Bought the item")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Error : ${response.error}")));
+    }
+  }
+
+
+  void buyPylons() async {
+    var response = await PylonsWallet.instance.txBuyPylons(100);
+
+    log('From App $response', name: 'pylons_sdk');
+
+    if (response.success) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Bought 100 pylons")));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Error : ${response.error}")));
+    }
   }
 
   void createCookBook() async {
@@ -250,7 +292,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (response.success) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Recipe  executed")));
+          .showSnackBar(const SnackBar(content: Text("Recipe executed")));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Recipe  error : ${response.error}")));
