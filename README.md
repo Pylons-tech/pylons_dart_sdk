@@ -1,8 +1,8 @@
 # Pylons Dart SDK
 
-A Flutter plugin project to connect any app with pylons blockchain.
+A Flutter plugin project to connect any app with the Pylons blockchain.
 
-Note: in order to be able to connect with pylons blockchain you must have pylons wallet already installed on your mobile device.
+Note: In order to be able to connect to the Pylons blockchain, you must already have a Pylons wallet installed on your mobile device. This package does not presently support desktop platforms.
 
 ## **Installation**
 
@@ -10,11 +10,11 @@ Note: in order to be able to connect with pylons blockchain you must have pylons
 
 ### **Add the pylons_flutter dependency**
 
-Open pubspec.yaml file within the app folder and add:
+Open your pubspec.yaml file within the app folder and add:
 
 ```
 dependencies:
-    pylons_sdk: ^0.0.1
+    pylons_sdk: ^0.0.4
 ```
 
 <br>
@@ -22,23 +22,23 @@ dependencies:
 ### **Enable deep links**
 
 **Permissions**  
-Android and iOS require to declare links permission in a configuration file.
+Android and iOS must declare link permissions in a configuration file.
 
-Feel free to examine tha example app in the example directory for Deep Links (Android) and Custom URL schemes (iOS).
+Feel free to examine the example app in the example directory for Deep Links (Android) and Custom URL schemes (iOS).
 
-The following steps are not Flutter specific, but platform specific.
+The following steps are platform-specific:
 
 <br>
 
 **For Android:**
 
-You need to declare the following intent filters in android/app/src/main/AndroidManifest.xml:
+You need to declare the following intent filters in `android/app/src/main/AndroidManifest.xml:`
 
 ```
 <manifest ...>
     <!-- ... other tags -->
     <queries>
-        <package android:name="tech.pylons.wallet" />
+        <package android:name="xyz.pylons.wallet" />
     </queries>
 
     <application ...>
@@ -62,12 +62,12 @@ You need to declare the following intent filters in android/app/src/main/Android
 </manifest>
 ```
 
-The android:host attribute variable is the one that you need to put it must be as unique as possible
+**You** are responsible for setting the value of the `android:host` attribute. Note that it should be as unique as possible.
 
 <br>
 
 **For IOS:**  
-You need to declare the following in ios/Runner/Info.plist:
+You need to declare the following in `ios/Runner/Info.plist`:
 
 ```
 	<key>CFBundleURLTypes</key>
@@ -89,14 +89,15 @@ You need to declare the following in ios/Runner/Info.plist:
     </array>
 ```
 
-Note: Dont't put underscore in the host name. The iOS system will not send response from wallet to your app.
+Note: Don't put any underscores in the host name, or the iOS system will not send a response from the wallet to your app.
 
 <br>
 
 ### **Import the Pylons SDK and send a test request**
 
-**In main.dart**
-Initialise the sdk before the run app.
+**In `main.dart`**
+
+Initialise the SDK before running the app:
 
 ```
 void main(){
@@ -108,7 +109,7 @@ void main(){
 }
 ```
 
-Here host should be same what you put in the
+Your host here should be as in the following files:
 
-- android/app/src/main/AndroidManifest.xml
-- ios/Runner/Info.plist
+- `android/app/src/main/AndroidManifest.xml`
+- `ios/Runner/Info.plist`

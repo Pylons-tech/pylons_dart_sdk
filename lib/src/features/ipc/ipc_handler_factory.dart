@@ -1,53 +1,42 @@
-import 'package:pylons_flutter/src/core/constants/strings.dart';
-import 'package:pylons_flutter/src/features/ipc/base/ipc_handler.dart';
-import 'package:pylons_flutter/src/features/ipc/completers.dart';
-import 'package:pylons_flutter/src/features/models/sdk_ipc_response.dart';
+import 'package:pylons_sdk/src/core/constants/strings.dart';
+import 'package:pylons_sdk/src/features/ipc/base/ipc_handler.dart';
+import 'package:pylons_sdk/src/features/ipc/handlers/get_cookbooks_handler.dart';
+import 'package:pylons_sdk/src/features/ipc/handlers/get_execution_by_id_handler.dart';
+import 'package:pylons_sdk/src/features/ipc/handlers/get_list_items_by_owner_handler.dart';
+import 'package:pylons_sdk/src/features/ipc/handlers/get_item_by_id_handler.dart';
+import 'package:pylons_sdk/src/features/ipc/handlers/get_recipe_handler.dart';
+import 'package:pylons_sdk/src/features/ipc/handlers/get_recipes_handler.dart';
+import 'package:pylons_sdk/src/features/ipc/handlers/get_trades_handler.dart';
+import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
+import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
+
+import 'handlers/get_execution_by_recipe_handler.dart';
 
 class IPCHandlerFactory {
+  static final Map<String, IPCHandler> handlers = {
+    Strings.GET_COOKBOOK: GetCookbooksHandler(),
+    Strings.GET_RECIPES: GetRecipesHandler(),
+    Strings.GET_RECIPE: GetRecipeHandler(),
+    Strings.GET_EXECUTION_BY_RECIPE_ID: GetExecutionByRecipeHandler(),
+    Strings.GET_ITEMS_BY_OWNER: GetListItemsByOwnerHandler(),
+    Strings.GET_ITEM_BY_ID: GetItemByIdHandler(),
+    Strings.GET_EXECUTION_BY_ID: GetExecutionByIdHandler(),
+    Strings.GET_TRADES: GetTradesHandler(),
+  };
 
-  static void getHandler(SDKIPCResponse sdkipcResponse){
-
-    if(sdkipcResponse.action == Strings.TX_CREATE_COOKBOOK){
-      cookBookCompleter.complete(sdkipcResponse);
-      return;
+  /// Fetches and resolves appropriate [IPCHandler] instance for [sdkIpcResponse], or completes
+  /// the completer if no specific handler is set.
+  static void getHandler(SDKIPCResponse sdkipcResponse) {
+    print(sdkipcResponse);
+    if (!responseCompleters.containsKey(sdkipcResponse.action)) {
+      throw Exception(
+          'Unexpected response for unsent message of type ${sdkipcResponse.action}');
     }
-
-
-
-    if(sdkipcResponse.action == Strings.TX_UPDATE_COOKBOOK){
-      cookBookUpdateCompleter.complete(sdkipcResponse);
-      return;
+    if (handlers.containsKey(sdkipcResponse.action)) {
+      handlers[sdkipcResponse.action]!.handler(sdkipcResponse);
+    } else {
+      responseCompleters[sdkipcResponse.action]!.complete(sdkipcResponse);
     }
-
-
-    if(sdkipcResponse.action == Strings.TX_CREATE_RECIPE){
-      recipeCompleter.complete(sdkipcResponse);
-      return;
-    }
-
-    if(sdkipcResponse.action == Strings.TX_EXECUTE_RECIPE){
-      executeRecipeCompleter.complete(sdkipcResponse);
-      return;
-    }
-
-    if(sdkipcResponse.action == Strings.TX_UPDATE_RECIPE){
-      recipeUpdateCompleter.complete(sdkipcResponse);
-      return;
-    }
-
-
-    if(sdkipcResponse.action == Strings.TX_ENABLE_RECIPE){
-      enableRecipeCompleter.complete(sdkipcResponse);
-      return;
-    }
-
-
-    if(sdkipcResponse.action == Strings.GET_PROFILE){
-      getProfileCompleter.complete(sdkipcResponse);
-      return;
-    }
-
-
-
+    return;
   }
 }

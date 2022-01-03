@@ -8,6 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+
 @$core.Deprecated('Use eventGrantDescriptor instead')
 const EventGrant$json = const {
   '1': 'EventGrant',
@@ -19,7 +20,8 @@ const EventGrant$json = const {
 };
 
 /// Descriptor for `EventGrant`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventGrantDescriptor = $convert.base64Decode('CgpFdmVudEdyYW50EiAKDG1zZ190eXBlX3VybBgCIAEoCVIKbXNnVHlwZVVybBIYCgdncmFudGVyGAMgASgJUgdncmFudGVyEhgKB2dyYW50ZWUYBCABKAlSB2dyYW50ZWU=');
+final $typed_data.Uint8List eventGrantDescriptor = $convert.base64Decode(
+    'CgpFdmVudEdyYW50EiAKDG1zZ190eXBlX3VybBgCIAEoCVIKbXNnVHlwZVVybBIYCgdncmFudGVyGAMgASgJUgdncmFudGVyEhgKB2dyYW50ZWUYBCABKAlSB2dyYW50ZWU=');
 @$core.Deprecated('Use eventRevokeDescriptor instead')
 const EventRevoke$json = const {
   '1': 'EventRevoke',
@@ -31,4 +33,5 @@ const EventRevoke$json = const {
 };
 
 /// Descriptor for `EventRevoke`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List eventRevokeDescriptor = $convert.base64Decode('CgtFdmVudFJldm9rZRIgCgxtc2dfdHlwZV91cmwYAiABKAlSCm1zZ1R5cGVVcmwSGAoHZ3JhbnRlchgDIAEoCVIHZ3JhbnRlchIYCgdncmFudGVlGAQgASgJUgdncmFudGVl');
+final $typed_data.Uint8List eventRevokeDescriptor = $convert.base64Decode(
+    'CgtFdmVudFJldm9rZRIgCgxtc2dfdHlwZV91cmwYAiABKAlSCm1zZ1R5cGVVcmwSGAoHZ3JhbnRlchgDIAEoCVIHZ3JhbnRlchIYCgdncmFudGVlGAQgASgJUgdncmFudGVl');

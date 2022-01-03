@@ -2,8 +2,7 @@
 order: 1
 -->
 
-
-#Pylons Quickstart:
+# Pylons Quickstart:
 
 Get connected to the Pylons network and integrate blockchain technology into your application.
 
@@ -15,7 +14,7 @@ Enable deep links for both Android and iOS to enable cross-platform development.
 
 Import the Pylons SDK and create test request to ensure everything is ready to go.
 
-##Step 1: Add pylons_flutter dependency
+## Step 1: Add pylons_flutter dependency
 
 Open pubspec.yaml file within the app folder and add pylons_flutter: path: [TO BE UPDATED ON LAUNCH] under dependencies. You should have something similar to the following example:
 
@@ -32,11 +31,11 @@ dependencies:
         path: ../
 ```
 
-##Step 2: Enable deep links for Android and iOS
+## Step 2: Enable deep links for Android and iOS
 
 Android and iOS require deep links permission within their respectful config files in order to connect to the blockchain.
 
-###For Android:
+### For Android:
 
 You need to declare the following intent filters in android/app/src/main/AndroidManifest.xml:
 
@@ -63,13 +62,13 @@ AndroidManifest.xml
 
 The android:host attribute variable is the one you need and it must be as unique as possible. We recommend you make this your app name!
 
-###For iOS:
+### For iOS:
 
 We are currently waiting for developer approval. In the meantime, you can read about Custom URL Schemes, which we will be using for the Flutter integration.
 
 Uni Links - iOS Flutter Development
 
-##Step 3: Import Pylons into your application
+## Step 3: Import Pylons into your application
 
 Before you run your application, make sure you initialize the Pylons SDK in main.dart file.
 
@@ -105,4 +104,4 @@ Check your console log and you should see this:
 r/flutter: WALLET Existence true
 ```
 
-Got it? You’re now ready to start developing with Pylons! 
+Got it? You’re now ready to start developing with Pylons!

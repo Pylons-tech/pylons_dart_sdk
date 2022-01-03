@@ -171,6 +171,11 @@ class RecipeValidationException implements Exception {
 
   RecipeValidationException(
       this.cookbook, this.recipeName, this.recipeId, this.errMsg);
+
+  @override
+  String toString() {
+    return 'RecipeValidationException{cookbook: $cookbook, recipeName: $recipeName, recipeId: $recipeId, errMsg: $errMsg}';
+  }
 }
 
 /// Exception thrown when an outgoing message gets an illegal response.

@@ -31,6 +31,6 @@ jobs:
         with:
           flutter-version: $
       - run: flutter pub get
-      - run: flutter analyze
+      - run: flutter analyze --watch
       - run: flutter test
 

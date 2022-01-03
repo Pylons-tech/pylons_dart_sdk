@@ -16,23 +16,29 @@ import 'query.pbjson.dart';
 export 'query.pb.dart';
 
 abstract class QueryServiceBase extends $pb.GeneratedService {
-  $async.Future<$4.QueryGrantsResponse> grants($pb.ServerContext ctx, $4.QueryGrantsRequest request);
+  $async.Future<$4.QueryGrantsResponse> grants(
+      $pb.ServerContext ctx, $4.QueryGrantsRequest request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
-      case 'Grants': return $4.QueryGrantsRequest();
-      default: throw $core.ArgumentError('Unknown method: $method');
+      case 'Grants':
+        return $4.QueryGrantsRequest();
+      default:
+        throw $core.ArgumentError('Unknown method: $method');
     }
   }
 
-  $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx, $core.String method, $pb.GeneratedMessage request) {
+  $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx,
+      $core.String method, $pb.GeneratedMessage request) {
     switch (method) {
-      case 'Grants': return this.grants(ctx, request as $4.QueryGrantsRequest);
-      default: throw $core.ArgumentError('Unknown method: $method');
+      case 'Grants':
+        return this.grants(ctx, request as $4.QueryGrantsRequest);
+      default:
+        throw $core.ArgumentError('Unknown method: $method');
     }
   }
 
   $core.Map<$core.String, $core.dynamic> get $json => QueryServiceBase$json;
-  $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> get $messageJson => QueryServiceBase$messageJson;
+  $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
+      get $messageJson => QueryServiceBase$messageJson;
 }
-
