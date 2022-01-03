@@ -18,3 +18,6 @@ This document specifies the `pylons_sdk` module for the Pylons NFT blockchain.
 ## Contents
 
 1. **[Getting Started with Pylons SDK in Flutter](01_getting_started_flutter.md)**
+2. **[Cookbooks](02_cookbooks.md)**
+3. **[Recipes](03_recipes.md)**
+4. **[Queries](02_transactions.md)**
