@@ -222,6 +222,11 @@ class PylonsWalletImpl implements PylonsWallet {
     await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
   }
 
+  @override
+  void goToPylons() {
+    _dispatch(Strings.GO_TO_PYLONS, '');
+  }
+
   /// Sends [unilink] to wallet app.
   ///
   /// Throws a [NoWalletException] if the wallet doesn't exist.

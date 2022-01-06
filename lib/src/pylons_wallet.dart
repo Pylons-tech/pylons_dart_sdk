@@ -82,6 +82,9 @@ abstract class PylonsWallet {
   /// Redirects user to the Pylons Wallet page on the Store.
   void goToInstall();
 
+  /// Redirects user to the Pylons Wallet app.
+  void goToPylons();
+
   /// Async: Retrieves the cookbook with provided ID [id].
   ///
   /// Response's data field is the retrieved [Cookbook].

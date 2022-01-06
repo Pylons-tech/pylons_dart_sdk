@@ -33,6 +33,7 @@ void main() {
   getTradesTest();
   placeForSaleTest();
   goToInstallTest();
+  goToLoginTest();
 }
 
 void goToInstallTest() {
@@ -42,10 +43,23 @@ void goToInstallTest() {
     mockChannelHandler();
     var uniLink = MockUniLinksPlatform();
     when(uniLink.linkStream)
-        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+        .thenAnswer((realInvocation) => Stream<String?>.value('Corey'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
     pylonsWallet.goToInstall();
   });
+}
+
+void goToLoginTest() {
+  test(
+      'should simply redirect to the Pylons Wallet app',
+          () async {
+        mockChannelHandler();
+        var uniLink = MockUniLinksPlatform();
+        when(uniLink.linkStream)
+            .thenAnswer((realInvocation) => Stream<String?>.value('Corey'));
+        var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+        pylonsWallet.goToPylons();
+      });
 }
 
 void placeForSaleTest() {
@@ -53,7 +67,7 @@ void placeForSaleTest() {
     mockChannelHandler();
     var uniLink = MockUniLinksPlatform();
     when(uniLink.linkStream)
-        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+        .thenAnswer((realInvocation) => Stream<String?>.value('Corey'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
     Future.delayed(Duration(seconds: 1), () {
       final sdkResponse = SDKIPCResponse(
@@ -76,7 +90,7 @@ void getTradesTest() {
 
     var uniLink = MockUniLinksPlatform();
     when(uniLink.linkStream)
-        .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
+        .thenAnswer((realInvocation) => Stream<String?>.value('Corey'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
     Future.delayed(Duration(seconds: 1), () {
