@@ -50,16 +50,14 @@ void goToInstallTest() {
 }
 
 void goToLoginTest() {
-  test(
-      'should simply redirect to the Pylons Wallet app',
-          () async {
-        mockChannelHandler();
-        var uniLink = MockUniLinksPlatform();
-        when(uniLink.linkStream)
-            .thenAnswer((realInvocation) => Stream<String?>.value('Corey'));
-        var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
-        pylonsWallet.goToPylons();
-      });
+  test('should simply redirect to the Pylons Wallet app', () async {
+    mockChannelHandler();
+    var uniLink = MockUniLinksPlatform();
+    when(uniLink.linkStream)
+        .thenAnswer((realInvocation) => Stream<String?>.value('Corey'));
+    var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
+    pylonsWallet.goToPylons();
+  });
 }
 
 void placeForSaleTest() {
