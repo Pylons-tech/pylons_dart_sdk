@@ -15,6 +15,8 @@ import '../mocks/mock_constants.dart';
 import '../mocks/mock_uni_link.dart';
 
 void main() {
+  goToInstallTest();
+  goToLoginTest();
   getHostBasedOnOsTest();
   createLinkBasedOnOS();
   getCookBookTest();
@@ -32,8 +34,6 @@ void main() {
   getExecutionByIdTest();
   getTradesTest();
   placeForSaleTest();
-  goToInstallTest();
-  goToLoginTest();
 }
 
 void goToInstallTest() {
@@ -44,8 +44,11 @@ void goToInstallTest() {
     var uniLink = MockUniLinksPlatform();
     when(uniLink.linkStream)
         .thenAnswer((realInvocation) => Stream<String?>.value('Corey'));
+
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
-    pylonsWallet.goToInstall();
+
+    var response = await pylonsWallet.goToInstall();
+    expect(response, true);
   });
 }
 
@@ -56,7 +59,18 @@ void goToLoginTest() {
     when(uniLink.linkStream)
         .thenAnswer((realInvocation) => Stream<String?>.value('Corey'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
-    pylonsWallet.goToPylons();
+    Future.delayed(Duration(seconds: 1), () {
+      final sdkResponse = SDKIPCResponse(
+          success: true,
+          error: '',
+          data: '',
+          errorCode: '',
+          action: Strings.GO_TO_PYLONS);
+      responseCompleters[Strings.GO_TO_PYLONS]!.complete(sdkResponse);
+    });
+    var response = await pylonsWallet.goToPylons();
+    expect(response.success, true);
+    expect(response.action, Strings.GO_TO_PYLONS);
   });
 }
 

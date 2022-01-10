@@ -80,10 +80,12 @@ abstract class PylonsWallet {
   Future<bool> exists();
 
   /// Redirects user to the Pylons Wallet page on the Store.
-  void goToInstall();
+  ///
+  /// Returns true if it's available to launch the Store URL, false otherwise.
+  Future<bool> goToInstall();
 
   /// Redirects user to the Pylons Wallet app.
-  void goToPylons();
+  Future<SDKIPCResponse> goToPylons();
 
   /// Async: Retrieves the cookbook with provided ID [id].
   ///
