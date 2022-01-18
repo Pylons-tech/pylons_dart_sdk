@@ -51,10 +51,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String cookBookId = "cookbook_jawad_2";
+  String cookBookId = "cookbook_cry_305";
   String recipeId = "recipe_1";
-  String ownerId = "pylo1u0d99clv4k4gdfzpwsdhllsl5n62u44xwacjcc";
-  String itemId = "J4XcRLXK2Hm";
+  String ownerId = "pylo1v97v5qj2kvph2d02fzxxlh44wzpfmuc63vpphj";
+  String itemId = "8MrbcX2hkmm";
   String executionId = "exec1213";
 
   @override
@@ -69,6 +69,18 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            ElevatedButton(
+              onPressed: () async {
+                goToInstall();
+              },
+              child: const Text('Go to install Pylons'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                goToLogin();
+              },
+              child: const Text('Go to log in Pylons'),
+            ),
             ElevatedButton(
               onPressed: () async {
                 createCookBook();
@@ -133,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () async {
                 getItemListByOwner();
               },
-              child: const Text('Get list by owner'),
+              child: const Text('Get Items list by owner'),
             ),
             ElevatedButton(
               onPressed: () async {
@@ -159,12 +171,6 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Place for sale'),
             ),
-            ElevatedButton(
-              onPressed: () async {
-                goToInstall();
-              },
-              child: const Text('Go to Install'),
-            ),
           ],
         ),
       ),
@@ -173,13 +179,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void createCookBook() async {
     var cookBook1 = Cookbook(
-        creator: "",
+        creator: "pylo1v97v5qj2kvph2d02fzxxlh44wzpfmuc63vpphj",
         iD: cookBookId,
-        name: "Legend of the Undead Dragon",
+        name: "Cry Cookbook for Test",
         description: "Cookbook for running pylons recreation of LOUD",
         developer: "Pylons Inc",
         version: "v0.0.1",
-        supportEmail: "alex@shmeeload.xyz",
+        supportEmail: "corey.williams@pylons.tech",
         enabled: true);
 
     var response = await PylonsWallet.instance.txCreateCookbook(cookBook1);
@@ -370,7 +376,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future getTrades() async {
-    var sdkResponse = await PylonsWallet.instance.getTrades('');
+    var sdkResponse = await PylonsWallet.instance.getTrades(ownerId);
     log(sdkResponse.toString(), name: 'pylons_sdk');
   }
 
@@ -390,5 +396,9 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       PylonsWallet.instance.goToInstall();
     }
+  }
+
+  void goToLogin() async {
+    PylonsWallet.instance.goToPylons();
   }
 }

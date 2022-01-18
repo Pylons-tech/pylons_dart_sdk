@@ -212,14 +212,25 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
   @override
-  void goToInstall() async {
+  Future<bool> goToInstall() async {
     var _url = '';
     if (Platform.isAndroid) {
       _url = kPlayStoreUrl;
     } else {
       _url = kAppStoreUrl;
     }
-    await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
+    if (await canLaunch(_url)) {
+      await launch(_url);
+      return true;
+    } else {
+      log('Could not launch $_url');
+      return false;
+    }
+  }
+
+  @override
+  Future<SDKIPCResponse> goToPylons() async {
+    return await _dispatch(Strings.GO_TO_PYLONS, '');
   }
 
   /// Sends [unilink] to wallet app.
