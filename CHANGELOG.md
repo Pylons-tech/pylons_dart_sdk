@@ -16,3 +16,10 @@ More functionalities.
 Updated New Protos.
 More functionalities are added.
 Recipe validations are added.
+
+
+## 0.0.5
+Removed unnecessary code
+
+## 0.0.6
+Add the functionality to redirect to store if no wallet app installed

@@ -1,6 +1,6 @@
 name: pylons_sdk
 description: Pylons sdk converts client apps to the pylons wallet. It helps the client apps to perform actions on the pylons chain.
-version: 0.0.4
+version: 0.0.6
 homepage: https://www.pylons.tech/
 repository: https://github.com/Pylons-tech/pylons_dart_sdk
 
