@@ -85,7 +85,7 @@ abstract class PylonsWallet {
   Future<bool> goToInstall();
 
   /// Redirects user to the Pylons Wallet app.
-  Future<SDKIPCResponse> goToPylons();
+  Future<SDKIPCResponse> goToPylons({bool requestResponse});
 
   /// Async: Retrieves the cookbook with provided ID [id].
   ///
@@ -258,7 +258,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txBuyPylons(int pylons, String paymentId);
+  Future<SDKIPCResponse> txBuyPylons(int pylons, String paymentId,
+      {bool requestResponse});
 
   /// Async: Creates a transaction to create the provided [Cookbook] on the
   /// Pylons chain against the current profile.
@@ -291,7 +292,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txCreateCookbook(Cookbook cookbook);
+  Future<SDKIPCResponse> txCreateCookbook(Cookbook cookbook,
+      {bool requestResponse = true});
 
   /// Async: Creates a transaction to create the provided [Recipe] on the Pylons
   /// chain against the current profile.
@@ -335,7 +337,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txCreateRecipe(Recipe recipe);
+  Future<SDKIPCResponse> txCreateRecipe(Recipe recipe, {bool requestResponse});
 
   /// Async: Creates a transaction to execute the recipe with coordinates
   /// [cookbookId] : [recipeName] against the current profile.
@@ -372,7 +374,8 @@ abstract class PylonsWallet {
       required String recipeName,
       required List<String> itemIds,
       required int coinInputIndex,
-      required List<PaymentInfo> paymentInfo});
+      required List<PaymentInfo> paymentInfo,
+      bool requestResponse});
 
   /// Async: Creates a transaction to post a trade of the provided [Item] for a
   /// price in pylons against the current profile.
@@ -443,7 +446,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txUpdateCookbook(Cookbook cookbook);
+  Future<SDKIPCResponse> txUpdateCookbook(Cookbook cookbook,
+      {bool requestResponse});
 
   /// Async: Creates a transaction to updates the provided [Recipe] on the
   /// Pylons chain to match that provided against the current profile.
@@ -482,7 +486,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txUpdateRecipe(Recipe recipe);
+  Future<SDKIPCResponse> txUpdateRecipe(Recipe recipe, {bool requestResponse});
 
   /// This method gets the recipe based on the cookbookId and the recipeId
   /// Input : [cookbookId] the id of the cookbook which contains the recipe, [recipeId] the id of the recipe
