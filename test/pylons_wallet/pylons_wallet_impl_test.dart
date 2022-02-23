@@ -73,9 +73,8 @@ void goToLoginTest() {
     expect(response.action, Strings.GO_TO_PYLONS);
   });
 
-
-
-  test('should simply redirect to the Pylons Wallet app without redirecting', () async {
+  test('should simply redirect to the Pylons Wallet app without redirecting',
+      () async {
     mockChannelHandler();
     var uniLink = MockUniLinksPlatform();
     when(uniLink.linkStream)
@@ -86,7 +85,6 @@ void goToLoginTest() {
     expect(response.success, true);
     expect(response.data, Strings.ACTION_DONE);
   });
-
 }
 
 void placeForSaleTest() {
@@ -297,7 +295,6 @@ void createRecipeTest() {
     expect(response.action, Strings.TX_CREATE_RECIPE);
   });
 
-
   test('should create recipe in the wallet without redirecting', () async {
     mockChannelHandler();
 
@@ -306,14 +303,12 @@ void createRecipeTest() {
         .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
-
-    var response = await pylonsWallet.txCreateRecipe(MOCK_RECIPE, requestResponse: false);
+    var response =
+        await pylonsWallet.txCreateRecipe(MOCK_RECIPE, requestResponse: false);
 
     expect(true, response.success);
     expect(response.data, Strings.ACTION_DONE);
   });
-
-
 }
 
 void updateCookBookTest() {
@@ -344,7 +339,6 @@ void updateCookBookTest() {
     expect(response.action, Strings.TX_UPDATE_COOKBOOK);
   });
 
-
   test('should update cookbook in the wallet without redirecting', () async {
     mockChannelHandler();
 
@@ -356,13 +350,12 @@ void updateCookBookTest() {
     var cookBook = Cookbook.create()
       ..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
 
-
-    var response = await pylonsWallet.txUpdateCookbook(cookBook, requestResponse: false);
+    var response =
+        await pylonsWallet.txUpdateCookbook(cookBook, requestResponse: false);
 
     expect(true, response.success);
     expect(response.data, Strings.ACTION_DONE);
   });
-
 }
 
 void updateRecipeTest() {
@@ -390,8 +383,6 @@ void updateRecipeTest() {
     expect(response.action, Strings.TX_UPDATE_RECIPE);
   });
 
-
-
   test('should update recipe in the wallet without redirecting', () async {
     mockChannelHandler();
 
@@ -400,7 +391,8 @@ void updateRecipeTest() {
         .thenAnswer((realInvocation) => Stream<String?>.value('Jawad'));
     var pylonsWallet = PylonsWalletImpl(host: MOCK_HOST, uniLink: uniLink);
 
-    var response = await pylonsWallet.txUpdateRecipe(MOCK_RECIPE, requestResponse: false);
+    var response =
+        await pylonsWallet.txUpdateRecipe(MOCK_RECIPE, requestResponse: false);
 
     expect(true, response.success);
     expect(response.data, Strings.ACTION_DONE);
@@ -451,7 +443,6 @@ void executeRecipeTest() {
     expect(response.action, Strings.TX_EXECUTE_RECIPE);
   });
 
-
   test('should execute recipe in the wallet without redirecting', () async {
     mockChannelHandler();
 
@@ -466,7 +457,7 @@ void executeRecipeTest() {
         cookbookId: MOCK_COOKBOOK_ID,
         itemIds: [],
         coinInputIndex: 0,
-    requestResponse: false);
+        requestResponse: false);
 
     expect(true, response.success);
     expect(response.data, Strings.ACTION_DONE);
@@ -501,7 +492,8 @@ void createCookBookTest() {
     expect(response.action, Strings.TX_CREATE_COOKBOOK);
   });
 
-  test('should create cookbook in the wallet without redirecting back', () async {
+  test('should create cookbook in the wallet without redirecting back',
+      () async {
     mockChannelHandler();
 
     var uniLink = MockUniLinksPlatform();
@@ -512,8 +504,8 @@ void createCookBookTest() {
     var cookBook = Cookbook.create()
       ..mergeFromProto3Json(jsonDecode(MOCK_COOKBOOK));
 
-
-    var response = await pylonsWallet.txCreateCookbook(cookBook, requestResponse: false);
+    var response =
+        await pylonsWallet.txCreateCookbook(cookBook, requestResponse: false);
 
     expect(true, response.success);
     expect(response.data, Strings.ACTION_DONE);

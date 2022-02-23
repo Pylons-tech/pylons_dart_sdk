@@ -258,7 +258,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txBuyPylons(int pylons, String paymentId, {bool requestResponse});
+  Future<SDKIPCResponse> txBuyPylons(int pylons, String paymentId,
+      {bool requestResponse});
 
   /// Async: Creates a transaction to create the provided [Cookbook] on the
   /// Pylons chain against the current profile.
@@ -291,7 +292,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txCreateCookbook(Cookbook cookbook, {bool requestResponse = true});
+  Future<SDKIPCResponse> txCreateCookbook(Cookbook cookbook,
+      {bool requestResponse = true});
 
   /// Async: Creates a transaction to create the provided [Recipe] on the Pylons
   /// chain against the current profile.
@@ -444,7 +446,8 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> txUpdateCookbook(Cookbook cookbook, {bool requestResponse});
+  Future<SDKIPCResponse> txUpdateCookbook(Cookbook cookbook,
+      {bool requestResponse});
 
   /// Async: Creates a transaction to updates the provided [Recipe] on the
   /// Pylons chain to match that provided against the current profile.
