@@ -52,7 +52,7 @@ class PylonsWalletImpl implements PylonsWallet {
   Future<SDKIPCResponse> _dispatch<T>(String key, String data,
       {required bool requestResponse}) async {
     final sdkIPCMessage =
-        SDKIPCMessage(key, data, getHostBasedOnOS(Platform.isAndroid));
+        SDKIPCMessage(key, data, getHostBasedOnOS(Platform.isAndroid), requestResponse);
 
     if (requestResponse) {
       return sendMessage(sdkIPCMessage, initResponseCompleter(key));

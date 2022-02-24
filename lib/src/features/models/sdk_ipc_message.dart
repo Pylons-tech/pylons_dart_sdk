@@ -10,24 +10,25 @@ class SDKIPCMessage {
   /// The data supplied for that operation.
   String json;
   String sender;
+  bool requestResponse;
 
-  SDKIPCMessage(this.action, this.json, this.sender);
+  SDKIPCMessage(this.action, this.json, this.sender, this.requestResponse);
 
   factory SDKIPCMessage.fromIPCMessage(String base64EncodedMessage) {
     final json = utf8.decode(base64Url.decode(base64EncodedMessage));
     final jsonMap = jsonDecode(json);
 
     return SDKIPCMessage(jsonMap['action'].toString(),
-        jsonMap['json'].toString(), jsonMap['sender'].toString());
+        jsonMap['json'].toString(), jsonMap['sender'].toString(), jsonMap['request_response']);
   }
 
   String toJson() =>
-      jsonEncode({'sender': sender, 'json': json, 'action': action});
+      jsonEncode({'sender': sender, 'json': json, 'action': action, 'request_response' : requestResponse});
 
   String createMessage() => base64Url.encode(utf8.encode(toJson()));
 
   @override
   String toString() {
-    return 'SDKIPCMessage{action: $action, json: $json, sender: $sender}';
+    return 'SDKIPCMessage{action: $action, json: $json, sender: $sender, requestResponse: $requestResponse}';
   }
 }
