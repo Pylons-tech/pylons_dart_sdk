@@ -23,3 +23,10 @@ Removed unnecessary code
 
 ## 0.0.6
 Add the functionality to redirect to store if no wallet app installed
+
+
+## 0.0.7
+Add the functionality to allow and disallow the redirection from sdk
+
+## 0.0.8
+Sending redirection response to wallet.

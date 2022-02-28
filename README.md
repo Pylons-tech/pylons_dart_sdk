@@ -14,7 +14,7 @@ Open your pubspec.yaml file within the app folder and add:
 
 ```
 dependencies:
-    pylons_sdk: ^0.0.6
+    pylons_sdk: ^0.0.8
 ```
 
 <br>
@@ -38,7 +38,7 @@ You need to declare the following intent filters in `android/app/src/main/Androi
 <manifest ...>
     <!-- ... other tags -->
     <queries>
-        <package android:name="xyz.pylons.wallet" />
+        <package android:name="tech.pylons.wallet" />
     </queries>
 
     <application ...>
