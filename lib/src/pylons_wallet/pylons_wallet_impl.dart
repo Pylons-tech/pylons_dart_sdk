@@ -12,6 +12,7 @@ import 'dart:io';
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:pylons_sdk/src/features/ipc/ipc_constants.dart';
 import 'package:pylons_sdk/src/features/models/execution_list_by_recipe_response.dart';
+import 'package:pylons_sdk/src/features/models/user_info.dart';
 import 'package:pylons_sdk/src/features/validations/validate_recipe.dart';
 import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 import 'package:pylons_sdk/src/generated/pylons/payment_info.pb.dart';
@@ -109,9 +110,15 @@ class PylonsWalletImpl implements PylonsWallet {
   }
 
   @override
-  Future<SDKIPCResponse> getProfile() async {
+  Future<SDKIPCResponse<UserInfoModel>> getProfile() async {
     return Future.sync(() async {
-      return await _dispatch(Strings.GET_PROFILE, '', requestResponse: true);
+      final response = await _dispatch(Strings.GET_PROFILE, '', requestResponse: true);
+
+      if (response is SDKIPCResponse<UserInfoModel>) {
+        return response;
+      }
+      throw Exception('Response malformed');
+
     });
   }
 

@@ -6,6 +6,7 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
+import 'package:pylons_sdk/src/features/models/user_info.dart';
 import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 import '../pylons_sdk.dart';
 import 'features/models/execution_list_by_recipe_response.dart';
@@ -138,7 +139,7 @@ abstract class PylonsWallet {
   ///
   /// If the operation fails due to an exception thrown by this library, that
   /// exception will be passed directly.
-  Future<SDKIPCResponse> getProfile();
+  Future<SDKIPCResponse<UserInfoModel>> getProfile();
 
   /// Async: Retrieves a list of recipes on the Pylons chain in the cookbook with ID
   /// [cookbook].

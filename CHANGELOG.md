@@ -30,3 +30,6 @@ Add the functionality to allow and disallow the redirection from sdk
 
 ## 0.0.8
 Sending redirection response to wallet.
+
+## 0.0.9
+Get stripe registration info from the wallet.

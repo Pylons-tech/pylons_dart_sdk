@@ -37,6 +37,7 @@ class Strings {
   static const String ERR_MISSING_ITEM_INPUTS = 'missingItemInputs';
   static const String ERR_MALFORMED_RECIPES = 'malformedRecipes';
   static const String ERR_MALFORMED_RECIPE = 'malformedRecipe';
+  static const String ERR_MALFORMED_USER_INFO = 'malformedUserInfo';
   static const String ERR_MALFORMED_EXECUTION = 'malformedExecution';
   static const String ERR_MALFORMED_ITEM = 'malformedItem';
   static const String ERR_JSON_EXPECTED = 'Json Object Expected';
