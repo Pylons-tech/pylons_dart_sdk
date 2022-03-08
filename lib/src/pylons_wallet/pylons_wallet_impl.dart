@@ -112,13 +112,13 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse<UserInfoModel>> getProfile() async {
     return Future.sync(() async {
-      final response = await _dispatch(Strings.GET_PROFILE, '', requestResponse: true);
+      final response =
+          await _dispatch(Strings.GET_PROFILE, '', requestResponse: true);
 
       if (response is SDKIPCResponse<UserInfoModel>) {
         return response;
       }
       throw Exception('Response malformed');
-
     });
   }
 

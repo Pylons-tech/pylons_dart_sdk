@@ -6,7 +6,6 @@ import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 import 'package:pylons_sdk/src/features/models/user_info.dart';
 
-
 class GetProfileHandler implements IPCHandler {
   @override
   void handler(SDKIPCResponse<dynamic> response) {
@@ -19,7 +18,8 @@ class GetProfileHandler implements IPCHandler {
         errorCode: response.errorCode);
     try {
       if (response.success) {
-        defaultResponse.data = UserInfoModel.fromJson(jsonDecode(response.data));
+        defaultResponse.data =
+            UserInfoModel.fromJson(jsonDecode(response.data));
       }
     } on FormatException catch (_) {
       defaultResponse.error = _.message;

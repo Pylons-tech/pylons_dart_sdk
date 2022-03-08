@@ -4,19 +4,16 @@ class UserInfoModel {
 
   UserInfoModel({required this.username, required this.stripeExists});
 
-
-
-  Map<String, dynamic> toJson() => {
-    'username' : username ,
-    'stripeExists' : stripeExists
-  };
+  Map<String, dynamic> toJson() =>
+      {'username': username, 'stripeExists': stripeExists};
 
   factory UserInfoModel.initial() {
     return UserInfoModel(username: '', stripeExists: false);
   }
 
   factory UserInfoModel.fromJson(Map<String, dynamic> json) {
-   return  UserInfoModel(username: json['username'], stripeExists: json['stripeExists']);
+    return UserInfoModel(
+        username: json['username'], stripeExists: json['stripeExists']);
   }
 
   @override

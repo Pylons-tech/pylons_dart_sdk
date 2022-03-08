@@ -107,6 +107,5 @@ Execution MOCK_EXECUTION = Execution(
   nodeVersion: MOCK_NODE_VERSION,
 );
 
-
-
-UserInfoModel MOCK_USER_INFO_MODEL = UserInfoModel(username: MOCK_USERNAME, stripeExists: MOCK_STRIPE_EXISTS);
+UserInfoModel MOCK_USER_INFO_MODEL =
+    UserInfoModel(username: MOCK_USERNAME, stripeExists: MOCK_STRIPE_EXISTS);
