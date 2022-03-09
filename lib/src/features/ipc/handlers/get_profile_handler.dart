@@ -20,8 +20,7 @@ class GetProfileHandler implements IPCHandler {
         errorCode: response.errorCode);
     try {
       if (response.success) {
-        defaultResponse.data =
-            Profile.fromJson(jsonDecode(response.data));
+        defaultResponse.data = Profile.fromJson(jsonDecode(response.data));
       }
     } on FormatException catch (_) {
       defaultResponse.error = _.message;

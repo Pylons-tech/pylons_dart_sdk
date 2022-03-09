@@ -107,5 +107,9 @@ Execution MOCK_EXECUTION = Execution(
   nodeVersion: MOCK_NODE_VERSION,
 );
 
-Profile MOCK_USER_INFO_MODEL =
-    Profile(username: MOCK_USERNAME, stripeExists: MOCK_STRIPE_EXISTS, items: [], address: MOCK_OWNER, coins: []);
+Profile MOCK_USER_INFO_MODEL = Profile(
+    username: MOCK_USERNAME,
+    stripeExists: MOCK_STRIPE_EXISTS,
+    items: [],
+    address: MOCK_OWNER,
+    coins: []);

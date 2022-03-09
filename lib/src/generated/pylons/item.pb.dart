@@ -51,10 +51,10 @@ class DoubleKeyValue extends $pb.GeneratedMessage {
     return _result;
   }
   factory DoubleKeyValue.fromBuffer($core.List<$core.int> i,
-      [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory DoubleKeyValue.fromJson($core.String i,
-      [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -65,7 +65,7 @@ class DoubleKeyValue extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   DoubleKeyValue copyWith(void Function(DoubleKeyValue) updates) =>
       super.copyWith((message) => updates(message as DoubleKeyValue))
-      as DoubleKeyValue; // ignore: deprecated_member_use
+          as DoubleKeyValue; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static DoubleKeyValue create() => DoubleKeyValue._();
@@ -141,10 +141,10 @@ class LongKeyValue extends $pb.GeneratedMessage {
     return _result;
   }
   factory LongKeyValue.fromBuffer($core.List<$core.int> i,
-      [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory LongKeyValue.fromJson($core.String i,
-      [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -155,7 +155,7 @@ class LongKeyValue extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   LongKeyValue copyWith(void Function(LongKeyValue) updates) =>
       super.copyWith((message) => updates(message as LongKeyValue))
-      as LongKeyValue; // ignore: deprecated_member_use
+          as LongKeyValue; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static LongKeyValue create() => LongKeyValue._();
@@ -231,10 +231,10 @@ class StringKeyValue extends $pb.GeneratedMessage {
     return _result;
   }
   factory StringKeyValue.fromBuffer($core.List<$core.int> i,
-      [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory StringKeyValue.fromJson($core.String i,
-      [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -245,7 +245,7 @@ class StringKeyValue extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   StringKeyValue copyWith(void Function(StringKeyValue) updates) =>
       super.copyWith((message) => updates(message as StringKeyValue))
-      as StringKeyValue; // ignore: deprecated_member_use
+          as StringKeyValue; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static StringKeyValue create() => StringKeyValue._();
@@ -426,10 +426,10 @@ class Item extends $pb.GeneratedMessage {
     return _result;
   }
   factory Item.fromBuffer($core.List<$core.int> i,
-      [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
   factory Item.fromJson($core.String i,
-      [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -440,7 +440,7 @@ class Item extends $pb.GeneratedMessage {
       'Will be removed in next major version')
   Item copyWith(void Function(Item) updates) =>
       super.copyWith((message) => updates(message as Item))
-      as Item; // ignore: deprecated_member_use
+          as Item; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Item create() => Item._();
