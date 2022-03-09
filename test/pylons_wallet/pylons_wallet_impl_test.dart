@@ -554,7 +554,7 @@ void getProfileTest() {
       final sdkResponse = SDKIPCResponse(
           success: true,
           error: '',
-          data: MOCK_USERNAME,
+          data: MOCK_USER_INFO_MODEL,
           errorCode: '',
           action: Strings.GET_PROFILE);
       responseCompleters[Strings.GET_PROFILE]!.complete(sdkResponse);
@@ -562,7 +562,9 @@ void getProfileTest() {
 
     var response = await pylonsWallet.getProfile();
 
-    expect(response.data, MOCK_USERNAME);
+    expect(response.data.username, MOCK_USERNAME);
+    expect(response.data.stripeExists, MOCK_STRIPE_EXISTS);
+    expect(response.data.address, MOCK_OWNER);
     expect(response.action, Strings.GET_PROFILE);
   });
 }

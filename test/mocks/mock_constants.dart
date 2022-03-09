@@ -1,5 +1,6 @@
 import 'package:fixnum/fixnum.dart';
 import 'package:pylons_sdk/pylons_sdk.dart';
+
 import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 
 var MOCK_COOKBOOK = '''{
@@ -71,6 +72,7 @@ const String MOCK_RECIPE_VERSION = 'v0.1.3';
 const String MOCK_NODE_VERSION = '0.1.3';
 const String MOCK_CREATOR = 'pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2';
 const int MOCK_PRICE = 10000;
+const bool MOCK_STRIPE_EXISTS = false;
 
 Cookbook MOCK_COOK_BOOK_OBJECT = Cookbook(
     creator: '',
@@ -104,3 +106,10 @@ Execution MOCK_EXECUTION = Execution(
   recipeVersion: MOCK_RECIPE_VERSION,
   nodeVersion: MOCK_NODE_VERSION,
 );
+
+Profile MOCK_USER_INFO_MODEL = Profile(
+    username: MOCK_USERNAME,
+    stripeExists: MOCK_STRIPE_EXISTS,
+    items: [],
+    address: MOCK_OWNER,
+    coins: []);
