@@ -1,6 +1,6 @@
 import 'package:fixnum/fixnum.dart';
 import 'package:pylons_sdk/pylons_sdk.dart';
-import 'package:pylons_sdk/src/features/models/user_info.dart';
+
 import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 
 var MOCK_COOKBOOK = '''{
@@ -107,5 +107,5 @@ Execution MOCK_EXECUTION = Execution(
   nodeVersion: MOCK_NODE_VERSION,
 );
 
-UserInfoModel MOCK_USER_INFO_MODEL =
-    UserInfoModel(username: MOCK_USERNAME, stripeExists: MOCK_STRIPE_EXISTS);
+Profile MOCK_USER_INFO_MODEL =
+    Profile(username: MOCK_USERNAME, stripeExists: MOCK_STRIPE_EXISTS, items: [], address: MOCK_OWNER, coins: []);

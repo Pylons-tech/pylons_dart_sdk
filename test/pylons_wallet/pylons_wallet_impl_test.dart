@@ -564,6 +564,7 @@ void getProfileTest() {
 
     expect(response.data.username, MOCK_USERNAME);
     expect(response.data.stripeExists, MOCK_STRIPE_EXISTS);
+    expect(response.data.address, MOCK_OWNER);
     expect(response.action, Strings.GET_PROFILE);
   });
 }
