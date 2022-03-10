@@ -14,7 +14,7 @@ class Strings {
     required this.program,
   });
 
-  StringConst.fromJson(Map<String, dynamic> json) {
+  Strings.fromJson(Map<String, dynamic> json) {
     key = json['key'] as String;
     value = json['value'] as String;
     program = json['program'] as String;

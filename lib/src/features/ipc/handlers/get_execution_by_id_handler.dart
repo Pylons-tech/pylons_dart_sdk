@@ -25,6 +25,7 @@ class GetExecutionByIdHandler implements IPCHandler {
       defaultResponse.errorCode = StringConst.ERR_MALFORMED_EXECUTION;
       defaultResponse.success = false;
     }
-    responseCompleters[StringConst.GET_EXECUTION_BY_ID]!.complete(defaultResponse);
+    responseCompleters[StringConst.GET_EXECUTION_BY_ID]!
+        .complete(defaultResponse);
   }
 }

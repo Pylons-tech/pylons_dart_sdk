@@ -124,8 +124,8 @@ class PylonsWalletImpl implements PylonsWallet {
   @override
   Future<SDKIPCResponse<List<Recipe>>> getRecipes(String cookbook) async {
     return Future.sync(() async {
-      final response = await _dispatch(
-          StringConst.GET_RECIPES, jsonEncode({StringConst.COOKBOOK_ID: cookbook}),
+      final response = await _dispatch(StringConst.GET_RECIPES,
+          jsonEncode({StringConst.COOKBOOK_ID: cookbook}),
           requestResponse: true);
       if (response is SDKIPCResponse<List<Recipe>>) {
         return response;
@@ -314,8 +314,10 @@ class PylonsWalletImpl implements PylonsWallet {
     return Future.sync(() async {
       final response = await _dispatch(
           StringConst.GET_RECIPE,
-          jsonEncode(
-              {StringConst.COOKBOOK_ID: cookbookId, StringConst.RECIPE_ID: recipeId}),
+          jsonEncode({
+            StringConst.COOKBOOK_ID: cookbookId,
+            StringConst.RECIPE_ID: recipeId
+          }),
           requestResponse: true);
       if (response is SDKIPCResponse<Recipe>) {
         return response;
@@ -331,8 +333,10 @@ class PylonsWalletImpl implements PylonsWallet {
     return Future.sync(() async {
       final response = await _dispatch(
           StringConst.GET_EXECUTION_BY_RECIPE_ID,
-          jsonEncode(
-              {StringConst.COOKBOOK_ID: cookbookId, StringConst.RECIPE_ID: recipeId}),
+          jsonEncode({
+            StringConst.COOKBOOK_ID: cookbookId,
+            StringConst.RECIPE_ID: recipeId
+          }),
           requestResponse: true);
       if (response is SDKIPCResponse<ExecutionListByRecipeResponse>) {
         return response;
@@ -361,8 +365,10 @@ class PylonsWalletImpl implements PylonsWallet {
     return Future.sync(() async {
       final response = await _dispatch(
           StringConst.GET_ITEM_BY_ID,
-          jsonEncode(
-              {StringConst.COOKBOOK_ID: cookbookId, StringConst.ITEM_ID: itemId}),
+          jsonEncode({
+            StringConst.COOKBOOK_ID: cookbookId,
+            StringConst.ITEM_ID: itemId
+          }),
           requestResponse: true);
       if (response is SDKIPCResponse<Item>) {
         return response;
@@ -375,8 +381,8 @@ class PylonsWalletImpl implements PylonsWallet {
   Future<SDKIPCResponse<Execution>> getExecutionBasedOnId(
       {required String id}) async {
     return Future.sync(() async {
-      final response = await _dispatch(
-          StringConst.GET_EXECUTION_BY_ID, jsonEncode({StringConst.EXECUTION_ID: id}),
+      final response = await _dispatch(StringConst.GET_EXECUTION_BY_ID,
+          jsonEncode({StringConst.EXECUTION_ID: id}),
           requestResponse: true);
       if (response is SDKIPCResponse<Execution>) {
         return response;
