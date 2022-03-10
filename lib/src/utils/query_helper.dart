@@ -51,7 +51,7 @@ class QueryHelper {
   Future<RequestResult<Map<String, dynamic>>> queryPost(
       String url, Map json) async {
     final data = await _httpClient.post(Uri.parse(url),
-        headers: {"Content-type": "application/json"}, body: jsonEncode(json));
+        headers: {'Content-type': 'application/json'}, body: jsonEncode(json));
     if (data.statusCode != HttpStatus.ok) {
       return RequestResult(
         error:

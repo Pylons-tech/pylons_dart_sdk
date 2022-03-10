@@ -34,25 +34,25 @@ extension AccountActionTypePar on String {
 }
 
 class Activity {
-  static const db_id = "id";
-  static const db_username = "username";
-  static const db_action = "action";
-  static const db_item_name = "itemname";
-  static const db_item_url = "itemurl";
-  static const db_item_desc = "itemdesc";
-  static const db_item_cookbookid = "cookbookid";
-  static const db_item_recipeid = "recipeid";
-  static const db_item_id = "itemid";
-  static const db_timestamp = "timestamp";
+  static const db_id = 'id';
+  static const db_username = 'username';
+  static const db_action = 'action';
+  static const db_item_name = 'itemname';
+  static const db_item_url = 'itemurl';
+  static const db_item_desc = 'itemdesc';
+  static const db_item_cookbookid = 'cookbookid';
+  static const db_item_recipeid = 'recipeid';
+  static const db_item_id = 'itemid';
+  static const db_timestamp = 'timestamp';
 
-  String username = "";
-  String itemName = "";
-  String itemUrl = "";
-  String itemDesc = "";
-  String cookbookID = "";
-  String recipeID = "";
-  String itemID = "";
-  String timestamp = "";
+  String username = '';
+  String itemName = '';
+  String itemUrl = '';
+  String itemDesc = '';
+  String cookbookID = '';
+  String recipeID = '';
+  String itemID = '';
+  String timestamp = '';
   ActionType action = ActionType.actionUnknonwn;
   int id = 0;
 

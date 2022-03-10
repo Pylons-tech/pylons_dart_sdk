@@ -13,10 +13,10 @@ class ExecutionListByRecipeResponse {
   }
 
   Map<String, dynamic> toJson() => {
-        "completedExecutions": completedExecutions
+        'completedExecutions': completedExecutions
             .map((execution) => execution.toProto3Json())
             .toList(),
-        "pendingExecutions": pendingExecutions
+        'pendingExecutions': pendingExecutions
             .map((execution) => execution.toProto3Json())
             .toList()
       };

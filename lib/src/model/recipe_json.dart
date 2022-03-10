@@ -125,48 +125,48 @@ class RecipeModel {
 
 extension RecipeValues on RecipeJson {
   String get name => recipe.entries.itemOutputs.first.strings
-      .firstWhere((strKeyVal) => strKeyVal.key == "Name",
-          orElse: () => Strings(key: "", value: "", program: ""))
+      .firstWhere((strKeyVal) => strKeyVal.key == 'Name',
+          orElse: () => Strings(key: '', value: '', program: ''))
       .value;
 
   String get nftUrl => recipe.entries.itemOutputs.first.strings
-      .firstWhere((strKeyVal) => strKeyVal.key == "NFT_URL",
-          orElse: () => Strings(key: "", value: "", program: ""))
+      .firstWhere((strKeyVal) => strKeyVal.key == 'NFT_URL',
+          orElse: () => Strings(key: '', value: '', program: ''))
       .value;
 
   String get description => recipe.entries.itemOutputs.first.strings
-      .firstWhere((strKeyVal) => strKeyVal.key == "Description",
-          orElse: () => Strings(key: "", value: "", program: ""))
+      .firstWhere((strKeyVal) => strKeyVal.key == 'Description',
+          orElse: () => Strings(key: '', value: '', program: ''))
       .value;
 
   String get currency => recipe.entries.itemOutputs.first.strings
-      .firstWhere((strKeyVal) => strKeyVal.key == "Currency",
-          orElse: () => Strings(key: "", value: "", program: ""))
+      .firstWhere((strKeyVal) => strKeyVal.key == 'Currency',
+          orElse: () => Strings(key: '', value: '', program: ''))
       .value;
 
   String get price => recipe.entries.itemOutputs.first.strings
-      .firstWhere((strKeyVal) => strKeyVal.key == "Price",
-          orElse: () => Strings(key: "", value: "", program: ""))
+      .firstWhere((strKeyVal) => strKeyVal.key == 'Price',
+          orElse: () => Strings(key: '', value: '', program: ''))
       .value;
 
   String get creator => recipe.entries.itemOutputs.first.strings
-      .firstWhere((strKeyVal) => strKeyVal.key == "Creator",
-          orElse: () => Strings(key: "", value: "", program: ""))
+      .firstWhere((strKeyVal) => strKeyVal.key == 'Creator',
+          orElse: () => Strings(key: '', value: '', program: ''))
       .value;
 
   String get appType => recipe.entries.itemOutputs.first.strings
-      .firstWhere((strKeyVal) => strKeyVal.key == "App_Type",
-          orElse: () => Strings(key: "", value: "", program: ""))
+      .firstWhere((strKeyVal) => strKeyVal.key == 'App_Type',
+          orElse: () => Strings(key: '', value: '', program: ''))
       .value;
 
   String get width => recipe.entries.itemOutputs.first.longs
-      .firstWhere((longKeyVal) => longKeyVal.key == "Width")
+      .firstWhere((longKeyVal) => longKeyVal.key == 'Width')
       .weightRanges
       .first
       .upper;
 
   String get height => recipe.entries.itemOutputs.first.longs
-      .firstWhere((longKeyVal) => longKeyVal.key == "Height")
+      .firstWhere((longKeyVal) => longKeyVal.key == 'Height')
       .weightRanges
       .first
       .upper;

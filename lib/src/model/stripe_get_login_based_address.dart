@@ -2,7 +2,7 @@ class StripeGetLoginBasedOnAddressRequest {
   String address;
   StripeGetLoginBasedOnAddressRequest(this.address);
 
-  Map<String, dynamic> toJson() => {"address": address};
+  Map<String, dynamic> toJson() => {'address': address};
 }
 
 class StripeGetLoginBasedOnAddressResponse {
