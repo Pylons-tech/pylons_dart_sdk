@@ -22,9 +22,9 @@ class GetExecutionByIdHandler implements IPCHandler {
       }
     } on FormatException catch (_) {
       defaultResponse.error = _.message;
-      defaultResponse.errorCode = Strings.ERR_MALFORMED_EXECUTION;
+      defaultResponse.errorCode = StringConst.ERR_MALFORMED_EXECUTION;
       defaultResponse.success = false;
     }
-    responseCompleters[Strings.GET_EXECUTION_BY_ID]!.complete(defaultResponse);
+    responseCompleters[StringConst.GET_EXECUTION_BY_ID]!.complete(defaultResponse);
   }
 }

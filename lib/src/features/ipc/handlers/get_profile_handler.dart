@@ -24,9 +24,9 @@ class GetProfileHandler implements IPCHandler {
       }
     } on FormatException catch (_) {
       defaultResponse.error = _.message;
-      defaultResponse.errorCode = Strings.ERR_MALFORMED_USER_INFO;
+      defaultResponse.errorCode = StringConst.ERR_MALFORMED_USER_INFO;
       defaultResponse.success = false;
     }
-    responseCompleters[Strings.GET_PROFILE]!.complete(defaultResponse);
+    responseCompleters[StringConst.GET_PROFILE]!.complete(defaultResponse);
   }
 }

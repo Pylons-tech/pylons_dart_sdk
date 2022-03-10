@@ -11,7 +11,7 @@ import '../../../../mocks/mock_constants.dart';
 
 void main() {
   test('should complete the get item by owner handler future', () {
-    initResponseCompleter(Strings.GET_ITEMS_BY_OWNER);
+    initResponseCompleter(StringConst.GET_ITEMS_BY_OWNER);
     var sdkResponse = SDKIPCResponse(
         success: false,
         error: '',
@@ -20,11 +20,11 @@ void main() {
         action: '');
     var handler = GetListItemsByOwnerHandler();
     handler.handler(sdkResponse);
-    expect(true, responseCompleters[Strings.GET_ITEMS_BY_OWNER]!.isCompleted);
+    expect(true, responseCompleters[StringConst.GET_ITEMS_BY_OWNER]!.isCompleted);
   });
 
   test('should complete the get item by owner with data ', () async {
-    initResponseCompleter(Strings.GET_ITEMS_BY_OWNER);
+    initResponseCompleter(StringConst.GET_ITEMS_BY_OWNER);
     var sdkResponse = SDKIPCResponse(
         success: true,
         error: '',
@@ -35,10 +35,10 @@ void main() {
 
     Future.delayed(Duration(seconds: 1), () {
       handler.handler(sdkResponse);
-      expect(true, responseCompleters[Strings.GET_ITEMS_BY_OWNER]!.isCompleted);
+      expect(true, responseCompleters[StringConst.GET_ITEMS_BY_OWNER]!.isCompleted);
     });
 
-    var response = await responseCompleters[Strings.GET_ITEMS_BY_OWNER]!.future;
+    var response = await responseCompleters[StringConst.GET_ITEMS_BY_OWNER]!.future;
 
     expect(true, response.success);
     expect(true, response.data is List<Item>);

@@ -26,8 +26,8 @@ class GetListItemsByOwnerHandler implements IPCHandler {
     } on Exception catch (_) {
       defaultResponse.success = false;
       defaultResponse.error = 'Items list parsing failed';
-      defaultResponse.errorCode = Strings.ERR_MALFORMED_ITEMS_LIST;
+      defaultResponse.errorCode = StringConst.ERR_MALFORMED_ITEMS_LIST;
     }
-    responseCompleters[Strings.GET_ITEMS_BY_OWNER]!.complete(defaultResponse);
+    responseCompleters[StringConst.GET_ITEMS_BY_OWNER]!.complete(defaultResponse);
   }
 }

@@ -10,12 +10,12 @@ void main() {
         'ewoJImFjdGlvbiI6ICJnZXRQcm9maWxlIiwKCSJqc29uIjogIkphd2FkIiwKCSJyZXF1ZXN0X3Jlc3BvbnNlIiA6IHRydWUsCgkic2VuZGVyIjogImV4YW1wbGUiCgp9';
 
     final sdkMessage = SDKIPCMessage.fromIPCMessage(message);
-    expect(Strings.GET_PROFILE, sdkMessage.action);
+    expect(StringConst.GET_PROFILE, sdkMessage.action);
     expect(MOCK_USERNAME, sdkMessage.json);
     expect(MOCK_HOST, sdkMessage.sender);
     print(sdkMessage.toString());
     expect(
-        'SDKIPCMessage{action: ${Strings.GET_PROFILE}, json: $MOCK_USERNAME, sender: $MOCK_HOST, requestResponse: ${true}}',
+        'SDKIPCMessage{action: ${StringConst.GET_PROFILE}, json: $MOCK_USERNAME, sender: $MOCK_HOST, requestResponse: ${true}}',
         sdkMessage.toString());
   });
 }

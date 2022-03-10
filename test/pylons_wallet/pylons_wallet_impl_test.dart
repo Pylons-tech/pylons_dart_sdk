@@ -65,12 +65,12 @@ void goToLoginTest() {
           error: '',
           data: '',
           errorCode: '',
-          action: Strings.GO_TO_PYLONS);
-      responseCompleters[Strings.GO_TO_PYLONS]!.complete(sdkResponse);
+          action: StringConst.GO_TO_PYLONS);
+      responseCompleters[StringConst.GO_TO_PYLONS]!.complete(sdkResponse);
     });
     var response = await pylonsWallet.goToPylons();
     expect(response.success, true);
-    expect(response.action, Strings.GO_TO_PYLONS);
+    expect(response.action, StringConst.GO_TO_PYLONS);
   });
 
   test('should simply redirect to the Pylons Wallet app without redirecting',
@@ -83,7 +83,7 @@ void goToLoginTest() {
 
     var response = await pylonsWallet.goToPylons(requestResponse: false);
     expect(response.success, true);
-    expect(response.data, Strings.ACTION_DONE);
+    expect(response.data, StringConst.ACTION_DONE);
   });
 }
 
@@ -100,12 +100,12 @@ void placeForSaleTest() {
           error: '',
           data: '',
           errorCode: '',
-          action: Strings.TX_PLACE_FOR_SALE);
-      responseCompleters[Strings.TX_PLACE_FOR_SALE]!.complete(sdkResponse);
+          action: StringConst.TX_PLACE_FOR_SALE);
+      responseCompleters[StringConst.TX_PLACE_FOR_SALE]!.complete(sdkResponse);
     });
     var response = await pylonsWallet.txPlaceForSale(MOCK_ITEM_REF, MOCK_PRICE);
     expect(true, response.success);
-    expect(response.action, Strings.TX_PLACE_FOR_SALE);
+    expect(response.action, StringConst.TX_PLACE_FOR_SALE);
   });
 }
 
@@ -127,13 +127,13 @@ void getTradesTest() {
             Trade()..createEmptyInstance()
           ],
           errorCode: '',
-          action: Strings.GET_TRADES);
-      responseCompleters[Strings.GET_TRADES]!.complete(sdkResponse);
+          action: StringConst.GET_TRADES);
+      responseCompleters[StringConst.GET_TRADES]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.getTrades(MOCK_CREATOR);
 
-    expect(response.action, Strings.GET_TRADES);
+    expect(response.action, StringConst.GET_TRADES);
   });
 }
 
@@ -152,14 +152,14 @@ void getExecutionByIdTest() {
           error: '',
           data: MOCK_EXECUTION,
           errorCode: '',
-          action: Strings.GET_EXECUTION_BY_ID);
-      responseCompleters[Strings.GET_EXECUTION_BY_ID]!.complete(sdkResponse);
+          action: StringConst.GET_EXECUTION_BY_ID);
+      responseCompleters[StringConst.GET_EXECUTION_BY_ID]!.complete(sdkResponse);
     });
 
     var response =
         await pylonsWallet.getExecutionBasedOnId(id: MOCK_EXECUTION_ID);
 
-    expect(response.action, Strings.GET_EXECUTION_BY_ID);
+    expect(response.action, StringConst.GET_EXECUTION_BY_ID);
   });
 }
 
@@ -178,14 +178,14 @@ void getItemByIdTest() {
           error: '',
           data: MOCK_ITEM,
           errorCode: '',
-          action: Strings.GET_ITEM_BY_ID);
-      responseCompleters[Strings.GET_ITEM_BY_ID]!.complete(sdkResponse);
+          action: StringConst.GET_ITEM_BY_ID);
+      responseCompleters[StringConst.GET_ITEM_BY_ID]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.getItemById(
         cookbookId: MOCK_COOKBOOK_ID, itemId: MOCK_ITEM_ID);
 
-    expect(response.action, Strings.GET_ITEM_BY_ID);
+    expect(response.action, StringConst.GET_ITEM_BY_ID);
   });
 }
 
@@ -204,14 +204,14 @@ void getItemsByOwnerTest() {
           error: '',
           data: [MOCK_ITEM],
           errorCode: '',
-          action: Strings.GET_ITEMS_BY_OWNER);
-      responseCompleters[Strings.GET_ITEMS_BY_OWNER]!.complete(sdkResponse);
+          action: StringConst.GET_ITEMS_BY_OWNER);
+      responseCompleters[StringConst.GET_ITEMS_BY_OWNER]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.getItemListByOwner(owner: MOCK_OWNER);
 
     expect(response.data.length, 1);
-    expect(response.action, Strings.GET_ITEMS_BY_OWNER);
+    expect(response.action, StringConst.GET_ITEMS_BY_OWNER);
   });
 }
 
@@ -230,15 +230,15 @@ void getExecutionByRecipeTest() {
           error: '',
           data: ExecutionListByRecipeResponse.empty(),
           errorCode: '',
-          action: Strings.GET_EXECUTION_BY_RECIPE_ID);
-      responseCompleters[Strings.GET_EXECUTION_BY_RECIPE_ID]!
+          action: StringConst.GET_EXECUTION_BY_RECIPE_ID);
+      responseCompleters[StringConst.GET_EXECUTION_BY_RECIPE_ID]!
           .complete(sdkResponse);
     });
 
     var response = await pylonsWallet.getExecutionBasedOnRecipe(
         cookbookId: MOCK_COOKBOOK_ID, recipeId: MOCK_RECIPE_ID);
 
-    expect(response.action, Strings.GET_EXECUTION_BY_RECIPE_ID);
+    expect(response.action, StringConst.GET_EXECUTION_BY_RECIPE_ID);
   });
 }
 
@@ -257,8 +257,8 @@ void getRecipeTest() {
           error: '',
           data: MOCK_RECIPE,
           errorCode: '',
-          action: Strings.GET_RECIPE);
-      responseCompleters[Strings.GET_RECIPE]!.complete(sdkResponse);
+          action: StringConst.GET_RECIPE);
+      responseCompleters[StringConst.GET_RECIPE]!.complete(sdkResponse);
     });
 
     var response =
@@ -266,7 +266,7 @@ void getRecipeTest() {
 
     expect(response.data.iD, MOCK_RECIPE_ID);
     expect(response.data.cookbookID, MOCK_COOKBOOK_ID);
-    expect(response.action, Strings.GET_RECIPE);
+    expect(response.action, StringConst.GET_RECIPE);
   });
 }
 
@@ -285,14 +285,14 @@ void createRecipeTest() {
           error: '',
           data: '',
           errorCode: '',
-          action: Strings.TX_CREATE_RECIPE);
-      responseCompleters[Strings.TX_CREATE_RECIPE]!.complete(sdkResponse);
+          action: StringConst.TX_CREATE_RECIPE);
+      responseCompleters[StringConst.TX_CREATE_RECIPE]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.txCreateRecipe(MOCK_RECIPE);
 
     expect(true, response.success);
-    expect(response.action, Strings.TX_CREATE_RECIPE);
+    expect(response.action, StringConst.TX_CREATE_RECIPE);
   });
 
   test('should create recipe in the wallet without redirecting', () async {
@@ -307,7 +307,7 @@ void createRecipeTest() {
         await pylonsWallet.txCreateRecipe(MOCK_RECIPE, requestResponse: false);
 
     expect(true, response.success);
-    expect(response.data, Strings.ACTION_DONE);
+    expect(response.data, StringConst.ACTION_DONE);
   });
 }
 
@@ -329,14 +329,14 @@ void updateCookBookTest() {
           error: '',
           data: '',
           errorCode: '',
-          action: Strings.TX_UPDATE_COOKBOOK);
-      responseCompleters[Strings.TX_UPDATE_COOKBOOK]!.complete(sdkResponse);
+          action: StringConst.TX_UPDATE_COOKBOOK);
+      responseCompleters[StringConst.TX_UPDATE_COOKBOOK]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.txUpdateCookbook(cookBook);
 
     expect(true, response.success);
-    expect(response.action, Strings.TX_UPDATE_COOKBOOK);
+    expect(response.action, StringConst.TX_UPDATE_COOKBOOK);
   });
 
   test('should update cookbook in the wallet without redirecting', () async {
@@ -354,7 +354,7 @@ void updateCookBookTest() {
         await pylonsWallet.txUpdateCookbook(cookBook, requestResponse: false);
 
     expect(true, response.success);
-    expect(response.data, Strings.ACTION_DONE);
+    expect(response.data, StringConst.ACTION_DONE);
   });
 }
 
@@ -373,14 +373,14 @@ void updateRecipeTest() {
           error: '',
           data: '',
           errorCode: '',
-          action: Strings.TX_UPDATE_RECIPE);
-      responseCompleters[Strings.TX_UPDATE_RECIPE]!.complete(sdkResponse);
+          action: StringConst.TX_UPDATE_RECIPE);
+      responseCompleters[StringConst.TX_UPDATE_RECIPE]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.txUpdateRecipe(MOCK_RECIPE);
 
     expect(true, response.success);
-    expect(response.action, Strings.TX_UPDATE_RECIPE);
+    expect(response.action, StringConst.TX_UPDATE_RECIPE);
   });
 
   test('should update recipe in the wallet without redirecting', () async {
@@ -395,7 +395,7 @@ void updateRecipeTest() {
         await pylonsWallet.txUpdateRecipe(MOCK_RECIPE, requestResponse: false);
 
     expect(true, response.success);
-    expect(response.data, Strings.ACTION_DONE);
+    expect(response.data, StringConst.ACTION_DONE);
   });
 }
 
@@ -428,8 +428,8 @@ void executeRecipeTest() {
           error: '',
           data: '',
           errorCode: '',
-          action: Strings.TX_EXECUTE_RECIPE);
-      responseCompleters[Strings.TX_EXECUTE_RECIPE]!.complete(sdkResponse);
+          action: StringConst.TX_EXECUTE_RECIPE);
+      responseCompleters[StringConst.TX_EXECUTE_RECIPE]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.txExecuteRecipe(
@@ -440,7 +440,7 @@ void executeRecipeTest() {
         coinInputIndex: 0);
 
     expect(true, response.success);
-    expect(response.action, Strings.TX_EXECUTE_RECIPE);
+    expect(response.action, StringConst.TX_EXECUTE_RECIPE);
   });
 
   test('should execute recipe in the wallet without redirecting', () async {
@@ -460,7 +460,7 @@ void executeRecipeTest() {
         requestResponse: false);
 
     expect(true, response.success);
-    expect(response.data, Strings.ACTION_DONE);
+    expect(response.data, StringConst.ACTION_DONE);
   });
 }
 
@@ -482,14 +482,14 @@ void createCookBookTest() {
           error: '',
           data: '',
           errorCode: '',
-          action: Strings.TX_CREATE_COOKBOOK);
-      responseCompleters[Strings.TX_CREATE_COOKBOOK]!.complete(sdkResponse);
+          action: StringConst.TX_CREATE_COOKBOOK);
+      responseCompleters[StringConst.TX_CREATE_COOKBOOK]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.txCreateCookbook(cookBook);
 
     expect(true, response.success);
-    expect(response.action, Strings.TX_CREATE_COOKBOOK);
+    expect(response.action, StringConst.TX_CREATE_COOKBOOK);
   });
 
   test('should create cookbook in the wallet without redirecting back',
@@ -508,7 +508,7 @@ void createCookBookTest() {
         await pylonsWallet.txCreateCookbook(cookBook, requestResponse: false);
 
     expect(true, response.success);
-    expect(response.data, Strings.ACTION_DONE);
+    expect(response.data, StringConst.ACTION_DONE);
   });
 }
 
@@ -530,14 +530,14 @@ void getRecipesTest() {
             Recipe()..createEmptyInstance()
           ],
           errorCode: '',
-          action: Strings.GET_RECIPES);
-      responseCompleters[Strings.GET_RECIPES]!.complete(sdkResponse);
+          action: StringConst.GET_RECIPES);
+      responseCompleters[StringConst.GET_RECIPES]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.getRecipes(MOCK_COOKBOOK_ID);
 
     expect(response.data.length, 2);
-    expect(response.action, Strings.GET_RECIPES);
+    expect(response.action, StringConst.GET_RECIPES);
   });
 }
 
@@ -556,8 +556,8 @@ void getProfileTest() {
           error: '',
           data: MOCK_USER_INFO_MODEL,
           errorCode: '',
-          action: Strings.GET_PROFILE);
-      responseCompleters[Strings.GET_PROFILE]!.complete(sdkResponse);
+          action: StringConst.GET_PROFILE);
+      responseCompleters[StringConst.GET_PROFILE]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.getProfile();
@@ -565,7 +565,7 @@ void getProfileTest() {
     expect(response.data.username, MOCK_USERNAME);
     expect(response.data.stripeExists, MOCK_STRIPE_EXISTS);
     expect(response.data.address, MOCK_OWNER);
-    expect(response.action, Strings.GET_PROFILE);
+    expect(response.action, StringConst.GET_PROFILE);
   });
 }
 
@@ -587,8 +587,8 @@ void getCookBookTest() {
           error: '',
           data: cookBook,
           errorCode: '',
-          action: Strings.GET_COOKBOOK);
-      responseCompleters[Strings.GET_COOKBOOK]!.complete(sdkResponse);
+          action: StringConst.GET_COOKBOOK);
+      responseCompleters[StringConst.GET_COOKBOOK]!.complete(sdkResponse);
     });
 
     var response = await pylonsWallet.getCookbook(MOCK_COOKBOOK_ID);

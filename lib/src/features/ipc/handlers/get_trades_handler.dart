@@ -22,9 +22,9 @@ class GetTradesHandler implements IPCHandler {
       }
     } on Exception catch (_) {
       defaultResponse.error = 'Trades parsing failed';
-      defaultResponse.errorCode = Strings.ERR_MALFORMED_TRADES;
+      defaultResponse.errorCode = StringConst.ERR_MALFORMED_TRADES;
       defaultResponse.success = false;
     }
-    responseCompleters[Strings.GET_TRADES]!.complete(defaultResponse);
+    responseCompleters[StringConst.GET_TRADES]!.complete(defaultResponse);
   }
 }

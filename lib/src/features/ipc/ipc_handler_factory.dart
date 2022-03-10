@@ -15,15 +15,15 @@ import 'handlers/get_execution_by_recipe_handler.dart';
 
 class IPCHandlerFactory {
   static final Map<String, IPCHandler> handlers = {
-    Strings.GET_COOKBOOK: GetCookbooksHandler(),
-    Strings.GET_RECIPES: GetRecipesHandler(),
-    Strings.GET_RECIPE: GetRecipeHandler(),
-    Strings.GET_EXECUTION_BY_RECIPE_ID: GetExecutionByRecipeHandler(),
-    Strings.GET_ITEMS_BY_OWNER: GetListItemsByOwnerHandler(),
-    Strings.GET_ITEM_BY_ID: GetItemByIdHandler(),
-    Strings.GET_EXECUTION_BY_ID: GetExecutionByIdHandler(),
-    Strings.GET_TRADES: GetTradesHandler(),
-    Strings.GET_PROFILE: GetProfileHandler(),
+    StringConst.GET_COOKBOOK: GetCookbooksHandler(),
+    StringConst.GET_RECIPES: GetRecipesHandler(),
+    StringConst.GET_RECIPE: GetRecipeHandler(),
+    StringConst.GET_EXECUTION_BY_RECIPE_ID: GetExecutionByRecipeHandler(),
+    StringConst.GET_ITEMS_BY_OWNER: GetListItemsByOwnerHandler(),
+    StringConst.GET_ITEM_BY_ID: GetItemByIdHandler(),
+    StringConst.GET_EXECUTION_BY_ID: GetExecutionByIdHandler(),
+    StringConst.GET_TRADES: GetTradesHandler(),
+    StringConst.GET_PROFILE: GetProfileHandler(),
   };
 
   /// Fetches and resolves appropriate [IPCHandler] instance for [sdkIpcResponse], or completes

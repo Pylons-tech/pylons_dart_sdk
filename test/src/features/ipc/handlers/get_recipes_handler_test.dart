@@ -9,16 +9,16 @@ import '../../../../mocks/mock_constants.dart';
 
 void main() {
   test('should complete the get All recipe future', () {
-    initResponseCompleter(Strings.GET_RECIPES);
+    initResponseCompleter(StringConst.GET_RECIPES);
     var sdkResponse = SDKIPCResponse(
         success: false, error: '', data: '', errorCode: '', action: '');
     var handler = GetRecipesHandler();
     handler.handler(sdkResponse);
-    expect(true, responseCompleters[Strings.GET_RECIPES]!.isCompleted);
+    expect(true, responseCompleters[StringConst.GET_RECIPES]!.isCompleted);
   });
 
   test('should complete the get All recipe future with data ', () async {
-    initResponseCompleter(Strings.GET_RECIPES);
+    initResponseCompleter(StringConst.GET_RECIPES);
     var sdkResponse = SDKIPCResponse(
         success: true,
         error: '',
@@ -29,17 +29,17 @@ void main() {
 
     Future.delayed(Duration(seconds: 1), () {
       handler.handler(sdkResponse);
-      expect(true, responseCompleters[Strings.GET_RECIPES]!.isCompleted);
+      expect(true, responseCompleters[StringConst.GET_RECIPES]!.isCompleted);
     });
 
-    var response = await responseCompleters[Strings.GET_RECIPES]!.future;
+    var response = await responseCompleters[StringConst.GET_RECIPES]!.future;
     expect(true, response.success);
     expect(true, response.data is List<Recipe>);
     expect(1, List<Recipe>.from(response.data).length);
   });
 
   test('should complete the get All recipe future with error ', () async {
-    initResponseCompleter(Strings.GET_RECIPES);
+    initResponseCompleter(StringConst.GET_RECIPES);
     var sdkResponse = SDKIPCResponse(
         success: true,
         error: '',
@@ -55,11 +55,11 @@ void main() {
 
     Future.delayed(Duration(seconds: 1), () {
       handler.handler(sdkResponse);
-      expect(true, responseCompleters[Strings.GET_RECIPES]!.isCompleted);
+      expect(true, responseCompleters[StringConst.GET_RECIPES]!.isCompleted);
     });
 
-    var response = await responseCompleters[Strings.GET_RECIPES]!.future;
+    var response = await responseCompleters[StringConst.GET_RECIPES]!.future;
     expect(false, response.success);
-    expect(Strings.ERR_MALFORMED_RECIPES, response.errorCode);
+    expect(StringConst.ERR_MALFORMED_RECIPES, response.errorCode);
   });
 }

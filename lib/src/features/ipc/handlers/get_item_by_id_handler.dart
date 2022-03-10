@@ -24,9 +24,9 @@ class GetItemByIdHandler implements IPCHandler {
       }
     } on FormatException catch (_) {
       defaultResponse.error = _.message;
-      defaultResponse.errorCode = Strings.ERR_MALFORMED_ITEM;
+      defaultResponse.errorCode = StringConst.ERR_MALFORMED_ITEM;
       defaultResponse.success = false;
     }
-    responseCompleters[Strings.GET_ITEM_BY_ID]!.complete(defaultResponse);
+    responseCompleters[StringConst.GET_ITEM_BY_ID]!.complete(defaultResponse);
   }
 }

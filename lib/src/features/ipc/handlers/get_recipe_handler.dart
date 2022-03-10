@@ -24,9 +24,9 @@ class GetRecipeHandler implements IPCHandler {
       }
     } on FormatException catch (_) {
       defaultResponse.error = _.message;
-      defaultResponse.errorCode = Strings.ERR_MALFORMED_RECIPE;
+      defaultResponse.errorCode = StringConst.ERR_MALFORMED_RECIPE;
       defaultResponse.success = false;
     }
-    responseCompleters[Strings.GET_RECIPE]!.complete(defaultResponse);
+    responseCompleters[StringConst.GET_RECIPE]!.complete(defaultResponse);
   }
 }

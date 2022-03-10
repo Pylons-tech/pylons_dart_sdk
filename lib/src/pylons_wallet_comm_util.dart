@@ -37,10 +37,10 @@ class PylonsWalletCommUtil {
       Tuple2<String, List<String>> response, List<String> errors) {
     if (errors.contains(response.value2[0])) {
       switch (response.value1) {
-        case Strings.ERR_NODE:
+        case StringConst.ERR_NODE:
           {
             checkError(
-                Strings.ERR_NODE,
+                StringConst.ERR_NODE,
                 response,
                 NodeInternalErrorException(
                     int.parse(response.value2[1]),
@@ -48,77 +48,77 @@ class PylonsWalletCommUtil {
                     'Node threw an unexpected error! Debug this!'));
             break;
           }
-        case Strings.ERR_PROFILE_DOES_NOT_EXIST:
+        case StringConst.ERR_PROFILE_DOES_NOT_EXIST:
           {
-            checkError(Strings.ERR_PROFILE_DOES_NOT_EXIST, response,
+            checkError(StringConst.ERR_PROFILE_DOES_NOT_EXIST, response,
                 ProfileDoesNotExistException(response.value2[1]));
             break;
           }
-        case Strings.ERR_PAYMENT_NOT_VALID:
+        case StringConst.ERR_PAYMENT_NOT_VALID:
           {
-            checkError(Strings.ERR_PAYMENT_NOT_VALID, response,
+            checkError(StringConst.ERR_PAYMENT_NOT_VALID, response,
                 PaymentNotValidException(response.value2[1], 'Bad payment'));
             break;
           }
-        case Strings.ERR_INSUFFICIENT_FUNDS:
+        case StringConst.ERR_INSUFFICIENT_FUNDS:
           {
-            checkError(Strings.ERR_INSUFFICIENT_FUNDS, response,
+            checkError(StringConst.ERR_INSUFFICIENT_FUNDS, response,
                 ProfileStateException('Insufficient funds'));
             break;
           }
-        case Strings.ERR_COOKBOOK_ALREADY_EXISTS:
+        case StringConst.ERR_COOKBOOK_ALREADY_EXISTS:
           {
             checkError(
-                Strings.ERR_COOKBOOK_ALREADY_EXISTS,
+                StringConst.ERR_COOKBOOK_ALREADY_EXISTS,
                 response,
                 CookbookAlreadyExistsException(response.value2[1],
                     response.value2[2], 'Cookbook already exists'));
             break;
           }
-        case Strings.ERR_COOKBOOK_DOES_NOT_EXIST:
+        case StringConst.ERR_COOKBOOK_DOES_NOT_EXIST:
           {
             checkError(
-              Strings.ERR_COOKBOOK_DOES_NOT_EXIST,
+              StringConst.ERR_COOKBOOK_DOES_NOT_EXIST,
               response,
               CookbookDoesNotExistException(
                   response.value2[1], 'Cookbook does not exist'),
             );
             break;
           }
-        case Strings.ERR_COOKBOOK_NOT_OWNED:
+        case StringConst.ERR_COOKBOOK_NOT_OWNED:
           {
             checkError(
-              Strings.ERR_COOKBOOK_NOT_OWNED,
+              StringConst.ERR_COOKBOOK_NOT_OWNED,
               response,
               CookbookNotOwnedException(
                   response.value2[1], response.value2[2], 'Cookbook not owned'),
             );
             break;
           }
-        case Strings.ERR_RECIPE_ALREADY_EXISTS:
+        case StringConst.ERR_RECIPE_ALREADY_EXISTS:
           {
             checkError(
-              Strings.ERR_RECIPE_ALREADY_EXISTS,
+              StringConst.ERR_RECIPE_ALREADY_EXISTS,
               response,
               RecipeAlreadyExistsException(response.value2[1],
                   response.value2[2], 'Recipe already exists'),
             );
             break;
           }
-        case Strings.ERR_RECIPE_ALREADY_DISABLED:
+        case StringConst.ERR_RECIPE_ALREADY_DISABLED:
           {
             checkError(
-              Strings.ERR_RECIPE_ALREADY_DISABLED,
+              StringConst.ERR_RECIPE_ALREADY_DISABLED,
               response,
               RecipeStateException(response.value2[1], response.value2[2],
                   response.value2[3], 'Recipe already disabled'),
             );
             break;
           }
-        case Strings.ERR_RECIPE_ALREADY_ENABLED:
+        case StringConst.ERR_RECIPE_ALREADY_ENABLED:
           {
             checkError(
-              Strings.ERR_RECIPE_ALREADY_ENABLED,
+              StringConst.ERR_RECIPE_ALREADY_ENABLED,
               response,
               RecipeStateException(response.value2[1], response.value2[2],
                   response.value2[3], 'Recipe already enabled'),

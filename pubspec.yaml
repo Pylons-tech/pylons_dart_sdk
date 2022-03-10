@@ -28,6 +28,7 @@ dependencies:
   fixnum: ^1.0.0
 
   bitstream: ^0.0.4
+  http: ^0.13.4
 
 dev_dependencies:
   flutter_test:

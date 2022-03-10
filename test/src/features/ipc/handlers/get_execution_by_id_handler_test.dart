@@ -10,16 +10,16 @@ import '../../../../mocks/mock_constants.dart';
 
 void main() {
   test('should complete the get  execution based on id handler future', () {
-    initResponseCompleter(Strings.GET_EXECUTION_BY_ID);
+    initResponseCompleter(StringConst.GET_EXECUTION_BY_ID);
     var sdkResponse = SDKIPCResponse(
         success: false, error: '', data: '', errorCode: '', action: '');
     var handler = GetExecutionByIdHandler();
     handler.handler(sdkResponse);
-    expect(true, responseCompleters[Strings.GET_EXECUTION_BY_ID]!.isCompleted);
+    expect(true, responseCompleters[StringConst.GET_EXECUTION_BY_ID]!.isCompleted);
   });
 
   test('should complete the get  execution by id   with data ', () async {
-    initResponseCompleter(Strings.GET_EXECUTION_BY_ID);
+    initResponseCompleter(StringConst.GET_EXECUTION_BY_ID);
     var sdkResponse = SDKIPCResponse(
         success: true,
         error: '',
@@ -31,11 +31,11 @@ void main() {
     Future.delayed(Duration(seconds: 1), () {
       handler.handler(sdkResponse);
       expect(
-          true, responseCompleters[Strings.GET_EXECUTION_BY_ID]!.isCompleted);
+          true, responseCompleters[StringConst.GET_EXECUTION_BY_ID]!.isCompleted);
     });
 
     var response =
-        await responseCompleters[Strings.GET_EXECUTION_BY_ID]!.future;
+        await responseCompleters[StringConst.GET_EXECUTION_BY_ID]!.future;
 
     expect(true, response.success);
     expect(MOCK_EXECUTION, response.data);

@@ -22,10 +22,10 @@ class GetExecutionByRecipeHandler implements IPCHandler {
       }
     } on FormatException catch (_) {
       defaultResponse.error = _.message;
-      defaultResponse.errorCode = Strings.ERR_MALFORMED_EXECUTION;
+      defaultResponse.errorCode = StringConst.ERR_MALFORMED_EXECUTION;
       defaultResponse.success = false;
     }
-    responseCompleters[Strings.GET_EXECUTION_BY_RECIPE_ID]!
+    responseCompleters[StringConst.GET_EXECUTION_BY_RECIPE_ID]!
         .complete(defaultResponse);
   }
 }

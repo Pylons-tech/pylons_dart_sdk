@@ -9,18 +9,18 @@ import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 
 void main() {
   test('should complete the get  execution by recipe handler future', () {
-    initResponseCompleter(Strings.GET_EXECUTION_BY_RECIPE_ID);
+    initResponseCompleter(StringConst.GET_EXECUTION_BY_RECIPE_ID);
     var sdkResponse = SDKIPCResponse(
         success: false, error: '', data: '', errorCode: '', action: '');
     var handler = GetExecutionByRecipeHandler();
     handler.handler(sdkResponse);
     expect(true,
-        responseCompleters[Strings.GET_EXECUTION_BY_RECIPE_ID]!.isCompleted);
+        responseCompleters[StringConst.GET_EXECUTION_BY_RECIPE_ID]!.isCompleted);
   });
 
   test('should complete the get  execution by recipe handler  with data ',
       () async {
-    initResponseCompleter(Strings.GET_EXECUTION_BY_RECIPE_ID);
+    initResponseCompleter(StringConst.GET_EXECUTION_BY_RECIPE_ID);
     var sdkResponse = SDKIPCResponse(
         success: true,
         error: '',
@@ -32,11 +32,11 @@ void main() {
     Future.delayed(Duration(seconds: 1), () {
       handler.handler(sdkResponse);
       expect(true,
-          responseCompleters[Strings.GET_EXECUTION_BY_RECIPE_ID]!.isCompleted);
+          responseCompleters[StringConst.GET_EXECUTION_BY_RECIPE_ID]!.isCompleted);
     });
 
     var response =
-        await responseCompleters[Strings.GET_EXECUTION_BY_RECIPE_ID]!.future;
+        await responseCompleters[StringConst.GET_EXECUTION_BY_RECIPE_ID]!.future;
 
     expect(true, response.success);
     expect(true, response.data is ExecutionListByRecipeResponse);

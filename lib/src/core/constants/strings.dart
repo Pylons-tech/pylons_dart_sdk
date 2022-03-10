@@ -1,7 +1,7 @@
 /// Contains string constants.
 ///
 /// TODO: should these be split into multiple classes based on usage?
-class Strings {
+class StringConst {
   static const String GO_TO_PYLONS = 'goToPylons';
   static const String GET_COOKBOOK = 'getCookbook';
   static const String GET_PROFILE = 'getProfile';

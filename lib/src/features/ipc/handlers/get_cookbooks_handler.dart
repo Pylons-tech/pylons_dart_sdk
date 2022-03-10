@@ -23,8 +23,8 @@ class GetCookbooksHandler implements IPCHandler {
     } on Exception catch (_) {
       defaultResponse.success = false;
       defaultResponse.error = 'Cookbook parsing failed';
-      defaultResponse.errorCode = Strings.ERR_MALFORMED_COOKBOOK;
+      defaultResponse.errorCode = StringConst.ERR_MALFORMED_COOKBOOK;
     }
-    responseCompleters[Strings.GET_COOKBOOK]!.complete(defaultResponse);
+    responseCompleters[StringConst.GET_COOKBOOK]!.complete(defaultResponse);
   }
 }
