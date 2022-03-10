@@ -15,7 +15,8 @@ void main() {
         success: false, error: '', data: '', errorCode: '', action: '');
     var handler = GetExecutionByIdHandler();
     handler.handler(sdkResponse);
-    expect(true, responseCompleters[StringConst.GET_EXECUTION_BY_ID]!.isCompleted);
+    expect(
+        true, responseCompleters[StringConst.GET_EXECUTION_BY_ID]!.isCompleted);
   });
 
   test('should complete the get  execution by id   with data ', () async {
@@ -30,8 +31,8 @@ void main() {
 
     Future.delayed(Duration(seconds: 1), () {
       handler.handler(sdkResponse);
-      expect(
-          true, responseCompleters[StringConst.GET_EXECUTION_BY_ID]!.isCompleted);
+      expect(true,
+          responseCompleters[StringConst.GET_EXECUTION_BY_ID]!.isCompleted);
     });
 
     var response =

@@ -20,7 +20,8 @@ void main() {
         action: '');
     var handler = GetListItemsByOwnerHandler();
     handler.handler(sdkResponse);
-    expect(true, responseCompleters[StringConst.GET_ITEMS_BY_OWNER]!.isCompleted);
+    expect(
+        true, responseCompleters[StringConst.GET_ITEMS_BY_OWNER]!.isCompleted);
   });
 
   test('should complete the get item by owner with data ', () async {
@@ -35,10 +36,12 @@ void main() {
 
     Future.delayed(Duration(seconds: 1), () {
       handler.handler(sdkResponse);
-      expect(true, responseCompleters[StringConst.GET_ITEMS_BY_OWNER]!.isCompleted);
+      expect(true,
+          responseCompleters[StringConst.GET_ITEMS_BY_OWNER]!.isCompleted);
     });
 
-    var response = await responseCompleters[StringConst.GET_ITEMS_BY_OWNER]!.future;
+    var response =
+        await responseCompleters[StringConst.GET_ITEMS_BY_OWNER]!.future;
 
     expect(true, response.success);
     expect(true, response.data is List<Item>);

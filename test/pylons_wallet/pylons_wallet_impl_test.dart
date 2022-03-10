@@ -153,7 +153,8 @@ void getExecutionByIdTest() {
           data: MOCK_EXECUTION,
           errorCode: '',
           action: StringConst.GET_EXECUTION_BY_ID);
-      responseCompleters[StringConst.GET_EXECUTION_BY_ID]!.complete(sdkResponse);
+      responseCompleters[StringConst.GET_EXECUTION_BY_ID]!
+          .complete(sdkResponse);
     });
 
     var response =
