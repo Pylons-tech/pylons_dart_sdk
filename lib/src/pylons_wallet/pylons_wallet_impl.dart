@@ -21,6 +21,7 @@ import 'package:pylons_sdk/src/features/models/sdk_ipc_message.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
+import 'package:android_intent_plus/android_intent.dart';
 
 import '../../pylons_sdk.dart';
 import '../core/constants/strings.dart';
@@ -118,6 +119,19 @@ class PylonsWalletImpl implements PylonsWallet {
         return response;
       }
       throw Exception('Response malformed');
+    });
+  }
+
+  @override
+  /*Future<SDKIPCResponse<Profile>>*/void getProfileTest() async {
+    return Future.sync(() async {
+      if (Platform.isAndroid) {
+        final intent = AndroidIntent(
+          action: 'ipc',
+          arguments: {'msg': Strings.GET_PROFILE},
+        );
+        await intent.sendBroadcast();
+      }
     });
   }
 

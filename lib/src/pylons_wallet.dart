@@ -140,6 +140,8 @@ abstract class PylonsWallet {
   /// exception will be passed directly.
   Future<SDKIPCResponse<Profile>> getProfile();
 
+  void/*Future<SDKIPCResponse<Profile>>*/ getProfileTest();
+
   /// Async: Retrieves a list of recipes on the Pylons chain in the cookbook with ID
   /// [cookbook].
   ///

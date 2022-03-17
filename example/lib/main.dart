@@ -331,9 +331,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void getProfile() async {
-    var sdkResponse = await PylonsWallet.instance.getProfile();
-
-    log(sdkResponse.toString(), name: 'pylons_sdk');
+    PylonsWallet.instance.getProfileTest();
   }
 
   Future getRecipes() async {
