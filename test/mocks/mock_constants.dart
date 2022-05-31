@@ -112,4 +112,5 @@ Profile MOCK_USER_INFO_MODEL = Profile(
     stripeExists: MOCK_STRIPE_EXISTS,
     items: [],
     address: MOCK_OWNER,
-    coins: []);
+    coins: [],
+    supportedCoins: ['upylon', 'uatom']);

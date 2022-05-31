@@ -11,18 +11,20 @@ import 'package:decimal/decimal.dart';
 /// Multiple queries must be made to compose one of these objects. This is not normally relevant to
 /// client applications, but may matter if you're trying to do anything too low-level.
 
-class Profile {
-  String address;
-  String username;
-  bool stripeExists;
-  List<Balance> coins;
-  List<Item> items;
+class Profile extends Equatable {
+  final String address;
+  final String username;
+  final bool stripeExists;
+  final List<Balance> coins;
+  final List<Item> items;
+  final List<String> supportedCoins;
 
   Profile(
       {required this.address,
       required this.username,
       required this.coins,
       required this.stripeExists,
+      required this.supportedCoins,
       required this.items});
 
   Map<String, dynamic> toJson() => {
@@ -30,7 +32,9 @@ class Profile {
         'username': username,
         'stripeExists': stripeExists,
         'coins': coins.map((Balance balance) => balance.toJson()).toList(),
-        'items': items.map((Item item) => item.toProto3Json()).toList()
+        'items': items.map((Item item) => item.toProto3Json()).toList(),
+        'supportedCoins':
+            supportedCoins.map((supportedCoin) => supportedCoin).toList()
       };
 
   factory Profile.fromJson(Map<String, dynamic> json) {
@@ -44,18 +48,34 @@ class Profile {
           .map((item) => Item.create()..mergeFromProto3Json(item))
           .toList(),
       stripeExists: json['stripeExists'],
+      supportedCoins: List<String>.from(json['supportedCoins']),
     );
   }
 
   factory Profile.initial() {
     return Profile(
-        items: [], username: '', coins: [], stripeExists: false, address: '');
+        items: [],
+        username: '',
+        coins: [],
+        stripeExists: false,
+        address: '',
+        supportedCoins: []);
   }
 
   @override
   String toString() {
-    return 'Profile{address: $address, username: $username, stripeExists: $stripeExists, coins: $coins, items: $items}';
+    return 'Profile{address: $address, username: $username, stripeExists: $stripeExists, coins: $coins, items: $items, supportedCoins: $supportedCoins}';
   }
+
+  @override
+  List<Object?> get props => [
+        address,
+        username,
+        stripeExists,
+        coins,
+        items,
+        supportedCoins,
+      ];
 }
 
 class Balance extends Equatable {
