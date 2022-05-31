@@ -113,4 +113,4 @@ Profile MOCK_USER_INFO_MODEL = Profile(
     items: [],
     address: MOCK_OWNER,
     coins: [],
-    supportedCoins: []);
+    supportedCoins: ['upylon', 'uatom']);

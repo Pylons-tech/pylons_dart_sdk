@@ -19,31 +19,48 @@ class Profile extends Equatable {
   final List<Item> items;
   final List<String> supportedCoins;
 
-  Profile({required this.address, required this.username, required this.coins, required this.stripeExists, required this.supportedCoins, required this.items});
+  Profile(
+      {required this.address,
+      required this.username,
+      required this.coins,
+      required this.stripeExists,
+      required this.supportedCoins,
+      required this.items});
 
   Map<String, dynamic> toJson() => {
         'address': address,
         'username': username,
         'stripeExists': stripeExists,
         'coins': coins.map((Balance balance) => balance.toJson()).toList(),
-        'items': items.map((Item item) => item.toProto3Json()).toList()
+        'items': items.map((Item item) => item.toProto3Json()).toList(),
+        'supportedCoins':
+            supportedCoins.map((supportedCoin) => supportedCoin).toList()
       };
 
   factory Profile.fromJson(Map<String, dynamic> json) {
     return Profile(
-      coins: List.from(json['coins']).map((coin) => Balance.fromJSON(coin)).toList(),
+      coins: List.from(json['coins'])
+          .map((coin) => Balance.fromJSON(coin))
+          .toList(),
       address: json['address'],
       username: json['username'],
-      items: List.from(json['items']).map((item) => Item.create()..mergeFromProto3Json(item)).toList(),
+      items: List.from(json['items'])
+          .map((item) => Item.create()..mergeFromProto3Json(item))
+          .toList(),
       stripeExists: json['stripeExists'],
       supportedCoins: List<String>.from(json['supportedCoins']),
     );
   }
 
   factory Profile.initial() {
-    return Profile(items: [], username: '', coins: [], stripeExists: false, address: '', supportedCoins: []);
+    return Profile(
+        items: [],
+        username: '',
+        coins: [],
+        stripeExists: false,
+        address: '',
+        supportedCoins: []);
   }
-
 
   @override
   String toString() {
