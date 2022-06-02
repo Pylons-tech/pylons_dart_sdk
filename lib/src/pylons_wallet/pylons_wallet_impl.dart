@@ -384,4 +384,12 @@ class PylonsWalletImpl implements PylonsWallet {
       throw Exception('Response malformed');
     });
   }
+
+  @override
+  Future<SDKIPCResponse> showStripe() {
+    return Future.sync(() async {
+      return await _dispatch(Strings.SHOW_STRIPE, jsonEncode({}),
+          requestResponse: false);
+    });
+  }
 }

@@ -52,6 +52,7 @@ class Strings {
   static const String EXECUTION_ID = 'executionId';
   static const String CREATOR = 'creator';
   static const String ACTION_DONE = 'Message Dispatched';
+  static const String SHOW_STRIPE = 'showStripe';
 }
 
 const kRecipeNameLength = 8;
