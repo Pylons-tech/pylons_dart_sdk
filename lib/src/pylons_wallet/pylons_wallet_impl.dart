@@ -20,6 +20,7 @@ import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_message.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
 
 import '../../pylons_sdk.dart';
@@ -244,9 +245,9 @@ class PylonsWalletImpl implements PylonsWallet {
   Future<bool> exists() {
     return Future.sync(() {
       if (Platform.isAndroid) {
-        return canLaunch(BASE_UNI_LINK);
+        return canLaunchUrlString(BASE_UNI_LINK);
       }
-      return canLaunch(BASE_UNI_LINK_IOS);
+      return canLaunchUrlString(BASE_UNI_LINK_IOS);
     });
   }
 
@@ -258,8 +259,8 @@ class PylonsWalletImpl implements PylonsWallet {
     } else {
       _url = kAppStoreUrl;
     }
-    if (await canLaunch(_url)) {
-      await launch(_url);
+    if (await canLaunchUrlString(_url)) {
+      await launchUrlString(_url);
       return true;
     } else {
       log('Could not launch $_url');
@@ -277,8 +278,8 @@ class PylonsWalletImpl implements PylonsWallet {
   ///
   /// Throws a [NoWalletException] if the wallet doesn't exist.
   void dispatchUniLink(String uniLink) async {
-    await canLaunch(uniLink)
-        ? await launch(uniLink)
+    await canLaunchUrlString(uniLink)
+        ? await launchUrlString(uniLink)
         : throw NoWalletException();
   }
 

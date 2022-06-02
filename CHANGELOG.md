@@ -1,5 +1,6 @@
 ## 0.1.1
-Added show stripe account
+Added show stripe account.
+Upgraded the unilink to latest version.
 
 ## 0.1.0
 Get supported coins from the wallet.
