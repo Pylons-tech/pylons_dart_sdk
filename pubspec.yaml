@@ -22,7 +22,7 @@ dependencies:
   uni_links_platform_interface: ^1.0.0
 
 
-  url_launcher: 6.1.2
+  url_launcher: ^6.1.2
   protobuf: ^2.0.0
 
   fixnum: ^1.0.0
