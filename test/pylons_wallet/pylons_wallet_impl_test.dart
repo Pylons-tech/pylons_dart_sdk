@@ -403,7 +403,8 @@ void mockChannelHandler() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   var channel = const MethodChannel('plugins.flutter.io/url_launcher');
-  var linuxChannel = const MethodChannel('plugins.flutter.io/url_launcher_linux');
+  var linuxChannel =
+      const MethodChannel('plugins.flutter.io/url_launcher_linux');
 
   // Register the mock handler.
   channel.setMockMethodCallHandler((MethodCall methodCall) async {
@@ -412,7 +413,6 @@ void mockChannelHandler() {
     }
     return null;
   });
-
 
   linuxChannel.setMockMethodCallHandler((MethodCall methodCall) async {
     if (methodCall.method == 'canLaunch') {
