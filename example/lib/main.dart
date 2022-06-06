@@ -171,6 +171,12 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Place for sale'),
             ),
+            ElevatedButton(
+              onPressed: () async {
+                showStripe();
+              },
+              child: const Text('Show Stripe'),
+            ),
           ],
         ),
       ),
@@ -401,5 +407,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void goToLogin() async {
     PylonsWallet.instance.goToPylons();
+  }
+
+  void showStripe() {
+    PylonsWallet.instance.showStripe();
   }
 }

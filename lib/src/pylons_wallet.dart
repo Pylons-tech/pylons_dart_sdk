@@ -516,4 +516,7 @@ abstract class PylonsWallet {
   /// Input : [id] the id of the execution
   /// Output: [Execution] contains the execution
   Future<SDKIPCResponse<Execution>> getExecutionBasedOnId({required String id});
+
+  /// This method moves the user to stripe screen in order to create an account
+  Future<SDKIPCResponse> showStripe();
 }
