@@ -8,6 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+
 @$core.Deprecated('Use appleInAppPurchaseOrderDescriptor instead')
 const AppleInAppPurchaseOrder$json = const {
   '1': 'AppleInAppPurchaseOrder',
@@ -21,4 +22,6 @@ const AppleInAppPurchaseOrder$json = const {
 };
 
 /// Descriptor for `AppleInAppPurchaseOrder`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List appleInAppPurchaseOrderDescriptor = $convert.base64Decode('ChdBcHBsZUluQXBwUHVyY2hhc2VPcmRlchIaCghxdWFudGl0eRgBIAEoCVIIcXVhbnRpdHkSHQoKcHJvZHVjdF9pZBgCIAEoCVIJcHJvZHVjdElkEh8KC3B1cmNoYXNlX2lkGAMgASgJUgpwdXJjaGFzZUlkEiMKDXB1cmNoYXNlX2RhdGUYBCABKAlSDHB1cmNoYXNlRGF0ZRIYCgdjcmVhdG9yGAUgASgJUgdjcmVhdG9y');
+final $typed_data.Uint8List appleInAppPurchaseOrderDescriptor =
+    $convert.base64Decode(
+        'ChdBcHBsZUluQXBwUHVyY2hhc2VPcmRlchIaCghxdWFudGl0eRgBIAEoCVIIcXVhbnRpdHkSHQoKcHJvZHVjdF9pZBgCIAEoCVIJcHJvZHVjdElkEh8KC3B1cmNoYXNlX2lkGAMgASgJUgpwdXJjaGFzZUlkEiMKDXB1cmNoYXNlX2RhdGUYBCABKAlSDHB1cmNoYXNlRGF0ZRIYCgdjcmVhdG9yGAUgASgJUgdjcmVhdG9y');

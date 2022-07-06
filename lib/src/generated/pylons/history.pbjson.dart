@@ -8,6 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+
 @$core.Deprecated('Use historyDescriptor instead')
 const History$json = const {
   '1': 'History',
@@ -22,4 +23,5 @@ const History$json = const {
 };
 
 /// Descriptor for `History`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List historyDescriptor = $convert.base64Decode('CgdIaXN0b3J5EhgKB2FkZHJlc3MYASABKAlSB2FkZHJlc3MSFgoGYW1vdW50GAIgASgJUgZhbW91bnQSHwoLY29va2Jvb2tfaWQYAyABKAlSCmNvb2tib29rSWQSGwoJcmVjaXBlX2lkGAQgASgJUghyZWNpcGVJZBIdCgpjcmVhdGVkX2F0GAUgASgDUgljcmVhdGVkQXQSEgoEdHlwZRgGIAEoCVIEdHlwZQ==');
+final $typed_data.Uint8List historyDescriptor = $convert.base64Decode(
+    'CgdIaXN0b3J5EhgKB2FkZHJlc3MYASABKAlSB2FkZHJlc3MSFgoGYW1vdW50GAIgASgJUgZhbW91bnQSHwoLY29va2Jvb2tfaWQYAyABKAlSCmNvb2tib29rSWQSGwoJcmVjaXBlX2lkGAQgASgJUghyZWNpcGVJZBIdCgpjcmVhdGVkX2F0GAUgASgDUgljcmVhdGVkQXQSEgoEdHlwZRgGIAEoCVIEdHlwZQ==');

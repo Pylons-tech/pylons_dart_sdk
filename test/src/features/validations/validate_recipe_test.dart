@@ -179,7 +179,7 @@ void main() {
         version: 'v1.0.5',
         coinInputs: [],
         itemInputs: [],
-        costPerBlock:Coin(denom: 'upylon', amount: '100000'),
+        costPerBlock: Coin(denom: 'upylon', amount: '100000'),
         entries: EntriesList(coinOutputs: [], itemOutputs: [
           ItemOutput(
             id: 'copper_sword_lv1',

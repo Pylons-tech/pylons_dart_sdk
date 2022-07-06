@@ -8,6 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+
 @$core.Deprecated('Use cookbookDescriptor instead')
 const Cookbook$json = const {
   '1': 'Cookbook',
@@ -25,4 +26,5 @@ const Cookbook$json = const {
 };
 
 /// Descriptor for `Cookbook`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List cookbookDescriptor = $convert.base64Decode('CghDb29rYm9vaxIYCgdjcmVhdG9yGAEgASgJUgdjcmVhdG9yEg4KAmlkGAIgASgJUgJpZBIhCgxub2RlX3ZlcnNpb24YAyABKARSC25vZGVWZXJzaW9uEhIKBG5hbWUYBCABKAlSBG5hbWUSIAoLZGVzY3JpcHRpb24YBSABKAlSC2Rlc2NyaXB0aW9uEhwKCWRldmVsb3BlchgGIAEoCVIJZGV2ZWxvcGVyEhgKB3ZlcnNpb24YByABKAlSB3ZlcnNpb24SIwoNc3VwcG9ydF9lbWFpbBgIIAEoCVIMc3VwcG9ydEVtYWlsEhgKB2VuYWJsZWQYCSABKAhSB2VuYWJsZWQ=');
+final $typed_data.Uint8List cookbookDescriptor = $convert.base64Decode(
+    'CghDb29rYm9vaxIYCgdjcmVhdG9yGAEgASgJUgdjcmVhdG9yEg4KAmlkGAIgASgJUgJpZBIhCgxub2RlX3ZlcnNpb24YAyABKARSC25vZGVWZXJzaW9uEhIKBG5hbWUYBCABKAlSBG5hbWUSIAoLZGVzY3JpcHRpb24YBSABKAlSC2Rlc2NyaXB0aW9uEhwKCWRldmVsb3BlchgGIAEoCVIJZGV2ZWxvcGVyEhgKB3ZlcnNpb24YByABKAlSB3ZlcnNpb24SIwoNc3VwcG9ydF9lbWFpbBgIIAEoCVIMc3VwcG9ydEVtYWlsEhgKB2VuYWJsZWQYCSABKAhSB2VuYWJsZWQ=');

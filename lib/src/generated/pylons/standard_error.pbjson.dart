@@ -8,6 +8,7 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+
 @$core.Deprecated('Use standardErrorDescriptor instead')
 const StandardError$json = const {
   '1': 'StandardError',
@@ -18,4 +19,5 @@ const StandardError$json = const {
 };
 
 /// Descriptor for `StandardError`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List standardErrorDescriptor = $convert.base64Decode('Cg1TdGFuZGFyZEVycm9yEhIKBGNvZGUYASABKAlSBGNvZGUSGAoHbWVzc2FnZRgCIAEoCVIHbWVzc2FnZQ==');
+final $typed_data.Uint8List standardErrorDescriptor = $convert.base64Decode(
+    'Cg1TdGFuZGFyZEVycm9yEhIKBGNvZGUYASABKAlSBGNvZGUSGAoHbWVzc2FnZRgCIAEoCVIHbWVzc2FnZQ==');
