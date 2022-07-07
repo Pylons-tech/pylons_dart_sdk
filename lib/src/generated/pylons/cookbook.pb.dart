@@ -1,16 +1,14 @@
 ///
 //  Generated code. Do not modify.
-//  source: pylons/cookbook.proto
+//  source: pylons/pylons/cookbook.proto
 //
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:core' as $core;
 
-import 'package:protobuf/protobuf.dart' as $pb;
-
-import '../cosmos/base/v1beta1/coin.pb.dart' as $0;
 import 'package:fixnum/fixnum.dart' as $fixnum;
+import 'package:protobuf/protobuf.dart' as $pb;
 
 class Cookbook extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -20,7 +18,7 @@ class Cookbook extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
@@ -31,15 +29,13 @@ class Cookbook extends $pb.GeneratedMessage {
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'ID',
-        protoName: 'ID')
+            : 'id')
     ..a<$fixnum.Int64>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'nodeVersion',
         $pb.PbFieldType.OU6,
-        protoName: 'nodeVersion',
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOS(
         4,
@@ -65,18 +61,19 @@ class Cookbook extends $pb.GeneratedMessage {
         8,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'supportEmail',
-        protoName: 'supportEmail')
+            : 'supportEmail')
     ..aOB(
         9,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'enabled')
     ..hasRequiredFields = false;
+
   Cookbook._() : super();
   factory Cookbook({
     $core.String? creator,
-    $core.String? iD,
+    $core.String? id,
+    $fixnum.Int64? nodeVersion,
     $core.String? name,
     $core.String? description,
     $core.String? developer,
@@ -88,10 +85,12 @@ class Cookbook extends $pb.GeneratedMessage {
     if (creator != null) {
       _result.creator = creator;
     }
-    if (iD != null) {
-      _result.iD = iD;
+    if (id != null) {
+      _result.id = id;
     }
-
+    if (nodeVersion != null) {
+      _result.nodeVersion = nodeVersion;
+    }
     if (name != null) {
       _result.name = name;
     }
@@ -107,7 +106,6 @@ class Cookbook extends $pb.GeneratedMessage {
     if (supportEmail != null) {
       _result.supportEmail = supportEmail;
     }
-
     if (enabled != null) {
       _result.enabled = enabled;
     }
@@ -152,16 +150,16 @@ class Cookbook extends $pb.GeneratedMessage {
   void clearCreator() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get iD => $_getSZ(1);
+  $core.String get id => $_getSZ(1);
   @$pb.TagNumber(2)
-  set iD($core.String v) {
+  set id($core.String v) {
     $_setString(1, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasID() => $_has(1);
+  $core.bool hasId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearID() => clearField(2);
+  void clearId() => clearField(2);
 
   @$pb.TagNumber(3)
   $fixnum.Int64 get nodeVersion => $_getI64(2);

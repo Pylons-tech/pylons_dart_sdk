@@ -186,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void createCookBook() async {
     var cookBook1 = Cookbook(
         creator: "pylo1v97v5qj2kvph2d02fzxxlh44wzpfmuc63vpphj",
-        iD: cookBookId,
+        id: cookBookId,
         name: "Cry Cookbook for Test",
         description: "Cookbook for running pylons recreation of LOUD",
         developer: "Pylons Inc",
@@ -209,9 +209,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void createRecipe() async {
     var recipe = Recipe(
-        cookbookID: cookBookId,
-        iD: recipeId,
-        nodeVersion: "v0.1.3",
+        cookbookId: cookBookId,
+        id: recipeId,
+        nodeVersion: Int64(1),
         name: "LOUD's Wooden sword lv1 buy recipe",
         description: "this recipe is used to buy wooden sword lv1.",
         version: "v0.1.3",
@@ -220,7 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
         costPerBlock: Coin(denom: "upylon", amount: "1000000"),
         entries: EntriesList(coinOutputs: [], itemOutputs: [
           ItemOutput(
-            iD: "copper_sword_lv1",
+            id: "copper_sword_lv1",
             doubles: [],
             longs: [],
             strings: [],
@@ -231,7 +231,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ], itemModifyOutputs: []),
         outputs: [
-          WeightedOutputs(entryIDs: ["copper_sword_lv1"], weight: Int64(1))
+          WeightedOutputs(entryIds: ["copper_sword_lv1"], weight: Int64(1))
         ],
         blockInterval: Int64(0),
         enabled: false,
@@ -271,9 +271,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void updateRecipe() async {
     var recipe = Recipe(
-        cookbookID: cookBookId,
-        iD: recipeId,
-        nodeVersion: "v0.1.3",
+        cookbookId: cookBookId,
+        id: recipeId,
+        nodeVersion: Int64(2),
         name: "LOUD's Wooden sword lv1 buy recipe",
         description: "this recipe is used to buy wooden sword lv1.",
         version: "v1.0.5",
@@ -282,7 +282,7 @@ class _MyHomePageState extends State<MyHomePage> {
         costPerBlock: Coin(denom: "upylon", amount: "1000000"),
         entries: EntriesList(coinOutputs: [], itemOutputs: [
           ItemOutput(
-            iD: "copper_sword_lv1",
+            id: "copper_sword_lv1",
             doubles: [],
             longs: [],
             strings: [],
@@ -293,7 +293,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ], itemModifyOutputs: []),
         outputs: [
-          WeightedOutputs(entryIDs: ["copper_sword_lv1"], weight: Int64(1))
+          WeightedOutputs(entryIds: ["copper_sword_lv1"], weight: Int64(1))
         ],
         blockInterval: Int64(0),
         enabled: true,
@@ -315,7 +315,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void updateCookBook() async {
     var cookBook1 = Cookbook(
         creator: "",
-        iD: cookBookId,
+        id: cookBookId,
         name: "Legend of the Undead Dianasour",
         description: "Cookbook for running pylons recreation of LOUD",
         developer: "Pylons Inc",
@@ -389,8 +389,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void placeForSale() async {
     var item = ItemRef(
-      cookbookID: cookBookId,
-      itemID: itemId,
+      cookbookId: cookBookId,
+      itemId: itemId,
     );
     var sdkResponse = await PylonsWallet.instance.txPlaceForSale(item, 100);
     log(sdkResponse.toString(), name: 'pylons_sdk');

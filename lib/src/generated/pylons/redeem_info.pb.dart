@@ -1,6 +1,6 @@
 ///
 //  Generated code. Do not modify.
-//  source: pylons/redeem_info.proto
+//  source: pylons/pylons/redeem_info.proto
 //
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
@@ -17,20 +17,18 @@ class RedeemInfo extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'ID',
-        protoName: 'ID')
+            : 'id')
     ..aOS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'processorName',
-        protoName: 'processorName')
+            : 'processorName')
     ..aOS(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -50,15 +48,15 @@ class RedeemInfo extends $pb.GeneratedMessage {
 
   RedeemInfo._() : super();
   factory RedeemInfo({
-    $core.String? iD,
+    $core.String? id,
     $core.String? processorName,
     $core.String? address,
     $core.String? amount,
     $core.String? signature,
   }) {
     final _result = create();
-    if (iD != null) {
-      _result.iD = iD;
+    if (id != null) {
+      _result.id = id;
     }
     if (processorName != null) {
       _result.processorName = processorName;
@@ -87,6 +85,9 @@ class RedeemInfo extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  RedeemInfo copyWith(void Function(RedeemInfo) updates) =>
+      super.copyWith((message) => updates(message as RedeemInfo))
+          as RedeemInfo; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static RedeemInfo create() => RedeemInfo._();
@@ -98,16 +99,16 @@ class RedeemInfo extends $pb.GeneratedMessage {
   static RedeemInfo? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get iD => $_getSZ(0);
+  $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
-  set iD($core.String v) {
+  set id($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasID() => $_has(0);
+  $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearID() => clearField(1);
+  void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get processorName => $_getSZ(1);
@@ -166,7 +167,7 @@ class CreatePaymentAccount extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
@@ -186,17 +187,23 @@ class CreatePaymentAccount extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   CreatePaymentAccount._() : super();
-  factory CreatePaymentAccount(
-      {$core.String? token, $core.String? address, $core.String? signature}) {
-    var result = create();
-
-    result.token = token ?? '';
-    result.address = address ?? '';
-    result.signature = signature ?? '';
-
-    return result;
+  factory CreatePaymentAccount({
+    $core.String? address,
+    $core.String? token,
+    $core.String? signature,
+  }) {
+    final _result = create();
+    if (address != null) {
+      _result.address = address;
+    }
+    if (token != null) {
+      _result.token = token;
+    }
+    if (signature != null) {
+      _result.signature = signature;
+    }
+    return _result;
   }
-
   factory CreatePaymentAccount.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -211,6 +218,9 @@ class CreatePaymentAccount extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  CreatePaymentAccount copyWith(void Function(CreatePaymentAccount) updates) =>
+      super.copyWith((message) => updates(message as CreatePaymentAccount))
+          as CreatePaymentAccount; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static CreatePaymentAccount create() => CreatePaymentAccount._();

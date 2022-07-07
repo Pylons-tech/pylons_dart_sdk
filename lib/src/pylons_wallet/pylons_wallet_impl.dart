@@ -19,7 +19,6 @@ import 'package:pylons_sdk/src/features/ipc/ipc_handler_factory.dart';
 import 'package:pylons_sdk/src/features/ipc/responseCompleters.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_message.dart';
 import 'package:pylons_sdk/src/features/models/sdk_ipc_response.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
 
@@ -201,10 +200,10 @@ class PylonsWalletImpl implements PylonsWallet {
           Strings.TX_EXECUTE_RECIPE,
           jsonEncode(MsgExecuteRecipe(
                   creator: '',
-                  cookbookID: cookbookId,
-                  recipeID: recipeName,
+                  cookbookId: cookbookId,
+                  recipeId: recipeName,
                   coinInputsIndex: fixnum.Int64(coinInputIndex),
-                  itemIDs: itemIds,
+                  itemIds: itemIds,
                   paymentInfos: paymentInfo)
               .toProto3Json()),
           requestResponse: requestResponse);

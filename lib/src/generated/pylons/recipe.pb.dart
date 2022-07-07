@@ -1,6 +1,6 @@
 ///
 //  Generated code. Do not modify.
-//  source: pylons/recipe.proto
+//  source: pylons/pylons/recipe.proto
 //
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
@@ -21,7 +21,7 @@ class DoubleInputParam extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
@@ -32,18 +32,32 @@ class DoubleInputParam extends $pb.GeneratedMessage {
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'minValue',
-        protoName: 'minValue')
+            : 'minValue')
     ..aOS(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'maxValue',
-        protoName: 'maxValue')
+            : 'maxValue')
     ..hasRequiredFields = false;
 
   DoubleInputParam._() : super();
-  factory DoubleInputParam() => create();
+  factory DoubleInputParam({
+    $core.String? key,
+    $core.String? minValue,
+    $core.String? maxValue,
+  }) {
+    final _result = create();
+    if (key != null) {
+      _result.key = key;
+    }
+    if (minValue != null) {
+      _result.minValue = minValue;
+    }
+    if (maxValue != null) {
+      _result.maxValue = maxValue;
+    }
+    return _result;
+  }
   factory DoubleInputParam.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -57,6 +71,9 @@ class DoubleInputParam extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  DoubleInputParam copyWith(void Function(DoubleInputParam) updates) =>
+      super.copyWith((message) => updates(message as DoubleInputParam))
+          as DoubleInputParam; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static DoubleInputParam create() => DoubleInputParam._();
@@ -113,7 +130,7 @@ class LongInputParam extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
@@ -124,18 +141,32 @@ class LongInputParam extends $pb.GeneratedMessage {
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'minValue',
-        protoName: 'minValue')
+            : 'minValue')
     ..aInt64(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'maxValue',
-        protoName: 'maxValue')
+            : 'maxValue')
     ..hasRequiredFields = false;
 
   LongInputParam._() : super();
-  factory LongInputParam() => create();
+  factory LongInputParam({
+    $core.String? key,
+    $fixnum.Int64? minValue,
+    $fixnum.Int64? maxValue,
+  }) {
+    final _result = create();
+    if (key != null) {
+      _result.key = key;
+    }
+    if (minValue != null) {
+      _result.minValue = minValue;
+    }
+    if (maxValue != null) {
+      _result.maxValue = maxValue;
+    }
+    return _result;
+  }
   factory LongInputParam.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -149,6 +180,9 @@ class LongInputParam extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  LongInputParam copyWith(void Function(LongInputParam) updates) =>
+      super.copyWith((message) => updates(message as LongInputParam))
+          as LongInputParam; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static LongInputParam create() => LongInputParam._();
@@ -205,7 +239,7 @@ class StringInputParam extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
@@ -220,7 +254,19 @@ class StringInputParam extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   StringInputParam._() : super();
-  factory StringInputParam() => create();
+  factory StringInputParam({
+    $core.String? key,
+    $core.String? value,
+  }) {
+    final _result = create();
+    if (key != null) {
+      _result.key = key;
+    }
+    if (value != null) {
+      _result.value = value;
+    }
+    return _result;
+  }
   factory StringInputParam.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -234,6 +280,9 @@ class StringInputParam extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  StringInputParam copyWith(void Function(StringInputParam) updates) =>
+      super.copyWith((message) => updates(message as StringInputParam))
+          as StringInputParam; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static StringInputParam create() => StringInputParam._();
@@ -278,14 +327,13 @@ class ItemInput extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'ID',
-        protoName: 'ID')
+            : 'id')
     ..pc<DoubleInputParam>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -310,7 +358,27 @@ class ItemInput extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   ItemInput._() : super();
-  factory ItemInput() => create();
+  factory ItemInput({
+    $core.String? id,
+    $core.Iterable<DoubleInputParam>? doubles,
+    $core.Iterable<LongInputParam>? longs,
+    $core.Iterable<StringInputParam>? strings,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (doubles != null) {
+      _result.doubles.addAll(doubles);
+    }
+    if (longs != null) {
+      _result.longs.addAll(longs);
+    }
+    if (strings != null) {
+      _result.strings.addAll(strings);
+    }
+    return _result;
+  }
   factory ItemInput.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -324,6 +392,9 @@ class ItemInput extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  ItemInput copyWith(void Function(ItemInput) updates) =>
+      super.copyWith((message) => updates(message as ItemInput))
+          as ItemInput; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ItemInput create() => ItemInput._();
@@ -335,16 +406,16 @@ class ItemInput extends $pb.GeneratedMessage {
   static ItemInput? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get iD => $_getSZ(0);
+  $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
-  set iD($core.String v) {
+  set id($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasID() => $_has(0);
+  $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearID() => clearField(1);
+  void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.List<DoubleInputParam> get doubles => $_getList(1);
@@ -364,7 +435,7 @@ class DoubleWeightRange extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
@@ -416,6 +487,9 @@ class DoubleWeightRange extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  DoubleWeightRange copyWith(void Function(DoubleWeightRange) updates) =>
+      super.copyWith((message) => updates(message as DoubleWeightRange))
+          as DoubleWeightRange; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static DoubleWeightRange create() => DoubleWeightRange._();
@@ -472,7 +546,7 @@ class DoubleParam extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
@@ -525,6 +599,9 @@ class DoubleParam extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  DoubleParam copyWith(void Function(DoubleParam) updates) =>
+      super.copyWith((message) => updates(message as DoubleParam))
+          as DoubleParam; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static DoubleParam create() => DoubleParam._();
@@ -571,7 +648,7 @@ class IntWeightRange extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aInt64(
         1,
@@ -623,6 +700,9 @@ class IntWeightRange extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  IntWeightRange copyWith(void Function(IntWeightRange) updates) =>
+      super.copyWith((message) => updates(message as IntWeightRange))
+          as IntWeightRange; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static IntWeightRange create() => IntWeightRange._();
@@ -679,7 +759,7 @@ class LongParam extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
@@ -732,6 +812,9 @@ class LongParam extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  LongParam copyWith(void Function(LongParam) updates) =>
+      super.copyWith((message) => updates(message as LongParam))
+          as LongParam; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static LongParam create() => LongParam._();
@@ -778,7 +861,7 @@ class StringParam extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
@@ -828,6 +911,9 @@ class StringParam extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  StringParam copyWith(void Function(StringParam) updates) =>
+      super.copyWith((message) => updates(message as StringParam))
+          as StringParam; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static StringParam create() => StringParam._();
@@ -883,14 +969,13 @@ class CoinOutput extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'ID',
-        protoName: 'ID')
+            : 'id')
     ..aOM<$2.Coin>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -905,7 +990,23 @@ class CoinOutput extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   CoinOutput._() : super();
-  factory CoinOutput() => create();
+  factory CoinOutput({
+    $core.String? id,
+    $2.Coin? coin,
+    $core.String? program,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (coin != null) {
+      _result.coin = coin;
+    }
+    if (program != null) {
+      _result.program = program;
+    }
+    return _result;
+  }
   factory CoinOutput.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -919,6 +1020,9 @@ class CoinOutput extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  CoinOutput copyWith(void Function(CoinOutput) updates) =>
+      super.copyWith((message) => updates(message as CoinOutput))
+          as CoinOutput; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static CoinOutput create() => CoinOutput._();
@@ -930,16 +1034,16 @@ class CoinOutput extends $pb.GeneratedMessage {
   static CoinOutput? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get iD => $_getSZ(0);
+  $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
-  set iD($core.String v) {
+  set id($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasID() => $_has(0);
+  $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearID() => clearField(1);
+  void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
   $2.Coin get coin => $_getN(1);
@@ -976,14 +1080,13 @@ class ItemOutput extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'ID',
-        protoName: 'ID')
+            : 'id')
     ..pc<DoubleParam>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1011,7 +1114,6 @@ class ItemOutput extends $pb.GeneratedMessage {
             ? ''
             : 'mutableStrings',
         $pb.PbFieldType.PM,
-        protoName: 'mutableStrings',
         subBuilder: $3.StringKeyValue.create)
     ..pc<$2.Coin>(
         6,
@@ -1019,14 +1121,12 @@ class ItemOutput extends $pb.GeneratedMessage {
             ? ''
             : 'transferFee',
         $pb.PbFieldType.PM,
-        protoName: 'transferFee',
         subBuilder: $2.Coin.create)
     ..aOS(
         7,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'tradePercentage',
-        protoName: 'tradePercentage')
+            : 'tradePercentage')
     ..a<$fixnum.Int64>(
         8,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1040,7 +1140,6 @@ class ItemOutput extends $pb.GeneratedMessage {
             ? ''
             : 'amountMinted',
         $pb.PbFieldType.OU6,
-        protoName: 'amountMinted',
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOB(
         10,
@@ -1051,7 +1150,7 @@ class ItemOutput extends $pb.GeneratedMessage {
 
   ItemOutput._() : super();
   factory ItemOutput({
-    $core.String? iD,
+    $core.String? id,
     $core.Iterable<DoubleParam>? doubles,
     $core.Iterable<LongParam>? longs,
     $core.Iterable<StringParam>? strings,
@@ -1063,8 +1162,8 @@ class ItemOutput extends $pb.GeneratedMessage {
     $core.bool? tradeable,
   }) {
     final _result = create();
-    if (iD != null) {
-      _result.iD = iD;
+    if (id != null) {
+      _result.id = id;
     }
     if (doubles != null) {
       _result.doubles.addAll(doubles);
@@ -1108,6 +1207,9 @@ class ItemOutput extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  ItemOutput copyWith(void Function(ItemOutput) updates) =>
+      super.copyWith((message) => updates(message as ItemOutput))
+          as ItemOutput; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ItemOutput create() => ItemOutput._();
@@ -1119,16 +1221,16 @@ class ItemOutput extends $pb.GeneratedMessage {
   static ItemOutput? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get iD => $_getSZ(0);
+  $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
-  set iD($core.String v) {
+  set id($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasID() => $_has(0);
+  $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearID() => clearField(1);
+  void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.List<DoubleParam> get doubles => $_getList(1);
@@ -1202,20 +1304,18 @@ class ItemModifyOutput extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'ID',
-        protoName: 'ID')
+            : 'id')
     ..aOS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'itemInputRef',
-        protoName: 'itemInputRef')
+            : 'itemInputRef')
     ..pc<DoubleParam>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1243,7 +1343,6 @@ class ItemModifyOutput extends $pb.GeneratedMessage {
             ? ''
             : 'mutableStrings',
         $pb.PbFieldType.PM,
-        protoName: 'mutableStrings',
         subBuilder: $3.StringKeyValue.create)
     ..pc<$2.Coin>(
         7,
@@ -1251,14 +1350,12 @@ class ItemModifyOutput extends $pb.GeneratedMessage {
             ? ''
             : 'transferFee',
         $pb.PbFieldType.PM,
-        protoName: 'transferFee',
         subBuilder: $2.Coin.create)
     ..aOS(
         8,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'tradePercentage',
-        protoName: 'tradePercentage')
+            : 'tradePercentage')
     ..a<$fixnum.Int64>(
         9,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1272,7 +1369,6 @@ class ItemModifyOutput extends $pb.GeneratedMessage {
             ? ''
             : 'amountMinted',
         $pb.PbFieldType.OU6,
-        protoName: 'amountMinted',
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOB(
         11,
@@ -1282,7 +1378,55 @@ class ItemModifyOutput extends $pb.GeneratedMessage {
     ..hasRequiredFields = false;
 
   ItemModifyOutput._() : super();
-  factory ItemModifyOutput() => create();
+  factory ItemModifyOutput({
+    $core.String? id,
+    $core.String? itemInputRef,
+    $core.Iterable<DoubleParam>? doubles,
+    $core.Iterable<LongParam>? longs,
+    $core.Iterable<StringParam>? strings,
+    $core.Iterable<$3.StringKeyValue>? mutableStrings,
+    $core.Iterable<$2.Coin>? transferFee,
+    $core.String? tradePercentage,
+    $fixnum.Int64? quantity,
+    $fixnum.Int64? amountMinted,
+    $core.bool? tradeable,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (itemInputRef != null) {
+      _result.itemInputRef = itemInputRef;
+    }
+    if (doubles != null) {
+      _result.doubles.addAll(doubles);
+    }
+    if (longs != null) {
+      _result.longs.addAll(longs);
+    }
+    if (strings != null) {
+      _result.strings.addAll(strings);
+    }
+    if (mutableStrings != null) {
+      _result.mutableStrings.addAll(mutableStrings);
+    }
+    if (transferFee != null) {
+      _result.transferFee.addAll(transferFee);
+    }
+    if (tradePercentage != null) {
+      _result.tradePercentage = tradePercentage;
+    }
+    if (quantity != null) {
+      _result.quantity = quantity;
+    }
+    if (amountMinted != null) {
+      _result.amountMinted = amountMinted;
+    }
+    if (tradeable != null) {
+      _result.tradeable = tradeable;
+    }
+    return _result;
+  }
   factory ItemModifyOutput.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -1296,6 +1440,9 @@ class ItemModifyOutput extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  ItemModifyOutput copyWith(void Function(ItemModifyOutput) updates) =>
+      super.copyWith((message) => updates(message as ItemModifyOutput))
+          as ItemModifyOutput; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static ItemModifyOutput create() => ItemModifyOutput._();
@@ -1308,16 +1455,16 @@ class ItemModifyOutput extends $pb.GeneratedMessage {
   static ItemModifyOutput? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get iD => $_getSZ(0);
+  $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
-  set iD($core.String v) {
+  set id($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasID() => $_has(0);
+  $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearID() => clearField(1);
+  void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get itemInputRef => $_getSZ(1);
@@ -1403,7 +1550,7 @@ class EntriesList extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..pc<CoinOutput>(
         1,
@@ -1411,7 +1558,6 @@ class EntriesList extends $pb.GeneratedMessage {
             ? ''
             : 'coinOutputs',
         $pb.PbFieldType.PM,
-        protoName: 'coinOutputs',
         subBuilder: CoinOutput.create)
     ..pc<ItemOutput>(
         2,
@@ -1419,7 +1565,6 @@ class EntriesList extends $pb.GeneratedMessage {
             ? ''
             : 'itemOutputs',
         $pb.PbFieldType.PM,
-        protoName: 'itemOutputs',
         subBuilder: ItemOutput.create)
     ..pc<ItemModifyOutput>(
         3,
@@ -1427,7 +1572,6 @@ class EntriesList extends $pb.GeneratedMessage {
             ? ''
             : 'itemModifyOutputs',
         $pb.PbFieldType.PM,
-        protoName: 'itemModifyOutputs',
         subBuilder: ItemModifyOutput.create)
     ..hasRequiredFields = false;
 
@@ -1462,6 +1606,9 @@ class EntriesList extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  EntriesList copyWith(void Function(EntriesList) updates) =>
+      super.copyWith((message) => updates(message as EntriesList))
+          as EntriesList; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static EntriesList create() => EntriesList._();
@@ -1490,14 +1637,13 @@ class WeightedOutputs extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..pPS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'entryIDs',
-        protoName: 'entryIDs')
+            : 'entryIds')
     ..a<$fixnum.Int64>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -1509,12 +1655,12 @@ class WeightedOutputs extends $pb.GeneratedMessage {
 
   WeightedOutputs._() : super();
   factory WeightedOutputs({
-    $core.Iterable<$core.String>? entryIDs,
+    $core.Iterable<$core.String>? entryIds,
     $fixnum.Int64? weight,
   }) {
     final _result = create();
-    if (entryIDs != null) {
-      _result.entryIDs.addAll(entryIDs);
+    if (entryIds != null) {
+      _result.entryIds.addAll(entryIds);
     }
     if (weight != null) {
       _result.weight = weight;
@@ -1534,6 +1680,9 @@ class WeightedOutputs extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  WeightedOutputs copyWith(void Function(WeightedOutputs) updates) =>
+      super.copyWith((message) => updates(message as WeightedOutputs))
+          as WeightedOutputs; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static WeightedOutputs create() => WeightedOutputs._();
@@ -1546,7 +1695,7 @@ class WeightedOutputs extends $pb.GeneratedMessage {
   static WeightedOutputs? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.String> get entryIDs => $_getList(0);
+  $core.List<$core.String> get entryIds => $_getList(0);
 
   @$pb.TagNumber(2)
   $fixnum.Int64 get weight => $_getI64(1);
@@ -1569,7 +1718,7 @@ class CoinInput extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..pc<$2.Coin>(
         1,
@@ -1603,6 +1752,9 @@ class CoinInput extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  CoinInput copyWith(void Function(CoinInput) updates) =>
+      super.copyWith((message) => updates(message as CoinInput))
+          as CoinInput; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static CoinInput create() => CoinInput._();
@@ -1625,27 +1777,24 @@ class Recipe extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
-              : 'Pylonstech.pylons.pylons'),
+              : 'pylons.pylons'),
       createEmptyInstance: create)
     ..aOS(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'cookbookID',
-        protoName: 'cookbookID')
+            : 'cookbookId')
     ..aOS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'ID',
-        protoName: 'ID')
+            : 'id')
     ..a<$fixnum.Int64>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'nodeVersion',
         $pb.PbFieldType.OU6,
-        protoName: 'nodeVersion',
         defaultOrMaker: $fixnum.Int64.ZERO)
     ..aOS(
         4,
@@ -1668,7 +1817,6 @@ class Recipe extends $pb.GeneratedMessage {
             ? ''
             : 'coinInputs',
         $pb.PbFieldType.PM,
-        protoName: 'coinInputs',
         subBuilder: CoinInput.create)
     ..pc<ItemInput>(
         8,
@@ -1676,7 +1824,6 @@ class Recipe extends $pb.GeneratedMessage {
             ? ''
             : 'itemInputs',
         $pb.PbFieldType.PM,
-        protoName: 'itemInputs',
         subBuilder: ItemInput.create)
     ..aOM<EntriesList>(
         9,
@@ -1695,14 +1842,12 @@ class Recipe extends $pb.GeneratedMessage {
         11,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'blockInterval',
-        protoName: 'blockInterval')
+            : 'blockInterval')
     ..aOM<$2.Coin>(
         12,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'costPerBlock',
-        protoName: 'costPerBlock',
         subBuilder: $2.Coin.create)
     ..aOB(
         13,
@@ -1713,34 +1858,48 @@ class Recipe extends $pb.GeneratedMessage {
         14,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'extraInfo',
-        protoName: 'extraInfo')
+            : 'extraInfo')
+    ..aInt64(
+        15,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'createdAt')
+    ..aInt64(
+        16,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'updatedAt')
     ..hasRequiredFields = false;
 
   Recipe._() : super();
-  factory Recipe(
-      {$core.String? cookbookID,
-      $core.String? iD,
-      $core.String? nodeVersion,
-      $core.String? name,
-      $core.String? description,
-      $core.String? version,
-      $core.Iterable<CoinInput>? coinInputs,
-      $core.Iterable<ItemInput>? itemInputs,
-      EntriesList? entries,
-      $core.Iterable<WeightedOutputs>? outputs,
-      $fixnum.Int64? blockInterval,
-      $core.bool? enabled,
-      $core.String? extraInfo,
-      $2.Coin? costPerBlock}) {
+  factory Recipe({
+    $core.String? cookbookId,
+    $core.String? id,
+    $fixnum.Int64? nodeVersion,
+    $core.String? name,
+    $core.String? description,
+    $core.String? version,
+    $core.Iterable<CoinInput>? coinInputs,
+    $core.Iterable<ItemInput>? itemInputs,
+    EntriesList? entries,
+    $core.Iterable<WeightedOutputs>? outputs,
+    $fixnum.Int64? blockInterval,
+    $2.Coin? costPerBlock,
+    $core.bool? enabled,
+    $core.String? extraInfo,
+    $fixnum.Int64? createdAt,
+    $fixnum.Int64? updatedAt,
+  }) {
     final _result = create();
-    if (cookbookID != null) {
-      _result.cookbookID = cookbookID;
+    if (cookbookId != null) {
+      _result.cookbookId = cookbookId;
     }
-    if (iD != null) {
-      _result.iD = iD;
+    if (id != null) {
+      _result.id = id;
     }
-
+    if (nodeVersion != null) {
+      _result.nodeVersion = nodeVersion;
+    }
     if (name != null) {
       _result.name = name;
     }
@@ -1765,22 +1924,23 @@ class Recipe extends $pb.GeneratedMessage {
     if (blockInterval != null) {
       _result.blockInterval = blockInterval;
     }
+    if (costPerBlock != null) {
+      _result.costPerBlock = costPerBlock;
+    }
     if (enabled != null) {
       _result.enabled = enabled;
     }
     if (extraInfo != null) {
       _result.extraInfo = extraInfo;
     }
-
-    if (costPerBlock != null) {
-      _result.costPerBlock = costPerBlock;
-    } else {
-      _result.costPerBlock = $2.Coin(denom: 'upylon', amount: '0');
+    if (createdAt != null) {
+      _result.createdAt = createdAt;
     }
-
+    if (updatedAt != null) {
+      _result.updatedAt = updatedAt;
+    }
     return _result;
   }
-
   factory Recipe.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -1794,6 +1954,9 @@ class Recipe extends $pb.GeneratedMessage {
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
+  Recipe copyWith(void Function(Recipe) updates) =>
+      super.copyWith((message) => updates(message as Recipe))
+          as Recipe; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
   static Recipe create() => Recipe._();
@@ -1805,28 +1968,28 @@ class Recipe extends $pb.GeneratedMessage {
   static Recipe? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get cookbookID => $_getSZ(0);
+  $core.String get cookbookId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set cookbookID($core.String v) {
+  set cookbookId($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasCookbookID() => $_has(0);
+  $core.bool hasCookbookId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearCookbookID() => clearField(1);
+  void clearCookbookId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get iD => $_getSZ(1);
+  $core.String get id => $_getSZ(1);
   @$pb.TagNumber(2)
-  set iD($core.String v) {
+  set id($core.String v) {
     $_setString(1, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasID() => $_has(1);
+  $core.bool hasId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearID() => clearField(2);
+  void clearId() => clearField(2);
 
   @$pb.TagNumber(3)
   $fixnum.Int64 get nodeVersion => $_getI64(2);
@@ -1948,4 +2111,28 @@ class Recipe extends $pb.GeneratedMessage {
   $core.bool hasExtraInfo() => $_has(13);
   @$pb.TagNumber(14)
   void clearExtraInfo() => clearField(14);
+
+  @$pb.TagNumber(15)
+  $fixnum.Int64 get createdAt => $_getI64(14);
+  @$pb.TagNumber(15)
+  set createdAt($fixnum.Int64 v) {
+    $_setInt64(14, v);
+  }
+
+  @$pb.TagNumber(15)
+  $core.bool hasCreatedAt() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearCreatedAt() => clearField(15);
+
+  @$pb.TagNumber(16)
+  $fixnum.Int64 get updatedAt => $_getI64(15);
+  @$pb.TagNumber(16)
+  set updatedAt($fixnum.Int64 v) {
+    $_setInt64(15, v);
+  }
+
+  @$pb.TagNumber(16)
+  $core.bool hasUpdatedAt() => $_has(15);
+  @$pb.TagNumber(16)
+  void clearUpdatedAt() => clearField(16);
 }

@@ -264,8 +264,8 @@ void getRecipeTest() {
     var response =
         await pylonsWallet.getRecipe(MOCK_COOKBOOK_ID, MOCK_RECIPE_ID);
 
-    expect(response.data.iD, MOCK_RECIPE_ID);
-    expect(response.data.cookbookID, MOCK_COOKBOOK_ID);
+    expect(response.data.id, MOCK_RECIPE_ID);
+    expect(response.data.cookbookId, MOCK_COOKBOOK_ID);
     expect(response.action, Strings.GET_RECIPE);
   });
 }
@@ -602,7 +602,7 @@ void getCookBookTest() {
 
     var response = await pylonsWallet.getCookbook(MOCK_COOKBOOK_ID);
 
-    expect(response.data.iD, MOCK_COOKBOOK_ID);
+    expect(response.data.id, MOCK_COOKBOOK_ID);
   });
 }
 

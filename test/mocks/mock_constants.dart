@@ -5,7 +5,7 @@ import 'package:pylons_sdk/src/generated/pylons/execution.pb.dart';
 
 var MOCK_COOKBOOK = '''{
   "creator": "pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2",
-  "ID": "$MOCK_COOKBOOK_ID",
+  "id": "$MOCK_COOKBOOK_ID",
   "name": "Legend of the Undead Dragon",
   "description": "Cookbook for running pylons recreation of LOUD",
   "developer": "Pylons Inc",
@@ -15,8 +15,8 @@ var MOCK_COOKBOOK = '''{
 }''';
 
 var MOCK_RECIPE = Recipe(
-    cookbookID: MOCK_COOKBOOK_ID,
-    iD: MOCK_RECIPE_ID,
+    cookbookId: MOCK_COOKBOOK_ID,
+    id: MOCK_RECIPE_ID,
     nodeVersion: MOCK_NODE_VERSION,
     name: "LOUD's Wooden sword lv1 buy recipe",
     description: 'this recipe is used to buy wooden sword lv1.',
@@ -26,7 +26,7 @@ var MOCK_RECIPE = Recipe(
     itemInputs: [],
     entries: EntriesList(coinOutputs: [], itemOutputs: [
       ItemOutput(
-        iD: 'copper_sword_lv1',
+        id: 'copper_sword_lv1',
         doubles: [],
         longs: [],
         strings: [],
@@ -37,7 +37,7 @@ var MOCK_RECIPE = Recipe(
       ),
     ], itemModifyOutputs: []),
     outputs: [
-      WeightedOutputs(entryIDs: ['copper_sword_lv1'], weight: Int64(1))
+      WeightedOutputs(entryIds: ['copper_sword_lv1'], weight: Int64(1))
     ],
     blockInterval: Int64(0),
     enabled: false,
@@ -45,12 +45,12 @@ var MOCK_RECIPE = Recipe(
 
 var MOCK_TRADE = Trade(
   creator: MOCK_CREATOR,
-  iD: Int64(20211207),
+  id: Int64(20211207),
   coinInputs: [],
   itemInputs: [],
   coinOutputs: [],
   itemOutputs: [
-    ItemRef(cookbookID: MOCK_COOKBOOK_ID, itemID: MOCK_ITEM_ID),
+    ItemRef(cookbookId: MOCK_COOKBOOK_ID, itemId: MOCK_ITEM_ID),
   ],
   extraInfo: 'extraInfo',
   receiver: '',
@@ -69,14 +69,14 @@ const String MOCK_USERNAME = 'Jawad';
 const String MOCK_ERR_CODE = 'Something went wrong';
 const String MOCK_EXECUTION_ID = 'executionid';
 const String MOCK_RECIPE_VERSION = 'v0.1.3';
-const String MOCK_NODE_VERSION = '0.1.3';
+Int64 MOCK_NODE_VERSION = Int64(1);
 const String MOCK_CREATOR = 'pylo1akzpu26f36pgxr636uch8evdtdjepu93v5y9s2';
 const int MOCK_PRICE = 10000;
 const bool MOCK_STRIPE_EXISTS = false;
 
 Cookbook MOCK_COOK_BOOK_OBJECT = Cookbook(
     creator: '',
-    iD: MOCK_COOKBOOK_ID,
+    id: MOCK_COOKBOOK_ID,
     name: 'Legend of the Undead Dragon',
     description: 'Cookbook for running pylons recreation of LOUD',
     developer: 'Pylons Inc',
@@ -86,8 +86,8 @@ Cookbook MOCK_COOK_BOOK_OBJECT = Cookbook(
 
 Item MOCK_ITEM = Item(
   owner: '',
-  cookbookID: MOCK_COOKBOOK_ID,
-  iD: MOCK_ITEM_ID,
+  cookbookId: MOCK_COOKBOOK_ID,
+  id: MOCK_ITEM_ID,
   nodeVersion: MOCK_NODE_VERSION,
   doubles: [],
   longs: [],
@@ -95,14 +95,14 @@ Item MOCK_ITEM = Item(
 );
 
 ItemRef MOCK_ITEM_REF = ItemRef(
-  cookbookID: MOCK_COOKBOOK_ID,
-  itemID: MOCK_ITEM_ID,
+  cookbookId: MOCK_COOKBOOK_ID,
+  itemId: MOCK_ITEM_ID,
 );
 
 Execution MOCK_EXECUTION = Execution(
   creator: MOCK_OWNER,
-  iD: MOCK_EXECUTION_ID,
-  cookbookID: MOCK_COOKBOOK_ID,
+  id: MOCK_EXECUTION_ID,
+  cookbookId: MOCK_COOKBOOK_ID,
   recipeVersion: MOCK_RECIPE_VERSION,
   nodeVersion: MOCK_NODE_VERSION,
 );

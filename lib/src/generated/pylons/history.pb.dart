@@ -1,19 +1,20 @@
 ///
 //  Generated code. Do not modify.
-//  source: pylons/pylons/payment_info.proto
+//  source: pylons/pylons/history.proto
 //
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class PaymentInfo extends $pb.GeneratedMessage {
+class History extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'PaymentInfo',
+          : 'History',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -23,159 +24,159 @@ class PaymentInfo extends $pb.GeneratedMessage {
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'purchaseId')
+            : 'address')
     ..aOS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'processorName')
+            : 'amount')
     ..aOS(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'payerAddr')
+            : 'cookbookId')
     ..aOS(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'amount')
-    ..aOS(
+            : 'recipeId')
+    ..aInt64(
         5,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'productId')
+            : 'createdAt')
     ..aOS(
         6,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'signature')
+            : 'type')
     ..hasRequiredFields = false;
 
-  PaymentInfo._() : super();
-  factory PaymentInfo({
-    $core.String? purchaseId,
-    $core.String? processorName,
-    $core.String? payerAddr,
+  History._() : super();
+  factory History({
+    $core.String? address,
     $core.String? amount,
-    $core.String? productId,
-    $core.String? signature,
+    $core.String? cookbookId,
+    $core.String? recipeId,
+    $fixnum.Int64? createdAt,
+    $core.String? type,
   }) {
     final _result = create();
-    if (purchaseId != null) {
-      _result.purchaseId = purchaseId;
-    }
-    if (processorName != null) {
-      _result.processorName = processorName;
-    }
-    if (payerAddr != null) {
-      _result.payerAddr = payerAddr;
+    if (address != null) {
+      _result.address = address;
     }
     if (amount != null) {
       _result.amount = amount;
     }
-    if (productId != null) {
-      _result.productId = productId;
+    if (cookbookId != null) {
+      _result.cookbookId = cookbookId;
     }
-    if (signature != null) {
-      _result.signature = signature;
+    if (recipeId != null) {
+      _result.recipeId = recipeId;
+    }
+    if (createdAt != null) {
+      _result.createdAt = createdAt;
+    }
+    if (type != null) {
+      _result.type = type;
     }
     return _result;
   }
-  factory PaymentInfo.fromBuffer($core.List<$core.int> i,
+  factory History.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory PaymentInfo.fromJson($core.String i,
+  factory History.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  PaymentInfo clone() => PaymentInfo()..mergeFromMessage(this);
+  History clone() => History()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  PaymentInfo copyWith(void Function(PaymentInfo) updates) =>
-      super.copyWith((message) => updates(message as PaymentInfo))
-          as PaymentInfo; // ignore: deprecated_member_use
+  History copyWith(void Function(History) updates) =>
+      super.copyWith((message) => updates(message as History))
+          as History; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static PaymentInfo create() => PaymentInfo._();
-  PaymentInfo createEmptyInstance() => create();
-  static $pb.PbList<PaymentInfo> createRepeated() => $pb.PbList<PaymentInfo>();
+  static History create() => History._();
+  History createEmptyInstance() => create();
+  static $pb.PbList<History> createRepeated() => $pb.PbList<History>();
   @$core.pragma('dart2js:noInline')
-  static PaymentInfo getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<PaymentInfo>(create);
-  static PaymentInfo? _defaultInstance;
+  static History getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<History>(create);
+  static History? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get purchaseId => $_getSZ(0);
+  $core.String get address => $_getSZ(0);
   @$pb.TagNumber(1)
-  set purchaseId($core.String v) {
+  set address($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasPurchaseId() => $_has(0);
+  $core.bool hasAddress() => $_has(0);
   @$pb.TagNumber(1)
-  void clearPurchaseId() => clearField(1);
+  void clearAddress() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get processorName => $_getSZ(1);
+  $core.String get amount => $_getSZ(1);
   @$pb.TagNumber(2)
-  set processorName($core.String v) {
+  set amount($core.String v) {
     $_setString(1, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasProcessorName() => $_has(1);
+  $core.bool hasAmount() => $_has(1);
   @$pb.TagNumber(2)
-  void clearProcessorName() => clearField(2);
+  void clearAmount() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get payerAddr => $_getSZ(2);
+  $core.String get cookbookId => $_getSZ(2);
   @$pb.TagNumber(3)
-  set payerAddr($core.String v) {
+  set cookbookId($core.String v) {
     $_setString(2, v);
   }
 
   @$pb.TagNumber(3)
-  $core.bool hasPayerAddr() => $_has(2);
+  $core.bool hasCookbookId() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPayerAddr() => clearField(3);
+  void clearCookbookId() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get amount => $_getSZ(3);
+  $core.String get recipeId => $_getSZ(3);
   @$pb.TagNumber(4)
-  set amount($core.String v) {
+  set recipeId($core.String v) {
     $_setString(3, v);
   }
 
   @$pb.TagNumber(4)
-  $core.bool hasAmount() => $_has(3);
+  $core.bool hasRecipeId() => $_has(3);
   @$pb.TagNumber(4)
-  void clearAmount() => clearField(4);
+  void clearRecipeId() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get productId => $_getSZ(4);
+  $fixnum.Int64 get createdAt => $_getI64(4);
   @$pb.TagNumber(5)
-  set productId($core.String v) {
-    $_setString(4, v);
+  set createdAt($fixnum.Int64 v) {
+    $_setInt64(4, v);
   }
 
   @$pb.TagNumber(5)
-  $core.bool hasProductId() => $_has(4);
+  $core.bool hasCreatedAt() => $_has(4);
   @$pb.TagNumber(5)
-  void clearProductId() => clearField(5);
+  void clearCreatedAt() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get signature => $_getSZ(5);
+  $core.String get type => $_getSZ(5);
   @$pb.TagNumber(6)
-  set signature($core.String v) {
+  set type($core.String v) {
     $_setString(5, v);
   }
 
   @$pb.TagNumber(6)
-  $core.bool hasSignature() => $_has(5);
+  $core.bool hasType() => $_has(5);
   @$pb.TagNumber(6)
-  void clearSignature() => clearField(6);
+  void clearType() => clearField(6);
 }

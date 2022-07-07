@@ -17,16 +17,16 @@ class ValidateRecipe {
           recipe, 'Recipe description should have more than 20 characters');
     }
 
-    if (recipe.cookbookID.isEmpty) {
+    if (recipe.cookbookId.isEmpty) {
       throwError(recipe, 'Invalid CookbookId');
     }
 
-    if (recipe.iD.isEmpty) {
+    if (recipe.id.isEmpty) {
       throwError(recipe, 'Invalid Recipe ID');
     }
 
     if (recipe.itemInputs
-        .where((recipe) => recipe.iD.isEmpty)
+        .where((recipe) => recipe.id.isEmpty)
         .toList()
         .isNotEmpty) {
       throwError(recipe, 'Invalid Item ID');
@@ -41,32 +41,32 @@ class ValidateRecipe {
     var orphanOutputs = <String>[];
     var unknownOutputs = <String>[];
     for (var output in recipe.outputs) {
-      for (var entry in output.entryIDs) {
+      for (var entry in output.entryIds) {
         if (!found.contains(entry)) found.add(entry);
       }
     }
     for (var entryId in found) {
       for (var output in recipe.entries.coinOutputs) {
-        if (found.contains(output.iD) && !reFound.contains(output.iD)) {
-          reFound.add(output.iD);
+        if (found.contains(output.id) && !reFound.contains(output.id)) {
+          reFound.add(output.id);
         } else {
-          orphanOutputs.add(output.iD);
+          orphanOutputs.add(output.id);
         }
       }
       for (var output in recipe.entries.itemOutputs) {
-        if (found.contains(output.iD) && !reFound.contains(output.iD)) {
-          reFound.add(output.iD);
+        if (found.contains(output.id) && !reFound.contains(output.id)) {
+          reFound.add(output.id);
         } else {
-          orphanOutputs.add(output.iD);
+          orphanOutputs.add(output.id);
         }
       }
       if (!reFound.contains(entryId)) unknownOutputs.add(entryId);
     }
     if (unknownOutputs.isNotEmpty || orphanOutputs.isNotEmpty) {
       throw RecipeValidationException(
-          recipe.cookbookID,
+          recipe.cookbookId,
           recipe.name,
-          recipe.iD,
+          recipe.id,
           'Recipe validation failed\nUnknown entry ids:\n\n'
           '${const JsonEncoder().convert(unknownOutputs)}\n\n'
           'Orphaned entries:\n\n'
@@ -79,6 +79,6 @@ class ValidateRecipe {
 
   static void throwError(Recipe recipe, String error) {
     throw RecipeValidationException(
-        recipe.cookbookID, recipe.name, recipe.iD, error);
+        recipe.cookbookId, recipe.name, recipe.id, error);
   }
 }
