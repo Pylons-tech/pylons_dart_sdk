@@ -201,4 +201,37 @@ void main() {
 
     ValidateRecipe.validate(recipe);
   });
+
+  test('should not throw  error on empty description ', () {
+    var recipe = Recipe(
+        cookbookId: 'JawadCookBook',
+        id: '',
+        nodeVersion: Int64(2),
+        name: "LOUD's Wooden sword lv1 buy recipe",
+        description: '',
+        version: 'v0.1.3',
+        coinInputs: [],
+        itemInputs: [],
+        entries: EntriesList(coinOutputs: [], itemOutputs: [
+          ItemOutput(
+            id: 'copper_sword_lv1',
+            doubles: [],
+            longs: [],
+            strings: [],
+            mutableStrings: [],
+            transferFee: [],
+            tradePercentage: DecString.decStringFromDouble(0.1),
+            tradeable: true,
+          ),
+        ], itemModifyOutputs: []),
+        outputs: [
+          WeightedOutputs(entryIds: ['copper_sword_lv1'], weight: Int64(1))
+        ],
+        blockInterval: Int64(0),
+        enabled: false,
+        extraInfo: 'extraInfo');
+
+    expect(() => ValidateRecipe.validate(recipe),
+        throwsA(isA<RecipeValidationException>()));
+  });
 }

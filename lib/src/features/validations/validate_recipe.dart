@@ -12,7 +12,6 @@ class ValidateRecipe {
       throwError(recipe, 'Recipe name should have more than 8 characters');
     }
 
-
     if (recipe.cookbookId.isEmpty) {
       throwError(recipe, 'Invalid CookbookId');
     }
