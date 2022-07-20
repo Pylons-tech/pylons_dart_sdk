@@ -12,11 +12,6 @@ class ValidateRecipe {
       throwError(recipe, 'Recipe name should have more than 8 characters');
     }
 
-    if (recipe.description.length <= kRecipeDescriptionLength) {
-      throwError(
-          recipe, 'Recipe description should have more than 20 characters');
-    }
-
     if (recipe.cookbookId.isEmpty) {
       throwError(recipe, 'Invalid CookbookId');
     }
