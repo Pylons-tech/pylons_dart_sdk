@@ -14,7 +14,7 @@ Open your pubspec.yaml file within the app folder and add:
 
 ```
 dependencies:
-    pylons_sdk: ^0.0.8
+    pylons_sdk: ^0.1.2
 ```
 
 <br>
