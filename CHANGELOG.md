@@ -1,3 +1,6 @@
+## 0.1.3
+Added the SDKResponse class in exports.
+
 ## 0.1.2
 Made the Recipe description optional on the sdk side.
 
